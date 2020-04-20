@@ -4,11 +4,12 @@ import Slider from "../../components/media-slider";
 import { upcoming } from "../../gqls/movies";
 
 export default () => {
-  const { loading, error, data } = useQuery(upcoming, {
+  const { loading, error, data, fetchMore } = useQuery(upcoming, {
     variables: {
       lang: "en-US",
-      page: 3
+      page: 1,
     },
+    fetchPolicy: "cache-and-network"
   });
 
   let view = null;
@@ -21,9 +22,36 @@ export default () => {
     view = <div>Error</div>;
   }
 
+  const handleFetchMore = (page: number) => {
+    fetchMore({
+      variables: {
+        page,
+        lang: "en-US",
+      },
+      updateQuery: (previous: any, { fetchMoreResult }: any) => {
+        if (!fetchMoreResult) {
+          return previous;
+        } else {
+          const newData = [...previous.getUpcoming.results, ...fetchMoreResult.getUpcoming.results];
+          return Object.assign({}, previous, {
+            getUpcoming: Object.assign({}, previous.getUpcoming, {
+              results: newData,
+            })
+          });
+        }
+      },
+    });
+  };
+
   if (data && data.getUpcoming) {
     view = (
-      <Slider movies={data.getUpcoming.results} title="Upcoming"></Slider>
+      <Slider
+        movies={data.getUpcoming.results}
+        title="Up Coming"
+        fetchMore={handleFetchMore}
+        fetchMoreQueryEntry="getUpcoming"
+        totalResults={data.getUpcoming.total_results}
+      ></Slider>
     );
   }
 

@@ -21,7 +21,13 @@ export default () => {
   }
 
   if (data && data.getTvOnAir) {
-    view = <Slider movies={data.getTvOnAir.results} title="Upcoming"></Slider>;
+    view = (
+      <Slider
+        movies={data.getTvOnAir.results}
+        title="Upcoming"
+        totalResults={data.getTvOnAir.total_results}
+      ></Slider>
+    );
   }
 
   return view;

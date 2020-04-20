@@ -4,13 +4,13 @@ import "./App.css";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import TopRatedMovies from "./containers/movies/topRated";
-import Trending from "./containers/movies/popular";
-import Upcoming from "./containers/movies/upComing";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import OnAir from "./containers/tv/onAir";
 import Popular from "./containers/tv/popular";
 import TopRated from "./containers/tv/topRated";
+import Trending from "./containers/movies/popular";
+import Upcoming from "./containers/movies/upComing";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -23,14 +23,14 @@ function App() {
         <Router>
           <Switch>
             <Route path="/movies">
-              <TopRatedMovies />
+              {/* <TopRatedMovies /> */}
               <Trending />
-              <Upcoming />
+              {/* <Upcoming /> */}
             </Route>
             <Route path="/tv">
-              <TopRated />
-              <Popular />
-              <OnAir />
+              {/* <TopRated /> */}
+              {/* <Popular />
+              {/* <OnAir /> */}
             </Route>
           </Switch>
         </Router>

@@ -21,7 +21,13 @@ export default () => {
   }
 
   if (data && data.getPopularTv) {
-    view = <Slider movies={data.getPopularTv.results} title="Popular"></Slider>;
+    view = (
+      <Slider
+        movies={data.getPopularTv.results}
+        title="Popular"
+        totalResults={data.getPopularTv.total_results}
+      ></Slider>
+    );
   }
 
   return view;

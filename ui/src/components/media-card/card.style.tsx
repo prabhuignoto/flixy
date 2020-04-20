@@ -7,6 +7,7 @@ export const CardContainer = styled(animated.div)<{
   opacity?: number;
   height?: number;
   size?: CardSize;
+  hide?: number;
 }>`
   display: flex;
   align-items: center;
@@ -14,14 +15,15 @@ export const CardContainer = styled(animated.div)<{
   justify-content: center;
   border-radius: 0.1rem;
   height: 100%;
-  width: 100%;
+  width: 200px;
   cursor: pointer;
   border: 1px solid rgba(127,0,0,.7);
   border: 1px solid rgba(226,226,226,0.25);
   position: relative;
+  ${p => p.hide ? 'border: 1px solid red' : ''};
 `;
 
-export const CardImage = styled.img`
+export const CardImage = styled.img<{hide?: boolean}>`
   height: auto;
   width: auto;
 `;

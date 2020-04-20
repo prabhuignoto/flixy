@@ -18,12 +18,12 @@ export const MoviesContainer = Styled(animated.div)<{
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   height: 100%;
-  justify-content: start;
+  justify-content: center;
   overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
   scroll-behavior: smooth;
-  width: 100%;
+  width: auto;
   grid-template-columns: repeat(auto-fit, 200px);
 `;
 

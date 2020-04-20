@@ -29,6 +29,8 @@ export const MoviesWrapper = styled(animated.div) <{ expand?: number }>`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
 `;
 
 export const Title = styled.div``;

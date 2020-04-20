@@ -4,15 +4,16 @@ import {
   CardContainer,
   CardImageWrapper,
   CardImage,
-  CardTitle,
-  CardHeader,
   CardRating,
-  CardFooter,
 } from "./card.style";
 import { CardSize } from "../../models/CardSize";
-import { useSpring } from "react-spring";
+import { useSpring, config } from "react-spring";
 
-type MovieType = Movie & { onSelect: (id: number) => void; size?: CardSize };
+type MovieType = Movie & {
+  index: number;
+  onSelect: (id: number) => void;
+  size?: CardSize;
+};
 
 export default ({
   id,
@@ -20,16 +21,15 @@ export default ({
   onSelect,
   selected,
   size,
-  title,
-  release_date,
-  vote_average,
+  index,
 }: MovieType) => {
-  const [props, set] = useSpring(() => ({
-    scale: 0,
-  }));
+  const props = useSpring({
+    opacity: 1,
+    from: { opacity: 0.7 },
+    config: config.slow
+  });
 
   const handleSelection = (id: number) => {
-    set({});
     onSelect(id);
   };
 
@@ -40,15 +40,18 @@ export default ({
       size={size}
       style={props}
     >
-      <CardRating>{vote_average}</CardRating>
-      <CardImageWrapper selected={selected}>
-        <CardImage
-          src={`http://image.tmdb.org/t/p/w${size}/${poster_path}`}
-        ></CardImage>
-      </CardImageWrapper>
-      {/* <CardFooter>
-        <CardTitle>{title}</CardTitle>
-      </CardFooter> */}
+      {
+        <>
+          <CardRating>{index}</CardRating>
+          {poster_path && (
+            <CardImageWrapper selected={selected}>
+              <CardImage
+                src={`http://image.tmdb.org/t/p/w${size}/${poster_path}`}
+              ></CardImage>
+            </CardImageWrapper>
+          )}
+        </>
+      }
     </CardContainer>
   );
 };

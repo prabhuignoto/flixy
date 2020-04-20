@@ -14,4 +14,5 @@ export default interface Movie {
   vote_count?: number;
   genre_ids?: number[];
   selected?: boolean;
+  hide?: boolean;
 }

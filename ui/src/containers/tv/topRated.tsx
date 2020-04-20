@@ -22,7 +22,11 @@ export default () => {
 
   if (data && data.getTopRatedTv) {
     view = (
-      <Slider movies={data.getTopRatedTv.results} title="Top Rated"></Slider>
+      <Slider
+        movies={data.getTopRatedTv.results}
+        title="Top Rated"
+        totalResults={data.getTopRatedTv.total_results}
+      ></Slider>
     );
   }
 

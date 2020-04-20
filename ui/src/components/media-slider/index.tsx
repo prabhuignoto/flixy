@@ -11,33 +11,33 @@ import {
 } from "./index.styles";
 import Movies from "./collection";
 import { Button } from "../commons/styles";
-import { useSpring, config } from "react-spring";
+import { useSpring } from "react-spring";
 import { MinusIcon, PlusIcon, ArrowDownIcon, ArrowUpIcon } from "../icons";
 import Slider from "../../models/Slider";
 
 const SliderView: React.FunctionComponent<Slider> = ({
   movies,
-  title,
+  title,  
+  fetchMore,
+  totalResults
 }: Slider) => {
-  const [openWrapper, setOpenWrapper] = React.useState(true);
-  const [showMovies, setShowMovies] = React.useState(true);
+  const [open, setOpen] = React.useState(true);
   const [expandFull, setExpandFull] = React.useState(false);
-
+  const [page, setPage] = React.useState(1);
   const [props, set] = useSpring(() => ({
     height: "320px",
     opacity: 1,
   }));
 
-  const handleWrapperExpand = () => {
-    setOpenWrapper(!openWrapper);
-    if (openWrapper) {
+  const handleOpen = () => {
+    setOpen(!open);
+    if (open) {
       set({
         height: "0px",
         opacity: 0,
-      }); 
+      });
       setExpandFull(false);
     } else {
-      setShowMovies(true);
       set({ height: "320px", opacity: 1 });
     }
   };
@@ -57,34 +57,41 @@ const SliderView: React.FunctionComponent<Slider> = ({
     }
   };
 
+  const handleLoadMore = () => {
+    if (fetchMore) {
+      fetchMore(page + 1);
+    }
+    setPage(page + 1);
+  };
+
   return (
     <WrapperContainer expand={expandFull ? 1 : 0}>
       {/* header */}
-      <Header onClick={handleWrapperExpand}>
+      <Header onClick={handleOpen}>
         <Title>
           <TitleIcon></TitleIcon>
           <TitleText>{`${title}`}</TitleText>
         </Title>
         <ButtonWrapper>
-          <Button size="small">
-            {openWrapper ? <MinusIcon /> : <PlusIcon />}
-          </Button>
+          <Button size="small">{open ? <MinusIcon /> : <PlusIcon />}</Button>
         </ButtonWrapper>
       </Header>
 
       {/* movies list */}
-      {showMovies && (
+      {(
         <MoviesWrapper expand={expandFull ? 1 : 0} style={props}>
           <Movies
             items={movies}
             slider={!expandFull ? 1 : 0}
             expandFull={expandFull ? 1 : 0}
+            fetchMore={handleLoadMore}
+            totalResults={totalResults}
           ></Movies>
         </MoviesWrapper>
       )}
 
       {/* footer section */}
-      {openWrapper && (
+      {open && (
         <Footer>
           <Button size="small" onClick={handleExpandFull}>
             {expandFull ? <ArrowUpIcon /> : <ArrowDownIcon />}
