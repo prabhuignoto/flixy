@@ -2,6 +2,7 @@ import * as React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import Slider from "../../components/media-slider";
 import { topRated } from "../../gqls/movies";
+import { LoadingState } from "../../models/Slider";
 
 export default () => {
   const { loading, error, data, fetchMore } = useQuery(topRated, {
@@ -9,17 +10,17 @@ export default () => {
       lang: "en-US",
       page: 1,
     },
-    fetchPolicy: "cache-and-network"
+    fetchPolicy: "cache-and-network",
   });
 
-  let view = null;
+  let loadingState: LoadingState = LoadingState.DEFAULT;
 
   if (loading) {
-    view = <div>loading</div>;
-  }
-
-  if (error) {
-    view = <div>Error</div>;
+    loadingState = LoadingState.LOADING;
+  } else if (error) {
+    loadingState = LoadingState.FAILED;
+  } else {
+    loadingState = LoadingState.LOADED;
   }
 
   const handleFetchMore = (page: number) => {
@@ -32,28 +33,28 @@ export default () => {
         if (!fetchMoreResult) {
           return previous;
         } else {
-          const newData = [...previous.getTopRated.results, ...fetchMoreResult.getTopRated.results];
+          const newData = [
+            ...previous.getTopRated.results,
+            ...fetchMoreResult.getTopRated.results,
+          ];
           return Object.assign({}, previous, {
             getTopRated: Object.assign({}, previous.getTopRated, {
               results: newData,
-            })
+            }),
           });
         }
       },
     });
   };
 
-  if (data && data.getTopRated) {
-    view = (
-      <Slider
-        movies={data.getTopRated.results}
-        title="Top Rated"
-        fetchMore={handleFetchMore}
-        fetchMoreQueryEntry="getTopRated"
-        totalResults={data.getTopRated.total_results}
-      ></Slider>
-    );
-  }
-
-  return view;
+  return (
+    <Slider
+      movies={data && data.getTopRated ? data.getTopRated.results : []}
+      title="Top Rated"
+      fetchMore={handleFetchMore}
+      fetchMoreQueryEntry="getTopRated"
+      totalResults={data && data.getTopRated ? data.getTopRated.total_results : 0}
+      loadingState={loadingState}
+    ></Slider>
+  );
 };

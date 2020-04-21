@@ -19,7 +19,8 @@ const SliderView: React.FunctionComponent<Slider> = ({
   movies,
   title,  
   fetchMore,
-  totalResults
+  totalResults,
+  loadingState
 }: Slider) => {
   const [open, setOpen] = React.useState(true);
   const [expandFull, setExpandFull] = React.useState(false);
@@ -86,6 +87,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
             expandFull={expandFull ? 1 : 0}
             fetchMore={handleLoadMore}
             totalResults={totalResults}
+            loadingState={loadingState}
           ></Movies>
         </MoviesWrapper>
       )}

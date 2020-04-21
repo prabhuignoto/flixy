@@ -2,33 +2,32 @@ import * as React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import Slider from "../../components/media-slider";
 import { topRated } from "../../gqls/tv";
+import { LoadingState } from "../../models/Slider";
 
 export default () => {
   const { loading, error, data } = useQuery(topRated, {
     variables: {
       lang: "en-US",
+      page: 1
     },
   });
 
-  let view = null;
+  let loadingState: LoadingState = LoadingState.DEFAULT;
 
   if (loading) {
-    view = <div>loading</div>;
+    loadingState = LoadingState.LOADING;
+  } else if (error) {
+    loadingState = LoadingState.FAILED;
+  } else {
+    loadingState = LoadingState.LOADED;
   }
 
-  if (error) {
-    view = <div>Error</div>;
-  }
-
-  if (data && data.getTopRatedTv) {
-    view = (
-      <Slider
-        movies={data.getTopRatedTv.results}
-        title="Top Rated"
-        totalResults={data.getTopRatedTv.total_results}
-      ></Slider>
-    );
-  }
-
-  return view;
+  return (
+    <Slider
+      movies={data && data.getTopRatedTv ? data.getTopRatedTv.results : []}
+      title="Top Rated"
+      totalResults={data && data.getTopRatedTv ? data.getTopRatedTv.total_results : 0}
+      loadingState={loadingState}
+    ></Slider>
+  );
 };

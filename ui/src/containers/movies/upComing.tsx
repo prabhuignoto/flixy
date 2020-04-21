@@ -2,6 +2,7 @@ import * as React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import Slider from "../../components/media-slider";
 import { upcoming } from "../../gqls/movies";
+import { LoadingState } from "../../models/Slider";
 
 export default () => {
   const { loading, error, data, fetchMore } = useQuery(upcoming, {
@@ -9,17 +10,16 @@ export default () => {
       lang: "en-US",
       page: 1,
     },
-    fetchPolicy: "cache-and-network"
+    fetchPolicy: "cache-and-network",
   });
-
-  let view = null;
+  let loadingState: LoadingState = LoadingState.DEFAULT;
 
   if (loading) {
-    view = <div>loading</div>;
-  }
-
-  if (error) {
-    view = <div>Error</div>;
+    loadingState = LoadingState.LOADING;
+  } else if (error) {
+    loadingState = LoadingState.FAILED;
+  } else {
+    loadingState = LoadingState.LOADED;
   }
 
   const handleFetchMore = (page: number) => {
@@ -32,28 +32,28 @@ export default () => {
         if (!fetchMoreResult) {
           return previous;
         } else {
-          const newData = [...previous.getUpcoming.results, ...fetchMoreResult.getUpcoming.results];
+          const newData = [
+            ...previous.getUpcoming.results,
+            ...fetchMoreResult.getUpcoming.results,
+          ];
           return Object.assign({}, previous, {
             getUpcoming: Object.assign({}, previous.getUpcoming, {
               results: newData,
-            })
+            }),
           });
         }
       },
     });
   };
 
-  if (data && data.getUpcoming) {
-    view = (
-      <Slider
-        movies={data.getUpcoming.results}
-        title="Up Coming"
-        fetchMore={handleFetchMore}
-        fetchMoreQueryEntry="getUpcoming"
-        totalResults={data.getUpcoming.total_results}
-      ></Slider>
-    );
-  }
-
-  return view;
+  return (
+    <Slider
+      movies={data && data.getUpcoming ? data.getUpcoming.results : []}
+      title="Up Coming"
+      fetchMore={handleFetchMore}
+      fetchMoreQueryEntry="getUpcoming"
+      totalResults={data && data.getUpcoming ? data.getUpcoming.total_results : 0}
+      loadingState={loadingState}
+    ></Slider>
+  );
 };

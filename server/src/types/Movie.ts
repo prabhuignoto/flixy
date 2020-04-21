@@ -24,10 +24,10 @@ export default class Movie {
   @Field()
   popularity!: number;
 
-  @Field({nullable: true})
+  @Field({ nullable: true })
   poster_path!: string;
 
-  @Field()
+  @Field({ nullable: true })
   release_date!: string;
 
   @Field()

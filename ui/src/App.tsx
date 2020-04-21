@@ -3,13 +3,13 @@ import React from "react";
 import "./App.css";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
-import TopRatedMovies from "./containers/movies/topRated";
+// import TopRatedMovies from "./containers/movies/topRated";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import OnAir from "./containers/tv/onAir";
-import Popular from "./containers/tv/popular";
-import TopRated from "./containers/tv/topRated";
-import Trending from "./containers/movies/popular";
+// import Popular from "./containers/tv/popular";
+// import TopRated from "./containers/tv/topRated";
+// import Trending from "./containers/movies/popular";
 import Upcoming from "./containers/movies/upComing";
 
 const client = new ApolloClient({
@@ -24,13 +24,13 @@ function App() {
           <Switch>
             <Route path="/movies">
               {/* <TopRatedMovies /> */}
-              <Trending />
-              {/* <Upcoming /> */}
+              {/* <Trending /> */}
+              <Upcoming />
             </Route>
             <Route path="/tv">
               {/* <TopRated /> */}
-              {/* <Popular />
-              {/* <OnAir /> */}
+              {/* <Popular />*/}
+              <OnAir />
             </Route>
           </Switch>
         </Router>

@@ -1,4 +1,5 @@
 import Movie from "./Movie";
+import { LoadingState } from "./Slider";
 
 export interface Movies {
   items: Movie[];
@@ -6,4 +7,5 @@ export interface Movies {
   expandFull?: number;
   fetchMore: () => void;
   totalResults: number;
+  loadingState: LoadingState;
 }

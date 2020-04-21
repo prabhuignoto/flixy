@@ -1,9 +1,11 @@
 import gql from 'graphql-tag';
 
 export const popular = gql`
-  query popular($lang: String!) {
-    getPopularTv(lang: $lang) {
+  query popular($lang: String!, $page: Float!) {
+    getPopularTv(lang: $lang, page: $page) {
       page
+      total_results
+      total_pages
       results {
         id
         name
@@ -16,9 +18,11 @@ export const popular = gql`
 `;
 
 export const topRated = gql`
-  query topRated($lang: String!) {
-    getTopRatedTv(lang: $lang) {
+  query topRated($lang: String!, $page: Float!) {
+    getTopRatedTv(lang: $lang, page: $page) {
       page
+      total_results
+      total_pages
       results {
         id
         name
@@ -31,9 +35,11 @@ export const topRated = gql`
 `;
 
 export const onAir = gql`
-  query onAir($lang: String!) {
-    getTvOnAir(lang: $lang) {
+  query onAir($lang: String!, $page: Float!) {
+    getTvOnAir(lang: $lang, page: $page) {
       page
+      total_results
+      total_pages
       results {
         id
         name

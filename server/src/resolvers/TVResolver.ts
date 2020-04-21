@@ -15,11 +15,12 @@ export default class TVResolver {
 
   @Query(returns => TvResult)
   async getPopularTv(
-    @Arg("lang") lang: string
+    @Arg("lang") lang: string,
+    @Arg("page") page: number
   ) {
     try {
       const { key, url } = this;
-      const response = await fetch(`${url}tv/popular?api_key=${key}&language=${lang}`);
+      const response = await fetch(`${url}tv/popular?api_key=${key}&language=${lang}&page=${page}`);
 
       const data = await response.json();
 
@@ -32,11 +33,12 @@ export default class TVResolver {
 
   @Query(returns => TvResult)
   async getTopRatedTv(
-    @Arg("lang") lang: string
+    @Arg("lang") lang: string,
+    @Arg("page") page: number
   ) {
     try {
       const { key, url } = this;
-      const response = await fetch(`${url}tv/top_rated?api_key=${key}&language=${lang}`);
+      const response = await fetch(`${url}tv/top_rated?api_key=${key}&language=${lang}&page=${page}`);
 
       const data = await response.json();
 
@@ -49,11 +51,12 @@ export default class TVResolver {
 
   @Query(returns => TvResult)
   async getTvOnAir(
-    @Arg("lang") lang: string
+    @Arg("lang") lang: string,
+    @Arg("page") page: number
   ) {
     try {
       const { key, url } = this;
-      const response = await fetch(`${url}tv/on_the_air?api_key=${key}&language=${lang}`);
+      const response = await fetch(`${url}tv/on_the_air?api_key=${key}&language=${lang}&page=${page}`);
 
       const data = await response.json();
 

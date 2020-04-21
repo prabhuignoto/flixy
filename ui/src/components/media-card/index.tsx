@@ -1,18 +1,15 @@
 import * as React from "react";
 import Movie from "../../models/Movie";
-import {
-  CardContainer,
-  CardImageWrapper,
-  CardImage,
-  CardRating,
-} from "./card.style";
+import { CardContainer } from "./card.style";
 import { CardSize } from "../../models/CardSize";
 import { useSpring, config } from "react-spring";
+import Poster from "../media-poster/poster";
 
 type MovieType = Movie & {
-  index: number;
-  onSelect: (id: number) => void;
+  index?: number;
+  onSelect?: (id: number) => void;
   size?: CardSize;
+  loadingCard?: boolean;
 };
 
 export default ({
@@ -22,36 +19,31 @@ export default ({
   selected,
   size,
   index,
+  loadingCard,
 }: MovieType) => {
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0.7 },
-    config: config.slow
+    config: config.slow,
   });
 
   const handleSelection = (id: number) => {
-    onSelect(id);
+    onSelect && onSelect(id);
   };
 
   return (
-    <CardContainer
-      onClick={() => handleSelection(id)}
-      selected={selected}
-      size={size}
-      style={props}
-    >
-      {
-        <>
-          <CardRating>{index}</CardRating>
-          {poster_path && (
-            <CardImageWrapper selected={selected}>
-              <CardImage
-                src={`http://image.tmdb.org/t/p/w${size}/${poster_path}`}
-              ></CardImage>
-            </CardImageWrapper>
-          )}
-        </>
-      }
-    </CardContainer>
+    <>
+      {!loadingCard ? (
+        <CardContainer
+          onClick={() => handleSelection(id)}
+          selected={selected}
+          size={size}
+          style={props}
+        >
+          <Poster poster_path={poster_path ? poster_path : ''} index={index} size={size}></Poster>
+        </CardContainer>
+      ) : <CardContainer size={size} isLoadingCard={loadingCard ? 1 : 0}>
+        </CardContainer>}
+    </>
   );
 };
