@@ -9,10 +9,11 @@ import {
 
 export default ({ poster_path, size, index }: Poster) => (
   <PosterWrapper>
-    <CardRating>{index}</CardRating>
+    {/* <CardRating>{index}</CardRating> */}
     {poster_path && (
       <CardImageWrapper selected={false}>
         <CardImage
+          title=""
           src={`http://image.tmdb.org/t/p/w${size}/${poster_path}`}
         ></CardImage>
       </CardImageWrapper>

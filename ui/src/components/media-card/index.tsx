@@ -20,10 +20,11 @@ export default ({
   size,
   index,
   loadingCard,
+  title,
 }: MovieType) => {
   const props = useSpring({
     opacity: 1,
-    from: { opacity: 0.7 },
+    from: { opacity: 0.5 },
     config: config.slow,
   });
 
@@ -40,10 +41,17 @@ export default ({
           size={size}
           style={props}
         >
-          <Poster poster_path={poster_path ? poster_path : ''} index={index} size={size}></Poster>
+          <Poster
+            poster_path={poster_path ? poster_path : ""}
+            index={index}
+            size={size}
+            title={title}
+          ></Poster>
         </CardContainer>
-      ) : <CardContainer size={size} isLoadingCard={loadingCard ? 1 : 0}>
-        </CardContainer>}
+      ) : (
+        <CardContainer size={size} isLoadingCard={loadingCard ? 1 : 0}>
+        </CardContainer>
+      )}
     </>
   );
 };

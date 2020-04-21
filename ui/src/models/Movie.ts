@@ -15,4 +15,5 @@ export default interface Movie {
   genre_ids?: number[];
   selected?: boolean;
   hide?: boolean;
+  loadingCard?: boolean;
 }

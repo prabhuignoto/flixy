@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { animated } from 'react-spring';
 
 export const PosterWrapper = styled.div`
-
+  height: 100%;
+  width: 100%;
 `;
 
 export const CardImage = styled.img<{hide?: boolean}>`
-  height: auto;
-  width: auto;
+  max-height: 100%;
+  max-width: 100%;
 `;
 
 export const CardImageWrapper = styled(animated.div)<{ selected?: boolean }>`

@@ -3,7 +3,7 @@ import React from "react";
 import "./App.css";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
-// import TopRatedMovies from "./containers/movies/topRated";
+import TopRatedMovies from "./containers/movies/topRated";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import OnAir from "./containers/tv/onAir";
@@ -23,9 +23,9 @@ function App() {
         <Router>
           <Switch>
             <Route path="/movies">
-              {/* <TopRatedMovies /> */}
+              <TopRatedMovies />
               {/* <Trending /> */}
-              <Upcoming />
+              {/* <Upcoming /> */}
             </Route>
             <Route path="/tv">
               {/* <TopRated /> */}

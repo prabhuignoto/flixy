@@ -5,4 +5,5 @@ export interface Poster {
   size?: CardSize;
   rating?: number;
   index?: number;
+  title?: string;
 }

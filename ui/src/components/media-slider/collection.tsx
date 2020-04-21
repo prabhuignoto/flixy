@@ -10,7 +10,6 @@ import { CardSize } from "../../models/CardSize";
 import { Movies } from "../../models/Movies";
 import { ChevronLeftIcon, ChevronRightIcon } from "../icons";
 import Movie from "./../../models/Movie";
-import { config, useSpring, useTrail } from "react-spring";
 import { LoadingState as State } from "../../models/Slider";
 
 export enum NavDir {
@@ -37,6 +36,7 @@ export default ({
   const isFirstRun = React.useRef(true);
   const visibleItems = React.useRef(0);
   const clientWidth = React.useRef(0);
+  const visibleColumns = React.useRef(0);
 
   const handleNav = (dir: NavDir) => {
     const moveForward = dir === NavDir.RIGHT && loadingState !== State.LOADING;
@@ -96,7 +96,9 @@ export default ({
       const loadingCards =
         visibleElements - (items.length - page * visibleElements);
       setLoadingCards(Array.from({ length: loadingCards }).map((k, i) => i));
-      fetchMore();
+      setTimeout (() => {
+        fetchMore();
+      }, 1000);
     }
 
     setMovies(items);
@@ -108,8 +110,9 @@ export default ({
     if (nativeElement) {
       clientWidth.current = nativeElement.clientWidth;
       // calculate and store visible elements for the slider window
-      const visibleElements = Math.floor(nativeElement.clientWidth / 216);
-      visibleItems.current = expand ? visibleElements * 3 : visibleElements;
+      const columns = Math.floor(nativeElement.clientWidth / 225);
+      visibleColumns.current = columns;
+      visibleItems.current = expand ? columns * 3 : columns;
 
       return visibleItems.current;
     } else {
@@ -168,6 +171,7 @@ export default ({
         slider={slider ? 1 : 0}
         expandFull={expandFull ? 1 : 0}
         size={size}
+        columns={visibleColumns.current}
       >
         {movies.map(
           (
@@ -186,7 +190,7 @@ export default ({
               <Card
                 poster_path={poster_path}
                 selected={selected}
-                key={`${id}-${title}`}
+                key={index}
                 onSelect={() => {}}
                 size={size}
                 id={id}
@@ -199,7 +203,7 @@ export default ({
         )}
         {loadingCards.length &&
           loadingCards.map((val: number) => (
-            <Card id={val} loadingCard={true} />
+            <Card id={val} loadingCard={true} key={val}/>
           ))}
       </MoviesContainer>
       <ScrollRight onClick={() => handleNav(NavDir.RIGHT)}>

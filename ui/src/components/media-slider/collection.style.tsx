@@ -7,24 +7,25 @@ export const MoviesContainer = Styled(animated.div)<{
   size?: CardSize;
   slider?: number;
   expandFull?: number;
+  columns?: number;
 }>`
   ${({ expandFull, size }) =>
     expandFull
       ? `grid-template-rows: repeat(3, 300px);`
       : `grid-template-rows: repeat(1, 300px);`};
-  align-content: center;
+  align-content: flex-start;
   display: grid;
-  grid-auto-flow: column;
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
+  grid-auto-flow: row;
   height: 100%;
   justify-content: center;
   overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
   scroll-behavior: smooth;
-  width: auto;
-  grid-template-columns: repeat(auto-fit, 200px);
+  width: 100%;
+  grid-template-columns: repeat(${p => p.columns}, 200px);
 `;
 
 export const MoviesControl = Styled.ul`
@@ -57,7 +58,7 @@ export const ScrollLeft = Styled(ScrollButton)`
 `;
 
 export const ScrollRight = Styled(ScrollButton)`
-  right:0;
+  right: 0;
 `;
 
 export const MoviesWrapper = Styled.div`

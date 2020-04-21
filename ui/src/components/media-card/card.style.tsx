@@ -11,20 +11,20 @@ export const CardContainer = styled(animated.div)<{
   isLoadingCard?: number;
 }>`
   display: flex;
-  align-items: center;
+  align-items: stretch;
   flex-direction: column;
-  justify-content: start;
+  justify-content: stretch;
   border-radius: 0.1rem;
   height: 100%;
   width: 200px;
   cursor: pointer;
   position: relative;
-  ${(p) => (p.hide && !p.isLoadingCard ? "1px solid rgba(226, 226, 226, 0.2)" : "1px solid rgba(226, 226, 226, 0.1)")};
+  border: ${(p) => !p.isLoadingCard
+      ? "1px solid rgba(226, 226, 226, 0.2);"
+      : "1px solid black"};
   ${(p) =>
     p.isLoadingCard
-      ? `
-          background: linear-gradient(358deg, #000000, #4b4848);
-        `
+      ? "background: linear-gradient(358deg, #000000, #4b4848);"
       : ""};
 `;
 
