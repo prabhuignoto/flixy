@@ -4,48 +4,39 @@ import {
   Header,
   MoviesWrapper,
   Title,
-  ButtonWrapper,
   Footer,
   TitleIcon,
   TitleText,
+  DetailsWrapper
 } from "./index.styles";
 import Movies from "./collection";
 import { Button } from "../commons/styles";
 import { useSpring } from "react-spring";
-import { MinusIcon, PlusIcon, ArrowDownIcon, ArrowUpIcon } from "../icons";
+import { ArrowDownIcon, ArrowUpIcon } from "../icons";
 import Slider from "../../models/Slider";
+import DetailsCard from "../media-details/details-card";
+import Movie from "../../models/Movie";
 
 const SliderView: React.FunctionComponent<Slider> = ({
   movies,
-  title,  
+  title,
   fetchMore,
   totalResults,
-  loadingState
+  loadingState,
 }: Slider) => {
-  const [open, setOpen] = React.useState(true);
   const [expandFull, setExpandFull] = React.useState(false);
   const [page, setPage] = React.useState(1);
+  const [showDetails, setShowDetails] = React.useState(false);
+  const [selectedMovie, setSelectedMovie] = React.useState({} as Movie);
   const [props, set] = useSpring(() => ({
     height: "320px",
     opacity: 1,
   }));
 
-  const handleOpen = () => {
-    setOpen(!open);
-    if (open) {
-      set({
-        height: "0px",
-        opacity: 0,
-      });
-      setExpandFull(false);
-    } else {
-      set({ height: "320px", opacity: 1 });
-    }
-  };
+  const handleExpandFull = () => setExpandFull(!expandFull);
 
-  const handleExpandFull = () => {
-    setExpandFull(!expandFull);
-    if (expandFull) {
+  React.useEffect(() => {
+    if (!expandFull || showDetails) {
       set({
         height: "320px",
         opacity: 1,
@@ -56,7 +47,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
         opacity: 1,
       });
     }
-  };
+  }, [expandFull, showDetails]);
 
   const handleLoadMore = () => {
     if (fetchMore) {
@@ -65,21 +56,29 @@ const SliderView: React.FunctionComponent<Slider> = ({
     setPage(page + 1);
   };
 
+  const handleMovieSelection = (selectedMovie?: Movie, clear?: boolean) => {
+    if (clear) {
+      setShowDetails(false);
+      // setSelectedMovie({ id: 0 } as Movie);
+    } else {
+      setShowDetails(true);
+      selectedMovie && setSelectedMovie(selectedMovie);
+    }
+  };
+
+  const onDetailsClose = () => setShowDetails(false);
+
   return (
     <WrapperContainer expand={expandFull ? 1 : 0}>
-      {/* header */}
-      <Header onClick={handleOpen}>
+      <Header>
         <Title>
           <TitleIcon></TitleIcon>
           <TitleText>{`${title}`}</TitleText>
         </Title>
-        <ButtonWrapper>
-          <Button size="small">{open ? <MinusIcon /> : <PlusIcon />}</Button>
-        </ButtonWrapper>
       </Header>
 
       {/* movies list */}
-      {(
+      {
         <MoviesWrapper expand={expandFull ? 1 : 0} style={props}>
           <Movies
             items={movies}
@@ -88,14 +87,28 @@ const SliderView: React.FunctionComponent<Slider> = ({
             fetchMore={handleLoadMore}
             totalResults={totalResults}
             loadingState={loadingState}
+            onSelection={handleMovieSelection}
+            showDetails={showDetails}
+            selectedIndex={selectedMovie && selectedMovie.id}
           ></Movies>
         </MoviesWrapper>
+      }
+
+      {showDetails && (
+        <DetailsWrapper>
+          <DetailsCard
+            title={selectedMovie?.title}
+            poster_path={selectedMovie?.poster_path}
+            id={selectedMovie?.id}
+            handleClose={onDetailsClose}
+          />
+        </DetailsWrapper>
       )}
 
       {/* footer section */}
-      {open && (
+      {!showDetails && (
         <Footer>
-          <Button size="small" onClick={handleExpandFull}>
+          <Button size="medium" onClick={handleExpandFull}>
             {expandFull ? <ArrowUpIcon /> : <ArrowDownIcon />}
           </Button>
         </Footer>

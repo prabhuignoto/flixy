@@ -1,16 +1,14 @@
 import * as React from "react";
-import Card from "../media-card";
-import {
-  MoviesContainer,
-  ScrollLeft,
-  ScrollRight,
-  MoviesWrapper,
-} from "./collection.style";
+import Card from "../media-card/card";
+import { ScrollLeft, ScrollRight, MoviesWrapper } from "./collection.style";
 import { CardSize } from "../../models/CardSize";
-import { Movies } from "../../models/Movies";
+import { Movies as MoviesModel } from "../../models/Movies";
 import { ChevronLeftIcon, ChevronRightIcon } from "../icons";
 import Movie from "./../../models/Movie";
 import { LoadingState as State } from "../../models/Slider";
+import useVirtual from "./../../effects/useVirtual";
+import { Configs } from "./../../effects/useVirtual";
+import MoviesView from "./movies";
 
 export enum NavDir {
   LEFT = "LEFT",
@@ -24,137 +22,150 @@ export default ({
   fetchMore,
   totalResults,
   loadingState,
-}: Movies) => {
-  const [size] = React.useState(CardSize.small);
+  onSelection,
+  showDetails,
+  selectedIndex,
+}: MoviesModel) => {
   const [movies, setMovies] = React.useState([] as Movie[]);
   const [page, setPage] = React.useState(1);
   const [actvStartIdx, setActvStartIdx] = React.useState(0);
   const [allItemsFetched, setAllItemsFetched] = React.useState(false);
   const [loadingCards, setLoadingCards] = React.useState([] as number[]);
+  const [visibleColumns, setVisibleColumns] = React.useState(0);
+  const [selectedMovie, setSelectedMovie] = React.useState(0);
+
+  const [lazyConfig, setLazyInputs] = useVirtual();
 
   const moviesRef = React.useRef<HTMLDivElement>(null);
   const isFirstRun = React.useRef(true);
   const visibleItems = React.useRef(0);
-  const clientWidth = React.useRef(0);
-  const visibleColumns = React.useRef(0);
 
   const handleNav = (dir: NavDir) => {
     const moveForward = dir === NavDir.RIGHT && loadingState !== State.LOADING;
-    const moveBackward = dir === NavDir.LEFT && page > 0;
+    const moveBackward = dir === NavDir.LEFT && page > 1;
     const itemsLen = items.length;
 
-    const isFinalPage = itemsLen === totalResults && (itemsLen - actvStartIdx) < visibleItems.current;
+    const isFinalPage =
+      itemsLen === totalResults &&
+      itemsLen - actvStartIdx < visibleItems.current;
+
+    const columns =
+      expandFull && !showDetails ? visibleColumns * 3 : visibleColumns;
+    let newPage = 0;
 
     if (moveForward && !isFinalPage) {
-      setPage(page + 1);
+      newPage = page + 1;
     } else if (moveBackward) {
-      setPage(page - 1);
+      newPage = page - 1;
     }
+
+    setPage(newPage);
+    setLazyInputs({
+      visibleElements: columns,
+      page: newPage,
+      totalItems: items.length,
+    });
   };
 
-  const updateItems = (
-    items: Movie[],
-    visibleElements: number,
-    page: number
-  ) => {
-    let counter = 0;
-
-    // calculate the items to be hidden on the left side of the window
-    const itemsToHideLeft = page * visibleElements;
-
-    // calc all the remaining elements
-    const remainingElements = items.length - itemsToHideLeft;
-
-    // calc the items to be shown in the window
-    const itemsToShow =
-      remainingElements >= visibleElements
-        ? visibleElements
-        : remainingElements;
-
-    // hide elements to the left of the window
-    for (let itr = 0; itr < itemsToHideLeft; itr++) {
-      items[counter++].hide = true;
-    }
-
-    setActvStartIdx(counter);
-
-    // show elements to be displayed in the window
-    for (let itr = 0; itr < itemsToShow; itr++) {
-      items[counter++].hide = false;
-    }
-
-    // hide all the elements to the right of the window
-    for (let itr = counter; itr < items.length; itr++) {
-      items[counter++].hide = true;
-    }
-
-    // check if we are in the last page
-    const isLastPage = items.length - page * visibleElements < visibleElements;
-
-    // load more elements if there is enough space in the window
-    if (counter < visibleElements || isLastPage) {
-      const loadingCards =
-        visibleElements - (items.length - page * visibleElements);
-      setLoadingCards(Array.from({ length: loadingCards }).map((k, i) => i));
-      setTimeout (() => {
-        fetchMore();
-      }, 1000);
-    }
-
-    setMovies(items);
-  };
-
-  const calcVisibleItems: (expand: boolean) => number = (expand) => {
-    // get handle of the slider native element
-    const nativeElement = moviesRef && (moviesRef.current as HTMLElement);
-    if (nativeElement) {
-      clientWidth.current = nativeElement.clientWidth;
-      // calculate and store visible elements for the slider window
-      const columns = Math.floor(nativeElement.clientWidth / 225);
-      visibleColumns.current = columns;
-      visibleItems.current = expand ? columns * 3 : columns;
-
-      return visibleItems.current;
-    } else {
-      return 0;
-    }
-  };
-
-  // monitor page state
   React.useEffect(() => {
-    if (isFirstRun.current) {
-      calcVisibleItems(!!expandFull);
-      isFirstRun.current = false;
-    } else {
-      const { current: count } = visibleItems;
-      updateItems([...items], count, page);
+    const {
+      itemsToShow,
+      itemsToHideLeft,
+      shouldLoadMore,
+      visibleElements,
+    } = lazyConfig as Configs;
+    if (visibleElements) {
+      let counter = 0;
+      const newItems = [...items];
+
+      // hide elements to the left of the window
+      for (let itr = 0; itr < itemsToHideLeft; itr++) {
+        newItems[counter++].hide = true;
+      }
+
+      setActvStartIdx(counter);
+
+      // show elements to be displayed in the window
+      for (let itr = 0; itr < itemsToShow; itr++) {
+        newItems[counter++].hide = false;
+      }
+
+      // hide all the elements to the right of the window
+      for (let itr = counter; itr < newItems.length; itr++) {
+        newItems[counter++].hide = true;
+      }
+
+      if (shouldLoadMore) {
+        const cards = Math.abs(newItems.length - page * visibleElements);
+        setLoadingCards(Array.from({ length: cards }).map((k, i) => i));
+        setTimeout(() => fetchMore(), 250);
+      }
+
+      setMovies(newItems);
     }
-  }, [page]);
+  }, [lazyConfig]);
+
+  // run it the first time
+  React.useEffect(() => {
+    const nativeElement = moviesRef.current;
+
+    if (nativeElement) {
+      const clientWidth = nativeElement.clientWidth;
+      const columns = Math.floor(clientWidth / 225);
+      setVisibleColumns(columns);
+      visibleItems.current = expandFull && !showDetails ? columns * 3 : columns;
+    }
+  }, []);
 
   // monitor the actual data
   React.useEffect(() => {
     if (items.length) {
-      const { current: count } = visibleItems;
       if (items.length === totalResults) {
         setAllItemsFetched(true);
       }
-      updateItems(items, count, page);
+      const columns =
+        expandFull && !showDetails ? visibleColumns * 3 : visibleColumns;
+      setLazyInputs({
+        visibleElements: columns,
+        page,
+        totalItems: items.length,
+      });
     }
   }, [items]);
 
   // monitor expand/collapse
   React.useEffect(() => {
-    const visibleElements = calcVisibleItems(!!expandFull);
-    if (expandFull) {
-      if (actvStartIdx < visibleElements) {
-        setPage(0);
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+    } else {
+      let newPage = null;
+      const columns =
+        expandFull && !showDetails ? visibleColumns * 3 : visibleColumns;
+
+      if (!showDetails) {
+        if (actvStartIdx > 0) {
+          newPage = Math.ceil((actvStartIdx + 1) / columns);
+          newPage = newPage ? newPage : 1;
+        } else {
+          newPage = 1;
+        }
+        setLazyInputs({
+          visibleElements: columns,
+          page: newPage,
+          totalItems: items.length,
+        });
       } else {
-        setPage(Math.floor(actvStartIdx / visibleElements));
+        const itemIndex = movies.findIndex((m) => m.id === selectedIndex);
+        newPage = Math.ceil((itemIndex + 1) / columns);
+        setLazyInputs({
+          visibleElements: columns,
+          page: newPage,
+          totalItems: items.length,
+        });
       }
-    } else if (actvStartIdx > 0) {
-      setPage(Math.floor(actvStartIdx / visibleElements));
+      setPage(newPage);
     }
-  }, [expandFull]);
+  }, [expandFull, showDetails]);
 
   React.useEffect(() => {
     if (loadingState === State.LOADED || loadingState === State.FAILED) {
@@ -162,50 +173,48 @@ export default ({
     }
   }, [loadingState]);
 
+  const handleSelection = (id: number) => {
+    // make a quick copy
+    const newMovies = [...movies];
+
+    // get the previously selected item
+    const oldSelection = newMovies.find((movie) => movie.id === selectedMovie);
+
+    // get to be selected item
+    const newSelection = newMovies.find((movie) => movie.id === id);
+
+    if (oldSelection && oldSelection === newSelection) {
+      oldSelection.selected = false;
+      setSelectedMovie(0);
+      onSelection({ id: 0 } as Movie, true);
+    } else if (oldSelection && newSelection) {
+      oldSelection.selected = false;
+      newSelection.selected = true;
+      setSelectedMovie(newSelection.id);
+      onSelection(newSelection);
+    } else if (!oldSelection && newSelection) {
+      newSelection.selected = true;
+      setSelectedMovie(newSelection.id);
+      onSelection(newSelection);
+    }
+
+    setMovies(newMovies);
+  };
+
   return (
     <MoviesWrapper ref={moviesRef}>
       <ScrollLeft onClick={() => handleNav(NavDir.LEFT)}>
         <ChevronLeftIcon />
       </ScrollLeft>
-      <MoviesContainer
-        slider={slider ? 1 : 0}
-        expandFull={expandFull ? 1 : 0}
-        size={size}
-        columns={visibleColumns.current}
-      >
-        {movies.map(
-          (
-            {
-              id,
-              poster_path,
-              selected,
-              title,
-              release_date,
-              vote_average,
-              hide,
-            },
-            index
-          ) =>
-            !hide && (
-              <Card
-                poster_path={poster_path}
-                selected={selected}
-                key={index}
-                onSelect={() => {}}
-                size={size}
-                id={id}
-                title={title}
-                release_date={release_date}
-                vote_average={vote_average}
-                index={index}
-              />
-            )
-        )}
-        {loadingCards.length &&
-          loadingCards.map((val: number) => (
-            <Card id={val} loadingCard={true} key={val}/>
-          ))}
-      </MoviesContainer>
+      <MoviesView
+        slider={slider}
+        expandFull={expandFull}
+        size={CardSize.small}
+        columns={visibleColumns}
+        movies={movies}
+        handleSelection={handleSelection}
+        loadingCards={loadingCards}
+      />
       <ScrollRight onClick={() => handleNav(NavDir.RIGHT)}>
         <ChevronRightIcon />
       </ScrollRight>

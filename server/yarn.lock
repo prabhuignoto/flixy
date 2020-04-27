@@ -249,10 +249,10 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node-fetch@^2.5.6":
-  version "2.5.6"
-  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.5.6.tgz#df8377a66e64ddf75b65b072e37b3c5c5425a96f"
-  integrity sha512-2w0NTwMWF1d3NJMK0Uiq2UNN8htVCyOWOD0jIPjPgC5Ph/YP4dVhs9YxxcMcuLuwAslz0dVEcZQUaqkLs3IzOQ==
+"@types/node-fetch@^2.5.7":
+  version "2.5.7"
+  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.5.7.tgz#20a2afffa882ab04d44ca786449a276f9f6bbf3c"
+  integrity sha512-o2WVNf5UhWRkxlf6eq+jMZDu7kjgpgJfl4xVNlvryc95O/6F2ld8ztKX+qu+Rjyet93WAWm5LjeX9H5FGkODvw==
   dependencies:
     "@types/node" "*"
     form-data "^3.0.0"
@@ -272,10 +272,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.35.tgz#1e61b226c14380f4384f70cfe49a65c2c553ad2b"
   integrity sha512-ASYsaKecA7TUsDrqIGPNk3JeEox0z/0XR/WsJJ8BIX/9+SkMSImQXKWfU/yBrSyc7ZSE/NPqLu36Nur0miCFfQ==
 
-"@types/node@^13.13.1":
-  version "13.13.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.1.tgz#1ba94c5a177a1692518bfc7b41aec0aa1a14354e"
-  integrity sha512-uysqysLJ+As9jqI5yqjwP3QJrhOcUwBjHUlUxPxjbplwKoILvXVsmYWEhfmAQlrPfbRZmhJB007o4L9sKqtHqQ==
+"@types/node@^13.13.2":
+  version "13.13.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.2.tgz#160d82623610db590a64e8ca81784e11117e5a54"
+  integrity sha512-LB2R1Oyhpg8gu4SON/mfforE525+Hi/M1ineICEDftqNVTyFg1aRIeGuTvXAoWHc4nbrFncWtJgMmoyRvuGh7A==
 
 "@types/qs@*":
   version "6.9.1"
@@ -1047,10 +1047,10 @@ fastify-plugin@^1.2.0, fastify-plugin@^1.2.1, fastify-plugin@^1.6.0:
   dependencies:
     semver "^6.3.0"
 
-fastify-redis@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/fastify-redis/-/fastify-redis-3.2.0.tgz#0921e7441dee4365b0cbc2c297249ba7d54938a0"
-  integrity sha512-f+QuXbHKk5S/dK0oZDPk8qEUNmtcRWfi4ZWGmLyqj5/JHapsnsievY0wCmKNUuyCc1bWCCYLd++lO8JaHHG9ZQ==
+fastify-redis@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/fastify-redis/-/fastify-redis-3.3.0.tgz#10c2b6d38eabff485d39c3c44915341d532e912e"
+  integrity sha512-ChZoJTJb8mdX+YqVI/H+Gn+4GcMonPWAVR1ob1WUqstwibEpPIRoUVoiDi1jNAnB5qBgud3TmGzqzImcWHjGhQ==
   dependencies:
     fastify-plugin "^1.6.0"
     ioredis "^4.10.0"

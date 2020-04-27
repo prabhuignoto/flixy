@@ -1,6 +1,7 @@
 import { Resolver, Query, Arg } from "type-graphql";
 import fetch from "node-fetch";
 import MovieResult from './../types/MovieResult';
+import { MovieDetail } from "../types/MovieDetail";
 
 @Resolver(MovieResult)
 export default class MovieResolver {
@@ -57,6 +58,25 @@ export default class MovieResolver {
     try {
       const { key, url } = this;
       const response = await fetch(`${url}movie/upcoming?api_key=${key}&language=${lang}&page=${page}`);
+
+      const data = await response.json();
+
+      return data;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  @Query(returns => MovieDetail)
+  async getDetails(
+    @Arg("movie_id") movie_id:  number,
+    @Arg("lang") lang: string,
+    @Arg("page") page: number
+  ) {
+    try {
+      const { key, url } = this;
+      const response = await fetch(`${url}movie/${movie_id}?api_key=${key}&language=${lang}&page=${page}`);
 
       const data = await response.json();
 

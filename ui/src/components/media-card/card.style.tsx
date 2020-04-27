@@ -20,12 +20,14 @@ export const CardContainer = styled(animated.div)<{
   cursor: pointer;
   position: relative;
   border: ${(p) => !p.isLoadingCard
-      ? "1px solid rgba(226, 226, 226, 0.2);"
-      : "1px solid black"};
+      ? ".1rem solid black;"
+      : ".25rem solid black"};
   ${(p) =>
     p.isLoadingCard
       ? "background: linear-gradient(358deg, #000000, #4b4848);"
       : ""};
+  border: ${p => p.selected ? ".1rem solid rgba(204,0,0,0.95);" : ""}; 
+
 `;
 
 export const CardTitle = styled.div`
@@ -60,4 +62,18 @@ export const CardYear = styled.span`
   font-weight: 300;
   font-size: 0.8rem;
   color: white;
+`;
+
+export const CardCheckedWrapper =styled.div`
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(204,0,0,0.95);
+  border-radius: 50%;
 `;

@@ -9,11 +9,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import OnAir from "./containers/tv/onAir";
 // import Popular from "./containers/tv/popular";
 // import TopRated from "./containers/tv/topRated";
-// import Trending from "./containers/movies/popular";
+import Trending from "./containers/movies/popular";
 import Upcoming from "./containers/movies/upComing";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: "http://localhost:3200/graphql",
 });
 
 function App() {
@@ -24,12 +24,12 @@ function App() {
           <Switch>
             <Route path="/movies">
               <TopRatedMovies />
-              {/* <Trending /> */}
-              {/* <Upcoming /> */}
+              <Trending />
+              <Upcoming />
             </Route>
             <Route path="/tv">
               {/* <TopRated /> */}
-              {/* <Popular />*/}
+              {/* <Popular />*/}  
               <OnAir />
             </Route>
           </Switch>

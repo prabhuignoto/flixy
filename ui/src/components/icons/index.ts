@@ -6,6 +6,8 @@ import { KeyboardArrowDown } from "@styled-icons/material-rounded/KeyboardArrowD
 import { KeyboardArrowUp } from "@styled-icons/material-rounded/KeyboardArrowUp";
 import { ChevronLeft } from "@styled-icons/feather/ChevronLeft";
 import { ChevronRight } from "@styled-icons/feather/ChevronRight";
+import { X } from "@styled-icons/feather/X";
+import { Check } from "@styled-icons/feather/Check";
 
 export const PlusIcon = styled(Plus)`
   color: red;
@@ -29,3 +31,11 @@ export const ChevronLeftIcon = styled(ChevronLeft)`
 export const ChevronRightIcon = styled(ChevronRight)`
   color: #cc0000;
 `;
+
+export const CloseIcon = styled(X)`
+  color: #cc0000;
+`;
+
+export const CheckIcon = styled(Check)`
+  color: #fff;
+`

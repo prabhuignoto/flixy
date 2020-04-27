@@ -8,4 +8,7 @@ export interface Movies {
   fetchMore: () => void;
   totalResults: number;
   loadingState: LoadingState;
+  onSelection: (selectedMovie?: Movie, clear?: boolean) => void;
+  showDetails: boolean;
+  selectedIndex: number | null;
 }

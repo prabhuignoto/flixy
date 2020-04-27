@@ -13,10 +13,10 @@ export const Button = styled.button<{ size?: string }>`
         style = "min-width: 2rem; height: 2rem;";
         break;
       case "medium":
-        style = "min-width: 4rem; height: 4rem;";
+        style = "min-width: 3rem; height: 3rem;";
         break;
       case "large":
-        style = "min-width: 6rem; height: 6rem;";
+        style = "min-width: 4rem; height: 4rem;";
         break;
     }
     return style;

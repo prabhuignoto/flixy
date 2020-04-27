@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import TvResult from './../types/TvResult';
 
 @Resolver(TvResult)
-export default class TVResolver {
+export default class TvResolver {
 
   url: string;
   key: string;

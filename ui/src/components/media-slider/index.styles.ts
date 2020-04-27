@@ -12,28 +12,32 @@ export const Wrapper = styled(animated.div)<{expand?: number}>`
 `;
 
 export const Header = styled.header`
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
   font-family: "Poppins";
   font-size: 1.3rem;
-  color: #fff;
-  width: 100%;
-  text-align: left;
-  display: flex;
-  align-items: center;
   justify-content: flex-start;
-  cursor: pointer;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  width: 100%;
 `;
 
 export const MoviesWrapper = styled(animated.div) <{ expand?: number }>`
-  width: 100%;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   flex-direction: column;
-  position: relative;
+  justify-content: center;
   overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: .5rem;
 `;
 
-export const Title = styled.div``;
+export const Title = styled.div`
+padding-left: 1rem;
+`;
 
 export const TitleText = styled.span``;
 
@@ -44,8 +48,13 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const Footer = styled.footer`
-  width: 100%;
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
+  width: 100%;
+`;
+
+export const DetailsWrapper = styled.div`
+  width: 100%;
+  margin: 0 auto;
 `;
