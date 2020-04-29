@@ -6,8 +6,8 @@ export default class ProductionCompany {
   @Field()
   id!: number;
 
-  @Field()
-  logo_path!: number;
+  @Field({nullable: true})
+  logo_path!: string;
 
   @Field()
   name!: string;

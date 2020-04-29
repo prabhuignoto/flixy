@@ -27,4 +27,5 @@ export const MoviesContainer = styled(animated.div)<{
   position: relative;
   scroll-behavior: smooth;
   width: 100%;
+  padding: 1rem 0;
 `;

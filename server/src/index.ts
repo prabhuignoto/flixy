@@ -11,7 +11,7 @@ import TVResolver from "./resolvers/TvResolver";
 config();
 
 const fast = fastify({
-  logger: true
+  logger: false
 });
 
 const server = async () => {

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import Slider from "../../components/media-slider";
 import { popular } from "../../gqls/movies";

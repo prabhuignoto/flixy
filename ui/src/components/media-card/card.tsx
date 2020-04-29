@@ -1,10 +1,10 @@
 import * as React from "react";
 import Movie from "../../models/Movie";
-import { CardContainer, CardCheckedWrapper } from "./card.style";
+import { CardContainer, CardCheckedWrapper, ImageIconWrapper } from "./card.style";
 import { CardSize } from "../../models/CardSize";
 import { useSpring, config } from "react-spring";
 import Poster from "../media-poster/poster";
-import { CheckIcon } from "../icons";
+import { CheckIcon, ImageIcon } from "../icons";
 
 type MovieType = Movie & {
   index?: number;
@@ -38,7 +38,7 @@ export default
       <>
         {!loadingCard ? (
           <CardContainer
-            onClick={() => handleSelection(id)}
+            onClick={() => id && handleSelection(id)}
             selected={selected}
             size={size}
             style={props}
@@ -59,7 +59,11 @@ export default
           <CardContainer
             size={size}
             isLoadingCard={loadingCard ? 1 : 0}
-          ></CardContainer>
+          >
+            <ImageIconWrapper>
+              <ImageIcon color="#151515" />
+            </ImageIconWrapper>
+          </CardContainer>
         )}
       </>
     );

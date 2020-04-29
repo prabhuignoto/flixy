@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, {} from "styled-components";
 import { CardSize } from "../../models/CardSize";
 import { animated } from "react-spring";
 
@@ -11,9 +11,9 @@ export const CardContainer = styled(animated.div)<{
   isLoadingCard?: number;
 }>`
   display: flex;
-  align-items: stretch;
+  align-items: center;
   flex-direction: column;
-  justify-content: stretch;
+  justify-content: center;
   border-radius: 0.1rem;
   height: 100%;
   width: 200px;
@@ -26,7 +26,22 @@ export const CardContainer = styled(animated.div)<{
     p.isLoadingCard
       ? "background: linear-gradient(358deg, #000000, #4b4848);"
       : ""};
-  border: ${p => p.selected ? ".1rem solid rgba(204,0,0,0.95);" : ""}; 
+  ${p => p.selected && `&::before {
+    content: '';
+    display: block;
+    position: absolute;
+    border: .1rem solid rgba(204,0,0,0.95);
+    left: -.5rem;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    width: 100%;
+    padding: .5rem;
+    border-radius: .1rem;
+  }` }; 
 
 `;
 
@@ -76,4 +91,9 @@ export const CardCheckedWrapper =styled.div`
   margin-right: auto;
   background: rgba(204,0,0,0.95);
   border-radius: 50%;
+`;
+
+export const ImageIconWrapper = styled.div`
+  width: 3rem;
+  height: 3rem;
 `;

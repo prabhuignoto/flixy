@@ -16,6 +16,7 @@ import { ArrowDownIcon, ArrowUpIcon } from "../icons";
 import Slider from "../../models/Slider";
 import DetailsCard from "../media-details/details-card";
 import Movie from "../../models/Movie";
+import MovieDetails from "../../containers/details/movieDetails";
 
 const SliderView: React.FunctionComponent<Slider> = ({
   movies,
@@ -27,9 +28,9 @@ const SliderView: React.FunctionComponent<Slider> = ({
   const [expandFull, setExpandFull] = React.useState(false);
   const [page, setPage] = React.useState(1);
   const [showDetails, setShowDetails] = React.useState(false);
-  const [selectedMovie, setSelectedMovie] = React.useState({} as Movie);
+  const [selectedMovie, setSelectedMovie] = React.useState({id: NaN} as Movie);
   const [props, set] = useSpring(() => ({
-    height: "320px",
+    height: "340px",
     opacity: 1,
   }));
 
@@ -38,12 +39,12 @@ const SliderView: React.FunctionComponent<Slider> = ({
   React.useEffect(() => {
     if (!expandFull || showDetails) {
       set({
-        height: "320px",
+        height: "340px",
         opacity: 1,
       });
     } else {
       set({
-        height: `${320 * 3}px`,
+        height: `${340 * 3}px`,
         opacity: 1,
       });
     }
@@ -96,12 +97,13 @@ const SliderView: React.FunctionComponent<Slider> = ({
 
       {showDetails && (
         <DetailsWrapper>
-          <DetailsCard
+          <MovieDetails movieId={selectedMovie?.id} handleClose={onDetailsClose} />
+          {/* <DetailsCard
             title={selectedMovie?.title}
             poster_path={selectedMovie?.poster_path}
             id={selectedMovie?.id}
             handleClose={onDetailsClose}
-          />
+          /> */}
         </DetailsWrapper>
       )}
 

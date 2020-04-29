@@ -16,13 +16,14 @@ export const ScrollButton = styled.button`
   background: rgba(0,0,0, .9);
   border: none;
   cursor: pointer;
-  height: 100%;
+  height: 3.5rem;
   outline: none;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 3rem;
+  width: 3.5rem;
   z-index: 1;
+  border-radius: 50%;
 `;
 
 export const ScrollLeft = styled(ScrollButton)`

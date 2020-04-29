@@ -5,26 +5,60 @@ import {
   DetailsPosterWrapper,
   Title,
   CloseDetails,
+  Overview,
+  Attributes,
 } from "./details-card.styles";
 import Movie from "../../models/Movie";
 import Poster from "../media-poster/poster";
 import { CardSize } from "../../models/CardSize";
-import { CloseIcon } from "./../icons/index";
+import { CloseIcon, ClockIcon } from "./../icons/index";
+import Genres from "../media-genres/genres";
+import CastDetails from "../../containers/details/castDetails";
+import RunTime from "./details-runtime";
+import DetailsTitle from "./details-title";
 
-type CardDetail = Movie & { handleClose: () => void };
+type CardDetail = Movie & { handleClose?: () => void; isLoading: boolean };
 
-export default React.memo(({ poster_path, title, handleClose }: CardDetail) => {
+export default ({
+  title,
+  handleClose,
+  id,
+  overview,
+  genres,
+  runtime,
+  release_date,
+  isLoading,
+}: CardDetail) => {
+  const wrapperRef = React.useRef<HTMLDivElement>(null);
+  const [objectColumns, setObjectColumns] = React.useState(0);
+
+  React.useEffect(() => {
+    if (wrapperRef && wrapperRef.current) {
+      setObjectColumns(Math.round(wrapperRef.current.clientWidth / 200));
+    }
+  }, []);
+
   return (
-    <DetailsCardWrapper>
-      <DetailsPosterWrapper>
+    <DetailsCardWrapper ref={wrapperRef}>
+      {
+        !isLoading ? (
+          <DetailsWrapper>
+            <DetailsTitle year={release_date} title={title}></DetailsTitle>
+            <Overview>{overview}</Overview>
+            <Attributes>
+              <Genres items={genres} />
+              {runtime && <RunTime runtime={runtime} />}
+            </Attributes>
+            <CastDetails movieId={id} objectColumns={objectColumns} />
+          </DetailsWrapper>
+        ) : null
+        /* <DetailsPosterWrapper>
         <Poster poster_path={poster_path} size={CardSize.large} />
-      </DetailsPosterWrapper>
-      <DetailsWrapper>
-        <Title>{title}</Title>
-      </DetailsWrapper>
+      </DetailsPosterWrapper> */
+      }
       <CloseDetails onClick={handleClose}>
         <CloseIcon />
       </CloseDetails>
     </DetailsCardWrapper>
   );
-});
+};

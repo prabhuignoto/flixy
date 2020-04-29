@@ -17,15 +17,15 @@ export interface MovieDetail {
   popularity: number;
   poster_path?: string;
   production_companies: ProductionCompany[];
-  production_countries: ProductionCountry[];
+  production_countries?: ProductionCountry[];
   release_date: string;
   revenue: number;
   runtime: number;
-  spoken_languages: SpokenLanguage[];
-  status: string;
+  spoken_languages?: SpokenLanguage[];
+  status?: string;
   tagline: string;
   title: string;
   video: boolean;
-  vote_average: number;
-  vote_count: number;
+  vote_average?: number;
+  vote_count?: number;
 }
