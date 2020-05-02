@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 
 export const popular = gql`
   query popular($lang: String!, $page: Float!) {

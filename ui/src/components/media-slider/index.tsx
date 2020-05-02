@@ -14,7 +14,6 @@ import { Button } from "../commons/styles";
 import { useSpring } from "react-spring";
 import { ArrowDownIcon, ArrowUpIcon } from "../icons";
 import Slider from "../../models/Slider";
-import DetailsCard from "../media-details/details-card";
 import Movie from "../../models/Movie";
 import MovieDetails from "../../containers/details/movieDetails";
 
@@ -109,12 +108,6 @@ const SliderView: React.FunctionComponent<Slider> = ({
             movieId={showDetails.selectedMovie}
             handleClose={onDetailsClose}
           />
-          {/* <DetailsCard
-            title={selectedMovie?.title}
-            poster_path={selectedMovie?.poster_path}
-            id={selectedMovie?.id}
-            handleClose={onDetailsClose}
-          /> */}
         </DetailsWrapper>
       )}
 

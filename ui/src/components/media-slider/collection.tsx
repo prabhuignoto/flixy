@@ -29,11 +29,8 @@ export default ({
   const [movies, setMovies] = React.useState([] as Movie[]);
   const [page, setPage] = React.useState(1);
   const [actvStartIdx, setActvStartIdx] = React.useState(0);
-  const [allItemsFetched, setAllItemsFetched] = React.useState(false);
   const [loadingCards, setLoadingCards] = React.useState([] as number[]);
   const [visibleColumns, setVisibleColumns] = React.useState(0);
-  const [selectedMovie, setSelectedMovie] = React.useState(0);
-
   const [lazyConfig, setLazyInputs] = useVirtual();
 
   const moviesRef = React.useRef<HTMLDivElement>(null);
@@ -119,9 +116,6 @@ export default ({
   // monitor the actual data
   React.useEffect(() => {
     if (items.length) {
-      if (items.length === totalResults) {
-        setAllItemsFetched(true);
-      }
       const nativeElement = moviesRef.current;
       if (nativeElement) {
         const clientWidth = nativeElement.clientWidth;
@@ -176,33 +170,15 @@ export default ({
     }
   }, [loadingState]);
 
-  const handleSelection = React.useCallback((id: number) => {
+  const handleSelection = (id: number) => {
     // make a quick copy
     const newMovies = [...movies];
-
-    // get the previously selected item
-    const oldSelection = newMovies.find((movie) => movie.id === selectedMovie);
 
     // get to be selected item
     const newSelection = newMovies.find((movie) => movie.id === id);
 
-    if (oldSelection && oldSelection === newSelection) {
-      oldSelection.selected = false;
-      setSelectedMovie(0);
-      onSelection({ id: 0 } as Movie, true);
-    } else if (oldSelection && newSelection) {
-      oldSelection.selected = false;
-      newSelection.selected = true;
-      setSelectedMovie(newSelection.id);
-      onSelection(newSelection);
-    } else if (!oldSelection && newSelection) {
-      newSelection.selected = true;
-      setSelectedMovie(newSelection.id);
-      onSelection(newSelection);
-    }
-
-    setMovies(newMovies);
-  }, [movies, selectedIndex, expandFull]);
+    onSelection(newSelection);
+  };
 
   return (
     <MoviesWrapper ref={moviesRef}>
@@ -217,6 +193,7 @@ export default ({
         movies={movies}
         handleSelection={handleSelection}
         loadingCards={loadingCards}
+
       />
       <ScrollRight onClick={() => handleNav(NavDir.RIGHT)}>
         <ChevronRightIcon />

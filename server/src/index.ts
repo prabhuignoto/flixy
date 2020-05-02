@@ -23,7 +23,7 @@ const server = async () => {
       schema
     })
     fast.register(apolloServer.createHandler());
-    fast.listen(3200);
+    fast.listen(3000);
     fast.log.info(`server running on 4000`);
   } catch (err) {
     fast.log.error(err);

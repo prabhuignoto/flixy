@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 
 export const details = gql`
   query details($lang: String!, $id: Float!) {

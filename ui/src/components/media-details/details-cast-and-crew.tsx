@@ -6,8 +6,8 @@ export const CastAndCrew: React.FunctionComponent<{
   id: number;
   objectColumns: number;
 }> = React.memo(
-  ({ id, objectColumns }) => (
-    <CastDetailsContainer>
+  ({ id, objectColumns }) => {
+    return <CastDetailsContainer>
       <CastDetails
         movieId={id}
         objectColumns={objectColumns}
@@ -20,6 +20,6 @@ export const CastAndCrew: React.FunctionComponent<{
         title="Movie Crew"
       />
     </CastDetailsContainer>
-  ),
+  },
   (prev, current) => prev.id === current.id
 );

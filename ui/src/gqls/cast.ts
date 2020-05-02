@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 import { ObjectName } from './../components/media-objects/object.styles';
 
 export const cast = gql`

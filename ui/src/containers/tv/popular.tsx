@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import Slider from "../../components/media-slider";
 import { popular } from "../../gqls/tv";
 import { LoadingState } from "../../models/Slider";

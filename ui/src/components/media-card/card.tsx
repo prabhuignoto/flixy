@@ -2,7 +2,6 @@ import * as React from "react";
 import Movie from "../../models/Movie";
 import { CardContainer, CardCheckedWrapper, ImageIconWrapper } from "./card.style";
 import { CardSize } from "../../models/CardSize";
-import { useSpring, config } from "react-spring";
 import Poster from "../media-poster/poster";
 import { CheckIcon, ImageIcon } from "../icons";
 
@@ -13,8 +12,7 @@ type MovieType = Movie & {
   loadingCard?: boolean;
 };
 
-export default 
-  React.memo(({
+export default ({
     id,
     poster_path,
     onSelect,
@@ -24,13 +22,7 @@ export default
     loadingCard,
     title,
   }: MovieType) => {
-    const props = useSpring({
-      opacity: 1,
-      from: { opacity: 0.5 },
-      config: config.slow,
-
-    });
-
+    
     const handleSelection = React.useCallback((id: number) => {
       onSelect && onSelect(id);
     }, [id]);
@@ -68,4 +60,4 @@ export default
         )}
       </>
     );
-  }, (prev, current) => prev.id === current.id);
+  };

@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import { details } from "../../gqls/movieDetails";
 import { LoadingState } from "../../models/Slider";
 import CardDetails from "../../components/media-details/details-card";
@@ -12,24 +12,18 @@ interface MovieResultDetails {
 const MovieDetails: React.FunctionComponent<{
   movieId: number;
   handleClose?: () => void;
-}> = React.memo(({ movieId, handleClose }) => {
-  const [dataReady, setDataReady] = React.useState(false);
-
+}> = ({ movieId, handleClose }) => {
   const { loading, error, data } = useQuery<MovieResultDetails>(details, {
     variables: {
       lang: "en-US",
       id: movieId,
     },
-    fetchPolicy: "cache-and-network",
-    onCompleted: () => setDataReady(true),
-    notifyOnNetworkStatusChange: true,
   });
 
-  // let loadingState: LoadingState = LoadingState.DEFAULT;
-
   let view = null;
-  if (dataReady && data?.getDetails) {
-    let loadingState = LoadingState.LOADED;
+  if (loading) {
+    view = <CardDetails isLoading={loading} id={new Date().getMilliseconds()} />;
+  } else if (!error && data?.getDetails) {
     const {
       poster_path,
       title,
@@ -61,6 +55,6 @@ const MovieDetails: React.FunctionComponent<{
     );
   }
   return <>{view}</>;
-}, (prev, current) => prev.movieId === current.movieId);
+};
 
 export default MovieDetails;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Title, TitleWrapper, DetailsRatingContainer } from "./details-title.style";
-import DetailsRating from "./details-rating";
+import DetailsRating from "../rating/details-rating";
 
 export interface DetailsTitleModel {
   year?: string;

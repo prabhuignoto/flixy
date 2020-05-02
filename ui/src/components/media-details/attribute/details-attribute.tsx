@@ -5,7 +5,7 @@ import {
   AttributeValue,
   AttributeWrapper,
 } from "./details-attribute.style";
-import { ClockIcon } from "../icons";
+import { ClockIcon } from "../../icons";
 
 export interface AttributeModel {
   label: string;
