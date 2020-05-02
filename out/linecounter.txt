@@ -1,0 +1,128 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2020-04-30 00:10:57
+count workspace : d:\Projects\2020\flixmov
+total files : 100
+total code lines : 24704
+total comment lines : 218
+total blank lines : 5250
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |          .json|            160|             47|             12|   0.65|
+   |               |              6|              1|              0|  0.024|
+   |            .md|             37|             12|             31|   0.15|
+   |            .js|            111|             36|             16|   0.45|
+   |           .log|          10516|             35|           2285|     43|
+   |          .lock|          11456|             37|           2519|     46|
+   |           .tsx|           1166|             24|            129|    4.7|
+   |            .ts|           1168|              2|            252|    4.7|
+   |           .css|             53|              0|              6|   0.21|
+   |           .svg|              7|              0|              0|  0.028|
+   |          .html|             21|             23|              0|  0.085|
+   |           .txt|              3|              1|              0|  0.012|
+   -------------------------------------------------------------------------
+.gitignore, code is 1, comment is 0, blank is 0.
+server\.env, code is 2, comment is 1, blank is 0.
+server\nodemon.json, code is 16, comment is 0, blank is 2.
+server\package.json, code is 32, comment is 0, blank is 0.
+server\src\index.ts, code is 29, comment is 0, blank is 4.
+server\src\resolvers\GenreResolver.ts, code is 14, comment is 0, blank is 4.
+server\src\resolvers\index.ts, code is 1, comment is 0, blank is 0.
+server\src\resolvers\MovieResolver.ts, code is 84, comment is 0, blank is 24.
+server\src\resolvers\TrendingResolver.ts, code is 21, comment is 0, blank is 7.
+server\src\resolvers\TVResolver.ts, code is 54, comment is 0, blank is 16.
+server\src\types\Cast.ts, code is 20, comment is 0, blank is 11.
+server\src\types\Credits.ts, code is 12, comment is 0, blank is 5.
+server\src\types\Crew.ts, code is 18, comment is 0, blank is 9.
+server\src\types\Genre.ts, code is 8, comment is 0, blank is 3.
+server\src\types\index.ts, code is 1, comment is 0, blank is 0.
+server\src\types\Media.ts, code is 36, comment is 0, blank is 17.
+server\src\types\Movie.ts, code is 32, comment is 0, blank is 15.
+server\src\types\MovieDetail.ts, code is 56, comment is 0, blank is 26.
+server\src\types\MovieResult.ts, code is 13, comment is 0, blank is 5.
+server\src\types\ProductionCompany.ts, code is 12, comment is 0, blank is 5.
+server\src\types\ProductionCountry.ts, code is 8, comment is 0, blank is 3.
+server\src\types\SpokenLanguage.ts, code is 8, comment is 0, blank is 3.
+server\src\types\Tv.ts, code is 30, comment is 0, blank is 13.
+server\src\types\TvResult.ts, code is 13, comment is 0, blank is 5.
+server\tsconfig.json, code is 13, comment is 47, blank is 6.
+server\yarn-error.log, code is 1083, comment is 2, blank is 206.
+server\yarn.lock, code is 2000, comment is 4, blank is 423.
+ui\.babelrc, code is 3, comment is 0, blank is 0.
+ui\package.json, code is 51, comment is 0, blank is 2.
+ui\public\favicon.ico, it is a binary file.
+ui\public\index.html, code is 21, comment is 23, blank is 0.
+ui\public\logo192.png, it is a binary file.
+ui\public\logo512.png, it is a binary file.
+ui\public\manifest.json, code is 25, comment is 0, blank is 0.
+ui\public\robots.txt, code is 3, comment is 1, blank is 0.
+ui\README.md, code is 37, comment is 12, blank is 31.
+ui\src\App.css, code is 40, comment is 0, blank is 5.
+ui\src\App.test.js, code is 8, comment is 0, blank is 1.
+ui\src\App.tsx, code is 36, comment is 2, blank is 4.
+ui\src\components\commons\styles.tsx, code is 23, comment is 0, blank is 1.
+ui\src\components\icons\index.ts, code is 41, comment is 0, blank is 10.
+ui\src\components\media-card\card.style.tsx, code is 97, comment is 0, blank is 7.
+ui\src\components\media-card\card.tsx, code is 66, comment is 0, blank is 4.
+ui\src\components\media-details\details-attribute.style.ts, code is 50, comment is 1, blank is 5.
+ui\src\components\media-details\details-attribute.tsx, code is 22, comment is 2, blank is 4.
+ui\src\components\media-details\details-card-collection.styles.ts, code is 5, comment is 0, blank is 2.
+ui\src\components\media-details\details-card-collection.tsx, code is 4, comment is 0, blank is 1.
+ui\src\components\media-details\details-card.styles.ts, code is 72, comment is 0, blank is 13.
+ui\src\components\media-details\details-card.tsx, code is 85, comment is 0, blank is 4.
+ui\src\components\media-details\details-title.style.ts, code is 12, comment is 0, blank is 2.
+ui\src\components\media-details\details-title.tsx, code is 14, comment is 0, blank is 4.
+ui\src\components\media-genres\genres-styles.ts, code is 23, comment is 0, blank is 2.
+ui\src\components\media-genres\genres.tsx, code is 11, comment is 0, blank is 2.
+ui\src\components\media-objects\media-objects.tsx, code is 17, comment is 1, blank is 2.
+ui\src\components\media-objects\object.styles.ts, code is 34, comment is 0, blank is 4.
+ui\src\components\media-poster\poster-styles.ts, code is 38, comment is 0, blank is 4.
+ui\src\components\media-poster\poster.tsx, code is 24, comment is 1, blank is 1.
+ui\src\components\media-slider\collection.style.tsx, code is 36, comment is 0, blank is 7.
+ui\src\components\media-slider\collection.tsx, code is 186, comment is 9, blank is 28.
+ui\src\components\media-slider\index.styles.ts, code is 55, comment is 0, blank is 9.
+ui\src\components\media-slider\index.tsx, code is 105, comment is 6, blank is 12.
+ui\src\components\media-slider\movies.style.ts, code is 30, comment is 0, blank is 1.
+ui\src\components\media-slider\movies.tsx, code is 65, comment is 0, blank is 2.
+ui\src\containers\details\castDetails.tsx, code is 46, comment is 0, blank is 9.
+ui\src\containers\details\movieDetails.tsx, code is 61, comment is 0, blank is 9.
+ui\src\containers\movies\popular.tsx, code is 59, comment is 0, blank is 5.
+ui\src\containers\movies\topRated.tsx, code is 55, comment is 0, blank is 5.
+ui\src\containers\movies\upComing.tsx, code is 55, comment is 0, blank is 4.
+ui\src\containers\tv\onAir.tsx, code is 29, comment is 0, blank is 4.
+ui\src\containers\tv\popular.tsx, code is 29, comment is 0, blank is 4.
+ui\src\containers\tv\topRated.tsx, code is 29, comment is 0, blank is 4.
+ui\src\effects\useVirtual.ts, code is 54, comment is 0, blank is 9.
+ui\src\gqls\cast.ts, code is 12, comment is 0, blank is 1.
+ui\src\gqls\movieDetails.ts, code is 30, comment is 0, blank is 1.
+ui\src\gqls\movies.ts, code is 52, comment is 0, blank is 3.
+ui\src\gqls\tv.ts, code is 49, comment is 0, blank is 3.
+ui\src\index.css, code is 13, comment is 0, blank is 1.
+ui\src\index.tsx, code is 12, comment is 3, blank is 2.
+ui\src\logo.svg, code is 7, comment is 0, blank is 0.
+ui\src\models\CardSize.ts, code is 4, comment is 0, blank is 1.
+ui\src\models\Cast.ts, code is 10, comment is 0, blank is 0.
+ui\src\models\Credits.ts, code is 7, comment is 0, blank is 1.
+ui\src\models\Crew.ts, code is 9, comment is 0, blank is 0.
+ui\src\models\Genre.ts, code is 4, comment is 0, blank is 0.
+ui\src\models\MediaObject.ts, code is 5, comment is 0, blank is 0.
+ui\src\models\Movie.ts, code is 21, comment is 0, blank is 1.
+ui\src\models\MovieDetails.ts, code is 30, comment is 0, blank is 1.
+ui\src\models\Movies.ts, code is 13, comment is 0, blank is 1.
+ui\src\models\Poster.ts, code is 8, comment is 0, blank is 1.
+ui\src\models\ProductionCompany.ts, code is 6, comment is 0, blank is 0.
+ui\src\models\ProductionCountry.ts, code is 4, comment is 0, blank is 0.
+ui\src\models\Slider.ts, code is 16, comment is 0, blank is 2.
+ui\src\models\SpokenLanguage.ts, code is 4, comment is 0, blank is 0.
+ui\src\react-app-env.d.ts, code is 0, comment is 1, blank is 0.
+ui\src\serviceWorker.js, code is 95, comment is 31, blank is 15.
+ui\src\setupTests.js, code is 1, comment is 4, blank is 0.
+ui\tsconfig.json, code is 23, comment is 0, blank is 2.
+ui\webpack.config.js, code is 7, comment is 1, blank is 0.
+ui\yarn-error.log, code is 9433, comment is 33, blank is 2079.
+ui\yarn.lock, code is 9456, comment is 33, blank is 2096.
+===============================================================================

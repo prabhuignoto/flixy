@@ -19,4 +19,5 @@ export default interface Movie {
   hide?: boolean;
   loadingCard?: boolean;
   runtime?: number;
+  imdb_id?: string;
 }

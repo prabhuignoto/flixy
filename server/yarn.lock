@@ -272,10 +272,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.35.tgz#1e61b226c14380f4384f70cfe49a65c2c553ad2b"
   integrity sha512-ASYsaKecA7TUsDrqIGPNk3JeEox0z/0XR/WsJJ8BIX/9+SkMSImQXKWfU/yBrSyc7ZSE/NPqLu36Nur0miCFfQ==
 
-"@types/node@^13.13.2":
-  version "13.13.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.2.tgz#160d82623610db590a64e8ca81784e11117e5a54"
-  integrity sha512-LB2R1Oyhpg8gu4SON/mfforE525+Hi/M1ineICEDftqNVTyFg1aRIeGuTvXAoWHc4nbrFncWtJgMmoyRvuGh7A==
+"@types/node@^13.13.4":
+  version "13.13.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.4.tgz#1581d6c16e3d4803eb079c87d4ac893ee7501c2c"
+  integrity sha512-x26ur3dSXgv5AwKS0lNfbjpCakGIduWU1DU91Zz58ONRWrIKGunmZBNv4P7N+e27sJkiGDsw/3fT4AtsqQBrBA==
 
 "@types/qs@*":
   version "6.9.1"
@@ -1047,18 +1047,18 @@ fastify-plugin@^1.2.0, fastify-plugin@^1.2.1, fastify-plugin@^1.6.0:
   dependencies:
     semver "^6.3.0"
 
-fastify-redis@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/fastify-redis/-/fastify-redis-3.3.0.tgz#10c2b6d38eabff485d39c3c44915341d532e912e"
-  integrity sha512-ChZoJTJb8mdX+YqVI/H+Gn+4GcMonPWAVR1ob1WUqstwibEpPIRoUVoiDi1jNAnB5qBgud3TmGzqzImcWHjGhQ==
+fastify-redis@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/fastify-redis/-/fastify-redis-3.3.1.tgz#cc0a161ef52481791cea3d751b3d038e39a9e53a"
+  integrity sha512-QEZP3iYpK4WoM6EQPHVSIET+RBWWfmXKUBz2yJcCsQUNWkv6n6ArIM8JXMt5AChKXo0m+ZkAUmvDNuGEm00GcQ==
   dependencies:
     fastify-plugin "^1.6.0"
     ioredis "^4.10.0"
 
-fastify@^2.13.1:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/fastify/-/fastify-2.13.1.tgz#38d9a5b030ddbc472b4ab756b584c5f0cc538593"
-  integrity sha512-ssh4CneRqWqYeHun03XicIcYxWXLEam5V9wHYSYm22yvSm91SnTzzajxs1w135rdZnT+VJ1MwOfToqwR6G5MoA==
+fastify@^2.14.0:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/fastify/-/fastify-2.14.0.tgz#296c300884bf9dbf403bac1723f3ae0f0325dfe4"
+  integrity sha512-uofJOU9Zf20iklDrACZZVe+qef6dswOe8IUnxUdHTY9QfHv301MgPxodvJFiRE2WAse7YrWr4sI5Lx6YIAuUAA==
   dependencies:
     abstract-logging "^2.0.0"
     ajv "^6.12.0"
@@ -2223,10 +2223,10 @@ ts-invariant@^0.4.0:
   dependencies:
     tslib "^1.9.3"
 
-ts-node@^8.9.0:
-  version "8.9.0"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.9.0.tgz#d7bf7272dcbecd3a2aa18bd0b96c7d2f270c15d4"
-  integrity sha512-rwkXfOs9zmoHrV8xE++dmNd6ZIS+nmHHCxcV53ekGJrxFLMbp+pizpPS07ARvhwneCIECPppOwbZHvw9sQtU4w==
+ts-node@^8.9.1:
+  version "8.9.1"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.9.1.tgz#2f857f46c47e91dcd28a14e052482eb14cfd65a5"
+  integrity sha512-yrq6ODsxEFTLz0R3BX2myf0WBCSQh9A+py8PBo1dCzWIOcvisbyH6akNKqDHMgXePF2kir5mm5JXJTH3OUJYOQ==
   dependencies:
     arg "^4.1.0"
     diff "^4.0.1"

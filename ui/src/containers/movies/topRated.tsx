@@ -5,25 +5,25 @@ import { topRated } from "../../gqls/movies";
 import { LoadingState } from "../../models/Slider";
 
 export default () => {
-  const { loading, error, data, fetchMore } = useQuery(topRated, {
-    variables: {
-      lang: "en-US",
-      page: 1,
-    },
-    fetchPolicy: "cache-and-network",
-  });
+  let state: LoadingState = LoadingState.DEFAULT;
 
-  let loadingState: LoadingState = LoadingState.DEFAULT;
+  const [dataReady, setDataReady] = React.useState(false);
+  const { data, fetchMore } = useQuery(
+    topRated,
+    {
+      variables: {
+        lang: "en-US",
+        page: 1,
+      },
+      fetchPolicy: "cache-and-network",
+      notifyOnNetworkStatusChange: true,
+      onCompleted: () => {
+        setDataReady(true);
+      },
+    }
+  );
 
-  if (loading) {
-    loadingState = LoadingState.LOADING;
-  } else if (error) {
-    loadingState = LoadingState.FAILED;
-  } else {
-    loadingState = LoadingState.LOADED;
-  }
-
-  const handleFetchMore = (page: number) => {
+  const handleFetchMore = React.useCallback((page: number) => {
     fetchMore({
       variables: {
         page,
@@ -45,16 +45,19 @@ export default () => {
         }
       },
     });
-  };
+  }, []);
 
   return (
-    <Slider
-      movies={data && data.getTopRated ? data.getTopRated.results : []}
-      title="Top Rated"
-      fetchMore={handleFetchMore}
-      fetchMoreQueryEntry="getTopRated"
-      totalResults={data && data.getTopRated ? data.getTopRated.total_results : 0}
-      loadingState={loadingState}
-    ></Slider>
+    <>
+      {dataReady &&  data.getTopRated && (
+        <Slider
+          movies={data.getTopRated.results}
+          title="Top Rated"
+          fetchMore={handleFetchMore}
+          fetchMoreQueryEntry="getTopRated"
+          totalResults={data.getTopRated.total_results}
+        ></Slider>
+      )}
+    </>
   );
 };

@@ -14,5 +14,5 @@ export default interface Slider {
   fetchMoreQueryEntry?: string;
   fetchMore?: (page: number) => void;
   totalResults: number;
-  loadingState: LoadingState;
+  loadingState?: LoadingState;
 }

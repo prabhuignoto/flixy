@@ -1,18 +1,24 @@
 import React from "react";
-import { Title } from "./details-title.style";
+import { Title, TitleWrapper, DetailsRatingContainer } from "./details-title.style";
+import DetailsRating from "./details-rating";
 
 export interface DetailsTitleModel {
   year?: string;
   title?: string;
+  rating?: number;
 }
 
 const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
   year,
   title,
+  rating,
 }) => {
-  debugger;
-  const formattedYear = year ? new Date(year).getFullYear() : "";
-  return <Title>{`${title} (${formattedYear})`}</Title>;
+  return <TitleWrapper>
+      <DetailsRatingContainer>
+        <DetailsRating rating={rating}/>
+      </DetailsRatingContainer>
+      <Title>{`${title}`}</Title>
+    </TitleWrapper> ;
 };
 
 

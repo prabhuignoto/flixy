@@ -14,7 +14,7 @@ type MovieType = Movie & {
 };
 
 export default 
-  ({
+  React.memo(({
     id,
     poster_path,
     onSelect,
@@ -28,11 +28,12 @@ export default
       opacity: 1,
       from: { opacity: 0.5 },
       config: config.slow,
+
     });
 
-    const handleSelection = (id: number) => {
+    const handleSelection = React.useCallback((id: number) => {
       onSelect && onSelect(id);
-    };
+    }, [id]);
 
     return (
       <>
@@ -41,7 +42,6 @@ export default
             onClick={() => id && handleSelection(id)}
             selected={selected}
             size={size}
-            style={props}
           >
             <Poster
               poster_path={poster_path ? poster_path : ""}
@@ -56,15 +56,16 @@ export default
             )}
           </CardContainer>
         ) : (
-          <CardContainer
-            size={size}
-            isLoadingCard={loadingCard ? 1 : 0}
-          >
-            <ImageIconWrapper>
-              <ImageIcon color="#151515" />
-            </ImageIconWrapper>
-          </CardContainer>
+          // <CardContainer
+          //   size={size}
+          //   isLoadingCard={loadingCard ? 1 : 0}
+          // >
+          //   <ImageIconWrapper>
+          //     <ImageIcon color="#4b4848" />
+          //   </ImageIconWrapper>
+          // </CardContainer>
+          null
         )}
       </>
     );
-  }
+  }, (prev, current) => prev.id === current.id);

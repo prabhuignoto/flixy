@@ -5,8 +5,6 @@ import { CardSize } from '../../models/CardSize';
 export const PosterWrapper = styled.div<{size?: CardSize}>`
   height: 100%;
   width: 100%;
-  box-shadow: ${p => p.size === CardSize.large ? '0 0 14px 7px rgba(0,0,0,0.85);' : ''};
-  /* border: ${p => p.size === CardSize.large ? '1px solid rgba(204,0,0,0.95)' : ''}; */
 `;
 
 export const CardImage = styled.img<{hide?: boolean}>`

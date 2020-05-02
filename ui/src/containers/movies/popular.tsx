@@ -4,7 +4,7 @@ import Slider from "../../components/media-slider";
 import { popular } from "../../gqls/movies";
 import { LoadingState } from "../../models/Slider";
 
-export default () => {
+export default React.memo(({ id }: { id?: number }) => {
   const { loading, error, data, fetchMore } = useQuery(popular, {
     variables: {
       lang: "en-US",
@@ -51,14 +51,16 @@ export default () => {
     });
   };
 
-  return (
-    <Slider
-      movies={data && data.getPopular ? data.getPopular.results : []}
-      title="Trending"
-      fetchMore={handleFetchMore}
-      fetchMoreQueryEntry="getPopular"
-      totalResults={data && data.getPopular ? data.getPopular.total_results : 0}
-      loadingState={loadingState}
-    ></Slider>
-  );
-};
+  // return (
+  //   <Slider
+  //     movies={data && data.getPopular ? data.getPopular.results : []}
+  //     title="Trending"
+  //     fetchMore={handleFetchMore}
+  //     fetchMoreQueryEntry="getPopular"
+  //     totalResults={data && data.getPopular ? data.getPopular.total_results : 0}
+  //     loadingState={loadingState}
+  //   ></Slider>
+  // );
+
+  return null;
+}, (prev,current) => prev.id === current.id);

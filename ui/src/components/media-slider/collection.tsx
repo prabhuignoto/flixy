@@ -108,7 +108,6 @@ export default ({
   // run it the first time
   React.useEffect(() => {
     const nativeElement = moviesRef.current;
-
     if (nativeElement) {
       const clientWidth = nativeElement.clientWidth;
       const columns = Math.floor(clientWidth / 225);
@@ -123,13 +122,17 @@ export default ({
       if (items.length === totalResults) {
         setAllItemsFetched(true);
       }
-      const columns =
-        expandFull && !showDetails ? visibleColumns * 3 : visibleColumns;
-      setLazyInputs({
-        visibleElements: columns,
-        page,
-        totalItems: items.length,
-      });
+      const nativeElement = moviesRef.current;
+      if (nativeElement) {
+        const clientWidth = nativeElement.clientWidth;
+        const cols = Math.floor(clientWidth / 225);
+        const columns = expandFull && !showDetails ? cols * 3 : cols;
+        setLazyInputs({
+          visibleElements: columns,
+          page,
+          totalItems: items.length,
+        });
+      }
     }
   }, [items]);
 
@@ -173,7 +176,7 @@ export default ({
     }
   }, [loadingState]);
 
-  const handleSelection = (id: number) => {
+  const handleSelection = React.useCallback((id: number) => {
     // make a quick copy
     const newMovies = [...movies];
 
@@ -199,7 +202,7 @@ export default ({
     }
 
     setMovies(newMovies);
-  };
+  }, [movies, selectedIndex, expandFull]);
 
   return (
     <MoviesWrapper ref={moviesRef}>

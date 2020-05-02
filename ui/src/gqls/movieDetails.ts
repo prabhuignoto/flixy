@@ -25,6 +25,8 @@ export const details = gql`
       runtime
       tagline
       video
+      original_language
+      vote_average
     }
 }
-`;
+`; 

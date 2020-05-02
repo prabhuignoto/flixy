@@ -18,21 +18,19 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={client} >
       <div className="App">
         <Router>
           <Switch>
             <Route path="/movies">
               <TopRatedMovies />
-              {/* <Trending /> */}
-              {/* <Upcoming /> */}
-            </Route>
-            <Route path="/tv">
-              {/* <TopRated /> */}  
-              {/* <Popular />*/}  
-              <OnAir />
             </Route>
           </Switch>
+          {/* <Route path="/tv"> */}
+            {/* <TopRated /> */}
+            {/* <Popular />*/}
+            {/* <OnAir />
+          </Route> */}
         </Router>
       </div>
     </ApolloProvider>

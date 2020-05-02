@@ -6,20 +6,25 @@ import {
   Title,
   CloseDetails,
   Overview,
-  Attributes,
+  AttributesContainer,
+  GenresContainer,
+  AttributeContainer,
 } from "./details-card.styles";
 import Movie from "../../models/Movie";
 import Poster from "../media-poster/poster";
 import { CardSize } from "../../models/CardSize";
 import { CloseIcon, ClockIcon } from "./../icons/index";
 import Genres from "../media-genres/genres";
-import CastDetails from "../../containers/details/castDetails";
-import RunTime from "./details-runtime";
+import Attribute from "./details-attribute";
 import DetailsTitle from "./details-title";
+import { CastAndCrew } from "./details-cast-and-crew";
+import { format } from "date-fns";
+import ISO6391 from "iso-639-1";
+import ImdbButton from "./details-imdb-button";
 
 type CardDetail = Movie & { handleClose?: () => void; isLoading: boolean };
 
-export default ({
+export default React.memo(({
   title,
   handleClose,
   id,
@@ -28,6 +33,10 @@ export default ({
   runtime,
   release_date,
   isLoading,
+  original_language,
+  poster_path,
+  imdb_id,
+  vote_average,
 }: CardDetail) => {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const [objectColumns, setObjectColumns] = React.useState(0);
@@ -40,25 +49,58 @@ export default ({
 
   return (
     <DetailsCardWrapper ref={wrapperRef}>
-      {
-        !isLoading ? (
+      {!isLoading ? (
+        <>
+          <DetailsPosterWrapper>
+            <Poster poster_path={poster_path} size={CardSize.large} />
+            <ImdbButton id={imdb_id} />
+          </DetailsPosterWrapper>
           <DetailsWrapper>
-            <DetailsTitle year={release_date} title={title}></DetailsTitle>
+            <DetailsTitle
+              year={release_date}
+              title={title}
+              rating={vote_average}
+            ></DetailsTitle>
             <Overview>{overview}</Overview>
-            <Attributes>
+            <GenresContainer>
               <Genres items={genres} />
-              {runtime && <RunTime runtime={runtime} />}
-            </Attributes>
-            <CastDetails movieId={id} objectColumns={objectColumns} />
+              <AttributesContainer>
+                {runtime && (
+                  <AttributeContainer>
+                    <Attribute
+                      label="Runtime"
+                      value={`${Math.round(runtime / 60)}hrs`}
+                    />
+                  </AttributeContainer>
+                )}
+                {release_date && (
+                  <AttributeContainer>
+                    <Attribute
+                      label="Release Date"
+                      value={format(new Date(release_date), "do, MMM yyyy")}
+                    />
+                  </AttributeContainer>
+                )}
+                {original_language && (
+                  <AttributeContainer>
+                    <Attribute
+                      label="Language"
+                      value={ISO6391.getName(original_language)}
+                    />
+                  </AttributeContainer>
+                )}
+              </AttributesContainer>
+            </GenresContainer>
+            <CastAndCrew id={id} objectColumns={objectColumns} />
           </DetailsWrapper>
-        ) : null
-        /* <DetailsPosterWrapper>
-        <Poster poster_path={poster_path} size={CardSize.large} />
-      </DetailsPosterWrapper> */
-      }
+        </>
+      ) : null}
       <CloseDetails onClick={handleClose}>
         <CloseIcon />
       </CloseDetails>
     </DetailsCardWrapper>
   );
-};
+}, ((prev, current) => {
+  return prev.imdb_id === current.imdb_id;
+}));
+

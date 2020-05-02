@@ -7,7 +7,7 @@ import {
   Footer,
   TitleIcon,
   TitleText,
-  DetailsWrapper
+  DetailsWrapper,
 } from "./index.styles";
 import Movies from "./collection";
 import { Button } from "../commons/styles";
@@ -27,17 +27,22 @@ const SliderView: React.FunctionComponent<Slider> = ({
 }: Slider) => {
   const [expandFull, setExpandFull] = React.useState(false);
   const [page, setPage] = React.useState(1);
-  const [showDetails, setShowDetails] = React.useState(false);
-  const [selectedMovie, setSelectedMovie] = React.useState({id: NaN} as Movie);
+  const [showDetails, setShowDetails] = React.useState({
+    state: false,
+    selectedMovie: 0,
+  });
+  const [selectedMovie, setSelectedMovie] = React.useState({
+    id: NaN,
+  } as Movie);
   const [props, set] = useSpring(() => ({
     height: "340px",
     opacity: 1,
   }));
 
-  const handleExpandFull = () => setExpandFull(!expandFull);
+  const handleExpandFull = React.useCallback(() => setExpandFull(!expandFull), [expandFull]);
 
   React.useEffect(() => {
-    if (!expandFull || showDetails) {
+    if (!expandFull || showDetails.state) {
       set({
         height: "340px",
         opacity: 1,
@@ -50,24 +55,27 @@ const SliderView: React.FunctionComponent<Slider> = ({
     }
   }, [expandFull, showDetails]);
 
-  const handleLoadMore = () => {
+  const handleLoadMore = React.useCallback(() => {
     if (fetchMore) {
       fetchMore(page + 1);
     }
     setPage(page + 1);
-  };
+  }, [fetchMore, page]);
 
-  const handleMovieSelection = (selectedMovie?: Movie, clear?: boolean) => {
-    if (clear) {
-      setShowDetails(false);
-      // setSelectedMovie({ id: 0 } as Movie);
-    } else {
-      setShowDetails(true);
-      selectedMovie && setSelectedMovie(selectedMovie);
-    }
-  };
+  const handleMovieSelection = React.useCallback(
+    (selectedMovie?: Movie, clear?: boolean) => {
+      if (clear) {
+        setShowDetails({ state: false, selectedMovie: 0 });
+      } else {
+        setShowDetails({ state: true, selectedMovie: selectedMovie?.id || 0 });
+      }
+    },
+    [showDetails]
+  );
 
-  const onDetailsClose = () => setShowDetails(false);
+  const onDetailsClose = React.useCallback(() =>
+    setShowDetails({ state: false, selectedMovie: 0 }), [showDetails]
+  );
 
   return (
     <WrapperContainer expand={expandFull ? 1 : 0}>
@@ -89,15 +97,18 @@ const SliderView: React.FunctionComponent<Slider> = ({
             totalResults={totalResults}
             loadingState={loadingState}
             onSelection={handleMovieSelection}
-            showDetails={showDetails}
-            selectedIndex={selectedMovie && selectedMovie.id}
+            showDetails={showDetails.state}
+            selectedIndex={showDetails.selectedMovie}
           ></Movies>
         </MoviesWrapper>
       }
 
-      {showDetails && (
+      {showDetails.state && (
         <DetailsWrapper>
-          <MovieDetails movieId={selectedMovie?.id} handleClose={onDetailsClose} />
+          <MovieDetails
+            movieId={showDetails.selectedMovie}
+            handleClose={onDetailsClose}
+          />
           {/* <DetailsCard
             title={selectedMovie?.title}
             poster_path={selectedMovie?.poster_path}
@@ -108,7 +119,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
       )}
 
       {/* footer section */}
-      {!showDetails && (
+      {!showDetails.state && (
         <Footer>
           <Button size="medium" onClick={handleExpandFull}>
             {expandFull ? <ArrowUpIcon /> : <ArrowDownIcon />}

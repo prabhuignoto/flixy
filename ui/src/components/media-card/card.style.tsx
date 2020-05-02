@@ -1,4 +1,4 @@
-import styled, {} from "styled-components";
+import styled, { css } from "styled-components";
 import { CardSize } from "../../models/CardSize";
 import { animated } from "react-spring";
 
@@ -19,14 +19,15 @@ export const CardContainer = styled(animated.div)<{
   width: 200px;
   cursor: pointer;
   position: relative;
-  border: ${(p) => !p.isLoadingCard
-      ? ".1rem solid black;"
-      : ".25rem solid black"};
+  border: ${(p) =>
+    !p.isLoadingCard ? ".1rem solid black;" : ".25rem solid black"};
   ${(p) =>
     p.isLoadingCard
       ? "background: linear-gradient(358deg, #000000, #4b4848);"
       : ""};
-  ${p => p.selected && `&::before {
+  ${(p) =>
+    p.selected &&
+    `&::before {
     content: '';
     display: block;
     position: absolute;
@@ -41,8 +42,12 @@ export const CardContainer = styled(animated.div)<{
     width: 100%;
     padding: .5rem;
     border-radius: .1rem;
-  }` }; 
-
+  }`};
+  ${(p) =>
+    p.isLoadingCard
+      ? css`
+        `
+      : ""};
 `;
 
 export const CardTitle = styled.div`
@@ -79,7 +84,7 @@ export const CardYear = styled.span`
   color: white;
 `;
 
-export const CardCheckedWrapper =styled.div`
+export const CardCheckedWrapper = styled.div`
   width: 2rem;
   height: 2rem;
   position: absolute;
@@ -89,11 +94,11 @@ export const CardCheckedWrapper =styled.div`
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  background: rgba(204,0,0,0.95);
+  background: rgba(204, 0, 0, 0.95);
   border-radius: 50%;
 `;
 
 export const ImageIconWrapper = styled.div`
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
 `;

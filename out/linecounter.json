@@ -1,0 +1,682 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "d:\\Projects\\2020\\flixmov",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2020-04-30 00:10:57",
+            "filesum": 100,
+            "codesum": 24704,
+            "commentsum": 218,
+            "blanksum": 5250,
+            "statistics": {
+                ".json": {
+                    "code": 160,
+                    "comment": 47,
+                    "blank": 12
+                },
+                "": {
+                    "code": 6,
+                    "comment": 1,
+                    "blank": 0
+                },
+                ".md": {
+                    "code": 37,
+                    "comment": 12,
+                    "blank": 31
+                },
+                ".js": {
+                    "code": 111,
+                    "comment": 36,
+                    "blank": 16
+                },
+                ".log": {
+                    "code": 10516,
+                    "comment": 35,
+                    "blank": 2285
+                },
+                ".lock": {
+                    "code": 11456,
+                    "comment": 37,
+                    "blank": 2519
+                },
+                ".tsx": {
+                    "code": 1166,
+                    "comment": 24,
+                    "blank": 129
+                },
+                ".ts": {
+                    "code": 1168,
+                    "comment": 2,
+                    "blank": 252
+                },
+                ".css": {
+                    "code": 53,
+                    "comment": 0,
+                    "blank": 6
+                },
+                ".svg": {
+                    "code": 7,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".html": {
+                    "code": 21,
+                    "comment": 23,
+                    "blank": 0
+                },
+                ".txt": {
+                    "code": 3,
+                    "comment": 1,
+                    "blank": 0
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 1,
+                    "filename": "server\\.env"
+                },
+                {
+                    "blank": 2,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "server\\nodemon.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "server\\package.json"
+                },
+                {
+                    "blank": 4,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "server\\src\\index.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "server\\src\\resolvers\\GenreResolver.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "server\\src\\resolvers\\index.ts"
+                },
+                {
+                    "blank": 24,
+                    "code": 84,
+                    "comment": 0,
+                    "filename": "server\\src\\resolvers\\MovieResolver.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "server\\src\\resolvers\\TrendingResolver.ts"
+                },
+                {
+                    "blank": 16,
+                    "code": 54,
+                    "comment": 0,
+                    "filename": "server\\src\\resolvers\\TVResolver.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\Cast.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\Credits.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\Crew.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\Genre.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\index.ts"
+                },
+                {
+                    "blank": 17,
+                    "code": 36,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\Media.ts"
+                },
+                {
+                    "blank": 15,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\Movie.ts"
+                },
+                {
+                    "blank": 26,
+                    "code": 56,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\MovieDetail.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\MovieResult.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\ProductionCompany.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\ProductionCountry.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\SpokenLanguage.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\Tv.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "server\\src\\types\\TvResult.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 13,
+                    "comment": 47,
+                    "filename": "server\\tsconfig.json"
+                },
+                {
+                    "blank": 206,
+                    "code": 1083,
+                    "comment": 2,
+                    "filename": "server\\yarn-error.log"
+                },
+                {
+                    "blank": 423,
+                    "code": 2000,
+                    "comment": 4,
+                    "filename": "server\\yarn.lock"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "ui\\.babelrc"
+                },
+                {
+                    "blank": 2,
+                    "code": 51,
+                    "comment": 0,
+                    "filename": "ui\\package.json"
+                },
+                {
+                    "filename": "ui\\public\\favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 23,
+                    "filename": "ui\\public\\index.html"
+                },
+                {
+                    "filename": "ui\\public\\logo192.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "ui\\public\\logo512.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "ui\\public\\manifest.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "ui\\public\\robots.txt"
+                },
+                {
+                    "blank": 31,
+                    "code": 37,
+                    "comment": 12,
+                    "filename": "ui\\README.md"
+                },
+                {
+                    "blank": 5,
+                    "code": 40,
+                    "comment": 0,
+                    "filename": "ui\\src\\App.css"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "ui\\src\\App.test.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 36,
+                    "comment": 2,
+                    "filename": "ui\\src\\App.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\commons\\styles.tsx"
+                },
+                {
+                    "blank": 10,
+                    "code": 41,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\icons\\index.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 97,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-card\\card.style.tsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 66,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-card\\card.tsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 50,
+                    "comment": 1,
+                    "filename": "ui\\src\\components\\media-details\\details-attribute.style.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 22,
+                    "comment": 2,
+                    "filename": "ui\\src\\components\\media-details\\details-attribute.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-details\\details-card-collection.styles.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-details\\details-card-collection.tsx"
+                },
+                {
+                    "blank": 13,
+                    "code": 72,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-details\\details-card.styles.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 85,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-details\\details-card.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-details\\details-title.style.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-details\\details-title.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-genres\\genres-styles.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-genres\\genres.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 17,
+                    "comment": 1,
+                    "filename": "ui\\src\\components\\media-objects\\media-objects.tsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-objects\\object.styles.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 38,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-poster\\poster-styles.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 24,
+                    "comment": 1,
+                    "filename": "ui\\src\\components\\media-poster\\poster.tsx"
+                },
+                {
+                    "blank": 7,
+                    "code": 36,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-slider\\collection.style.tsx"
+                },
+                {
+                    "blank": 28,
+                    "code": 186,
+                    "comment": 9,
+                    "filename": "ui\\src\\components\\media-slider\\collection.tsx"
+                },
+                {
+                    "blank": 9,
+                    "code": 55,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-slider\\index.styles.ts"
+                },
+                {
+                    "blank": 12,
+                    "code": 105,
+                    "comment": 6,
+                    "filename": "ui\\src\\components\\media-slider\\index.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-slider\\movies.style.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 65,
+                    "comment": 0,
+                    "filename": "ui\\src\\components\\media-slider\\movies.tsx"
+                },
+                {
+                    "blank": 9,
+                    "code": 46,
+                    "comment": 0,
+                    "filename": "ui\\src\\containers\\details\\castDetails.tsx"
+                },
+                {
+                    "blank": 9,
+                    "code": 61,
+                    "comment": 0,
+                    "filename": "ui\\src\\containers\\details\\movieDetails.tsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 59,
+                    "comment": 0,
+                    "filename": "ui\\src\\containers\\movies\\popular.tsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 55,
+                    "comment": 0,
+                    "filename": "ui\\src\\containers\\movies\\topRated.tsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 55,
+                    "comment": 0,
+                    "filename": "ui\\src\\containers\\movies\\upComing.tsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "ui\\src\\containers\\tv\\onAir.tsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "ui\\src\\containers\\tv\\popular.tsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "ui\\src\\containers\\tv\\topRated.tsx"
+                },
+                {
+                    "blank": 9,
+                    "code": 54,
+                    "comment": 0,
+                    "filename": "ui\\src\\effects\\useVirtual.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ui\\src\\gqls\\cast.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "ui\\src\\gqls\\movieDetails.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 52,
+                    "comment": 0,
+                    "filename": "ui\\src\\gqls\\movies.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 49,
+                    "comment": 0,
+                    "filename": "ui\\src\\gqls\\tv.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "ui\\src\\index.css"
+                },
+                {
+                    "blank": 2,
+                    "code": 12,
+                    "comment": 3,
+                    "filename": "ui\\src\\index.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "ui\\src\\logo.svg"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\CardSize.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\Cast.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\Credits.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\Crew.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\Genre.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\MediaObject.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\Movie.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\MovieDetails.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\Movies.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\Poster.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\ProductionCompany.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\ProductionCountry.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\Slider.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ui\\src\\models\\SpokenLanguage.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 1,
+                    "filename": "ui\\src\\react-app-env.d.ts"
+                },
+                {
+                    "blank": 15,
+                    "code": 95,
+                    "comment": 31,
+                    "filename": "ui\\src\\serviceWorker.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 4,
+                    "filename": "ui\\src\\setupTests.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ui\\tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 1,
+                    "filename": "ui\\webpack.config.js"
+                },
+                {
+                    "blank": 2079,
+                    "code": 9433,
+                    "comment": 33,
+                    "filename": "ui\\yarn-error.log"
+                },
+                {
+                    "blank": 2096,
+                    "code": 9456,
+                    "comment": 33,
+                    "filename": "ui\\yarn.lock"
+                }
+            ]
+        }
+    ]
+}

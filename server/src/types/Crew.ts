@@ -21,7 +21,7 @@ export class Crew {
   @Field()
   name!: string;
 
-  @Field()
+  @Field({nullable: true})
   profile_path!: string;
 
 }

@@ -1,29 +1,32 @@
 import styled from 'styled-components';
 
 export const DetailsCardWrapper = styled.div`
-  display: flex;
   align-items: flex-start;
-  justify-content: space-evenly;
-  height: 100%;
   background: #191919;
+  display: flex;
+  height: 100%;
+  justify-content: space-evenly;
   position: relative;
 `;
 
 export const DetailsWrapper = styled.section`
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   height: 90%;
-  flex: auto;
   justify-content: flex-start;
-  width: 100%;
+  width: 80%;
 `;
 
 export const DetailsPosterWrapper = styled.div`
-  height: 90%;
-  margin-left: 1rem;
-  width: auto;
-  flex-basis: 350px;
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  height: 75%;
+  justify-content: center;
+  flex-direction: column;
+  width: 20%;
+  margin: auto;
 `;
 
 export const Backdrop = styled.div``;
@@ -35,39 +38,52 @@ const Font = styled.div`
 `
 
 export const Title = styled(Font)`
-  font-weight: 400;
-  font-size: 1.5rem;
   color: #fff;
-  text-align: left;
-  padding-left: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
   margin-top: 1rem;
+  /* padding-left: 1.5rem; */
+  text-align: left;
 `;
 
 export const Overview = styled(Title)`
+  color: #fff;
   font-size: 1rem;
   font-weight: 300;
-  color: #fff;
   margin-bottom: 1rem;
 `;
 
 export const Budget = styled.div``;
 
-
-
-export const Attributes = styled.div`
-  display: flex;
+export const AttributesContainer = styled.div`
   align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: auto;
+  margin-right: 1rem;
   padding-left: 1.5rem;
-`
+`;
+
+export const AttributeContainer = styled.div`
+  margin-right: .75rem;
+`;
 
 export const CloseDetails = styled.button`
-  border: none;
   background: none;
+  border: none;
+  cursor: pointer;
+  height: 3rem;
   outline: none;
   position: absolute;
   right: .5rem;
   top: .5rem;
   width: 3rem;
-  height: 3rem;
-  cursor: pointer;
+`;
+
+export const GenresContainer = styled.div`
+  align-items: center;
+  display: flex;
+  margin-bottom: .25rem;
+  /* margin-left: 1.5rem; */
+  margin-top: .25rem;
 `;

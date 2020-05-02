@@ -16,11 +16,10 @@ export const GenreItem = styled.li`
   border-radius: .2rem;
   margin-right: .5rem;
   font-family: "Poppins";
-  font-size: .9rem;
+  font-size: .85rem;
   color: #fff;
-  /* background: #C0C0C0; */
   background: rgba(204,0,0,0.95);
   font-weight: 400;
-  padding: .2rem .45rem;
-  box-shadow: 0 0 10px 1px rgba(0,0,0,0.6); 
+  padding: .25rem .35rem;
+  box-shadow: 0 0.5px 0 0 #000, 0 1px 2px 0 #000;
 `;

@@ -10,6 +10,8 @@ import { X } from "@styled-icons/feather/X";
 import { Check } from "@styled-icons/feather/Check";
 import { Clock } from "@styled-icons/feather/Clock";
 import { Image } from "@styled-icons/feather/Image";
+import { User } from "@styled-icons/feather/User";
+import { Imdb } from "@styled-icons/fa-brands/Imdb";
 
 export const PlusIcon = styled(Plus)`
   color: red;
@@ -48,4 +50,10 @@ export const ClockIcon = styled(Clock)`
 
 export const ImageIcon = styled(Image)<{color?: string}>`
   color: ${p => p.color};
+`;
+
+export const UserIcon = styled(User)<{color?: string}>``;
+
+export const ImdbIcon = styled(Imdb)<{color?: string}>`
+  color: ${p => p.color}
 `;
