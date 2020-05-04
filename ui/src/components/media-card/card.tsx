@@ -1,9 +1,9 @@
 import * as React from "react";
 import Movie from "../../models/Movie";
-import { CardContainer, CardCheckedWrapper, ImageIconWrapper } from "./card.style";
+import { CardContainer, CardCheckedWrapper } from "./card.style";
 import { CardSize } from "../../models/CardSize";
 import Poster from "../media-poster/poster";
-import { CheckIcon, ImageIcon } from "../icons";
+import { CheckIcon } from "../icons";
 
 type MovieType = Movie & {
   index?: number;
@@ -12,7 +12,8 @@ type MovieType = Movie & {
   loadingCard?: boolean;
 };
 
-export default ({
+export default React.memo(
+  ({
     id,
     poster_path,
     onSelect,
@@ -22,10 +23,12 @@ export default ({
     loadingCard,
     title,
   }: MovieType) => {
-    
-    const handleSelection = React.useCallback((id: number) => {
-      onSelect && onSelect(id);
-    }, [id]);
+    const handleSelection = React.useCallback(
+      (id: number) => {
+        onSelect && onSelect(id);
+      },
+      [id]
+    );
 
     return (
       <>
@@ -47,17 +50,17 @@ export default ({
               </CardCheckedWrapper>
             )}
           </CardContainer>
-        ) : (
-          // <CardContainer
-          //   size={size}
-          //   isLoadingCard={loadingCard ? 1 : 0}
-          // >
-          //   <ImageIconWrapper>
-          //     <ImageIcon color="#4b4848" />
-          //   </ImageIconWrapper>
-          // </CardContainer>
-          null
-        )}
+        ) : // <CardContainer
+        //   size={size}
+        //   isLoadingCard={loadingCard ? 1 : 0}
+        // >
+        //   <ImageIconWrapper>
+        //     <ImageIcon color="#4b4848" />
+        //   </ImageIconWrapper>
+        // </CardContainer>
+        null}
       </>
     );
-  };
+  },
+  (prev, current) => prev.id === current.id
+);

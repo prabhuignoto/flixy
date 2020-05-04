@@ -1,5 +1,4 @@
 import * as React from "react";
-import Card from "../media-card/card";
 import { ScrollLeft, ScrollRight, MoviesWrapper } from "./collection.style";
 import { CardSize } from "../../models/CardSize";
 import { Movies as MoviesModel } from "../../models/Movies";

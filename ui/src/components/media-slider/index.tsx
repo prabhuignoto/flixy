@@ -16,6 +16,7 @@ import { ArrowDownIcon, ArrowUpIcon } from "../icons";
 import Slider from "../../models/Slider";
 import Movie from "../../models/Movie";
 import MovieDetails from "../../containers/details/movieDetails";
+import {nanoid} from "nanoid";
 
 const SliderView: React.FunctionComponent<Slider> = ({
   movies,
@@ -23,32 +24,31 @@ const SliderView: React.FunctionComponent<Slider> = ({
   fetchMore,
   totalResults,
   loadingState,
-}: Slider) => {
+}: Slider) => {;
   const [expandFull, setExpandFull] = React.useState(false);
   const [page, setPage] = React.useState(1);
   const [showDetails, setShowDetails] = React.useState({
     state: false,
     selectedMovie: 0,
   });
-  const [selectedMovie, setSelectedMovie] = React.useState({
-    id: NaN,
-  } as Movie);
   const [props, set] = useSpring(() => ({
-    height: "340px",
+    height: "320px",
     opacity: 1,
   }));
 
-  const handleExpandFull = React.useCallback(() => setExpandFull(!expandFull), [expandFull]);
+  const handleExpandFull = React.useCallback(() => setExpandFull(!expandFull), [
+    expandFull,
+  ]);
 
   React.useEffect(() => {
     if (!expandFull || showDetails.state) {
       set({
-        height: "340px",
+        height: "320px",
         opacity: 1,
       });
     } else {
       set({
-        height: `${340 * 3}px`,
+        height: `${320 * 3}px`,
         opacity: 1,
       });
     }
@@ -72,8 +72,9 @@ const SliderView: React.FunctionComponent<Slider> = ({
     [showDetails]
   );
 
-  const onDetailsClose = React.useCallback(() =>
-    setShowDetails({ state: false, selectedMovie: 0 }), [showDetails]
+  const onDetailsClose = React.useCallback(
+    () => setShowDetails({ state: false, selectedMovie: 0 }),
+    []
   );
 
   return (
@@ -102,7 +103,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
         </MoviesWrapper>
       }
 
-      {showDetails.state && (
+      {showDetails.state &&(
         <DetailsWrapper>
           <MovieDetails
             movieId={showDetails.selectedMovie}

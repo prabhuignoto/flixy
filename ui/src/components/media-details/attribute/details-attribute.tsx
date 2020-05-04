@@ -1,11 +1,9 @@
 import React from "react";
 import {
-  AttributeLabel,
-  IconWrapper,
+  AttributeLabel, 
   AttributeValue,
   AttributeWrapper,
 } from "./details-attribute.style";
-import { ClockIcon } from "../../icons";
 
 export interface AttributeModel {
   label: string;

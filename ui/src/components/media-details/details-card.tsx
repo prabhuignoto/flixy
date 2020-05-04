@@ -12,13 +12,14 @@ import {
 import Movie from "../../models/Movie";
 import Poster from "../media-poster/poster";
 import { CardSize } from "../../models/CardSize";
-import { CloseIcon, ClockIcon } from "./../icons/index";
+import { CloseIcon } from "./../icons/index";
 import Genres from "../media-genres/genres";
 import Attribute from "./attribute/details-attribute";
 import DetailsTitle from "./title/details-title";
 import { CastAndCrew } from "./details-cast-and-crew";
 import { format } from "date-fns";
 import ISO6391 from "iso-639-1";
+import { useSpring, config } from "react-spring";
 
 type CardDetail = Movie & { handleClose?: () => void; isLoading: boolean };
 
@@ -34,17 +35,26 @@ export default React.memo(
     isLoading,
     original_language,
     poster_path,
-    imdb_id,
     vote_average,
+    video
   }: CardDetail) => {
     const wrapperRef = React.useRef<HTMLDivElement>(null);
 
+    const props = useSpring({
+      opacity: 1,
+      from: {
+        opacity: 0,
+      },
+      config: config.gentle
+    })
+
     return (
-      <DetailsCardWrapper ref={wrapperRef}>
+      <DetailsCardWrapper ref={wrapperRef} style={props}>
         {!isLoading ? (
           <>
             <DetailsPosterWrapper>
               <Poster poster_path={poster_path} size={CardSize.large} />
+              {video}
             </DetailsPosterWrapper>
             <DetailsWrapper>
               <DetailsTitle
@@ -82,14 +92,17 @@ export default React.memo(
                   )}
                 </AttributesContainer>
               </GenresContainer>
-              <CastAndCrew id={id} objectColumns={0} />
+              <CastAndCrew id={id} />
             </DetailsWrapper>
           </>
-        ) : <div>Test</div>}
+        ) : (
+          <div>Test</div>
+        )}
         <CloseDetails onClick={handleClose}>
           <CloseIcon />
         </CloseDetails>
       </DetailsCardWrapper>
     );
-  }, (prev, current) => prev.imdb_id === current.imdb_id
+  },
+  (prev, current) => prev.id === current.id
 );

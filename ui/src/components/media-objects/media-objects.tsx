@@ -11,29 +11,31 @@ import {
   MediaObjectContainer,
 } from "./object.styles";
 import { UserIcon } from "./../icons/index";
-import { useTrail } from "react-spring";
 
 const MediaObjects: React.FunctionComponent<{
+  id: number;
   items: MediaObjectModel[];
-  columns: number;
   title?: string;
-}> = ({ items, columns, title }) => {
-  return (
-    <ObjectsContainer>
-      <ObjectHeader>{title}</ObjectHeader>
-      <ObjectsWrapper columns={columns}>
-        {items.length &&
-          items.map(({ name, path, id }, index) => {
-            return (
-              <MediaObjectContainer key={`${id}-${index}-${name}`}>
-                <MediaObject name={name} path={path} id={id} />
-              </MediaObjectContainer>
-            );
-          })}
-      </ObjectsWrapper>
-    </ObjectsContainer>
-  );
-};
+}> = React.memo(
+  ({ items, title }) => {
+    return (
+      <ObjectsContainer>
+        <ObjectHeader>{title}</ObjectHeader>
+        <ObjectsWrapper>
+          {items.length &&
+            items.map(({ name, path, id }, index) => {
+              return (
+                <MediaObjectContainer key={`${id}-${index}-${name}`}>
+                  <MediaObject name={name} path={path} id={id} />
+                </MediaObjectContainer>
+              );
+            })}
+        </ObjectsWrapper>
+      </ObjectsContainer>
+    );
+  },
+  (prev, current) => prev.id === current.id
+);
 
 const MediaObject: React.FunctionComponent<MediaObjectModel> = React.memo(
   ({ path, id, name }) => {

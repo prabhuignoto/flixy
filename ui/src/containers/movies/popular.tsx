@@ -1,66 +1,68 @@
-import React from "react";
-import { useQuery } from "@apollo/client";
+import * as React from "react";
+import { useApolloClient } from "@apollo/client";
 import Slider from "../../components/media-slider";
 import { popular } from "../../gqls/movies";
-import { LoadingState } from "../../models/Slider";
+import Movie from "./../../models/Movie";
 
-export default React.memo(({ id }: { id?: number }) => {
-  const { loading, error, data, fetchMore } = useQuery(popular, {
-    variables: {
-      lang: "en-US",
-      page: 1,
-    },
-    fetchPolicy: "cache-and-network",
+const TopRated: React.FunctionComponent = () => {
+  const client = useApolloClient();
+  const [movieData, setMovieData] = React.useState<{
+    results: Movie[];
+    total_results?: number;
+  }>({
+    results: [],
+    total_results: 0,
   });
 
-  let loadingState: LoadingState = LoadingState.DEFAULT;
+  React.useEffect(() => {
+    getMovies(1);
+  }, []);
 
-  if (loading) {
-    loadingState = LoadingState.LOADING;
-  } else if (error) {
-    loadingState = LoadingState.FAILED;
-  } else {
-    loadingState = LoadingState.LOADED;
-  }
-
-  const handleFetchMore = (page: number) => {
-    fetchMore({
+  const getMovies = async (page: number) => {
+    const { data } = await client.query({
+      query: popular,
       variables: {
-        page,
         lang: "en-US",
+        page,
       },
-      updateQuery: (previous: any, { fetchMoreResult }: any) => {
-        if (!fetchMoreResult) {
-          return previous;
-        } else {
-          const newData = [
-            ...previous.getPopular.results,
-            ...fetchMoreResult.getPopular.results,
-          ];
-          return Object.assign({}, previous, {
-            getPopular: Object.assign({}, previous.getPopular, {
-              results: newData.map((item) =>
-                Object.assign({}, item, {
-                  hide: false,
-                })
-              ),
-            }),
-          });
-        }
-      },
+      fetchPolicy: "cache-first",
+    });
+
+    let newData = [] as Movie[];
+    if (movieData.results) {
+      newData = [...movieData.results, ...data.getPopular.results];
+    }
+    setMovieData({
+      results: newData,
+      total_results: data.getPopular.total_results,
     });
   };
 
-  // return (
-  //   <Slider
-  //     movies={data && data.getPopular ? data.getPopular.results : []}
-  //     title="Trending"
-  //     fetchMore={handleFetchMore}
-  //     fetchMoreQueryEntry="getPopular"
-  //     totalResults={data && data.getPopular ? data.getPopular.total_results : 0}
-  //     loadingState={loadingState}
-  //   ></Slider>
-  // );
+  const handleFetchMore = (page: number) => {
+    getMovies(page);
+  };
 
-  return null;
-}, (prev,current) => prev.id === current.id);
+  return (
+    <>
+      {movieData.results.length ? (
+        <Slider
+          movies={
+            movieData
+              ? movieData.results.map((item: any) =>
+                  Object.assign({}, item, {
+                    hide: false,
+                    selected: false,
+                  })
+                )
+              : []
+          }
+          title="Trending"
+          fetchMore={handleFetchMore}
+          totalResults={movieData.total_results ? movieData.total_results : 0}
+        ></Slider>
+      ) : null}
+    </>
+  );
+};
+
+export default React.memo(TopRated);

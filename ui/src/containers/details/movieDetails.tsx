@@ -1,9 +1,9 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
+import { useApolloClient } from "@apollo/client";
 import { details } from "../../gqls/movieDetails";
-import { LoadingState } from "../../models/Slider";
 import CardDetails from "../../components/media-details/details-card";
 import { MovieDetail } from "../../models/MovieDetails";
+import Shimmer from "../../components/media-loader";
 
 interface MovieResultDetails {
   getDetails: MovieDetail;
@@ -12,18 +12,38 @@ interface MovieResultDetails {
 const MovieDetails: React.FunctionComponent<{
   movieId: number;
   handleClose?: () => void;
-}> = ({ movieId, handleClose }) => {
-  const { loading, error, data } = useQuery<MovieResultDetails>(details, {
-    variables: {
-      lang: "en-US",
-      id: movieId,
-    },
-  });
+}> = React.memo(({ movieId, handleClose }) => {
+  const [data, setData] = React.useState<MovieDetail | null>();
+  const [loading, setLoading] = React.useState(false);
 
-  let view = null;
-  if (loading) {
-    view = <CardDetails isLoading={loading} id={new Date().getMilliseconds()} />;
-  } else if (!error && data?.getDetails) {
+  const client = useApolloClient();
+
+  React.useEffect(() => {
+    if(movieId) {
+      executeQuery();
+    } else {
+      setData(null);
+    }
+  }, [movieId]);
+
+  const executeQuery = async () => {
+    setLoading(true);
+
+    const { data, networkStatus } = await client.query({
+      query: details,
+      variables: {
+        lang: "en-US",
+        id: movieId,
+      },
+    });
+
+    setData(data.getDetails);
+    setLoading(false);
+  };
+
+  let view;
+
+  if (!loading && data && data.id) {
     const {
       poster_path,
       title,
@@ -35,7 +55,8 @@ const MovieDetails: React.FunctionComponent<{
       original_language,
       imdb_id,
       vote_average,
-    } = data?.getDetails;
+      video
+    } = data;
 
     view = (
       <CardDetails
@@ -51,10 +72,14 @@ const MovieDetails: React.FunctionComponent<{
         isLoading={false}
         imdb_id={imdb_id}
         vote_average={vote_average}
+        video={video}
       />
     );
+  } else {
+    view = <Shimmer />;
   }
-  return <>{view}</>;
-};
+
+  return view;
+}, (prev, current) => prev.movieId === current.movieId);
 
 export default MovieDetails;

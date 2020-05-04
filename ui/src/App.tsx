@@ -25,7 +25,8 @@ function App() {
         <Router>
           <Switch>
             <Route path="/movies">
-              <TopRatedMovies />
+              {/* <TopRatedMovies /> */}
+              <Trending />
             </Route>
           </Switch>
           {/* <Route path="/tv"> */}

@@ -3,6 +3,7 @@ import fetch from "node-fetch";
 import MovieResult from './../types/MovieResult';
 import { MovieDetail } from "../types/MovieDetail";
 import { Credits } from "../types/Credits";
+import ReviewResult from "../types/ReviewResult";
 
 @Resolver(MovieResult)
 export default class MovieResolver {
@@ -89,11 +90,30 @@ export default class MovieResolver {
 
   @Query(returns => Credits)
   async getCredits(
-    @Arg("movie_id") movie_id:  number
+    @Arg("movie_id") movie_id:  number,
   ) {
     try { 
       const { key, url } = this;
       const response = await fetch(`${url}movie/${movie_id}/credits?api_key=${key}`);
+
+      const data = await response.json();
+      console.log(data);
+
+      return data;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  @Query(returns => ReviewResult)
+  async getReviews(
+    @Arg("movie_id") movie_id:  number,
+    @Arg("page") page: number
+  ) {
+    try { 
+      const { key, url } = this;
+      const response = await fetch(`${url}movie/${movie_id}/reviews?api_key=${key}&page=${page}`);
 
       const data = await response.json();
       console.log(data);

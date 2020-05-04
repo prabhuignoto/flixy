@@ -4,20 +4,13 @@ import { CastDetailsContainer } from "./details-cast-and-crew.styles";
 
 export const CastAndCrew: React.FunctionComponent<{
   id: number;
-  objectColumns: number;
 }> = React.memo(
-  ({ id, objectColumns }) => {
+  ({ id }) => {
     return <CastDetailsContainer>
       <CastDetails
         movieId={id}
-        objectColumns={objectColumns}
         title="Movie Cast"
         isCast
-      />
-      <CastDetails
-        movieId={id}
-        objectColumns={objectColumns}
-        title="Movie Crew"
       />
     </CastDetailsContainer>
   },

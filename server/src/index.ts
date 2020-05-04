@@ -24,7 +24,7 @@ const server = async () => {
     })
     fast.register(apolloServer.createHandler());
     fast.listen(3000);
-    fast.log.info(`server running on 4000`);
+    fast.log.info(`server running on 3000`);
   } catch (err) {
     fast.log.error(err);
   }

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import {animated} from "react-spring";
 
-export const DetailsCardWrapper = styled.div`
+export const DetailsCardWrapper = styled(animated.div)`
   align-items: flex-start;
   background: #191919;
   display: flex;

@@ -11,7 +11,7 @@ export const ObjectsContainer = styled.section`
   padding: .25rem 0;
 `;
 
-export const ObjectsWrapper = styled.ul<{columns: number}>`
+export const ObjectsWrapper = styled.ul<{columns?: number}>`
   align-items: flex-start;
   display: grid;
   grid-auto-flow: column;
