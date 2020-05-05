@@ -29,7 +29,7 @@ const MovieDetails: React.FunctionComponent<{
   const executeQuery = async () => {
     setLoading(true);
 
-    const { data, networkStatus } = await client.query({
+    const { data } = await client.query({
       query: details,
       variables: {
         lang: "en-US",

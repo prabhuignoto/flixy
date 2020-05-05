@@ -12,6 +12,8 @@ import { Clock } from "@styled-icons/feather/Clock";
 import { Image } from "@styled-icons/feather/Image";
 import { User } from "@styled-icons/feather/User";
 import { Imdb } from "@styled-icons/fa-brands/Imdb";
+import { Hash } from '@styled-icons/feather/Hash';
+import { Crown } from "@styled-icons/fa-solid/Crown";
 
 export const PlusIcon = styled(Plus)`
   color: red;
@@ -48,12 +50,20 @@ export const ClockIcon = styled(Clock)`
   color: #000;
 `;
 
-export const ImageIcon = styled(Image)<{color?: string}>`
+export const ImageIcon = styled(Image) <{ color?: string }>`
   color: ${p => p.color};
 `;
 
-export const UserIcon = styled(User)<{color?: string}>``;
+export const UserIcon = styled(User) <{ color?: string }>``;
 
-export const ImdbIcon = styled(Imdb)<{color?: string}>`
+export const ImdbIcon = styled(Imdb) <{ color?: string }>`
   color: ${p => p.color}
+`;
+
+export const HashIcon = styled(Hash) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const CrownIcon = styled(Crown) <{ color?: string }>`
+  color: ${p => p.color};
 `;

@@ -6,6 +6,9 @@ import Review from "./Review";
 export default class ReviewResult {
 
   @Field()
+  id!: number;
+
+  @Field()
   page!: number;
 
   @Field()

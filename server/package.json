@@ -12,21 +12,21 @@
   "dependencies": {
     "@types/graphql": "^14.5.0",
     "@types/node": "^13.13.4",
-    "apollo-server-fastify": "^2.12.0",
+    "apollo-server-fastify": "^2.13.0",
     "dotenv": "^8.2.0",
     "fastify": "^2.14.0",
     "fastify-helmet": "^3.0.2",
     "fastify-redis": "^3.3.1",
-    "graphql": "14.1",
+    "graphql": "^15.0.0",
     "log4js": "^6.2.1",
     "node-fetch": "^2.6.0",
     "reflect-metadata": "^0.1.13",
-    "type-graphql": "^0.17.6"
+    "type-graphql": "^1.0.0-rc.1"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.5.7",
     "nodemon": "^2.0.3",
-    "ts-node": "^8.9.1",
+    "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
   }
 }

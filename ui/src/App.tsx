@@ -14,7 +14,7 @@ import Trending from "./containers/movies/popular";
 import Upcoming from "./containers/movies/upComing";
 
 const client = new ApolloClient({
-  uri: "http://localhost:3000/graphql",
+  uri: "http://localhost:4000/graphql",
   cache: new InMemoryCache(),
 });
 
@@ -25,8 +25,8 @@ function App() {
         <Router>
           <Switch>
             <Route path="/movies">
-              {/* <TopRatedMovies /> */}
-              <Trending />
+              <TopRatedMovies />
+              {/* <Trending /> */}
             </Route>
           </Switch>
           {/* <Route path="/tv"> */}

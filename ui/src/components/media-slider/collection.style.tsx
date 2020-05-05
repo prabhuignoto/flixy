@@ -13,7 +13,8 @@ export const MoviesControlItem = styled.li`
 `;
 
 export const ScrollButton = styled.button`
-  background: rgba(0,0,0, .9);
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 50%;
   border: none;
   cursor: pointer;
   height: 3.5rem;
@@ -23,15 +24,16 @@ export const ScrollButton = styled.button`
   transform: translateY(-50%);
   width: 3.5rem;
   z-index: 1;
-  border-radius: 50%;
 `;
 
-export const ScrollLeft = styled(ScrollButton)`
+export const ScrollLeft = styled(ScrollButton)<{ loading?: boolean }>`
   left: 0;
+  ${(p) => (p.loading ? "pointer-events: none;" : "")}
 `;
 
-export const ScrollRight = styled(ScrollButton)`
+export const ScrollRight = styled(ScrollButton)<{ loading?: boolean }>`
   right: 0;
+  ${(p) => (p.loading ? "pointer-events: none;" : "")}
 `;
 
 export const MoviesWrapper = styled.div`

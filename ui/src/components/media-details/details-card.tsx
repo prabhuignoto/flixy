@@ -8,6 +8,9 @@ import {
   AttributesContainer,
   GenresContainer,
   AttributeContainer,
+  ReviewsWrapper,
+  Box2,
+  CastAndCrewWrapper
 } from "./details-card.styles";
 import Movie from "../../models/Movie";
 import Poster from "../media-poster/poster";
@@ -17,6 +20,7 @@ import Genres from "../media-genres/genres";
 import Attribute from "./attribute/details-attribute";
 import DetailsTitle from "./title/details-title";
 import { CastAndCrew } from "./details-cast-and-crew";
+import Reviews from "../../containers/details/reviews";
 import { format } from "date-fns";
 import ISO6391 from "iso-639-1";
 import { useSpring, config } from "react-spring";
@@ -36,26 +40,26 @@ export default React.memo(
     original_language,
     poster_path,
     vote_average,
-    video
+    video,
   }: CardDetail) => {
     const wrapperRef = React.useRef<HTMLDivElement>(null);
 
-    const props = useSpring({
-      opacity: 1,
-      from: {
-        opacity: 0,
-      },
-      config: config.gentle
-    })
+    // const props = useSpring({
+    //   opacity: 1,
+    //   from: {
+    //     opacity: 0,
+    //   },
+    //   config: config.gentle,
+    // });
 
     return (
-      <DetailsCardWrapper ref={wrapperRef} style={props}>
+      <DetailsCardWrapper ref={wrapperRef}>
         {!isLoading ? (
           <>
-            <DetailsPosterWrapper>
+            {/* <DetailsPosterWrapper>
               <Poster poster_path={poster_path} size={CardSize.large} />
               {video}
-            </DetailsPosterWrapper>
+            </DetailsPosterWrapper> */}
             <DetailsWrapper>
               <DetailsTitle
                 year={release_date}
@@ -92,8 +96,18 @@ export default React.memo(
                   )}
                 </AttributesContainer>
               </GenresContainer>
-              <CastAndCrew id={id} />
+              <Box2>
+                {/* <DetailsPosterWrapper>
+                  <Poster poster_path={poster_path} size={CardSize.large} />
+                </DetailsPosterWrapper> */}
+                <CastAndCrewWrapper>
+                  <CastAndCrew id={id} />
+                </CastAndCrewWrapper>
+              </Box2>
             </DetailsWrapper>
+            <ReviewsWrapper>
+              <Reviews movieId={id} />
+            </ReviewsWrapper>
           </>
         ) : (
           <div>Test</div>

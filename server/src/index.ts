@@ -11,7 +11,7 @@ import TVResolver from "./resolvers/TvResolver";
 config();
 
 const fast = fastify({
-  logger: false
+  logger: true
 });
 
 const server = async () => {
@@ -23,7 +23,7 @@ const server = async () => {
       schema
     })
     fast.register(apolloServer.createHandler());
-    fast.listen(3000);
+    fast.listen(4000);
     fast.log.info(`server running on 3000`);
   } catch (err) {
     fast.log.error(err);

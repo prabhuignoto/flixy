@@ -8,11 +8,11 @@ export const AttributeWrapper = styled(Font)`
   align-items: center;
   background: #2a2a2a;
   border-radius: 3px;
+  box-shadow: 0 0.5px 0 0 #000, 0 1px 2px 0 #000;
   display: flex;
+  height: 1.75rem;
   justify-content: flex-start;
   min-width: 7rem;
-  height: 1.75rem;
-  box-shadow: 0 0.5px 0 0 #000, 0 1px 2px 0 #000;
 `;
 
 export const AttributeLabel = styled.span`
@@ -32,9 +32,9 @@ export const AttributeLabel = styled.span`
 export const AttributeValue = styled.span`
   align-items: center;
   background-color: rgba(204,0,0,0.8);
-  box-shadow: inset 0 0 10px 1px rgba(0,0,0,0.35);
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
+  box-shadow: inset 0 0 10px 1px rgba(0,0,0,0.35);
   color: #fff;
   display: flex;
   font-size: .85rem;

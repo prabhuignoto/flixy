@@ -1,15 +1,17 @@
 import * as React from "react";
 import Movie from "../../models/Movie";
-import { CardContainer, CardCheckedWrapper } from "./card.style";
+import { CardContainer, CardCheckedWrapper, ImageIconWrapper } from "./card.style";
 import { CardSize } from "../../models/CardSize";
 import Poster from "../media-poster/poster";
-import { CheckIcon } from "../icons";
+import { CheckIcon, ImageIcon } from "../icons";
+import { useSpring } from "react-spring";
 
 type MovieType = Movie & {
   index?: number;
   onSelect?: (id: number) => void;
   size?: CardSize;
   loadingCard?: boolean;
+  style?: any
 };
 
 export default React.memo(
@@ -22,6 +24,7 @@ export default React.memo(
     index,
     loadingCard,
     title,
+    style
   }: MovieType) => {
     const handleSelection = React.useCallback(
       (id: number) => {
@@ -29,6 +32,12 @@ export default React.memo(
       },
       [id]
     );
+    const props = useSpring({
+      opacity: 1,
+      from: {
+        opacity: 0,
+      }
+    })
 
     return (
       <>
@@ -37,6 +46,7 @@ export default React.memo(
             onClick={() => id && handleSelection(id)}
             selected={selected}
             size={size}
+            style={props}
           >
             <Poster
               poster_path={poster_path ? poster_path : ""}
@@ -50,15 +60,13 @@ export default React.memo(
               </CardCheckedWrapper>
             )}
           </CardContainer>
-        ) : // <CardContainer
-        //   size={size}
-        //   isLoadingCard={loadingCard ? 1 : 0}
-        // >
-        //   <ImageIconWrapper>
-        //     <ImageIcon color="#4b4848" />
-        //   </ImageIconWrapper>
-        // </CardContainer>
-        null}
+        ) : (
+          <CardContainer size={size} isLoadingCard={loadingCard ? 1 : 0}>
+            <ImageIconWrapper>
+              <ImageIcon color="#4b4848" />
+            </ImageIconWrapper>
+          </CardContainer>
+        )}
       </>
     );
   },

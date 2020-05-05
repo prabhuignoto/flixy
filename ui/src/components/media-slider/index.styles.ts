@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { animated } from "react-spring";
 
-export const Wrapper = styled(animated.div)<{expand?: number}>`
+export const Wrapper = styled(animated.div) <{ expand?: number }>`
   background-color: #000;
   border-radius: .25rem;
   display: flex;
@@ -18,9 +18,9 @@ export const Header = styled.header`
   font-family: "Poppins";
   font-size: 1.3rem;
   justify-content: flex-start;
+  padding-top: 1rem;
   text-align: left;
   width: 100%;
-  padding-top: 1rem;
 `;
 
 export const MoviesWrapper = styled(animated.div) <{ expand?: number }>`
@@ -38,10 +38,10 @@ padding-left: 2rem;
 `;
 
 export const TitleText = styled.span`
-  font-family: Poppins;
-  font-weight: 300;
-  font-size: 1.5rem;
   color: #fff;
+  font-family: Poppins;
+  font-size: 1.5rem;
+  font-weight: 300;
 `;
 
 export const TitleIcon = styled.span``;
@@ -58,7 +58,8 @@ export const Footer = styled.footer`
 `;
 
 export const DetailsWrapper = styled.div`
-  width: 100%;
+  height: 0;
   margin: 0 auto;
-  height: 700px;
+  min-height: 700px;
+  width: 100%;
 `;

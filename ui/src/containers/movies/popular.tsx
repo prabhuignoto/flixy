@@ -3,6 +3,7 @@ import { useApolloClient } from "@apollo/client";
 import Slider from "../../components/media-slider";
 import { popular } from "../../gqls/movies";
 import Movie from "./../../models/Movie";
+import { LoadingState } from "../../models/Slider";
 
 const TopRated: React.FunctionComponent = () => {
   const client = useApolloClient();
@@ -13,12 +14,14 @@ const TopRated: React.FunctionComponent = () => {
     results: [],
     total_results: 0,
   });
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     getMovies(1);
   }, []);
 
   const getMovies = async (page: number) => {
+    setLoading(true);
     const { data } = await client.query({
       query: popular,
       variables: {
@@ -28,41 +31,57 @@ const TopRated: React.FunctionComponent = () => {
       fetchPolicy: "cache-first",
     });
 
-    let newData = [] as Movie[];
-    if (movieData.results) {
-      newData = [...movieData.results, ...data.getPopular.results];
+    if (data) {
+      let newData = [] as Movie[];
+      if (movieData.results) {
+        newData = [...movieData.results, ...data.getPopular.results];
+      }
+      setMovieData({
+        results: newData,
+        total_results: data.getPopular.total_results,
+      });
     }
-    setMovieData({
-      results: newData,
-      total_results: data.getPopular.total_results,
-    });
+
+    setLoading(false);
   };
 
   const handleFetchMore = (page: number) => {
     getMovies(page);
   };
 
-  return (
-    <>
-      {movieData.results.length ? (
-        <Slider
-          movies={
-            movieData
-              ? movieData.results.map((item: any) =>
-                  Object.assign({}, item, {
-                    hide: false,
-                    selected: false,
-                  })
-                )
-              : []
-          }
-          title="Trending"
-          fetchMore={handleFetchMore}
-          totalResults={movieData.total_results ? movieData.total_results : 0}
-        ></Slider>
-      ) : null}
-    </>
-  );
+  let view = null;
+
+  if (loading) {
+    view = (
+      <Slider
+        movies={[]}
+        title="Trending"
+        fetchMore={handleFetchMore}
+        totalResults={0}
+        loadingState={LoadingState.LOADING}
+      ></Slider>
+    );
+  } else {
+    view = (
+      <Slider
+        movies={
+          movieData
+            ? movieData.results.map((item: any) =>
+                Object.assign({}, item, {
+                  hide: false,
+                  selected: false,
+                })
+              )
+            : []
+        }
+        title="Trending"
+        fetchMore={handleFetchMore}
+        totalResults={movieData.total_results ? movieData.total_results : 0}
+      ></Slider>
+    );
+  }
+
+  return view;
 };
 
 export default React.memo(TopRated);

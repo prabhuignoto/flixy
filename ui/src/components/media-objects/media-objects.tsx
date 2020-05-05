@@ -11,6 +11,7 @@ import {
   MediaObjectContainer,
 } from "./object.styles";
 import { UserIcon } from "./../icons/index";
+import { FixedSizeList } from "react-window";
 
 const MediaObjects: React.FunctionComponent<{
   id: number;
@@ -18,21 +19,61 @@ const MediaObjects: React.FunctionComponent<{
   title?: string;
 }> = React.memo(
   ({ items, title }) => {
-    return (
-      <ObjectsContainer>
-        <ObjectHeader>{title}</ObjectHeader>
-        <ObjectsWrapper>
-          {items.length &&
-            items.map(({ name, path, id }, index) => {
-              return (
-                <MediaObjectContainer key={`${id}-${index}-${name}`}>
-                  <MediaObject name={name} path={path} id={id} />
-                </MediaObjectContainer>
-              );
-            })}
-        </ObjectsWrapper>
-      </ObjectsContainer>
-    );
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const [config, setConfig] = React.useState({
+      show: false,
+      clientWidth: 0,
+      count: 0,
+    });
+
+    React.useEffect(() => {
+      debugger;
+      const width = containerRef && containerRef.current?.clientWidth;
+
+      if (width) {
+        setConfig({
+          show: true,
+          clientWidth: width,
+          count: items.length,
+        });
+      }
+    }, []);
+
+    let view = null;
+
+    if (config.show) {
+      view = (
+        <>
+          <ObjectHeader>{title}</ObjectHeader>
+          <ObjectsWrapper>
+            <FixedSizeList
+              layout="horizontal"
+              itemCount={config.count}
+              itemSize={120}
+              width={config.clientWidth}
+              height={180}
+              style={{ overflow: "hidden", scrollBehavior: "smooth" }}
+            >
+              {({ index, style }) => {
+                const { name, path, id } = items[index];
+                return (
+                  <MediaObjectContainer
+                    key={`${id}-${index}-${name}`}
+                    style={style}
+                  >
+                    <MediaObject name={name} path={path} id={id} />
+                  </MediaObjectContainer>
+                );
+              }}
+            </FixedSizeList>
+          </ObjectsWrapper>
+        </>
+      );
+    } else {
+      view = null;
+    }
+
+    return <ObjectsContainer ref={containerRef}>{view}</ObjectsContainer>;
   },
   (prev, current) => prev.id === current.id
 );
@@ -40,7 +81,6 @@ const MediaObjects: React.FunctionComponent<{
 const MediaObject: React.FunctionComponent<MediaObjectModel> = React.memo(
   ({ path, id, name }) => {
     const [loaded, setLoaded] = React.useState(false);
-
     return (
       <Object>
         {path ? (
@@ -57,7 +97,8 @@ const MediaObject: React.FunctionComponent<MediaObjectModel> = React.memo(
         <ObjectName>{name}</ObjectName>
       </Object>
     );
-  }
+  },
+  (prev, current) => prev.id === current.id
 );
 
 export default MediaObjects;

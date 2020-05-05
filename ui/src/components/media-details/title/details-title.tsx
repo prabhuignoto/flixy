@@ -1,5 +1,13 @@
 import React from "react";
-import { Title, TitleWrapper, DetailsRatingContainer } from "./details-title.style";
+import {
+  Title,
+  TitleWrapper,
+  DetailsRatingContainer,
+  TitleYear,
+  TitleText,
+  TitleRow1,
+  TitleRow2,
+} from "./details-title.style";
 import DetailsRating from "../rating/details-rating";
 
 export interface DetailsTitleModel {
@@ -13,13 +21,23 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
   title,
   rating,
 }) => {
-  return <TitleWrapper>
-      <DetailsRatingContainer>
-        <DetailsRating rating={rating}/>
-      </DetailsRatingContainer>
-      <Title>{`${title}`}</Title>
-    </TitleWrapper> ;
+  return (
+    <TitleWrapper>
+      <Title>
+        <TitleRow1>
+          <TitleText>{`${title}`}</TitleText>
+          {rating && (
+            <DetailsRatingContainer>
+              <DetailsRating rating={rating} />
+            </DetailsRatingContainer>
+          )}
+        </TitleRow1>
+        <TitleRow2>
+          <TitleYear>{`${year ? new Date(year).getFullYear() : ""}`}</TitleYear>
+        </TitleRow2>
+      </Title>
+    </TitleWrapper>
+  );
 };
-
 
 export default DetailsTitle;

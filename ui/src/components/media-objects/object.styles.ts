@@ -2,13 +2,12 @@ import styled from "styled-components";
 import { animated } from 'react-spring';
 
 export const ObjectsContainer = styled.section`
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 97%;
-  margin-top: .5rem;
   margin-left: -1rem;
   padding: .25rem 0;
+  width: 100%;
 `;
 
 export const ObjectsWrapper = styled.ul<{columns?: number}>`
@@ -25,7 +24,6 @@ export const ObjectsWrapper = styled.ul<{columns?: number}>`
 `;
 
 export const Object = styled.li`
-  /* margin-right: 1rem; */
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -66,17 +64,16 @@ export const FallbackImage = styled.div<{failed?: boolean}>`
   }
   background: #2a2a2a;
   border-radius: .25rem;
-  /* display: ${p => p.failed ? "flex": "none"}; */
   margin-top: auto;
 `;
 
 export const ObjectHeader = styled.header`
-  font-family: "Poppins";
-  font-weight: 300;
-  padding-left: 1rem;
   color:  rgba(204,0,0,1);
-  font-size: 1rem;
+  font-family: "Poppins";
+  font-size: 1.2rem;
+  font-weight: 300;
   margin-bottom: .25rem;
+  padding-left: 1rem;
 `;
 
 export const MediaObjectContainer = animated.div;

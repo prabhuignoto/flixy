@@ -2,28 +2,40 @@ import styled from "styled-components";
 
 export const DetailsRatingWrapper = styled.div<{ rating?: number }>`
   align-items: center;
-  border-radius: .2rem;
-  box-shadow: inset 0 0 6px 3px rgba(0,0,0,0.25);
+  border-radius: 0.2rem;
+  box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.25);
   display: flex;
-  height: 1.75rem;
+  height: 100%;
   justify-content: center;
-  min-width: 2.5rem;
-  padding: .1rem;
-  background-color: ${({ rating }) => {
+  min-width: 3.5rem;
+  height: 3rem;
+  ${({ rating }) => {
     if (!rating) return "#fff";
 
+    let style = "";
+    let color = "#161616";
+
     if (rating <= 5) {
-      return "#AD8A56";
+      style = "background-color: #AD8A56";
+      color = "#fff";
     } else if (rating < 8) {
-      return "#D7D7D7";
+      style = "background-color: #D7D7D7";
     } else {
-      return "#ffd700";
+      style = "background-color: #ffd700";
     }
+
+    return `${style};
+    & span {
+      color: ${color}
+    }`;
   }};
 `;
 
 export const DetailsRatingValue = styled.span`
   font-family: "Poppins";
-  font-size: 1.25rem;
-  color: #2a2a2a;
+  font-size: 2rem;
+  font-weight: 400;
+  height: 100%;
+  display: flex;
+  align-items: center;
 `;

@@ -94,7 +94,7 @@ export default ({
       if (shouldLoadMore) {
         const cards = Math.abs(newItems.length - page * visibleElements);
         setLoadingCards(Array.from({ length: cards }).map((k, i) => i));
-        setTimeout(() => fetchMore(), 250);
+        setTimeout(() => fetchMore(), 0);
       }
 
       setMovies(newItems);
@@ -181,7 +181,10 @@ export default ({
 
   return (
     <MoviesWrapper ref={moviesRef}>
-      <ScrollLeft onClick={() => handleNav(NavDir.LEFT)}>
+      <ScrollLeft
+        onClick={() => handleNav(NavDir.LEFT)}
+        loading={loadingState === State.LOADING}
+      >
         <ChevronLeftIcon />
       </ScrollLeft>
       <MoviesView
@@ -192,9 +195,11 @@ export default ({
         movies={movies}
         handleSelection={handleSelection}
         loadingCards={loadingCards}
-
       />
-      <ScrollRight onClick={() => handleNav(NavDir.RIGHT)}>
+      <ScrollRight
+        onClick={() => handleNav(NavDir.RIGHT)}
+        loading={loadingState === State.LOADING}
+      >
         <ChevronRightIcon />
       </ScrollRight>
     </MoviesWrapper>

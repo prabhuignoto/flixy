@@ -8,13 +8,13 @@ enum LoaderSize {
 }
 
 const Wrapper = styled(animated.div)`
-  height: 100%;
-  width: 100%;
-  position: relative;
+  align-items: center;
   background: transparent;
   display: flex;
-  align-items: center;
+  height: 100%;
   justify-content: center;
+  position: relative;
+  width: 100%;
 `;
 
 const Loader: React.FunctionComponent<{ size?: LoaderSize }> = ({ size }) => {
@@ -32,11 +32,11 @@ const Loader: React.FunctionComponent<{ size?: LoaderSize }> = ({ size }) => {
         height={wh}
         viewBox="0 0 38 38"
         xmlns="http://www.w3.org/2000/svg"
-        stroke="#fff"
+        stroke="#bdbdbd"
       >
-        <g fill="none" fill-rule="evenodd">
-          <g transform="translate(1 1)" stroke-width="2">
-            <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+        <g fill="none" fillRule="evenodd">
+          <g transform="translate(1 1)" strokeWidth="2">
+            <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
             <path d="M36 18c0-9.94-8.06-18-18-18">
               <animateTransform
                 attributeName="transform"
