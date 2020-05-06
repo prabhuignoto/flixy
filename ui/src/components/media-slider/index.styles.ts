@@ -58,8 +58,8 @@ export const Footer = styled.footer`
 `;
 
 export const DetailsWrapper = styled.div`
-  height: 0;
   margin: 0 auto;
-  min-height: 700px;
+  min-height: 550px;
   width: 100%;
+  height: 1px;
 `;

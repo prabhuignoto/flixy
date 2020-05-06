@@ -9,6 +9,7 @@ export const DetailsRatingWrapper = styled.div<{ rating?: number }>`
   justify-content: center;
   min-width: 3.5rem;
   height: 3rem;
+  margin-top:.5rem;
   ${({ rating }) => {
     if (!rating) return "#fff";
 

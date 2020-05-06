@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import {useSpring, animated} from "react-spring";
 
-enum LoaderSize {
+export enum LoaderSize {
   small = "SMALL",
   large = "LARGE",
 }
@@ -18,7 +18,7 @@ const Wrapper = styled(animated.div)`
 `;
 
 const Loader: React.FunctionComponent<{ size?: LoaderSize }> = ({ size }) => {
-  const wh = size === LoaderSize.small ? 38 : 45;
+  const wh = size === LoaderSize.small ? 25 : 45;
   const props = useSpring({
     opacity: 1,
     from: {
@@ -32,7 +32,7 @@ const Loader: React.FunctionComponent<{ size?: LoaderSize }> = ({ size }) => {
         height={wh}
         viewBox="0 0 38 38"
         xmlns="http://www.w3.org/2000/svg"
-        stroke="#bdbdbd"
+        stroke="#979797"
       >
         <g fill="none" fillRule="evenodd">
           <g transform="translate(1 1)" strokeWidth="2">

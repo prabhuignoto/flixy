@@ -16,7 +16,7 @@ export const CardContainer = styled(animated.div)<{
   justify-content: center;
   border-radius: 0.1rem;
   height: 100%;
-  width: 200px;
+  width: 180px;
   cursor: pointer;
   position: relative;
   border: ${(p) =>

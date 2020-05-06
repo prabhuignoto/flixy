@@ -11,15 +11,15 @@ export const MoviesContainer = styled(animated.div)<{
 }>`
   ${({ expandFull, size }) =>
     expandFull
-      ? `grid-template-rows: repeat(3, 300px);`
-      : `grid-template-rows: repeat(1, 300px);`};
+      ? `grid-template-rows: repeat(3, 260px);`
+      : `grid-template-rows: repeat(1, 260px);`};
   align-content: flex-start;
   color: red;
   display: grid;
   grid-auto-flow: row;
   grid-column-gap: 1.25rem;
   grid-row-gap: 1.25rem;
-  grid-template-columns: repeat(${p => p.columns}, 200px);
+  grid-template-columns: repeat(${p => p.columns}, 180px);
   height: 100%;
   justify-content: center;
   overflow-x: hidden;

@@ -19,7 +19,7 @@ export const TitleWrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: flex-start;
-  margin-top: 1rem;
+  margin-top: .5rem;
   width: 100%;
 `;
 
@@ -30,7 +30,8 @@ export const DetailsRatingContainer = styled.div`
 
 export const TitleYear = styled.span`
   color: rgba(204,0,0,0.85);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  margin-left: 1rem;
 `;
 
 export const TitleText = styled.span`
@@ -49,4 +50,25 @@ export const TitleRow1 = styled.div`
 export const TitleRow2 = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const AttributesContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: auto;
+  margin-right: 1rem;
+  padding-left: 1.5rem;
+`;
+
+export const AttributeContainer = styled.div`
+  margin-right: .75rem;
+`;
+
+export const GenresContainer = styled.div`
+  align-items: center;
+  display: flex;
+  margin-bottom: .25rem;
+  flex-wrap: wrap;
+  margin-top: .25rem;
 `;

@@ -8,7 +8,7 @@ export const PosterWrapper = styled.div<{size?: CardSize}>`
 `;
 
 export const CardImage = styled.img<{hide?: boolean}>`
-  height: 100%;
+  max-height: 100%;
   max-width: 100%;
 `;
 

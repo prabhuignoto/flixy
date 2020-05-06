@@ -4,6 +4,7 @@ import { Credits } from "../../models/Credits";
 import { cast } from "../../gqls/cast";
 import MediaObjects from "../../components/media-objects/media-objects";
 import { MediaObject } from "./../../models/MediaObject";
+import styled from "styled-components";
 
 interface CastResultDetails {
   getCredits: Credits;
@@ -14,6 +15,11 @@ interface CastAndCrewModel {
   title?: string;
   isCast?: boolean;
 };
+
+const MediaObjectsWrapper = styled.div`
+  margin: .5rem 0;
+  height: 10rem;
+`;
 
 const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
   ({ movieId }) => {
@@ -50,26 +56,30 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
       view = (
         <>
           {cast && (
-            <MediaObjects
-              title={"Movie Cast"}
-              id={+id}
-              items={cast.map<MediaObject>(({ name, profile_path, id }) => ({
-                name: name,
-                path: profile_path,
-                id,
-              }))}
-            />
+            <MediaObjectsWrapper>
+              <MediaObjects
+                title={"Movie Cast"}
+                id={+id}
+                items={cast.map<MediaObject>(({ name, profile_path, id }) => ({
+                  name: name,
+                  path: profile_path,
+                  id,
+                }))}
+              />
+            </MediaObjectsWrapper>
           )}
           {crew && (
-            <MediaObjects
-              title={"Movie Crew"}
-              id={+id}
-              items={crew.map<MediaObject>(({ name, profile_path, id }) => ({
-                name: name,
-                path: profile_path,
-                id,
-              }))}
-            />
+            <MediaObjectsWrapper>
+              <MediaObjects
+                title={"Movie Crew"}
+                id={+id}
+                items={crew.map<MediaObject>(({ name, profile_path, id }) => ({
+                  name: name,
+                  path: profile_path,
+                  id,
+                }))}
+              />
+            </MediaObjectsWrapper>
           )}
         </>
       );

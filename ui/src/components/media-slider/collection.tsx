@@ -106,7 +106,7 @@ export default ({
     const nativeElement = moviesRef.current;
     if (nativeElement) {
       const clientWidth = nativeElement.clientWidth;
-      const columns = Math.floor(clientWidth / 225);
+      const columns = Math.floor(clientWidth / 200);
       setVisibleColumns(columns);
       visibleItems.current = expandFull && !showDetails ? columns * 3 : columns;
     }
@@ -118,7 +118,7 @@ export default ({
       const nativeElement = moviesRef.current;
       if (nativeElement) {
         const clientWidth = nativeElement.clientWidth;
-        const cols = Math.floor(clientWidth / 225);
+        const cols = Math.floor(clientWidth / 200);
         const columns = expandFull && !showDetails ? cols * 3 : cols;
         setLazyInputs({
           visibleElements: columns,

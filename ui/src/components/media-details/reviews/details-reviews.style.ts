@@ -50,7 +50,8 @@ export const ReviewsHeader = styled.header`
   display: flex;
   font-size: 1.25rem;
   font-weight: 500;
-  height:5%;
+  height: 2rem;
+  margin-top: .5rem;
 `;
 
 export const ReadMoreControl = styled.div`
@@ -67,16 +68,15 @@ export const ReadMoreControl = styled.div`
 `;
 
 export const ReviewText = styled.p<{showFull?: boolean}>`
-  ${p => !p.showFull ? 'max-height: 150px;': ''};
+  ${p => !p.showFull ? 'max-height: 150px;': 'max-height: 2000px'};
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   margin: 0;
-  margin-top: 1rem;
 `;
 
 export const GradientCover = styled.span`
-  background: linear-gradient(0deg, #191919 0%,  rgba(25,25,25, .25) 100%);
+  background: linear-gradient(0deg, #191919 0%,  rgba(25,25,25, .35) 100%);
   bottom: 0;
   height: 3.5rem;
   position: absolute;

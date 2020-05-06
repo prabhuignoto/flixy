@@ -2,16 +2,19 @@ import React from "react";
 import { MediaObject as MediaObjectModel } from "../../models/MediaObject";
 import {
   ObjectsWrapper,
-  Object,
-  ObjectImage,
-  ObjectName,
-  FallbackImage,
-  ObjectHeader,
   ObjectsContainer,
   MediaObjectContainer,
-} from "./object.styles";
-import { UserIcon } from "./../icons/index";
+  ScrollLeftBtn,
+  ScrollRightBtn,
+} from "./media-objects.styles";
+import { ChevronLeftIcon, ChevronRightIcon } from "./../icons/index";
 import { FixedSizeList } from "react-window";
+import MediaObjectView from "./media-object";
+
+enum ScrollDir {
+  LEFT = "LEFT",
+  RIGHT = "RIGHT",
+}
 
 const MediaObjects: React.FunctionComponent<{
   id: number;
@@ -20,20 +23,54 @@ const MediaObjects: React.FunctionComponent<{
 }> = React.memo(
   ({ items, title }) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
+    const rWindowRef = React.useRef<HTMLDivElement>(null);
     const [config, setConfig] = React.useState({
       show: false,
       clientWidth: 0,
       count: 0,
     });
+    const [disableRightNav, setDisableRightNav] = React.useState(false);
+    const [disableLeftNav, setDisableLeftNav] = React.useState(true);
+
+    const handleNav = (dir: ScrollDir) => {
+      if (rWindowRef && rWindowRef.current) {
+        const { clientWidth, scrollWidth } = rWindowRef.current;
+
+        if (dir === ScrollDir.RIGHT) {
+          rWindowRef.current.scrollLeft += Math.round(
+            config.clientWidth * 0.85
+          );
+        } else {
+          rWindowRef.current.scrollLeft -= Math.round(
+            config.clientWidth * 0.85
+          );
+        }
+
+        const scrolledWidth = clientWidth + rWindowRef.current.scrollLeft;
+
+        if (scrolledWidth === scrollWidth) {
+          setDisableRightNav(true);
+        }
+
+        if (scrolledWidth > clientWidth) {
+          setDisableLeftNav(false);
+        }
+        if (scrolledWidth === clientWidth) {
+          setDisableLeftNav(true);
+        }
+        if (scrolledWidth < scrollWidth) {
+          setDisableRightNav(false);
+        }
+      }
+    };
 
     React.useEffect(() => {
-      debugger;
-      const width = containerRef && containerRef.current?.clientWidth;
+      if (containerRef && containerRef.current) {
+        const { clientWidth, scrollWidth } = containerRef.current;
 
-      if (width) {
         setConfig({
           show: true,
-          clientWidth: width,
+          clientWidth,
           count: items.length,
         });
       }
@@ -44,14 +81,15 @@ const MediaObjects: React.FunctionComponent<{
     if (config.show) {
       view = (
         <>
-          <ObjectHeader>{title}</ObjectHeader>
+          {/* <ObjectHeader>{title}</ObjectHeader> */}
           <ObjectsWrapper>
             <FixedSizeList
               layout="horizontal"
               itemCount={config.count}
               itemSize={120}
               width={config.clientWidth}
-              height={180}
+              height={140}
+              outerRef={rWindowRef}
               style={{ overflow: "hidden", scrollBehavior: "smooth" }}
             >
               {({ index, style }) => {
@@ -61,7 +99,7 @@ const MediaObjects: React.FunctionComponent<{
                     key={`${id}-${index}-${name}`}
                     style={style}
                   >
-                    <MediaObject name={name} path={path} id={id} />
+                    <MediaObjectView name={name} path={path} id={id} />
                   </MediaObjectContainer>
                 );
               }}
@@ -73,29 +111,22 @@ const MediaObjects: React.FunctionComponent<{
       view = null;
     }
 
-    return <ObjectsContainer ref={containerRef}>{view}</ObjectsContainer>;
-  },
-  (prev, current) => prev.id === current.id
-);
-
-const MediaObject: React.FunctionComponent<MediaObjectModel> = React.memo(
-  ({ path, id, name }) => {
-    const [loaded, setLoaded] = React.useState(false);
     return (
-      <Object>
-        {path ? (
-          <ObjectImage
-            src={`http://image.tmdb.org/t/p/w200/${path}`}
-            onLoad={() => setLoaded(true)}
-            loaded={loaded}
-          ></ObjectImage>
-        ) : (
-          <FallbackImage>
-            <UserIcon color="#4b4848" />
-          </FallbackImage>
-        )}
-        <ObjectName>{name}</ObjectName>
-      </Object>
+      <ObjectsContainer ref={containerRef}>
+        <ScrollLeftBtn
+          onClick={() => handleNav(ScrollDir.LEFT)}
+          disable={disableLeftNav}
+        >
+          <ChevronLeftIcon />
+        </ScrollLeftBtn>
+        {view}
+        <ScrollRightBtn
+          onClick={() => handleNav(ScrollDir.RIGHT)}
+          disable={disableRightNav}
+        >
+          <ChevronRightIcon />
+        </ScrollRightBtn>
+      </ObjectsContainer>
     );
   },
   (prev, current) => prev.id === current.id

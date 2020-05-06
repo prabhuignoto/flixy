@@ -9,7 +9,7 @@ export const DetailsCardWrapper = styled(animated.div)`
   justify-content: space-around;
   position: relative;
   padding: 1rem .5rem;
-  margin-top: 1.5rem;
+  margin-top: .5rem;
   flex-wrap: wrap;
 `;
 
@@ -53,7 +53,7 @@ export const Title = styled(Font)`
   color: #fff;
   font-size: 1.5rem;
   font-weight: 400;
-  margin-top: 1rem;
+  margin-top: .5rem;
   /* padding-left: 1.5rem; */
   text-align: left;
 `;
@@ -62,24 +62,12 @@ export const Overview = styled(Title)`
   color: #fff;
   font-size: .95rem;
   font-weight: 300;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
   width: 95%;
 `;
 
 export const Budget = styled.div``;
 
-export const AttributesContainer = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: space-evenly;
-  margin-left: auto;
-  margin-right: 1rem;
-  padding-left: 1.5rem;
-`;
-
-export const AttributeContainer = styled.div`
-  margin-right: .75rem;
-`;
 
 export const CloseDetails = styled.button`
   background: none;
@@ -91,14 +79,6 @@ export const CloseDetails = styled.button`
   right: 0;
   top: -2rem;
   width: 3rem;
-`;
-
-export const GenresContainer = styled.div`
-  align-items: center;
-  display: flex;
-  margin-bottom: .25rem;
-  flex-wrap: wrap;
-  margin-top: .25rem;
 `;
 
 export const ReviewsWrapper = styled.div`

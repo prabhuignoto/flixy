@@ -19,28 +19,26 @@ interface ReviewsModel {
 }
 
 const Reviews: React.FunctionComponent<ReviewsModel> = ({ items }) => {
-  const trail = useTrail(items.length, {
-    opacity: 1,
-    from: {
-      opacity: 0,
-    },
-    config: config.gentle,
-  });
+  // const trail = useTrail(items.length, {
+  //   opacity: 1,
+  //   from: {
+  //     opacity: 0,
+  //   },
+  //   config: config.gentle,
+  // });
 
   return (
     <ReviewsContainer>
       <ReviewsHeader>Reviews</ReviewsHeader>
       <Scrollbars>
         <ReviewsWrapper>
-          {trail.map((props, index) => {
-            const { content, author, id } = items[index];
+          {items.map(({ content, author, id }, index) => {
             return (
               <Review
                 content={content}
                 author={author}
                 id={id}
                 key={id}
-                style={props}
                 index={index}
               />
             );

@@ -14,10 +14,9 @@ export const MoviesControlItem = styled.li`
 
 export const ScrollButton = styled.button`
   background: rgba(0, 0, 0, 0.9);
-  border-radius: 50%;
   border: none;
   cursor: pointer;
-  height: 3.5rem;
+  height: 100%;
   outline: none;
   position: absolute;
   top: 50%;

@@ -32,7 +32,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
     selectedMovie: 0,
   });
   const [props, set] = useSpring(() => ({
-    height: "320px",
+    height: "280px",
     opacity: 1,
   }));
 
@@ -43,12 +43,12 @@ const SliderView: React.FunctionComponent<Slider> = ({
   React.useEffect(() => {
     if (!expandFull || showDetails.state) {
       set({
-        height: "320px",
+        height: "280px",
         opacity: 1,
       });
     } else {
       set({
-        height: `${320 * 3}px`,
+        height: `${280 * 3}px`,
         opacity: 1,
       });
     }
