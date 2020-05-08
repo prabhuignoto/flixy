@@ -6,10 +6,14 @@ export const ObjectsContainer = styled.section`
   background: black;
   border-radius: .2rem;
   display: flex;
-  height: 100%;
+  height: 1px;
+  min-height: 9rem;
   padding: 0;
   position: relative;
   width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0;
 `;
 
 export const ObjectsWrapper = styled.ul<{ columns?: number }>`
@@ -19,16 +23,6 @@ export const ObjectsWrapper = styled.ul<{ columns?: number }>`
   padding: 0;
   scroll-behavior: smooth;
   width: 100%;
-`
-
-export const ObjectHeader = styled.header`
-  align-self: flex-start;
-  color:  rgba(204,0,0,1);
-  font-family: "Poppins";
-  font-size: 1.2rem;
-  font-weight: 300;
-  margin-bottom: .25rem;
-  padding-left: 3rem;
 `;
 
 export const Scroll = styled.div<{ disable?: boolean }>`

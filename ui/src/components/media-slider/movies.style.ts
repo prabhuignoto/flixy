@@ -11,7 +11,7 @@ export const MoviesContainer = styled(animated.div)<{
 }>`
   ${({ expandFull, size }) =>
     expandFull
-      ? `grid-template-rows: repeat(3, 260px);`
+      ? `grid-template-rows: repeat(2, 260px);`
       : `grid-template-rows: repeat(1, 260px);`};
   align-content: flex-start;
   color: red;
@@ -27,5 +27,5 @@ export const MoviesContainer = styled(animated.div)<{
   position: relative;
   scroll-behavior: smooth;
   width: 100%;
-  padding: 1rem 0;
+  padding: .1rem 0;
 `;

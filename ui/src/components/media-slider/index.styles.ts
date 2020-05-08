@@ -6,7 +6,6 @@ export const Wrapper = styled(animated.div) <{ expand?: number }>`
   border-radius: .25rem;
   display: flex;
   flex-direction: column;
-  margin: .5rem 0;
   width: 100%; 
 `;
 
@@ -21,6 +20,7 @@ export const Header = styled.header`
   padding-top: 1rem;
   text-align: left;
   width: 100%;
+  padding-left: 4rem;
 `;
 
 export const MoviesWrapper = styled(animated.div) <{ expand?: number }>`
@@ -59,7 +59,6 @@ export const Footer = styled.footer`
 
 export const DetailsWrapper = styled.div`
   margin: 0 auto;
-  min-height: 550px;
   width: 100%;
-  height: 1px;
+  /* height: 1px; */
 `;

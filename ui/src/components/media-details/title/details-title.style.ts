@@ -6,7 +6,7 @@ const Font = styled.div`
 
 export const Title = styled(Font)`
   color: #fff;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 400;
   overflow: hidden;
   text-align: left;
@@ -30,7 +30,7 @@ export const DetailsRatingContainer = styled.div`
 
 export const TitleYear = styled.span`
   color: rgba(204,0,0,0.85);
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-left: 1rem;
 `;
 

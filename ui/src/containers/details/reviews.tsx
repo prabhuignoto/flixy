@@ -53,7 +53,7 @@ const MovieDetails: React.FunctionComponent<{
     let view;
 
     if (!loading && data && data.id) {
-      view = <Reviews items={data.results} />;
+      view = <Reviews items={data.results} id={movieId} />;
     } else {
       view = <Loader />;
     }

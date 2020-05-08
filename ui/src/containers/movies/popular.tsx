@@ -55,7 +55,7 @@ const TopRated: React.FunctionComponent = () => {
     view = (
       <Slider
         movies={[]}
-        title="Trending"
+        title="Popular"
         fetchMore={handleFetchMore}
         totalResults={0}
         loadingState={LoadingState.LOADING}
@@ -77,6 +77,7 @@ const TopRated: React.FunctionComponent = () => {
         title="Trending"
         fetchMore={handleFetchMore}
         totalResults={movieData.total_results ? movieData.total_results : 0}
+        loadingState={LoadingState.LOADED}
       ></Slider>
     );
   }

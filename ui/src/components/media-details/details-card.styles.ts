@@ -8,9 +8,13 @@ export const DetailsCardWrapper = styled(animated.div)`
   height: 100%;
   justify-content: space-around;
   position: relative;
-  padding: 1rem .5rem;
+  /* padding: 1rem .5rem; */
   margin-top: .5rem;
   flex-wrap: wrap;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
 `;
 
 export const DetailsWrapper = styled.section`
@@ -76,9 +80,11 @@ export const CloseDetails = styled.button`
   height: 3rem;
   outline: none;
   position: absolute;
-  right: 0;
-  top: -2rem;
+  right: 1rem;
+  top: .25rem;
   width: 3rem;
+  z-index:10;
+  border-radius: 50%;
 `;
 
 export const ReviewsWrapper = styled.div`
@@ -95,8 +101,8 @@ export const Box2 = styled.div`
   display: flex;
   width: 100%;
   align-items: flex-start;
-  justify-content: center;
-  padding-left: 0;
+  justify-content: flex-start;
+  padding-left: 1.5rem;
   margin-top: 1rem;
 `;
 

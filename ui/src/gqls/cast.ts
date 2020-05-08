@@ -16,6 +16,8 @@ export const cast = gql`
         profile_path
         credit_id
         id
+        job
+        department
       }
   }
 }`;

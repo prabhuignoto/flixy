@@ -15,10 +15,8 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
   ({ path, name }) => {
     const props = useSpring({
       opacity: 1,
-      filter: 'blur(0)',
       from: {
         opacity: 0,
-        filter: 'blur(5px)'
       },
       delay: 0,
       config: config.default,

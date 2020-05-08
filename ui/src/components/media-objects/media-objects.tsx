@@ -38,11 +38,11 @@ const MediaObjects: React.FunctionComponent<{
 
         if (dir === ScrollDir.RIGHT) {
           rWindowRef.current.scrollLeft += Math.round(
-            config.clientWidth * 0.85
+            config.clientWidth * 0.75
           );
         } else {
           rWindowRef.current.scrollLeft -= Math.round(
-            config.clientWidth * 0.85
+            config.clientWidth * 0.75
           );
         }
 
@@ -86,7 +86,7 @@ const MediaObjects: React.FunctionComponent<{
             <FixedSizeList
               layout="horizontal"
               itemCount={config.count}
-              itemSize={120}
+              itemSize={110}
               width={config.clientWidth}
               height={140}
               outerRef={rWindowRef}

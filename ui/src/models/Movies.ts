@@ -11,4 +11,5 @@ export interface Movies {
   onSelection: (selectedMovie?: Movie, clear?: boolean) => void;
   showDetails: boolean;
   selectedIndex: number | null;
+  id?: string;
 }

@@ -38,8 +38,8 @@ export const ChevronRightIcon = styled(ChevronRight)`
   color: #cc0000;
 `;
 
-export const CloseIcon = styled(X)`
-  color: #cc0000;
+export const CloseIcon = styled(X)<{color?: string}>`
+  color: ${p => p.color};
 `;
 
 export const CheckIcon = styled(Check)`

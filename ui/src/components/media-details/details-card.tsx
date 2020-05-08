@@ -10,18 +10,17 @@ import {
   CastAndCrewWrapper
 } from "./details-card.styles";
 import Movie from "../../models/Movie";
-import Poster from "../media-poster/poster";
-import { CardSize } from "../../models/CardSize";
 import { CloseIcon } from "./../icons/index";
 import DetailsTitle from "./title/details-title";
 import { CastAndCrew } from "./details-cast-and-crew";
 import Reviews from "../../containers/details/reviews";
+import Loader from "../media-loader";
 import { useSpring, config } from "react-spring";
 
 type CardDetail = Movie & { handleClose?: () => void; isLoading: boolean };
 
-export default React.memo(
-  ({
+export default 
+  React.memo(({
     title,
     handleClose,
     id,
@@ -37,16 +36,17 @@ export default React.memo(
   }: CardDetail) => {
     const wrapperRef = React.useRef<HTMLDivElement>(null);
 
-    // const props = useSpring({
-    //   opacity: 1,
-    //   from: {
-    //     opacity: 0,
-    //   },
-    //   config: config.gentle,
-    // });
+    const props = useSpring({
+      opacity: 1,
+      from: {
+        opacity: 0
+      },
+      delay: 200,
+      config: config.gentle
+    })
 
     return (
-      <DetailsCardWrapper ref={wrapperRef}>
+      <DetailsCardWrapper ref={wrapperRef} style={props}>
         {!isLoading ? (
           <>
             <DetailsWrapper>
@@ -75,13 +75,11 @@ export default React.memo(
             </ReviewsWrapper>
           </>
         ) : (
-          <div>Test</div>
+          <Loader />
         )}
         <CloseDetails onClick={handleClose}>
-          <CloseIcon />
+          <CloseIcon color="#fff"/>
         </CloseDetails>
       </DetailsCardWrapper>
     );
-  },
-  (prev, current) => prev.id === current.id
-);
+  }, (prev, current) => prev.id === current.id)

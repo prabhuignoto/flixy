@@ -7,8 +7,8 @@ export const DetailsRatingWrapper = styled.div<{ rating?: number }>`
   display: flex;
   height: 100%;
   justify-content: center;
-  min-width: 3.5rem;
-  height: 3rem;
+  min-width: 3rem;
+  height: 2.5rem;
   margin-top:.5rem;
   ${({ rating }) => {
     if (!rating) return "#fff";
@@ -34,7 +34,7 @@ export const DetailsRatingWrapper = styled.div<{ rating?: number }>`
 
 export const DetailsRatingValue = styled.span`
   font-family: "Poppins";
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 400;
   height: 100%;
   display: flex;

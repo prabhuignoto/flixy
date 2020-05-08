@@ -11,12 +11,11 @@ import {
 } from "./index.styles";
 import Movies from "./collection";
 import { Button } from "../commons/styles";
-import { useSpring } from "react-spring";
+import { useSpring, config } from "react-spring";
 import { ArrowDownIcon, ArrowUpIcon } from "../icons";
 import Slider from "../../models/Slider";
 import Movie from "../../models/Movie";
 import MovieDetails from "../../containers/details/movieDetails";
-import {nanoid} from "nanoid";
 
 const SliderView: React.FunctionComponent<Slider> = ({
   movies,
@@ -24,6 +23,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
   fetchMore,
   totalResults,
   loadingState,
+  id
 }: Slider) => {;
   const [expandFull, setExpandFull] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -33,23 +33,28 @@ const SliderView: React.FunctionComponent<Slider> = ({
   });
   const [props, set] = useSpring(() => ({
     height: "280px",
-    opacity: 1,
+    config: config.default,
+    delay: 0
   }));
 
   const handleExpandFull = React.useCallback(() => setExpandFull(!expandFull), [
     expandFull,
   ]);
-
+  
   React.useEffect(() => {
     if (!expandFull || showDetails.state) {
       set({
         height: "280px",
-        opacity: 1,
+        from: {
+          height: `${280 * 2}px`,
+        }
       });
     } else {
       set({
-        height: `${280 * 3}px`,
-        opacity: 1,
+        height: `${280 * 2}px`,
+        from: {
+          height: "280px"
+        }
       });
     }
   }, [expandFull, showDetails]);
@@ -99,15 +104,17 @@ const SliderView: React.FunctionComponent<Slider> = ({
             onSelection={handleMovieSelection}
             showDetails={showDetails.state}
             selectedIndex={showDetails.selectedMovie}
+            id={id}
           ></Movies>
         </MoviesWrapper>
       }
 
-      {showDetails.state &&(
+      {(
         <DetailsWrapper>
           <MovieDetails
             movieId={showDetails.selectedMovie}
             handleClose={onDetailsClose}
+            hide={!showDetails.state}
           />
         </DetailsWrapper>
       )}

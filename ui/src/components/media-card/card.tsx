@@ -4,7 +4,7 @@ import { CardContainer, CardCheckedWrapper, ImageIconWrapper } from "./card.styl
 import { CardSize } from "../../models/CardSize";
 import Poster from "../media-poster/poster";
 import { CheckIcon, ImageIcon } from "../icons";
-import { useSpring } from "react-spring";
+import { useSpring, config } from "react-spring";
 
 type MovieType = Movie & {
   index?: number;
@@ -36,7 +36,9 @@ export default React.memo(
       opacity: 1,
       from: {
         opacity: 0,
-      }
+      },
+      delay: 0,
+      config: config.default
     })
 
     return (
