@@ -7,6 +7,7 @@ export const Wrapper = styled(animated.div) <{ expand?: number }>`
   display: flex;
   flex-direction: column;
   width: 100%; 
+  overflow: hidden;
 `;
 
 export const Header = styled.header`

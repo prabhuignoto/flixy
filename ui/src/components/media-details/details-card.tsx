@@ -2,7 +2,6 @@ import * as React from "react";
 import {
   DetailsCardWrapper,
   DetailsWrapper,
-  DetailsPosterWrapper,
   CloseDetails,
   Overview,
   ReviewsWrapper,
@@ -15,12 +14,11 @@ import DetailsTitle from "./title/details-title";
 import { CastAndCrew } from "./details-cast-and-crew";
 import Reviews from "../../containers/details/reviews";
 import Loader from "../media-loader";
-import { useSpring, config } from "react-spring";
 
 type CardDetail = Movie & { handleClose?: () => void; isLoading: boolean };
 
 export default 
-  React.memo(({
+  ({
     title,
     handleClose,
     id,
@@ -30,23 +28,12 @@ export default
     release_date,
     isLoading,
     original_language,
-    poster_path,
-    vote_average,
-    video,
+    vote_average
   }: CardDetail) => {
     const wrapperRef = React.useRef<HTMLDivElement>(null);
 
-    const props = useSpring({
-      opacity: 1,
-      from: {
-        opacity: 0
-      },
-      delay: 200,
-      config: config.gentle
-    })
-
     return (
-      <DetailsCardWrapper ref={wrapperRef} style={props}>
+      <DetailsCardWrapper ref={wrapperRef}>
         {!isLoading ? (
           <>
             <DetailsWrapper>
@@ -62,9 +49,6 @@ export default
               <Overview>{overview}</Overview>
               
               <Box2>
-                {/* <DetailsPosterWrapper>
-                  <Poster poster_path={poster_path} size={CardSize.large} />
-                </DetailsPosterWrapper> */}
                 <CastAndCrewWrapper>
                   <CastAndCrew id={id} />
                 </CastAndCrewWrapper>
@@ -82,4 +66,4 @@ export default
         </CloseDetails>
       </DetailsCardWrapper>
     );
-  }, (prev, current) => prev.id === current.id)
+  };

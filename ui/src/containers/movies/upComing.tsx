@@ -61,7 +61,7 @@ const TopRated: React.FunctionComponent = () => {
         loadingState={LoadingState.LOADING}
       ></Slider>
     );
-  } else {
+  } else if (movieData.results.length) {
     view = (
       <Slider
         movies={

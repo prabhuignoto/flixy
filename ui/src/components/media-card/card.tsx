@@ -8,9 +8,9 @@ import { useSpring, config } from "react-spring";
 
 type MovieType = Movie & {
   index?: number;
+  loadingCard?: boolean;
   onSelect?: (id: number) => void;
   size?: CardSize;
-  loadingCard?: boolean;
   style?: any
 };
 
@@ -35,7 +35,7 @@ export default React.memo(
     const props = useSpring({
       opacity: 1,
       from: {
-        opacity: 0,
+        opacity: 0.7,
       },
       delay: 0,
       config: config.default

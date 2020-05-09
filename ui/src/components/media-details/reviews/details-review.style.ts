@@ -10,13 +10,13 @@ export const ReviewWrapper = styled(animated.li)`
 `;
 
 export const ReviewContent = styled(animated.div)`
+  color: #bdbdbd;
   font-size: 0.85rem;
   font-weight: 300;
   overflow: hidden;
   position: relative;
   text-align: left;
   width: 100%;
-  color: #bdbdbd;
 `;
 
 export const ReviewAuthor = styled.div`
@@ -41,8 +41,8 @@ export const ReadMoreControl = styled.div`
 
 export const ReviewText = styled.p<{ showFull?: boolean }>`
   ${p => !p.showFull ? 'max-height: 150px;' : 'max-height: 2000px'};
-  display: flex;
   align-items: flex-start;
+  display: flex;
   justify-content: flex-start;
   margin: 0;
 `;
@@ -56,15 +56,15 @@ export const GradientCover = styled.span`
 `;
 
 export const ReviewHeader = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
   margin-bottom: .1rem;
 `;
 
 export const ReviewHeaderIcon = styled.span`
-  width: 1.25rem;
-  height: 1.25rem;
   display: flex;
+  height: 1.25rem;
+  width: 1.25rem;
   & svg {
     width: 100%;
     height: 100%;

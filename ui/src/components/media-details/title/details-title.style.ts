@@ -6,12 +6,12 @@ const Font = styled.div`
 
 export const Title = styled(Font)`
   color: #fff;
+  display: flex;
+  flex-direction: column;
   font-size: 1.5rem;
   font-weight: 400;
   overflow: hidden;
   text-align: left;
-  display: flex;
-  flex-direction: column;
   width: 100%;
 `;
 
@@ -30,26 +30,26 @@ export const DetailsRatingContainer = styled.div`
 
 export const TitleYear = styled.span`
   color: rgba(204,0,0,0.85);
-  font-size: 1rem;
+  font-size: 1.25rem;
   margin-left: 1rem;
 `;
 
 export const TitleText = styled.span`
   max-width: 85%;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
 `;
 
 export const TitleRow1 = styled.div`
-  width: 100%;
-  display: flex;
   align-items: center;
+  display: flex;
+  width: 100%;
 `;
 
 export const TitleRow2 = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
 `;
 
 export const AttributesContainer = styled.div`
@@ -68,7 +68,7 @@ export const AttributeContainer = styled.div`
 export const GenresContainer = styled.div`
   align-items: center;
   display: flex;
-  margin-bottom: .25rem;
   flex-wrap: wrap;
+  margin-bottom: .25rem;
   margin-top: .25rem;
 `;

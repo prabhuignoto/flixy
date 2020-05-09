@@ -6,8 +6,9 @@
   justify-content: flex-start;
   width: 100%;
   margin: 0 auto;
-  height: 2000px;
-  overflow: hidden;
+  min-height: 2000px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .App-logo {

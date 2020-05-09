@@ -8,7 +8,6 @@ export const DetailsCardWrapper = styled(animated.div)`
   height: 100%;
   justify-content: space-around;
   position: relative;
-  /* padding: 1rem .5rem; */
   margin-top: .5rem;
   flex-wrap: wrap;
   position: absolute;
@@ -66,7 +65,7 @@ export const Overview = styled(Title)`
   color: #fff;
   font-size: .95rem;
   font-weight: 300;
-  margin-bottom: .5rem;
+  margin: .5rem 0;
   width: 95%;
 `;
 

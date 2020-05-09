@@ -13,7 +13,7 @@ import Movies from "./collection";
 import { Button } from "../commons/styles";
 import { useSpring, config } from "react-spring";
 import { ArrowDownIcon, ArrowUpIcon } from "../icons";
-import Slider from "../../models/Slider";
+import Slider, { LoadingState } from "../../models/Slider";
 import Movie from "../../models/Movie";
 import MovieDetails from "../../containers/details/movieDetails";
 
@@ -23,39 +23,44 @@ const SliderView: React.FunctionComponent<Slider> = ({
   fetchMore,
   totalResults,
   loadingState,
-  id
-}: Slider) => {;
+  id,
+}: Slider) => {
   const [expandFull, setExpandFull] = React.useState(false);
+  const firstRun = React.useRef(true);
   const [page, setPage] = React.useState(1);
   const [showDetails, setShowDetails] = React.useState({
     state: false,
     selectedMovie: 0,
   });
-  const [props, set] = useSpring(() => ({
+  const [props, setProps] = useSpring(() => ({
     height: "280px",
     config: config.default,
-    delay: 0
+    delay: 0,
   }));
 
   const handleExpandFull = React.useCallback(() => setExpandFull(!expandFull), [
     expandFull,
   ]);
-  
+
   React.useEffect(() => {
-    if (!expandFull || showDetails.state) {
-      set({
-        height: "280px",
-        from: {
-          height: `${280 * 2}px`,
-        }
-      });
+    if (firstRun.current) {
+      firstRun.current = false;
     } else {
-      set({
-        height: `${280 * 2}px`,
-        from: {
-          height: "280px"
-        }
-      });
+      if (!expandFull || showDetails.state) {
+        setProps({
+          height: "280px",
+          from: {
+            height: `${280 * 2}px`,
+          },
+        });
+      } else {
+        setProps({
+          height: `${280 * 2}px`,
+          from: {
+            height: "280px",
+          },
+        });
+      }
     }
   }, [expandFull, showDetails]);
 
@@ -71,10 +76,13 @@ const SliderView: React.FunctionComponent<Slider> = ({
       if (clear) {
         setShowDetails({ state: false, selectedMovie: 0 });
       } else {
-        setShowDetails({ state: true, selectedMovie: selectedMovie?.id || 0 });
+        setShowDetails({
+          state: true,
+          selectedMovie: selectedMovie?.id || 0,
+        });
       }
     },
-    [showDetails]
+    []
   );
 
   const onDetailsClose = React.useCallback(
@@ -109,7 +117,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
         </MoviesWrapper>
       }
 
-      {(
+      {showDetails.state && (
         <DetailsWrapper>
           <MovieDetails
             movieId={showDetails.selectedMovie}

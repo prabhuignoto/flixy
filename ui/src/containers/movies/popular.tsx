@@ -45,9 +45,7 @@ const TopRated: React.FunctionComponent = () => {
     setLoading(false);
   };
 
-  const handleFetchMore = (page: number) => {
-    getMovies(page);
-  };
+  const handleFetchMore = (page: number) => getMovies(page);
 
   let view = null;
 
@@ -61,7 +59,7 @@ const TopRated: React.FunctionComponent = () => {
         loadingState={LoadingState.LOADING}
       ></Slider>
     );
-  } else {
+  } else if (movieData.results.length) {
     view = (
       <Slider
         movies={

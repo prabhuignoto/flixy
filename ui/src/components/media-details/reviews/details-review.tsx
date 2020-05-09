@@ -37,10 +37,6 @@ const Review: React.FunctionComponent<ReviewModel> = React.memo(({
   return (
     <ReviewWrapper key={id}>
       <ReviewsHeader>
-        {/* <ReviewHeaderIcon>
-          <HashIcon></HashIcon>
-        </ReviewHeaderIcon>
-        <span>{index !== null && index + 1}</span> */}
         <ReviewAuthor>{`${author}`}</ReviewAuthor>
       </ReviewsHeader>
       <ReviewContent style={style}>

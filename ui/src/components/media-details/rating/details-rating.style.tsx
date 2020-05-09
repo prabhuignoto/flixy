@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { down, between } from "styled-breakpoints";
 
 export const DetailsRatingWrapper = styled.div<{ rating?: number }>`
   align-items: center;
@@ -9,7 +10,11 @@ export const DetailsRatingWrapper = styled.div<{ rating?: number }>`
   justify-content: center;
   min-width: 3rem;
   height: 2.5rem;
-  margin-top:.5rem;
+  margin-top: 0.5rem;
+  ${down("desktop")} {
+    min-width: 2.5rem;
+    height: 2rem;
+  }
   ${({ rating }) => {
     if (!rating) return "#fff";
 
@@ -39,4 +44,8 @@ export const DetailsRatingValue = styled.span`
   height: 100%;
   display: flex;
   align-items: center;
+
+  ${down("desktop")} {
+    font-size: 1.25rem;
+  }
 `;

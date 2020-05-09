@@ -17,8 +17,18 @@ interface CastAndCrewModel {
 };
 
 const MediaObjectsWrapper = styled.div`
-  margin: .5rem 0;
-  height: 10rem;
+  margin: .25rem 0 1rem;
+  /* height: 10rem; */
+  display: flex;
+  flex-direction: column;
+`;
+
+const MediaObjectHeader = styled.div`
+  margin-bottom: .2rem;
+  font-family: "Poppins";
+  font-size: 1rem;
+  color: #fff;
+  text-align: left;
 `;
 
 const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
@@ -57,6 +67,7 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
         <>
           {cast && (
             <MediaObjectsWrapper>
+              <MediaObjectHeader>Movie Cast</MediaObjectHeader>
               <MediaObjects
                 title={"Movie Cast"}
                 id={+id}
@@ -70,6 +81,7 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
           )}
           {crew && (
             <MediaObjectsWrapper>
+              <MediaObjectHeader>Movie Crew</MediaObjectHeader>
               <MediaObjects
                 title={"Movie Crew"}
                 id={+id}
