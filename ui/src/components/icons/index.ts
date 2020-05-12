@@ -14,6 +14,7 @@ import { User } from "@styled-icons/feather/User";
 import { Imdb } from "@styled-icons/fa-brands/Imdb";
 import { Hash } from '@styled-icons/feather/Hash';
 import { Crown } from "@styled-icons/fa-solid/Crown";
+import { Menu } from "@styled-icons/feather/Menu";
 
 export const PlusIcon = styled(Plus)`
   color: red;
@@ -65,5 +66,9 @@ export const HashIcon = styled(Hash) <{ color?: string }>`
 `;
 
 export const CrownIcon = styled(Crown) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const MenuIcon = styled(Menu) <{color?: string}>`
   color: ${p => p.color};
 `;

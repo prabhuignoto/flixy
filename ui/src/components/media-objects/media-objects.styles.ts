@@ -1,19 +1,18 @@
 import { animated } from 'react-spring';
 import styled from "styled-components";
 
-export const ObjectsContainer = styled.section`
+export const ObjectsContainer = styled.section<{height?: number}>`
   align-items: center;
-  background: black;
+  background: #111;
   border-radius: .2rem;
   display: flex;
-  height: 1px;
-  min-height: 9rem;
   padding: 0;
   position: relative;
   width: 100%;
   flex-direction: column;
   justify-content: center;
   padding: 1rem 0;
+  height: ${p => p.height}px;
 `;
 
 export const ObjectsWrapper = styled.ul<{ columns?: number }>`
@@ -27,7 +26,7 @@ export const ObjectsWrapper = styled.ul<{ columns?: number }>`
 
 export const Scroll = styled.div<{ disable?: boolean }>`
   align-items: center;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.9);
   cursor: pointer;
   display: flex;
   height: 100%;

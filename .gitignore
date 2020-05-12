@@ -1,1 +1,4 @@
 node_modules
+.vscode/sftp.json
+out/linecounter.json
+out/linecounter.txt

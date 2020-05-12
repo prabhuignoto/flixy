@@ -61,5 +61,4 @@ export const Footer = styled.footer`
 export const DetailsWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
-  /* height: 1px; */
 `;

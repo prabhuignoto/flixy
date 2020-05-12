@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Font = styled.div`
   font-family: "Poppins";
-`
+`;
 
 export const Title = styled(Font)`
   color: #fff;
@@ -24,13 +24,12 @@ export const TitleWrapper = styled.div`
 `;
 
 export const DetailsRatingContainer = styled.div`
-  margin-left: auto;
-  padding-right: 3rem;
+  margin-right: 1rem;
 `;
 
 export const TitleYear = styled.span`
   color: rgba(204,0,0,0.85);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   margin-left: 1rem;
 `;
 
@@ -50,6 +49,7 @@ export const TitleRow1 = styled.div`
 export const TitleRow2 = styled.div`
   align-items: center;
   display: flex;
+  margin-top: 1rem;
 `;
 
 export const AttributesContainer = styled.div`

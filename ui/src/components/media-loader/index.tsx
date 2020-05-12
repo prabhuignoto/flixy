@@ -13,7 +13,11 @@ const Wrapper = styled(animated.div)`
   display: flex;
   height: 100%;
   justify-content: center;
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
 `;
 

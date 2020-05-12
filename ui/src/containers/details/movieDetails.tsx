@@ -1,7 +1,7 @@
 import React from "react";
 import { useApolloClient } from "@apollo/client";
 import { details } from "../../gqls/movieDetails";
-import CardDetails from "../../components/media-details/details-card";
+import CardDetails from "../../components/media-details/details-main";
 import { MovieDetail } from "../../models/MovieDetails";
 import Shimmer from "../../components/media-loader";
 import { useSpring, config, animated } from "react-spring";
@@ -18,46 +18,56 @@ const MovieDetails: React.FunctionComponent<{
 }> = ({ movieId, handleClose, hide }) => {
   const [data, setData] = React.useState<MovieDetail | null>();
   const [loading, setLoading] = React.useState(false);
-  const [show, setShow] = React.useState(false);
   const client = useApolloClient();
   const [mounted, setMounted] = React.useState(false);
+  const wrapperRef = React.useRef<HTMLDivElement>(null);
 
   const [props, setProps] = useSpring(() => ({
-    height: 660,
+    height: 0,
     opacity: 1,
-    from: {
-      height: 0,
-      opacity: 0,
-    },
-    delay: 100,
-    duration: 500,
     config: config.default,
-    reset: true,
   }));
 
   React.useEffect(() => {
     setMounted(true);
     return () => {
-      debugger;
       setMounted(false);
-    }
+    };
   }, []);
 
   React.useEffect(() => {
-    if(mounted && movieId) {
-        setProps({
-          height: 660,
-        });
-      executeQuery();
-    } else {
+    if (mounted && movieId) {
+      setLoading(true);
+      if (wrapperRef && wrapperRef.current) {
+        const height = wrapperRef.current.clientHeight;
+
+        if (height !== 800) {
+          setProps({
+            height: 800,
+            from: {
+              height: 0,
+            },
+            onRest: () => executeQuery(),
+          });
+        } else {
+          executeQuery();
+        }
+      }
+    }
+  }, [movieId]);
+
+  React.useEffect(() => {
+    if (mounted && hide) {
       setProps({
         height: 0,
+        from: {
+          height: 800,
+        },
       });
     }
-  }, [mounted]);
+  }, [hide]);
 
   const executeQuery = async () => {
-    setLoading(true);
 
     const { data } = await client.query({
       query: details,
@@ -68,12 +78,13 @@ const MovieDetails: React.FunctionComponent<{
     });
 
     setData(data.getDetails);
+    
     setLoading(false);
   };
 
-  let view;
+  let view = null;
 
-  if (!loading && data && data.id) {
+  if (!loading && data && !hide) {
     const {
       poster_path,
       title,
@@ -103,9 +114,10 @@ const MovieDetails: React.FunctionComponent<{
         imdb_id={imdb_id}
         vote_average={vote_average}
         video={video}
+        key={movieId}
       />
     );
-  } else if (show && loading) {
+  } else if (loading) {
     view = <Shimmer />;
   }
 
@@ -113,7 +125,14 @@ const MovieDetails: React.FunctionComponent<{
     position: relative;
   `;
 
-  return <Wrapper style={props}>{view}</Wrapper>;
+  return (
+    <Wrapper style={props} ref={wrapperRef} key={movieId}>
+      {view}
+    </Wrapper>
+  );
 };
 
-export default MovieDetails;
+export default React.memo(
+  MovieDetails,
+  (prev, cur) => prev.movieId === cur.movieId
+);

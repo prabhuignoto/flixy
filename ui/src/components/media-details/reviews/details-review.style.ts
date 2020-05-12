@@ -11,7 +11,7 @@ export const ReviewWrapper = styled(animated.li)`
 
 export const ReviewContent = styled(animated.div)`
   color: #bdbdbd;
-  font-size: 0.85rem;
+  font-size: .9rem;
   font-weight: 300;
   overflow: hidden;
   position: relative;

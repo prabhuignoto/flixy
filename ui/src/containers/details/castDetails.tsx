@@ -3,7 +3,7 @@ import { useApolloClient } from "@apollo/client";
 import { Credits } from "../../models/Credits";
 import { cast } from "../../gqls/cast";
 import MediaObjects from "../../components/media-objects/media-objects";
-import { MediaObject } from "./../../models/MediaObject";
+import { MediaObject, ThumbnailSize } from "./../../models/MediaObject";
 import styled from "styled-components";
 
 interface CastResultDetails {
@@ -17,18 +17,20 @@ interface CastAndCrewModel {
 };
 
 const MediaObjectsWrapper = styled.div`
-  margin: .25rem 0 1rem;
-  /* height: 10rem; */
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const MediaObjectHeader = styled.div`
-  margin-bottom: .2rem;
+  margin-bottom: .5rem;
   font-family: "Poppins";
   font-size: 1rem;
   color: #fff;
   text-align: left;
+  padding-left: .1rem;
+  text-transform: uppercase;
 `;
 
 const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
@@ -76,6 +78,9 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
+                height={170}
+                itemSize={130}
+                thumbnailSize={ThumbnailSize.small}
               />
             </MediaObjectsWrapper>
           )}
@@ -90,6 +95,9 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
+                height={160}
+                itemSize={130}
+                thumbnailSize={ThumbnailSize.small}
               />
             </MediaObjectsWrapper>
           )}

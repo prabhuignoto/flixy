@@ -1,20 +1,19 @@
 import styled from "styled-components";
 import { down, between } from "styled-breakpoints";
 
-export const DetailsRatingWrapper = styled.div<{ rating?: number }>`
+export const DetailsRatingWrapper = styled.div<{
+  isTabletOrMobile?: boolean;
+  rating?: number;
+}>`
   align-items: center;
   border-radius: 0.2rem;
   box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.25);
   display: flex;
   height: 100%;
+  height: ${(p) => (p.isTabletOrMobile ? "2rem" : "2.5rem")};
   justify-content: center;
-  min-width: 3rem;
-  height: 2.5rem;
   margin-top: 0.5rem;
-  ${down("desktop")} {
-    min-width: 2.5rem;
-    height: 2rem;
-  }
+  min-width: ${(p) => (p.isTabletOrMobile ? "2.5rem" : "3rem")};
   ${({ rating }) => {
     if (!rating) return "#fff";
 
@@ -37,15 +36,11 @@ export const DetailsRatingWrapper = styled.div<{ rating?: number }>`
   }};
 `;
 
-export const DetailsRatingValue = styled.span`
+export const DetailsRatingValue = styled.span<{ isTabletOrMobile?: boolean }>`
   font-family: "Poppins";
-  font-size: 1.75rem;
+  font-size: ${(p) => (p.isTabletOrMobile ? "1.2rem" : "1.5rem")};
   font-weight: 400;
   height: 100%;
   display: flex;
   align-items: center;
-
-  ${down("desktop")} {
-    font-size: 1.25rem;
-  }
 `;

@@ -24,7 +24,7 @@ const Reviews: React.FunctionComponent<ReviewsModel> = React.memo(
     })
     return (
       <ReviewsContainer style={props}>
-        <ReviewsHeader>Reviews</ReviewsHeader>
+        {/* <ReviewsHeader>Reviews</ReviewsHeader> */}
         <Scrollbars>
           <ReviewsWrapper>
             {items.map(({ content, author, id }, index) => {

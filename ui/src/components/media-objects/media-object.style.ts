@@ -6,7 +6,7 @@ export const MediaObject = styled(animated.div)`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 7rem;
+  /* width: 7rem; */
 `;
 
 export const ObjectImage = styled(animated.img)<{ loaded?: boolean }>`
@@ -23,14 +23,14 @@ export const FallbackImage = styled.div<{ failed?: boolean }>`
   display: flex;
   height: 80%;
   justify-content: center;
-  width: 5rem;
+  /* width: 4.5rem; */
+  /* background: #2a2a2a; */
+  border-radius: .25rem;
+  margin-top: auto;
   & svg {
     width: 3rem;
     height: 3rem;
   }
-  background: #2a2a2a;
-  border-radius: .25rem;
-  margin-top: auto;
 `;
 
 export const ObjectName = styled.span`

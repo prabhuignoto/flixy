@@ -70,6 +70,45 @@ export default class MovieResolver {
     }
   }
 
+  @Query(returns => MovieResult)
+  async getRecommendations(
+    @Arg("movie_id") movie_id:  number,
+    @Arg("lang") lang: string,
+    @Arg("page") page: number
+  ) {
+    try {
+      const { key, url } = this;
+      const response = await fetch(`${url}movie/${movie_id}/recommendations?api_key=${key}&language=${lang}&page=${page}`);
+
+      const data = await response.json();
+
+      return data;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  @Query(returns => MovieResult)
+  async getSimilar(
+    @Arg("movie_id") movie_id:  number,
+    @Arg("lang") lang: string,
+    @Arg("page") page: number
+  ) {
+    try {
+      const { key, url } = this;
+      const response = await fetch(`${url}movie/${movie_id}/similar?api_key=${key}&language=${lang}&page=${page}`);
+
+      const data = await response.json();
+
+      return data;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   @Query(returns => MovieDetail)
   async getDetails(
     @Arg("movie_id") movie_id:  number,

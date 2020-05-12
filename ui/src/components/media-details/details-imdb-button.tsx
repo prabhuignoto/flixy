@@ -3,18 +3,18 @@ import React from "react";
 import {ImdbIcon} from "../icons";
 
 const ImdbButtonWrapper = styled.button`
-  border: none;
-  background: none;
   background-color: #000;
+  background: none;
+  border: none;
 `;
 
 const ImdbLink = styled.a`
-  text-decoration: none;
+  display: block;
   font-family: "Poppins";
   font-size: 1.25rem;
-  display: block;
-  width: 3rem;
   height: 3rem;
+  text-decoration: none;
+  width: 3rem;
 `;
 
 const ImdbButton: React.FunctionComponent<{ id?: string }> = ({ id }) => (

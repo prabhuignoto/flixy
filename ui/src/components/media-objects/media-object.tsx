@@ -6,13 +6,16 @@ import {
   ObjectName,
 } from "./media-object.style";
 import { useSpring, config } from "react-spring";
-import { MediaObject as MediaObjectModel } from "../../models/MediaObject";
-import Loader, {LoaderSize} from "../media-loader";
+import {
+  MediaObject as MediaObjectModel,
+  ThumbnailSize,
+} from "../../models/MediaObject";
+import Loader, { LoaderSize } from "../media-loader";
 
 import { UserIcon } from "./../icons/index";
 
 const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
-  ({ path, name }) => {
+  ({ path, name, thumbnailSize }) => {
     const props = useSpring({
       opacity: 1,
       from: {
@@ -20,7 +23,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
       },
       delay: 0,
       config: config.default,
-      reset: true
+      reset: true,
     });
     const [loaded, setLoaded] = React.useState(false);
     return (
@@ -28,7 +31,9 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
         {path ? (
           <>
             <ObjectImage
-              src={`http://image.tmdb.org/t/p/w200/${path}`}
+              src={`http://image.tmdb.org/t/p/${
+                thumbnailSize === ThumbnailSize.large ? "w500" : "w200"
+              }/${path}`}
               onLoad={() => setLoaded(true)}
               loaded={loaded}
               style={props}

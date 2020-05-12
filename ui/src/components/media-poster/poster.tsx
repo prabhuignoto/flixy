@@ -11,7 +11,7 @@ import { CardSize } from "../../models/CardSize";
 export default React.memo(({ poster_path, size, index }: Poster) => {
   return (
     <PosterWrapper size={size}>
-      {size === CardSize.small && <CardRating>{index}</CardRating>}
+      {/* {size === CardSize.small && <CardRating>{index}</CardRating>} */}
       {poster_path && (
         <CardImageWrapper selected={false}>
           <CardImage

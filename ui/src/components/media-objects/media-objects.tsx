@@ -1,5 +1,8 @@
 import React from "react";
-import { MediaObject as MediaObjectModel } from "../../models/MediaObject";
+import {
+  MediaObject as MediaObjectModel,
+  ThumbnailSize,
+} from "../../models/MediaObject";
 import {
   ObjectsWrapper,
   ObjectsContainer,
@@ -15,19 +18,22 @@ enum ScrollDir {
   LEFT = "LEFT",
   RIGHT = "RIGHT",
 }
-
 const MediaObjects: React.FunctionComponent<{
-  id: number;
+  id: number | string;
   items: MediaObjectModel[];
   title?: string;
+  height: number;
+  itemSize: number;
+  thumbnailSize: ThumbnailSize;
 }> = React.memo(
-  ({ items, title }) => {
+  ({ items, height, itemSize, thumbnailSize }) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const rWindowRef = React.useRef<HTMLDivElement>(null);
     const [config, setConfig] = React.useState({
       show: false,
       clientWidth: 0,
       count: 0,
+      clientHeight: 0,
     });
     const [disableRightNav, setDisableRightNav] = React.useState(false);
     const [disableLeftNav, setDisableLeftNav] = React.useState(true);
@@ -66,12 +72,13 @@ const MediaObjects: React.FunctionComponent<{
 
     React.useEffect(() => {
       if (containerRef && containerRef.current) {
-        const { clientWidth, scrollWidth } = containerRef.current;
+        const { clientWidth, scrollWidth, clientHeight } = containerRef.current;
 
         setConfig({
           show: true,
           clientWidth,
           count: items.length,
+          clientHeight: clientHeight - 40,
         });
       }
     }, []);
@@ -86,9 +93,9 @@ const MediaObjects: React.FunctionComponent<{
             <FixedSizeList
               layout="horizontal"
               itemCount={config.count}
-              itemSize={110}
+              itemSize={itemSize}
               width={config.clientWidth}
-              height={140}
+              height={config.clientHeight}
               outerRef={rWindowRef}
               style={{ overflow: "hidden", scrollBehavior: "smooth" }}
             >
@@ -99,7 +106,12 @@ const MediaObjects: React.FunctionComponent<{
                     key={`${id}-${index}-${name}`}
                     style={style}
                   >
-                    <MediaObjectView name={name} path={path} id={id} />
+                    <MediaObjectView
+                      name={name}
+                      path={path}
+                      id={id}
+                      thumbnailSize={thumbnailSize}
+                    />
                   </MediaObjectContainer>
                 );
               }}
@@ -112,7 +124,7 @@ const MediaObjects: React.FunctionComponent<{
     }
 
     return (
-      <ObjectsContainer ref={containerRef}>
+      <ObjectsContainer ref={containerRef} height={height}>
         <ScrollLeftBtn
           onClick={() => handleNav(ScrollDir.LEFT)}
           disable={disableLeftNav}

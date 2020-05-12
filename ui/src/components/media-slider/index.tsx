@@ -117,7 +117,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
         </MoviesWrapper>
       }
 
-      {showDetails.state && (
+      {(
         <DetailsWrapper>
           <MovieDetails
             movieId={showDetails.selectedMovie}
