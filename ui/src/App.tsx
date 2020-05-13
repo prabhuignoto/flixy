@@ -14,7 +14,8 @@ import Trending from "./containers/movies/popular";
 import Upcoming from "./containers/movies/upComing";
 
 const client = new ApolloClient({
-  uri: "http://localhost:3000/graphql",
+  // uri: "http://localhost:3000/graphql",
+  uri: "http://64.227.60.38/graphql",
   cache: new InMemoryCache(),
 });
 

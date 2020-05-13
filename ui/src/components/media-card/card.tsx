@@ -26,7 +26,6 @@ export default React.memo(
     index,
     loadingCard,
     title,
-    style,
     resxProps
   }: MovieType) => {
     const handleSelection = React.useCallback(

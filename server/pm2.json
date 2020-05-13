@@ -1,0 +1,13 @@
+{
+  "apps": [{
+    "name": "flixmov-server",
+    "exec_mode": "cluster",
+    "instances": 2,
+    "script": "./src/index.ts",
+    "interpreter": "ts-node",
+    "env": {
+      "ENV": "prod",
+      "PORT": 3000
+    }
+  }]
+}
