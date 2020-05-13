@@ -44,9 +44,9 @@ const MovieDetails: React.FunctionComponent<{
         // const height = wrapperRef.current.clientHeight;
         let height;
         if (resxProps.isBigScreen) {
-          height = 730;
+          height = 685;
         } else {
-          height = 640;
+          height = 620;
         }
         setProps({
           height,
@@ -68,9 +68,9 @@ const MovieDetails: React.FunctionComponent<{
     if (mounted && hide) {
       let height;
       if (resxProps.isBigScreen) {
-        height = 730;
+        height = 685;
       } else {
-        height = 640;
+        height = 620;
       }
       setProps({
         height: 0,

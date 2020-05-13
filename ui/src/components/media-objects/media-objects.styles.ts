@@ -26,7 +26,7 @@ export const ObjectsWrapper = styled.ul<{ columns?: number }>`
 
 export const Scroll = styled.div<{ disable?: boolean }>`
   align-items: center;
-  background: rgba(0,0,0,0.9);
+  background: #111;
   cursor: pointer;
   display: flex;
   height: 100%;

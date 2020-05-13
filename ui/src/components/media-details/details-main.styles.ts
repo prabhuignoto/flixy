@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { animated } from "react-spring";
 import { responsiveProps } from '../../effects/useResponsive';
 
+export const DetailsHome = styled.div`
+  width: 100%;
+  padding-left: 1rem;
+`;
+
 export const DetailsCardWrapper = styled(animated.div)`
   align-items: center;
   background: #000;
@@ -58,13 +63,13 @@ export const Title = styled(Font)`
   color: #fff;
   font-size: 1.5rem;
   font-weight: 400;
-  margin-top: .5rem;
+  margin-top: 1rem;
   text-align: left;
 `;
 
 export const Overview = styled(Title)`
   color: #fff;
-  font-size: .95rem;
+  font-size: .85rem;
   font-weight: 300;
   margin: .25rem 0;
   width: 95%;
@@ -78,12 +83,12 @@ export const CloseDetails = styled.button`
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  height: 3rem;
+  height: 4rem;
   outline: none;
   position: absolute;
   right: 1rem;
   top: .25rem;
-  width: 3rem;
+  width: 4rem;
   z-index:10;
 `;
 
@@ -93,6 +98,7 @@ export const ReviewsWrapper = styled.div<{ resxProps?: responsiveProps }>`
   margin-right: 2.5rem;
   position: relative;
   width: ${p => p.resxProps?.isBigScreen ? "47%" : "100%"};
+  border: 1px solid #2f2f2f;
 `;
 
 export const Box1 = styled.div`
@@ -145,13 +151,9 @@ export const RecommendedMoviesContainer = styled.div`
 
 export const SimilarMoviesWrapper = styled.div``;
 
-export const DetailsHome = styled.div`
-  width: 100%;
-  padding-left: 1.5rem;
-`;
 
 export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
-  min-height: 400px;
+  min-height: 350px;
   height: 1px;
   width: ${ ({ resxProps }) => {
     const { isTabletOrMobile, isBigScreen, isDesktopOrLaptop } = <responsiveProps>resxProps;
@@ -170,7 +172,7 @@ export const PanelContainer = styled(animated.div)`
   position: absolute;
   width: 100%;
   left: 0;
-  height: 4rem;
+  height: 3rem;
   background: #131313;
   z-index: 10;
   bottom: 0;

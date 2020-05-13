@@ -9,7 +9,7 @@ export const ReviewsWrapper = styled.ul`
   height: 95%;
   list-style: none;
   margin: 0;
-  padding:0;
+  padding:0 .5rem;
 `;
 
 export const ReviewsContainer = styled(animated.div)`

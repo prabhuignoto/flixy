@@ -55,7 +55,7 @@ const TopRated: React.FunctionComponent = () => {
     view = (
       <Slider
         movies={[]}
-        title="UpComing"
+        title="UpComing Movies"
         fetchMore={handleFetchMore}
         totalResults={0}
         loadingState={LoadingState.LOADING}
@@ -74,7 +74,7 @@ const TopRated: React.FunctionComponent = () => {
               )
             : []
         }
-        title="UpComing"
+        title="UpComing Movies"
         fetchMore={handleFetchMore}
         totalResults={movieData.total_results ? movieData.total_results : 0}
         loadingState={LoadingState.LOADED}

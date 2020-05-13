@@ -56,7 +56,7 @@ export const TitleRow1 = styled.div`
 export const TitleRow2 = styled.div`
   align-items: center;
   display: flex;
-  margin-top: 1rem;
+  margin-top: .5rem;
 `;
 
 export const AttributesContainer = styled.div`

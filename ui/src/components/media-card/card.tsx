@@ -37,10 +37,10 @@ export default React.memo(
     const props = useSpring({
       opacity: 1,
       from: {
-        opacity: 0.7,
+        opacity: 0,
       },
       delay: 0,
-      config: config.default
+      config: config.molasses
     })
 
     return (
@@ -50,7 +50,6 @@ export default React.memo(
             onClick={() => id && handleSelection(id)}
             selected={selected}
             size={size}
-            style={props}
             resxProps={resxProps}
           >
             <Poster
