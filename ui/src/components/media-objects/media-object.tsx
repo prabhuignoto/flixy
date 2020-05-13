@@ -31,7 +31,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
         {path ? (
           <>
             <ObjectImage
-              src={`http://image.tmdb.org/t/p/${
+              src={`https://image.tmdb.org/t/p/${
                 thumbnailSize === ThumbnailSize.large ? "w500" : "w200"
               }/${path}`}
               onLoad={() => setLoaded(true)}

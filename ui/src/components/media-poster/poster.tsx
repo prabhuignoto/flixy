@@ -16,7 +16,7 @@ export default React.memo(({ poster_path, size, index }: Poster) => {
         <CardImageWrapper selected={false}>
           <CardImage
             title=""
-            src={`http://image.tmdb.org/t/p/w${size}/${poster_path}`}
+            src={`https://image.tmdb.org/t/p/w${size}/${poster_path}`}
           ></CardImage>
         </CardImageWrapper>
       )}
