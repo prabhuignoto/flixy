@@ -24,9 +24,9 @@ const server = async () => {
     const apolloServer = new ApolloServer({
       schema
     })
-    // fast.register(cors, {
-    //   origin: "*"
-    // });
+    fast.register(cors, {
+      origin: "*"
+    });
     fast.register(apolloServer.createHandler());
     fast.listen(3000);
     fast.log.info(`server running on 3000`);
