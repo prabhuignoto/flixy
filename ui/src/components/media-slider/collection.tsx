@@ -8,6 +8,7 @@ import { LoadingState as State } from "../../models/Slider";
 import useVirtual from "./../../effects/useVirtual";
 import { Configs } from "./../../effects/useVirtual";
 import MoviesView from "./movies";
+import useResponsive from "../../effects/useResponsive";
 
 export enum NavDir {
   LEFT = "LEFT",
@@ -33,6 +34,7 @@ export default ({
   const [visibleColumns, setVisibleColumns] = React.useState(0);
   const [lazyConfig, setLazyInputs] = useVirtual();
   const [mounted, setMounted] = React.useState(false);
+  const resxProps = useResponsive();
 
   const moviesRef = React.useRef<HTMLDivElement>(null);
   const visibleItems = React.useRef(0);
@@ -69,7 +71,17 @@ export default ({
     const nativeElement = moviesRef.current;
     if (nativeElement) {
       const clientWidth = nativeElement.clientWidth;
-      const columns = Math.floor(clientWidth / 200);
+      let colWidth = 200;
+      if (resxProps) {
+        const { isBigScreen, isDesktopOrLaptop, isTabletOrMobile } = resxProps;
+
+        if (isTabletOrMobile) {
+          colWidth = 130;
+        } else if (isDesktopOrLaptop && !isBigScreen) {
+          colWidth = 150;
+        }
+      }
+      const columns = Math.floor(clientWidth / colWidth);
       setVisibleColumns(columns);
       visibleItems.current = expandFull && !showDetails ? columns * 2 : columns;
     }
@@ -123,7 +135,22 @@ export default ({
         const nativeElement = moviesRef.current;
         if (nativeElement) {
           const clientWidth = nativeElement.clientWidth;
-          const cols = Math.floor(clientWidth / 200);
+          let colWidth = 200;
+          if (resxProps) {
+            const {
+              isBigScreen,
+              isDesktopOrLaptop,
+              isTabletOrMobile,
+            } = resxProps;
+
+            if (isTabletOrMobile) {
+              colWidth = 130;
+            } else if (isDesktopOrLaptop && !isBigScreen) {
+              colWidth = 150;
+            }
+          }
+
+          const cols = Math.floor(clientWidth / colWidth);
           const columns = expandFull && !showDetails ? cols * 2 : cols;
           setLazyInputs({
             visibleElements: columns,

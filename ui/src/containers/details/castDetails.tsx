@@ -5,6 +5,7 @@ import { cast } from "../../gqls/cast";
 import MediaObjects from "../../components/media-objects/media-objects";
 import { MediaObject, ThumbnailSize } from "./../../models/MediaObject";
 import styled from "styled-components";
+import useResponsive from "../../effects/useResponsive";
 
 interface CastResultDetails {
   getCredits: Credits;
@@ -14,22 +15,23 @@ interface CastAndCrewModel {
   movieId?: number;
   title?: string;
   isCast?: boolean;
-};
+}
 
 const MediaObjectsWrapper = styled.div`
-  margin: 1rem 0;
+  margin: .5rem 0;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 97%;
 `;
 
 const MediaObjectHeader = styled.div`
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   font-family: "Poppins";
-  font-size: 1rem;
+  font-size: .75rem;
+  font-weight: 400;
   color: #fff;
   text-align: left;
-  padding-left: .1rem;
+  padding-left: 0.1rem;
   text-transform: uppercase;
 `;
 
@@ -38,6 +40,7 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
     const client = useApolloClient();
     const [loading, setLoading] = React.useState(false);
     const [detailsData, setDetailsData] = React.useState<Credits>({ id: "" });
+    const { isBigScreen } = useResponsive();
 
     const executeQuery = async () => {
       setLoading(true);
@@ -78,8 +81,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
-                height={170}
-                itemSize={130}
+                height={isBigScreen ? 150 : 115}
+                itemSize={isBigScreen ? 120 : 95}
                 thumbnailSize={ThumbnailSize.small}
               />
             </MediaObjectsWrapper>
@@ -95,8 +98,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
-                height={160}
-                itemSize={130}
+                height={isBigScreen ? 150 : 115}
+                itemSize={isBigScreen ? 120 : 95}
                 thumbnailSize={ThumbnailSize.small}
               />
             </MediaObjectsWrapper>

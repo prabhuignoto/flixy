@@ -3,6 +3,8 @@ import { CardSize } from "../../models/CardSize";
 import Movie from "../../models/Movie";
 import { MoviesContainer } from "./movies.style";
 import Card from "../media-card/card";
+import { useMediaQuery } from "react-responsive";
+import useResponsive from "../../effects/useResponsive";
 
 export interface Movies {
   slider?: number;
@@ -23,12 +25,14 @@ export default ({
   loadingCards,
   handleSelection,
 }: Movies) => {
+  const responsiveProps = useResponsive();
   return (
     <MoviesContainer
       slider={slider ? 1 : 0}
       expandFull={expandFull ? 1 : 0}
       size={CardSize.small}
       columns={columns}
+      resxProps={responsiveProps}
     >
       {movies.map(
         (
@@ -55,12 +59,19 @@ export default ({
               release_date={release_date}
               vote_average={vote_average}
               index={index}
+              resxProps={responsiveProps}
             />
           )
       )}
       {loadingCards.length &&
         loadingCards.map((val: number) => (
-          <Card id={val} loadingCard={true} key={val} poster_path={""} />
+          <Card
+            id={val}
+            loadingCard={true}
+            key={val}
+            poster_path={""}
+            resxProps={responsiveProps}
+          />
         ))}
     </MoviesContainer>
   );

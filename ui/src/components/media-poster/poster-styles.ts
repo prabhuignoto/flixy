@@ -11,6 +11,7 @@ export const CardImage = styled.img<{hide?: boolean}>`
   border-radius: .2rem;
   max-height: 100%;
   max-width: 100%;
+  object-fit: contain;
 `;
 
 export const CardImageWrapper = styled(animated.div)<{ selected?: boolean }>`

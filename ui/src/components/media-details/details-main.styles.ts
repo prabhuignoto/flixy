@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { animated } from "react-spring";
+import { responsiveProps } from '../../effects/useResponsive';
 
 export const DetailsCardWrapper = styled(animated.div)`
   align-items: center;
@@ -86,21 +87,19 @@ export const CloseDetails = styled.button`
   z-index:10;
 `;
 
-export const ReviewsWrapper = styled.div`
+export const ReviewsWrapper = styled.div<{ resxProps?: responsiveProps }>`
   border-radius: .2rem;
-  min-height: 500px;
-  height: 1px;
-  width: 47%;
+  height: ${p => p.resxProps?.isBigScreen ? "450px" : "100%"};
   margin-right: 2.5rem;
   position: relative;
-  /* box-shadow: 0 0 7px 4px rgba(0,0,0,0.4); */
+  width: ${p => p.resxProps?.isBigScreen ? "47%" : "100%"};
 `;
 
 export const Box1 = styled.div`
   display: flex;
   align-items: flex-start;
   width: 100%;
-  margin-bottom: .5rem;
+  margin-bottom: .25rem;
 `;
 
 export const Box2 = styled.div`
@@ -108,17 +107,17 @@ export const Box2 = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-top: 1rem;
+  margin-top: .5rem;
   width: 100%;
 `;
 
-export const CastAndCrewWrapper = styled.div`
+export const CastAndCrewWrapper = styled.div<{ resxProps?: responsiveProps }>`
   width: 100%;
   display: flex;
-  align-items: center;
-  /* height: 450px; */
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: space-around;
   margin-top: 1rem;
+  flex-direction: ${p => p.resxProps?.isBigScreen ? "row" : "column"}
 `;
 
 export const MenuButtonWrapper = styled.div`
@@ -128,8 +127,6 @@ export const MenuButtonWrapper = styled.div`
   color: rgba(204,0,0,0.85);
   cursor: pointer;
 `;
-
-
 
 export const RecommendedMoviesWrapper = styled.div`
   width: 100%;
@@ -153,10 +150,20 @@ export const DetailsHome = styled.div`
   padding-left: 1.5rem;
 `;
 
-export const CastAndCrewContainer = styled.div`
-  width: 50%;
-  min-height: 500px;
+export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
+  min-height: 400px;
   height: 1px;
+  width: ${ ({ resxProps }) => {
+    const { isTabletOrMobile, isBigScreen, isDesktopOrLaptop } = <responsiveProps>resxProps;
+    if (isTabletOrMobile) {
+      return "100%";
+    } else if (isDesktopOrLaptop && !isBigScreen) {
+      return "100%";
+    } else {
+      return "50%";
+    }
+  }
+  };
 `;
 
 export const PanelContainer = styled(animated.div)`

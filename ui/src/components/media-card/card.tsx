@@ -5,13 +5,15 @@ import { CardSize } from "../../models/CardSize";
 import Poster from "../media-poster/poster";
 import { CheckIcon, ImageIcon } from "../icons";
 import { useSpring, config } from "react-spring";
+import { responsiveProps } from "../../effects/useResponsive";
 
 type MovieType = Movie & {
   index?: number;
   loadingCard?: boolean;
   onSelect?: (id: number) => void;
   size?: CardSize;
-  style?: any
+  style?: any;
+  resxProps: responsiveProps;
 };
 
 export default React.memo(
@@ -24,7 +26,8 @@ export default React.memo(
     index,
     loadingCard,
     title,
-    style
+    style,
+    resxProps
   }: MovieType) => {
     const handleSelection = React.useCallback(
       (id: number) => {
@@ -49,6 +52,7 @@ export default React.memo(
             selected={selected}
             size={size}
             style={props}
+            resxProps={resxProps}
           >
             <Poster
               poster_path={poster_path ? poster_path : ""}

@@ -7,12 +7,14 @@ import { ApolloServer } from "apollo-server-fastify";
 import TrendingResolver from "./resolvers/TrendingResolver";
 import MovieResolver from "./resolvers/MovieResolver";
 import TVResolver from "./resolvers/TvResolver";
+import cors from "fastify-cors";
 
 config();
 
 const fast = fastify({
-  logger: true
+  logger: true,
 });
+
 
 const server = async () => {
   try {
@@ -22,8 +24,11 @@ const server = async () => {
     const apolloServer = new ApolloServer({
       schema
     })
+    // fast.register(cors, {
+    //   origin: "*"
+    // });
     fast.register(apolloServer.createHandler());
-    fast.listen(4000);
+    fast.listen(3000);
     fast.log.info(`server running on 3000`);
   } catch (err) {
     fast.log.error(err);

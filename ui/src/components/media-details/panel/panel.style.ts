@@ -13,7 +13,7 @@ export const PanelList = styled.ul`
 export const PanelListItem = styled.li<{selected?: boolean}>`
   font-family: "Poppins";
   font-size: 1.2rem;
-  font-weight: 300;
+  font-weight: 400;
   color: #bdbdbd;
   width: 100%;
   text-align: left;

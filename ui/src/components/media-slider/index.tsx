@@ -16,6 +16,20 @@ import { ArrowDownIcon, ArrowUpIcon } from "../icons";
 import Slider, { LoadingState } from "../../models/Slider";
 import Movie from "../../models/Movie";
 import MovieDetails from "../../containers/details/movieDetails";
+import useResponsive, { responsiveProps } from "../../effects/useResponsive";
+
+
+const getHeight = (props: responsiveProps) => {
+  if(props.isBigScreen) {
+    return 280;
+  } else if(props.isDesktopOrLaptop) {
+    return 220;
+  } else if(props.isTabletOrMobile) {
+    return 200;
+  } else {
+    return 220;
+  }
+}
 
 const SliderView: React.FunctionComponent<Slider> = ({
   movies,
@@ -32,8 +46,9 @@ const SliderView: React.FunctionComponent<Slider> = ({
     state: false,
     selectedMovie: 0,
   });
+  const resxProps = useResponsive();
   const [props, setProps] = useSpring(() => ({
-    height: "280px",
+    height: `${getHeight(resxProps)}px`,
     config: config.default,
     delay: 0,
   }));
@@ -46,18 +61,19 @@ const SliderView: React.FunctionComponent<Slider> = ({
     if (firstRun.current) {
       firstRun.current = false;
     } else {
+      const height = getHeight(resxProps);
       if (!expandFull || showDetails.state) {
         setProps({
-          height: "280px",
+          height: `${height}px`,
           from: {
-            height: `${280 * 2}px`,
+            height: `${height * 2}px`,
           },
         });
       } else {
         setProps({
-          height: `${280 * 2}px`,
+          height: `${height * 2}px`,
           from: {
-            height: "280px",
+            height: `${height}px`,
           },
         });
       }

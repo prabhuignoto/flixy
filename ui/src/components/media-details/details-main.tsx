@@ -22,9 +22,9 @@ import Reviews from "../../containers/details/reviews";
 import Loader from "../media-loader";
 import Recommended from "../../containers/movies/recommended";
 import Similar from "../../containers/movies/similar";
-import { useSpring, config } from "react-spring";
 import { tabs } from "./panel/panel";
 import Panel from "./panel/panel";
+import useResponsive from "../../effects/useResponsive";
 
 type CardDetail = Movie & { handleClose?: () => void; isLoading: boolean };
 
@@ -44,6 +44,7 @@ export default ({
   const [show, setShow] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
   const [actvTab, setActvTab] = React.useState(tabs.home);
+  const resxProps = useResponsive();
 
   React.useEffect(() => {
     setMounted(true);
@@ -66,7 +67,7 @@ export default ({
 
   return (
     <DetailsCardWrapper ref={wrapperRef}>
-      {!isLoading ? (
+      {!isLoading && (
         <>
           <DetailsWrapper>
             {actvTab === tabs.home && (
@@ -84,13 +85,15 @@ export default ({
                 </Box1>
                 <Box2>
                   <Overview>{overview}</Overview>
-                  <CastAndCrewWrapper>
-                    <CastAndCrewContainer>
+                  <CastAndCrewWrapper resxProps={resxProps}>
+                    <CastAndCrewContainer resxProps={resxProps}>
                       <CastAndCrew id={id} />
                     </CastAndCrewContainer>
-                    <ReviewsWrapper>
-                      <Reviews movieId={id} />
-                    </ReviewsWrapper>
+                    {resxProps.isBigScreen && (
+                      <ReviewsWrapper resxProps={resxProps}>
+                        <Reviews movieId={id} />
+                      </ReviewsWrapper>
+                    )}
                   </CastAndCrewWrapper>
                 </Box2>
               </DetailsHome>
@@ -109,13 +112,16 @@ export default ({
                 </RecommendedMoviesContainer>
               </RecommendedMoviesWrapper>
             )}
+            {actvTab === tabs.reviews && (
+              <ReviewsWrapper resxProps={resxProps}>
+                <Reviews movieId={id} />
+              </ReviewsWrapper>
+            )}
             <PanelContainer>
               <Panel onSelection={handleSelection} actvTab={actvTab} />
             </PanelContainer>
           </DetailsWrapper>
         </>
-      ) : (
-        <Loader />
       )}
       <CloseDetails onClick={handleClose}>
         <CloseIcon color="#fff" />

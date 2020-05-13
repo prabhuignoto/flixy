@@ -31,6 +31,9 @@ export const TitleYear = styled.span`
   color: rgba(204,0,0,0.85);
   font-size: 1.5rem;
   margin-left: 1rem;
+  display: flex;
+  height: 100%;
+  align-items: center;
 `;
 
 export const TitleText = styled.span`
@@ -38,12 +41,16 @@ export const TitleText = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  display: flex;
+  height: 100%;
+  align-items: center;
 `;
 
 export const TitleRow1 = styled.div`
   align-items: center;
   display: flex;
   width: 100%;
+  height: 3rem;
 `;
 
 export const TitleRow2 = styled.div`

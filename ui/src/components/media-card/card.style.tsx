@@ -1,6 +1,21 @@
 import styled, { css } from "styled-components";
 import { CardSize } from "../../models/CardSize";
 import { animated } from "react-spring";
+import { responsiveProps } from "../../effects/useResponsive";
+
+const getColumnWidth = (props?: responsiveProps) => {
+  if (!props) {
+    return 150;
+  };
+
+  if (props.isTabletOrMobile) {
+    return 130;
+  } else if (props.isBigScreen) {
+    return 180;
+  } else if (props.isDesktopOrLaptop) {
+    return 150;
+  } 
+}
 
 export const CardContainer = styled(animated.div)<{
   selected?: boolean;
@@ -9,6 +24,7 @@ export const CardContainer = styled(animated.div)<{
   size?: CardSize;
   hide?: number;
   isLoadingCard?: number;
+  resxProps?: responsiveProps
 }>`
   align-items: center;
   border-radius: 0.1rem;
@@ -16,14 +32,14 @@ export const CardContainer = styled(animated.div)<{
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: center;
+  justify-content: space-evenly;
   position: relative;
-  width: 180px;
+  width: ${p => getColumnWidth(p.resxProps)}px;
   border: ${(p) =>
     !p.isLoadingCard ? ".1rem solid black;" : ".25rem solid black"};
   ${(p) =>
     p.isLoadingCard
-      ? "background: linear-gradient(358deg, #000000, #4b4848);"
+      ? ""
       : ""};
   ${(p) =>
     p.selected &&
@@ -102,3 +118,6 @@ export const ImageIconWrapper = styled.div`
   height: 2rem;
   width: 2rem;
 `;
+
+
+// background: linear-gradient(358deg, #000000, #4b4848);

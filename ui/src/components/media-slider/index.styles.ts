@@ -16,12 +16,14 @@ export const Header = styled.header`
   cursor: pointer;
   display: flex;
   font-family: "Poppins";
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: 400;
   justify-content: flex-start;
   padding-top: 1rem;
   text-align: left;
   width: 100%;
-  padding-left: 4rem;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
 `;
 
 export const MoviesWrapper = styled(animated.div) <{ expand?: number }>`

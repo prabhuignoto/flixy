@@ -11,7 +11,7 @@ export const ReviewWrapper = styled(animated.li)`
 
 export const ReviewContent = styled(animated.div)`
   color: #bdbdbd;
-  font-size: .9rem;
+  font-size: .8rem;
   font-weight: 300;
   overflow: hidden;
   position: relative;
@@ -48,7 +48,7 @@ export const ReviewText = styled.p<{ showFull?: boolean }>`
 `;
 
 export const GradientCover = styled.span`
-  background: linear-gradient(0deg, #191919 0%,  rgba(25,25,25, .35) 100%);
+  background: linear-gradient(0deg, #191919 0%,  rgba(25,25,25, .2) 100%);
   bottom: 0;
   height: 3.5rem;
   position: absolute;

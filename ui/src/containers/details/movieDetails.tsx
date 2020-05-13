@@ -6,6 +6,7 @@ import { MovieDetail } from "../../models/MovieDetails";
 import Shimmer from "../../components/media-loader";
 import { useSpring, config, animated } from "react-spring";
 import styled from "styled-components";
+import useResponsive from "../../effects/useResponsive";
 
 interface MovieResultDetails {
   getDetails: MovieDetail;
@@ -21,6 +22,7 @@ const MovieDetails: React.FunctionComponent<{
   const client = useApolloClient();
   const [mounted, setMounted] = React.useState(false);
   const wrapperRef = React.useRef<HTMLDivElement>(null);
+  const resxProps = useResponsive();
 
   const [props, setProps] = useSpring(() => ({
     height: 0,
@@ -39,36 +41,47 @@ const MovieDetails: React.FunctionComponent<{
     if (mounted && movieId) {
       setLoading(true);
       if (wrapperRef && wrapperRef.current) {
-        const height = wrapperRef.current.clientHeight;
-
-        if (height !== 800) {
-          setProps({
-            height: 800,
-            from: {
-              height: 0,
-            },
-            onRest: () => executeQuery(),
-          });
+        // const height = wrapperRef.current.clientHeight;
+        let height;
+        if (resxProps.isBigScreen) {
+          height = 730;
         } else {
-          executeQuery();
+          height = 640;
         }
+        setProps({
+          height,
+          from: {
+            height: 0,
+          },
+          onRest: () => executeQuery(),
+        });
+
+        // if (height !== 750) {
+        // } else {
+        //   executeQuery();
+        // }
       }
     }
   }, [movieId]);
 
   React.useEffect(() => {
     if (mounted && hide) {
+      let height;
+      if (resxProps.isBigScreen) {
+        height = 730;
+      } else {
+        height = 640;
+      }
       setProps({
         height: 0,
         from: {
-          height: 800,
+          height,
         },
       });
     }
   }, [hide]);
 
   const executeQuery = async () => {
-
     const { data } = await client.query({
       query: details,
       variables: {
@@ -78,7 +91,7 @@ const MovieDetails: React.FunctionComponent<{
     });
 
     setData(data.getDetails);
-    
+
     setLoading(false);
   };
 
