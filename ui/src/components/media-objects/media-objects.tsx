@@ -128,6 +128,7 @@ const MediaObjects: React.FunctionComponent<{
         <ScrollLeftBtn
           onClick={() => handleNav(ScrollDir.LEFT)}
           disable={disableLeftNav}
+          size={thumbnailSize}
         >
           <ChevronLeftIcon />
         </ScrollLeftBtn>
@@ -135,6 +136,7 @@ const MediaObjects: React.FunctionComponent<{
         <ScrollRightBtn
           onClick={() => handleNav(ScrollDir.RIGHT)}
           disable={disableRightNav}
+          size={thumbnailSize}
         >
           <ChevronRightIcon />
         </ScrollRightBtn>

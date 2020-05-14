@@ -12,7 +12,7 @@ import {
 import Movies from "./collection";
 import { Button } from "../commons/styles";
 import { useSpring, config } from "react-spring";
-import { ArrowDownIcon, ArrowUpIcon } from "../icons";
+import { ArrowDownIcon, ArrowUpIcon, ArrowHeadDownIcon, ArrowHeadUpIcon } from "../icons";
 import Slider, { LoadingState } from "../../models/Slider";
 import Movie from "../../models/Movie";
 import MovieDetails from "../../containers/details/movieDetails";
@@ -146,8 +146,8 @@ const SliderView: React.FunctionComponent<Slider> = ({
       {/* footer section */}
       {!showDetails.state && (
         <Footer>
-          <Button size="medium" onClick={handleExpandFull}>
-            {expandFull ? <ArrowUpIcon /> : <ArrowDownIcon />}
+          <Button size="large" onClick={handleExpandFull}>
+            {expandFull ? <ArrowHeadUpIcon color="#cc0000"/> : <ArrowHeadDownIcon color="#cc0000"/>}
           </Button>
         </Footer>
       )}

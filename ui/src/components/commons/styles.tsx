@@ -6,6 +6,11 @@ export const Button = styled.button<{ size?: string }>`
   outline: none;
   padding: 0;
   cursor: pointer;
+  display: flex;
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
   ${({size}) => {
     let style;
     switch (size) {

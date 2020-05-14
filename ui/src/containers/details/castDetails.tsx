@@ -19,9 +19,12 @@ interface CastAndCrewModel {
 
 const MediaObjectsWrapper = styled.div<{ resxProps?: responsiveProps }>`
   margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
-  width: ${(p) => (p.resxProps?.isBigScreen ? "97%" : "48%")};
+  width: ${({ resxProps: st }) =>
+    st && st.isBigScreen || st?.isTabletOrMobile ? "97%" : "48%"};
 `;
 
 const MediaObjectHeader = styled.div`

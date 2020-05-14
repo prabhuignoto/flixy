@@ -13,6 +13,7 @@ import {
   RecommendedMoviesContainer,
   CastAndCrewContainer,
   PanelContainer,
+  PostersWrapper,
 } from "./details-main.styles";
 import Movie from "../../models/Movie";
 import { CloseIcon, MenuIcon } from "../icons/index";
@@ -91,9 +92,9 @@ export default ({
                       <CastAndCrew id={id} />
                     </CastAndCrewContainer>
                     {resxProps.isBigScreen && (
-                      <ReviewsWrapper resxProps={resxProps}>
+                      <PostersWrapper resxProps={resxProps}>
                         <Images movieId={id} />
-                      </ReviewsWrapper>
+                      </PostersWrapper>
                     )}
                   </CastAndCrewWrapper>
                 </Box2>
@@ -115,8 +116,8 @@ export default ({
             )}
             {actvTab === tabs.posters && (
               <ReviewsWrapper resxProps={resxProps}>
-              <Images movieId={id} />
-            </ReviewsWrapper>
+                <Images movieId={id} />
+              </ReviewsWrapper>
             )}
             {actvTab === tabs.reviews && (
               <ReviewsWrapper resxProps={resxProps}>

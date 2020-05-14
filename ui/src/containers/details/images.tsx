@@ -19,6 +19,7 @@ const MediaObjectsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 97%;
+  margin: 0 auto;
 `;
 
 const MediaObjectHeader = styled.div`

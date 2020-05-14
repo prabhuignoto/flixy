@@ -69,7 +69,7 @@ export const Title = styled(Font)`
 
 export const Overview = styled(Title) <{ resxProps?: responsiveProps }>`
   color: #fff;
-  font-size: ${p =>p.resxProps?.isBigScreen ? ".85rem" : ".8rem"};
+  font-size: ${p =>p.resxProps?.isBigScreen ? ".9rem" : ".8rem"};
   font-weight: 300;
   margin: .25rem 0;
   width: 95%;
@@ -84,11 +84,11 @@ export const CloseDetails = styled.button<{ resxProps?: responsiveProps }>`
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  height: ${p => p.resxProps?.isBigScreen ? "4rem" : "3rem"};
-  width: ${p => p.resxProps?.isBigScreen ? "4rem" : "3rem"};
+  height: ${p => p.resxProps?.isBigScreen ? "3.5rem" : "3rem"};
+  width: ${p => p.resxProps?.isBigScreen ? "3.5rem" : "3rem"};
   outline: none;
   position: absolute;
-  right: 1rem;
+  right: .5rem;
   top: .25rem;
   z-index:10;
 `;
@@ -96,7 +96,12 @@ export const CloseDetails = styled.button<{ resxProps?: responsiveProps }>`
 export const ReviewsWrapper = styled.div<{ resxProps?: responsiveProps }>`
   border-radius: .2rem;
   height: ${p => p.resxProps?.isBigScreen ? "450px" : "100%"};
-  /* margin-right: 2.5rem; */
+  position: relative;
+  width: 100%;
+`;
+
+export const PostersWrapper = styled.div<{ resxProps?: responsiveProps }>`
+  height: ${p => p.resxProps?.isBigScreen ? "450px" : "100%"};
   position: relative;
   width: ${p => p.resxProps?.isBigScreen ? "55%" : "100%"};
 `;
@@ -122,7 +127,7 @@ export const CastAndCrewWrapper = styled.div<{ resxProps?: responsiveProps }>`
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   flex-direction: ${p => p.resxProps?.isBigScreen ? "row" : "column"}
 `;
 

@@ -1,7 +1,8 @@
 import { animated } from 'react-spring';
 import styled from "styled-components";
+import { ThumbnailSize } from '../../models/MediaObject';
 
-export const ObjectsContainer = styled.section<{height?: number}>`
+export const ObjectsContainer = styled.section<{ height?: number }>`
   align-items: center;
   background: #111;
   border-radius: .2rem;
@@ -24,7 +25,7 @@ export const ObjectsWrapper = styled.ul<{ columns?: number }>`
   width: 100%;
 `;
 
-export const Scroll = styled.div<{ disable?: boolean }>`
+export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize }>`
   ${p => p.disable && "display: none;"}
   align-items: center;
   background: #111;
@@ -34,7 +35,7 @@ export const Scroll = styled.div<{ disable?: boolean }>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 2.5rem;
+  width: ${p => p.size === ThumbnailSize.large ? "3.25rem" : "2.5rem"};
   z-index: 1;
 
   & svg {
@@ -46,7 +47,7 @@ export const ScrollLeftBtn = styled(Scroll)`
   left: 0rem;
 `;
 
-export const ScrollRightBtn = styled(Scroll) `
+export const ScrollRightBtn = styled(Scroll)`
   right: 0rem;
 `;
 

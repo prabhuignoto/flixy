@@ -15,6 +15,8 @@ import { Imdb } from "@styled-icons/fa-brands/Imdb";
 import { Hash } from '@styled-icons/feather/Hash';
 import { Crown } from "@styled-icons/fa-solid/Crown";
 import { Menu } from "@styled-icons/feather/Menu";
+import { ArrowheadDown } from "@styled-icons/evaicons-solid/ArrowheadDown";
+import { ArrowheadUp } from "@styled-icons/evaicons-solid/ArrowheadUp";
 
 export const PlusIcon = styled(Plus)`
   color: red;
@@ -39,7 +41,7 @@ export const ChevronRightIcon = styled(ChevronRight)`
   color: #cc0000;
 `;
 
-export const CloseIcon = styled(X)<{color?: string}>`
+export const CloseIcon = styled(X) <{ color?: string }>`
   color: ${p => p.color};
 `;
 
@@ -69,6 +71,14 @@ export const CrownIcon = styled(Crown) <{ color?: string }>`
   color: ${p => p.color};
 `;
 
-export const MenuIcon = styled(Menu) <{color?: string}>`
+export const MenuIcon = styled(Menu) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const ArrowHeadDownIcon = styled(ArrowheadDown) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const ArrowHeadUpIcon = styled(ArrowheadUp) <{ color?: string }>`
   color: ${p => p.color};
 `;

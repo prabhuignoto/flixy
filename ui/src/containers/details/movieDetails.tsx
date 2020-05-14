@@ -41,12 +41,12 @@ const MovieDetails: React.FunctionComponent<{
     if (mounted && movieId) {
       setLoading(true);
       if (wrapperRef && wrapperRef.current) {
-        // const height = wrapperRef.current.clientHeight;
+        const { isBigScreen, isTabletOrMobile } = resxProps;
         let height;
-        if (resxProps.isBigScreen) {
+        if (isBigScreen) {
           height = 700;
-        } else if (resxProps.isTabletOrMobile) {
-          height = 520;
+        } else if (isTabletOrMobile) {
+          height = 730;
         } else {
           height = 480;
         }
@@ -63,11 +63,12 @@ const MovieDetails: React.FunctionComponent<{
 
   React.useEffect(() => {
     if (mounted && hide) {
+      const { isBigScreen, isTabletOrMobile } = resxProps;
       let height;
-      if (resxProps.isBigScreen) {
+      if (isBigScreen) {
         height = 700;
-      } else if (resxProps.isTabletOrMobile) {
-        height = 520;
+      } else if (isTabletOrMobile) {
+        height = 730;
       } else {
         height = 480;
       }

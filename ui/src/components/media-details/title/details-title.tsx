@@ -53,34 +53,38 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
             </DetailsRatingContainer>
           )}
           <TitleText resxProps={resxProps}>{`${title}`}</TitleText>
-          <TitleYear resxProps={resxProps}>{`${year ? new Date(year).getFullYear() : ""}`}</TitleYear>
+          <TitleYear resxProps={resxProps}>{`${
+            year ? new Date(year).getFullYear() : ""
+          }`}</TitleYear>
         </TitleRow1>
         <TitleRow2>
           <GenresContainer>
             {genres && <Genres items={genres} />}
-            <AttributesContainer resxProps={resxProps}>
-              {runtime && (
-                <AttributeContainer>
-                  <Attribute
-                    label="Runtime"
-                    value={`${Math.round(runtime / 60)}hrs`}
-                  />
-                </AttributeContainer>
-              )}
-              {releaseDate && (
-                <AttributeContainer>
-                  <Attribute
-                    label="Release Date"
-                    value={format(new Date(releaseDate), "do, MMM yyyy")}
-                  />
-                </AttributeContainer>
-              )}
-              {lang && (
-                <AttributeContainer>
-                  <Attribute label="Language" value={ISO6391.getName(lang)} />
-                </AttributeContainer>
-              )}
-            </AttributesContainer>
+            {!resxProps.isTabletOrMobile && (
+              <AttributesContainer resxProps={resxProps}>
+                {runtime && (
+                  <AttributeContainer>
+                    <Attribute
+                      label="Runtime"
+                      value={`${Math.round(runtime / 60)}hrs`}
+                    />
+                  </AttributeContainer>
+                )}
+                {releaseDate && (
+                  <AttributeContainer>
+                    <Attribute
+                      label="Release Date"
+                      value={format(new Date(releaseDate), "do, MMM yyyy")}
+                    />
+                  </AttributeContainer>
+                )}
+                {lang && (
+                  <AttributeContainer>
+                    <Attribute label="Language" value={ISO6391.getName(lang)} />
+                  </AttributeContainer>
+                )}
+              </AttributesContainer>
+            )}
           </GenresContainer>
         </TitleRow2>
       </Title>
