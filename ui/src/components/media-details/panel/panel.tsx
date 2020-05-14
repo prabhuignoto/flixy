@@ -7,6 +7,7 @@ export enum tabs {
   similar = "SIMILAR",
   recommended = "RECOMMENDED",
   reviews = "REVIEWS",
+  posters = "POSTERS"
 }
 
 const Panel: React.FunctionComponent<{
@@ -22,6 +23,14 @@ const Panel: React.FunctionComponent<{
       >
         About
       </PanelListItem>
+      {!isBigScreen && (
+        <PanelListItem
+          onClick={() => onSelection(tabs.posters)}
+          selected={actvTab === tabs.posters}
+        >
+          MoviePosters
+        </PanelListItem>
+      )}
       <PanelListItem
         onClick={() => onSelection(tabs.similar)}
         selected={actvTab === tabs.similar}
@@ -34,7 +43,7 @@ const Panel: React.FunctionComponent<{
       >
         Recommended Movies
       </PanelListItem>
-      {!isBigScreen && (
+      {(
         <PanelListItem
           onClick={() => onSelection(tabs.reviews)}
           selected={actvTab === tabs.reviews}

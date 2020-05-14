@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { responsiveProps } from "../../../effects/useResponsive";
 
 const Font = styled.div`
   font-family: "Poppins";
@@ -8,7 +9,6 @@ export const Title = styled(Font)`
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 1.5rem;
   font-weight: 400;
   overflow: hidden;
   text-align: left;
@@ -21,22 +21,24 @@ export const TitleWrapper = styled.div`
   justify-content: flex-start;
   margin-top: .5rem;
   width: 100%;
+  padding-left: 1rem;
 `;
 
 export const DetailsRatingContainer = styled.div`
   margin-right: 1rem;
 `;
 
-export const TitleYear = styled.span`
+export const TitleYear = styled.span<{resxProps: responsiveProps}>`
   color: rgba(204,0,0,0.85);
   font-size: 1.5rem;
   margin-left: 1rem;
   display: flex;
   height: 100%;
   align-items: center;
+  font-size: ${p => p.resxProps.isBigScreen ? "1.5rem" : "1.2rem"};
 `;
 
-export const TitleText = styled.span`
+export const TitleText = styled.span<{resxProps: responsiveProps}>`
   max-width: 85%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -44,6 +46,7 @@ export const TitleText = styled.span`
   display: flex;
   height: 100%;
   align-items: center;
+  font-size: ${p => p.resxProps.isBigScreen ? "1.5rem" : "1.2rem"};
 `;
 
 export const TitleRow1 = styled.div`
@@ -59,13 +62,17 @@ export const TitleRow2 = styled.div`
   margin-top: .5rem;
 `;
 
-export const AttributesContainer = styled.div`
+export const AttributesContainer = styled.div<{ resxProps?: responsiveProps }>`
   align-items: center;
   display: flex;
   justify-content: space-evenly;
-  margin-left: auto;
-  margin-right: 1rem;
-  padding-left: 1.5rem;
+  ${p => {
+    if (p.resxProps?.isTabletOrMobile) {
+      return "";
+    } else {
+      return "margin-left: auto;margin-right: 1rem;"
+    }
+  }}
 `;
 
 export const AttributeContainer = styled.div`

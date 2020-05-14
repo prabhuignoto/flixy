@@ -25,6 +25,7 @@ import Similar from "../../containers/movies/similar";
 import { tabs } from "./panel/panel";
 import Panel from "./panel/panel";
 import useResponsive from "../../effects/useResponsive";
+import Images from "../../containers/details/images";
 
 type CardDetail = Movie & { handleClose?: () => void; isLoading: boolean };
 
@@ -84,14 +85,14 @@ export default ({
                   ></DetailsTitle>
                 </Box1>
                 <Box2>
-                  <Overview>{overview}</Overview>
+                  <Overview resxProps={resxProps}>{overview}</Overview>
                   <CastAndCrewWrapper resxProps={resxProps}>
                     <CastAndCrewContainer resxProps={resxProps}>
                       <CastAndCrew id={id} />
                     </CastAndCrewContainer>
                     {resxProps.isBigScreen && (
                       <ReviewsWrapper resxProps={resxProps}>
-                        <Reviews movieId={id} />
+                        <Images movieId={id} />
                       </ReviewsWrapper>
                     )}
                   </CastAndCrewWrapper>
@@ -112,6 +113,11 @@ export default ({
                 </RecommendedMoviesContainer>
               </RecommendedMoviesWrapper>
             )}
+            {actvTab === tabs.posters && (
+              <ReviewsWrapper resxProps={resxProps}>
+              <Images movieId={id} />
+            </ReviewsWrapper>
+            )}
             {actvTab === tabs.reviews && (
               <ReviewsWrapper resxProps={resxProps}>
                 <Reviews movieId={id} />
@@ -123,7 +129,7 @@ export default ({
           </DetailsWrapper>
         </>
       )}
-      <CloseDetails onClick={handleClose}>
+      <CloseDetails onClick={handleClose} resxProps={resxProps}>
         <CloseIcon color="#fff" />
       </CloseDetails>
     </DetailsCardWrapper>

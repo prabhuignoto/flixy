@@ -6,13 +6,13 @@ export const ObjectsContainer = styled.section<{height?: number}>`
   background: #111;
   border-radius: .2rem;
   display: flex;
+  flex-direction: column;
+  height: ${p => p.height}px;
+  justify-content: center;
   padding: 0;
+  padding: 1rem 0;
   position: relative;
   width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1rem 0;
-  height: ${p => p.height}px;
 `;
 
 export const ObjectsWrapper = styled.ul<{ columns?: number }>`
@@ -25,6 +25,7 @@ export const ObjectsWrapper = styled.ul<{ columns?: number }>`
 `;
 
 export const Scroll = styled.div<{ disable?: boolean }>`
+  ${p => p.disable && "display: none;"}
   align-items: center;
   background: #111;
   cursor: pointer;
@@ -35,7 +36,6 @@ export const Scroll = styled.div<{ disable?: boolean }>`
   transform: translateY(-50%);
   width: 2.5rem;
   z-index: 1;
-  ${p => p.disable && "display: none;"}
 
   & svg {
     width: 100%;

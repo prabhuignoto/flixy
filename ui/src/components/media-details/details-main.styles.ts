@@ -4,7 +4,7 @@ import { responsiveProps } from '../../effects/useResponsive';
 
 export const DetailsHome = styled.div`
   width: 100%;
-  padding-left: 1rem;
+  /* padding-left: 1rem; */
 `;
 
 export const DetailsCardWrapper = styled(animated.div)`
@@ -67,38 +67,38 @@ export const Title = styled(Font)`
   text-align: left;
 `;
 
-export const Overview = styled(Title)`
+export const Overview = styled(Title) <{ resxProps?: responsiveProps }>`
   color: #fff;
-  font-size: .85rem;
+  font-size: ${p =>p.resxProps?.isBigScreen ? ".85rem" : ".8rem"};
   font-weight: 300;
   margin: .25rem 0;
   width: 95%;
+  padding-left: 1rem;
 `;
 
 export const Budget = styled.div``;
 
 
-export const CloseDetails = styled.button`
+export const CloseDetails = styled.button<{ resxProps?: responsiveProps }>`
   background: none;
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  height: 4rem;
+  height: ${p => p.resxProps?.isBigScreen ? "4rem" : "3rem"};
+  width: ${p => p.resxProps?.isBigScreen ? "4rem" : "3rem"};
   outline: none;
   position: absolute;
   right: 1rem;
   top: .25rem;
-  width: 4rem;
   z-index:10;
 `;
 
 export const ReviewsWrapper = styled.div<{ resxProps?: responsiveProps }>`
   border-radius: .2rem;
   height: ${p => p.resxProps?.isBigScreen ? "450px" : "100%"};
-  margin-right: 2.5rem;
+  /* margin-right: 2.5rem; */
   position: relative;
-  width: ${p => p.resxProps?.isBigScreen ? "47%" : "100%"};
-  border: 1px solid #2f2f2f;
+  width: ${p => p.resxProps?.isBigScreen ? "55%" : "100%"};
 `;
 
 export const Box1 = styled.div`
@@ -162,7 +162,7 @@ export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
     } else if (isDesktopOrLaptop && !isBigScreen) {
       return "100%";
     } else {
-      return "50%";
+      return "45%";
     }
   }
   };

@@ -5,7 +5,7 @@ import { cast } from "../../gqls/cast";
 import MediaObjects from "../../components/media-objects/media-objects";
 import { MediaObject, ThumbnailSize } from "./../../models/MediaObject";
 import styled from "styled-components";
-import useResponsive from "../../effects/useResponsive";
+import useResponsive, { responsiveProps } from "../../effects/useResponsive";
 
 interface CastResultDetails {
   getCredits: Credits;
@@ -17,21 +17,21 @@ interface CastAndCrewModel {
   isCast?: boolean;
 }
 
-const MediaObjectsWrapper = styled.div`
-  margin: .5rem 0;
+const MediaObjectsWrapper = styled.div<{ resxProps?: responsiveProps }>`
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
-  width: 97%;
+  width: ${(p) => (p.resxProps?.isBigScreen ? "97%" : "48%")};
 `;
 
 const MediaObjectHeader = styled.div`
   margin-bottom: 0.5rem;
   font-family: "Poppins";
-  font-size: .75rem;
-  font-weight: 400;
+  font-size: 0.9rem;
+  font-weight: 300;
   color: #fff;
   text-align: left;
-  padding-left: 0.1rem;
+  padding-left: 0.2rem;
   text-transform: uppercase;
 `;
 
@@ -40,7 +40,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
     const client = useApolloClient();
     const [loading, setLoading] = React.useState(false);
     const [detailsData, setDetailsData] = React.useState<Credits>({ id: "" });
-    const { isBigScreen } = useResponsive();
+    const resxProps = useResponsive();
+    const { isBigScreen } = resxProps;
 
     const executeQuery = async () => {
       setLoading(true);
@@ -71,7 +72,7 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
       view = (
         <>
           {cast && (
-            <MediaObjectsWrapper>
+            <MediaObjectsWrapper resxProps={resxProps}>
               <MediaObjectHeader>Movie Cast</MediaObjectHeader>
               <MediaObjects
                 title={"Movie Cast"}
@@ -81,14 +82,14 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
-                height={isBigScreen ? 150 : 110}
-                itemSize={isBigScreen ? 120 : 95}
+                height={isBigScreen ? 150 : 160}
+                itemSize={isBigScreen ? 120 : 130}
                 thumbnailSize={ThumbnailSize.small}
               />
             </MediaObjectsWrapper>
           )}
           {crew && (
-            <MediaObjectsWrapper>
+            <MediaObjectsWrapper resxProps={resxProps}>
               <MediaObjectHeader>Movie Crew</MediaObjectHeader>
               <MediaObjects
                 title={"Movie Crew"}
@@ -98,8 +99,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
-                height={isBigScreen ? 150 : 110}
-                itemSize={isBigScreen ? 120 : 95}
+                height={isBigScreen ? 150 : 160}
+                itemSize={isBigScreen ? 120 : 130}
                 thumbnailSize={ThumbnailSize.small}
               />
             </MediaObjectsWrapper>

@@ -1,7 +1,7 @@
 export interface MediaObject {
   name: string;
   path: string;
-  id: number;
+  id: number | string;
   visible?: boolean;
   thumbnailSize?: ThumbnailSize;
 }

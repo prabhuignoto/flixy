@@ -44,9 +44,11 @@ const MovieDetails: React.FunctionComponent<{
         // const height = wrapperRef.current.clientHeight;
         let height;
         if (resxProps.isBigScreen) {
-          height = 685;
+          height = 700;
+        } else if (resxProps.isTabletOrMobile) {
+          height = 520;
         } else {
-          height = 620;
+          height = 480;
         }
         setProps({
           height,
@@ -55,11 +57,6 @@ const MovieDetails: React.FunctionComponent<{
           },
           onRest: () => executeQuery(),
         });
-
-        // if (height !== 750) {
-        // } else {
-        //   executeQuery();
-        // }
       }
     }
   }, [movieId]);
@@ -68,9 +65,11 @@ const MovieDetails: React.FunctionComponent<{
     if (mounted && hide) {
       let height;
       if (resxProps.isBigScreen) {
-        height = 685;
+        height = 700;
+      } else if (resxProps.isTabletOrMobile) {
+        height = 520;
       } else {
-        height = 620;
+        height = 480;
       }
       setProps({
         height: 0,

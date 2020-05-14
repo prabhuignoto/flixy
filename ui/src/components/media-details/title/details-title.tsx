@@ -20,6 +20,7 @@ import Genres from "../../media-genres/genres";
 import Attribute from "../attribute/details-attribute";
 import { Genre } from "../../../models/Genre";
 import { useMediaQuery } from "react-responsive";
+import useResponsive from "../../../effects/useResponsive";
 
 export interface DetailsTitleModel {
   year?: string;
@@ -40,6 +41,8 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
   runtime,
   genres,
 }) => {
+  const resxProps = useResponsive();
+
   return (
     <TitleWrapper>
       <Title>
@@ -49,13 +52,13 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
               <DetailsRating rating={rating} />
             </DetailsRatingContainer>
           )}
-          <TitleText>{`${title}`}</TitleText>
-          <TitleYear>{`${year ? new Date(year).getFullYear() : ""}`}</TitleYear>
+          <TitleText resxProps={resxProps}>{`${title}`}</TitleText>
+          <TitleYear resxProps={resxProps}>{`${year ? new Date(year).getFullYear() : ""}`}</TitleYear>
         </TitleRow1>
         <TitleRow2>
           <GenresContainer>
             {genres && <Genres items={genres} />}
-            <AttributesContainer>
+            <AttributesContainer resxProps={resxProps}>
               {runtime && (
                 <AttributeContainer>
                   <Attribute

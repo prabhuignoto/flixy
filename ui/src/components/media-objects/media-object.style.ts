@@ -6,26 +6,27 @@ export const MediaObject = styled(animated.div)`
   display: flex;
   flex-direction: column;
   height: 100%;
-  /* width: 7rem; */
+  margin-right: .5rem;
 `;
 
 export const ObjectImage = styled(animated.img)<{ loaded?: boolean }>`
-  border-radius: .25rem;
+  border-radius: .2rem;
   display: ${p => p.loaded ? "block" : "none"};
   margin-top: auto;
   max-height: 80%;
   max-width: 100%;
   object-fit: contain;
+  box-shadow: 0 0 10px 5px;
 `;
 
 export const FallbackImage = styled.div<{ failed?: boolean }>`
+  /* background: #2a2a2a; */
+  /* width: 4.5rem; */
   align-items: center;
+  border-radius: .25rem;
   display: flex;
   height: 80%;
   justify-content: center;
-  /* width: 4.5rem; */
-  /* background: #2a2a2a; */
-  border-radius: .25rem;
   margin-top: auto;
   & svg {
     width: 3rem;

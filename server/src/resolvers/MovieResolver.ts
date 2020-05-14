@@ -4,6 +4,7 @@ import MovieResult from './../types/MovieResult';
 import { MovieDetail } from "../types/MovieDetail";
 import { Credits } from "../types/Credits";
 import ReviewResult from "../types/ReviewResult";
+import Images from "../types/Images";
 
 @Resolver(MovieResult)
 export default class MovieResolver {
@@ -117,7 +118,6 @@ export default class MovieResolver {
     try {
       const { key, url } = this;
       const response = await fetch(`${url}movie/${movie_id}?api_key=${key}&language=${lang}`);
-
       const data = await response.json();
 
       return data;
@@ -136,8 +136,6 @@ export default class MovieResolver {
       const response = await fetch(`${url}movie/${movie_id}/credits?api_key=${key}`);
 
       const data = await response.json();
-      console.log(data);
-
       return data;
 
     } catch (error) {
@@ -153,9 +151,24 @@ export default class MovieResolver {
     try { 
       const { key, url } = this;
       const response = await fetch(`${url}movie/${movie_id}/reviews?api_key=${key}&page=${page}`);
-
       const data = await response.json();
-      console.log(data);
+
+      return data;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  @Query(returns => Images)
+  async getImages(
+    @Arg("movie_id") movie_id:  number,
+    @Arg("lang") lang: string
+  ){
+    try { 
+      const { key, url } = this;
+      const response = await fetch(`${url}movie/${movie_id}/images?api_key=${key}`);
+      const data = await response.json();
 
       return data;
 
