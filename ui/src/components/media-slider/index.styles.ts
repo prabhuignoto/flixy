@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { animated } from "react-spring";
 
 export const Wrapper = styled(animated.div) <{ expand?: number }>`
-  background-color: #000;
+  background-color: #141414;
   border-radius: .25rem;
   display: flex;
   flex-direction: column;
   width: 100%; 
   overflow: hidden;
+  margin: 1rem 0;
 `;
 
 export const Header = styled.header`
@@ -37,7 +38,7 @@ export const MoviesWrapper = styled(animated.div) <{ expand?: number }>`
 `;
 
 export const Title = styled.div`
-padding-left: 2rem;
+padding-left: 5rem;
 `;
 
 export const TitleText = styled.span`

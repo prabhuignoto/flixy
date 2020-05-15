@@ -43,9 +43,9 @@ const MediaObjects: React.FunctionComponent<{
         const { clientWidth, scrollWidth } = rWindowRef.current;
 
         if (dir === ScrollDir.RIGHT) {
-          rWindowRef.current.scrollLeft += Math.round(config.clientWidth * 0.9);
+          rWindowRef.current.scrollLeft += Math.round(config.clientWidth * .75);
         } else {
-          rWindowRef.current.scrollLeft -= Math.round(config.clientWidth * 0.9);
+          rWindowRef.current.scrollLeft -= Math.round(config.clientWidth * .75);
         }
 
         const scrolledWidth = clientWidth + rWindowRef.current.scrollLeft;

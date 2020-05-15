@@ -22,8 +22,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
         opacity: 0,
       },
       delay: 0,
-      config: config.stiff,
-      reset: true,
+      config: config.stiff
     });
     const [loaded, setLoaded] = React.useState(false);
     return (

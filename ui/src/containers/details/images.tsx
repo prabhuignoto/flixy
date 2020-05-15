@@ -25,13 +25,12 @@ const MediaObjectsWrapper = styled.div`
 const MediaObjectHeader = styled.div`
   margin-bottom: 0.5rem;
   font-family: "Poppins";
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 300;
   color: #fff;
   text-align: left;
   padding-left: 0.2rem;
   text-transform: uppercase;
-  /* border-bottom: 1px solid rgba(204,0,0,0.75); */
 `;
 
 const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
@@ -40,7 +39,7 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
     const [loading, setLoading] = React.useState(false);
     const [detailsData, setDetailsData] = React.useState<Images>();
     const { isBigScreen } = useResponsive();
-
+    const containerRef = React.createRef<HTMLDivElement>();
     const executeQuery = async () => {
       setLoading(true);
       const { data } = await client.query<ImageResultDetails>({
@@ -91,7 +90,11 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
         </>
       );
     }
-    return <>{view}</>;
+    return (
+      <>
+        {view}
+      </>
+    );
   },
   (prev, current) => prev.movieId === current.movieId
 );

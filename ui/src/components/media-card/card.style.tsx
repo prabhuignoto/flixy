@@ -35,8 +35,6 @@ export const CardContainer = styled(animated.div)<{
   justify-content: space-evenly;
   position: relative;
   width: ${p => getColumnWidth(p.resxProps)}px;
-  border: ${(p) =>
-    !p.isLoadingCard ? ".1rem solid black;" : ".25rem solid black"};
   ${(p) =>
     p.isLoadingCard
       ? ""

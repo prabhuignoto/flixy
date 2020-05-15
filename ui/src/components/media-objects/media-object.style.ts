@@ -26,8 +26,8 @@ export const FallbackImage = styled.div<{ failed?: boolean }>`
   justify-content: center;
   margin-top: auto;
   & svg {
-    width: 3rem;
     height: 3rem;
+    width: 3rem;
   }
 `;
 

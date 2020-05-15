@@ -47,9 +47,9 @@ const MovieDetails: React.FunctionComponent<{
           if (isBigScreen) {
             height = 780;
           } else if (isTabletOrMobile) {
-            height = 730;
+            height = 760;
           } else {
-            height = 480;
+            height = 520;
           }
           setProps({
             height,
@@ -69,9 +69,9 @@ const MovieDetails: React.FunctionComponent<{
         if (isBigScreen) {
           height = 780;
         } else if (isTabletOrMobile) {
-          height = 730;
+          height = 760;
         } else {
-          height = 480;
+          height = 520;
         }
         setProps({
           height: 0,
@@ -137,10 +137,10 @@ const MovieDetails: React.FunctionComponent<{
 
     const Wrapper = styled(animated.div)`
       position: relative;
-      border: ${!hide && "1px solid #333232"};
       width: 98%;
       margin: 0 auto;
       border-radius: 0.2rem;
+      ${!hide && !loading && "box-shadow: 0 0 14px 5px rgba(0,0,0,0.5)"};
     `;
 
     return (
