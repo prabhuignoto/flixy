@@ -146,7 +146,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
       {/* footer section */}
       {!showDetails.state && (
         <Footer>
-          <Button size="large" onClick={handleExpandFull}>
+          <Button size="medium" onClick={handleExpandFull}>
             {expandFull ? <ArrowHeadUpIcon color="#cc0000"/> : <ArrowHeadDownIcon color="#cc0000"/>}
           </Button>
         </Footer>

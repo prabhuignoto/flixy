@@ -43,7 +43,7 @@ padding-left: 2rem;
 export const TitleText = styled.span`
   color: #fff;
   font-family: Poppins;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 300;
 `;
 

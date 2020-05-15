@@ -88,22 +88,26 @@ export const CloseDetails = styled.button<{ resxProps?: responsiveProps }>`
   width: ${p => p.resxProps?.isBigScreen ? "3.5rem" : "3rem"};
   outline: none;
   position: absolute;
-  right: .5rem;
-  top: .25rem;
+  right: .1rem;
+  top: .1rem;
   z-index:10;
 `;
 
 export const ReviewsWrapper = styled.div<{ resxProps?: responsiveProps }>`
   border-radius: .2rem;
-  height: ${p => p.resxProps?.isBigScreen ? "450px" : "100%"};
+  height: 100%;
   position: relative;
   width: 100%;
+  display: flex;
+  align-items: center;
 `;
 
 export const PostersWrapper = styled.div<{ resxProps?: responsiveProps }>`
-  height: ${p => p.resxProps?.isBigScreen ? "450px" : "100%"};
+  height: ${p => p.resxProps?.isBigScreen ? "510px" : "100%"};
   position: relative;
   width: ${p => p.resxProps?.isBigScreen ? "55%" : "100%"};
+  display: flex;
+  align-items: center;
 `;
 
 export const Box1 = styled.div`
@@ -158,8 +162,6 @@ export const SimilarMoviesWrapper = styled.div``;
 
 
 export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
-  min-height: 350px;
-  height: 1px;
   width: ${ ({ resxProps }) => {
     const { isTabletOrMobile, isBigScreen, isDesktopOrLaptop } = <responsiveProps>resxProps;
     if (isTabletOrMobile) {
@@ -174,14 +176,11 @@ export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
 `;
 
 export const PanelContainer = styled(animated.div)`
-  position: absolute;
   width: 100%;
-  left: 0;
-  height: 3rem;
+  height: 3.5rem;
   background: #131313;
-  z-index: 10;
-  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: auto;
 `;

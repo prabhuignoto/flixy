@@ -26,19 +26,19 @@ export const MinusIcon = styled(Minus)`
   color: red;
 `;
 
-export const ArrowDownIcon = styled(ChevronDown)`
-  color: #cc0000;
+export const ArrowDownIcon = styled(ChevronDown)<{color?: string}>`
+  color: ${p => p.color ? p.color : "#cc0000"};
 `;
 
-export const ArrowUpIcon = styled(ChevronUp)`
-  color: #cc0000;
+export const ArrowUpIcon = styled(ChevronUp)<{color?: string}>`
+  color: ${p => p.color ? p.color : "#cc0000"};
 `;
 
-export const ChevronLeftIcon = styled(ChevronLeft)`
-  color: #cc0000;
+export const ChevronLeftIcon = styled(ChevronLeft)<{color?: string}>`
+  color: ${p => p.color ? p.color : "#cc0000"};
 `;
-export const ChevronRightIcon = styled(ChevronRight)`
-  color: #cc0000;
+export const ChevronRightIcon = styled(ChevronRight)<{color?: string}>`
+  color: ${p => p.color ? p.color : "#cc0000"};
 `;
 
 export const CloseIcon = styled(X) <{ color?: string }>`

@@ -7,7 +7,6 @@ export const ObjectsContainer = styled.section<{ height?: number }>`
   background: #111;
   border-radius: .2rem;
   display: flex;
-  flex-direction: column;
   height: ${p => p.height}px;
   justify-content: center;
   padding: 0;
@@ -22,21 +21,17 @@ export const ObjectsWrapper = styled.ul<{ columns?: number }>`
   overflow-x: hidden;
   padding: 0;
   scroll-behavior: smooth;
-  width: 100%;
+  width: 95%;
+  box-shadow: inset 25px 0px 25px -25px rgba(0,0,0,.5), inset -25px 0px 25px -25px rgba(0,0,0,0.5);
 `;
 
 export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize }>`
   ${p => p.disable && "display: none;"}
   align-items: center;
-  background: #111;
   cursor: pointer;
   display: flex;
   height: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   width: ${p => p.size === ThumbnailSize.large ? "3.25rem" : "2.5rem"};
-  z-index: 1;
 
   & svg {
     width: 100%;

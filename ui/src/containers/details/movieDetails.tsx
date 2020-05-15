@@ -16,134 +16,141 @@ const MovieDetails: React.FunctionComponent<{
   movieId: number;
   handleClose?: () => void;
   hide?: boolean;
-}> = ({ movieId, handleClose, hide }) => {
-  const [data, setData] = React.useState<MovieDetail | null>();
-  const [loading, setLoading] = React.useState(false);
-  const client = useApolloClient();
-  const [mounted, setMounted] = React.useState(false);
-  const wrapperRef = React.useRef<HTMLDivElement>(null);
-  const resxProps = useResponsive();
+}> = React.memo(
+  ({ movieId, handleClose, hide }) => {
+    const [data, setData] = React.useState<MovieDetail | null>();
+    const [loading, setLoading] = React.useState(false);
+    const client = useApolloClient();
+    const [mounted, setMounted] = React.useState(false);
+    const wrapperRef = React.useRef<HTMLDivElement>(null);
+    const resxProps = useResponsive();
 
-  const [props, setProps] = useSpring(() => ({
-    height: 0,
-    opacity: 1,
-    config: config.default,
-  }));
+    const [props, setProps] = useSpring(() => ({
+      height: 0,
+      opacity: 1,
+      config: config.default,
+    }));
 
-  React.useEffect(() => {
-    setMounted(true);
-    return () => {
-      setMounted(false);
-    };
-  }, []);
+    React.useEffect(() => {
+      setMounted(true);
+      return () => {
+        setMounted(false);
+      };
+    }, []);
 
-  React.useEffect(() => {
-    if (mounted && movieId) {
-      setLoading(true);
-      if (wrapperRef && wrapperRef.current) {
+    React.useEffect(() => {
+      if (mounted && movieId) {
+        setLoading(true);
+        if (wrapperRef && wrapperRef.current) {
+          const { isBigScreen, isTabletOrMobile } = resxProps;
+          let height;
+          if (isBigScreen) {
+            height = 780;
+          } else if (isTabletOrMobile) {
+            height = 730;
+          } else {
+            height = 480;
+          }
+          setProps({
+            height,
+            from: {
+              height: 0,
+            },
+            onRest: () => executeQuery(),
+          });
+        }
+      }
+    }, [movieId]);
+
+    React.useEffect(() => {
+      if (mounted && hide) {
         const { isBigScreen, isTabletOrMobile } = resxProps;
         let height;
         if (isBigScreen) {
-          height = 700;
+          height = 780;
         } else if (isTabletOrMobile) {
           height = 730;
         } else {
           height = 480;
         }
         setProps({
-          height,
+          height: 0,
           from: {
-            height: 0,
+            height,
           },
-          onRest: () => executeQuery(),
         });
       }
-    }
-  }, [movieId]);
+    }, [hide]);
 
-  React.useEffect(() => {
-    if (mounted && hide) {
-      const { isBigScreen, isTabletOrMobile } = resxProps;
-      let height;
-      if (isBigScreen) {
-        height = 700;
-      } else if (isTabletOrMobile) {
-        height = 730;
-      } else {
-        height = 480;
-      }
-      setProps({
-        height: 0,
-        from: {
-          height,
+    const executeQuery = async () => {
+      const { data } = await client.query({
+        query: details,
+        variables: {
+          lang: "en-US",
+          id: movieId,
         },
       });
+
+      setData(data.getDetails);
+
+      setLoading(false);
+    };
+
+    let view = null;
+
+    if (!loading && data && !hide) {
+      const {
+        poster_path,
+        title,
+        id,
+        overview,
+        genres,
+        runtime,
+        release_date,
+        original_language,
+        imdb_id,
+        vote_average,
+        video,
+      } = data;
+
+      view = (
+        <CardDetails
+          poster_path={poster_path}
+          title={title}
+          id={id}
+          overview={overview}
+          handleClose={handleClose}
+          genres={genres}
+          runtime={runtime}
+          release_date={release_date}
+          original_language={original_language}
+          isLoading={false}
+          imdb_id={imdb_id}
+          vote_average={vote_average}
+          video={video}
+          key={movieId}
+        />
+      );
+    } else if (loading) {
+      view = <Shimmer />;
     }
-  }, [hide]);
 
-  const executeQuery = async () => {
-    const { data } = await client.query({
-      query: details,
-      variables: {
-        lang: "en-US",
-        id: movieId,
-      },
-    });
+    const Wrapper = styled(animated.div)`
+      position: relative;
+      border: ${!hide && "1px solid #333232"};
+      width: 98%;
+      margin: 0 auto;
+      border-radius: 0.2rem;
+    `;
 
-    setData(data.getDetails);
-
-    setLoading(false);
-  };
-
-  let view = null;
-
-  if (!loading && data && !hide) {
-    const {
-      poster_path,
-      title,
-      id,
-      overview,
-      genres,
-      runtime,
-      release_date,
-      original_language,
-      imdb_id,
-      vote_average,
-      video,
-    } = data;
-
-    view = (
-      <CardDetails
-        poster_path={poster_path}
-        title={title}
-        id={id}
-        overview={overview}
-        handleClose={handleClose}
-        genres={genres}
-        runtime={runtime}
-        release_date={release_date}
-        original_language={original_language}
-        isLoading={false}
-        imdb_id={imdb_id}
-        vote_average={vote_average}
-        video={video}
-        key={movieId}
-      />
+    return (
+      <Wrapper style={props} ref={wrapperRef} key={movieId}>
+        {view}
+      </Wrapper>
     );
-  } else if (loading) {
-    view = <Shimmer />;
-  }
-
-  const Wrapper = styled(animated.div)`
-    position: relative;
-  `;
-
-  return (
-    <Wrapper style={props} ref={wrapperRef} key={movieId}>
-      {view}
-    </Wrapper>
-  );
-};
+  },
+  (prev, current) => prev.movieId === current.movieId
+);
 
 export default React.memo(
   MovieDetails,
