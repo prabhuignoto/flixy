@@ -71,6 +71,7 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
         <>
           {backdrops && (
             <MediaObjectsWrapper>
+              <MediaObjectHeader>Posters</MediaObjectHeader>
               <MediaObjects
                 title="Posters"
                 id="movie_backdrops"

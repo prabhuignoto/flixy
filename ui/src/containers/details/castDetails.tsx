@@ -23,8 +23,8 @@ const MediaObjectsWrapper = styled.div<{ resxProps?: responsiveProps }>`
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: ${({ resxProps: st }) =>
     st && st.isBigScreen || st?.isTabletOrMobile ? "97%" : "48%"};
 `;
@@ -87,8 +87,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
-                height={isBigScreen ? 180 : 140}
-                itemSize={isBigScreen ? 150 : 130}
+                height={isBigScreen ? 210 : 190}
+                itemSize={isBigScreen ? 150 : 100}
                 thumbnailSize={ThumbnailSize.small}
               />
             </MediaObjectsWrapper>
@@ -104,8 +104,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
-                height={isBigScreen ? 180 : 140}
-                itemSize={isBigScreen ? 150 : 130}
+                height={isBigScreen ? 210 : 190}
+                itemSize={isBigScreen ? 150 : 100}
                 thumbnailSize={ThumbnailSize.small}
               />
             </MediaObjectsWrapper>

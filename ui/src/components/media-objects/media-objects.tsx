@@ -27,7 +27,7 @@ const MediaObjects: React.FunctionComponent<{
   thumbnailSize: ThumbnailSize;
 }> = React.memo(
   ({ items, height, itemSize, thumbnailSize }) => {
-    const containerRef = React.useRef<HTMLDivElement>(null);
+    const containerRef = React.createRef<HTMLUListElement>();
     const rWindowRef = React.useRef<HTMLDivElement>(null);
     const [config, setConfig] = React.useState({
       show: false,
@@ -43,13 +43,9 @@ const MediaObjects: React.FunctionComponent<{
         const { clientWidth, scrollWidth } = rWindowRef.current;
 
         if (dir === ScrollDir.RIGHT) {
-          rWindowRef.current.scrollLeft += Math.round(
-            config.clientWidth * 0.75
-          );
+          rWindowRef.current.scrollLeft += Math.round(config.clientWidth * 0.9);
         } else {
-          rWindowRef.current.scrollLeft -= Math.round(
-            config.clientWidth * 0.75
-          );
+          rWindowRef.current.scrollLeft -= Math.round(config.clientWidth * 0.9);
         }
 
         const scrolledWidth = clientWidth + rWindowRef.current.scrollLeft;
@@ -72,7 +68,8 @@ const MediaObjects: React.FunctionComponent<{
 
     React.useEffect(() => {
       if (containerRef && containerRef.current) {
-        const { clientWidth, scrollWidth, clientHeight } = containerRef.current;
+        const node = containerRef.current as HTMLUListElement;
+        const { clientWidth, scrollWidth, clientHeight } = node;
 
         setConfig({
           show: true,
@@ -89,34 +86,33 @@ const MediaObjects: React.FunctionComponent<{
       view = (
         <>
           {/* <ObjectHeader>{title}</ObjectHeader> */}
-          <ObjectsWrapper>
-            <FixedSizeList
-              layout="horizontal"
-              itemCount={config.count}
-              itemSize={itemSize}
-              width={config.clientWidth}
-              height={config.clientHeight}
-              outerRef={rWindowRef}
-              style={{ overflow: "hidden", scrollBehavior: "smooth" }}
-            >
-              {({ index, style }) => {
-                const { name, path, id } = items[index];
-                return (
-                  <MediaObjectContainer
-                    key={`${id}-${index}-${name}`}
-                    style={style}
-                  >
-                    <MediaObjectView
-                      name={name}
-                      path={path}
-                      id={id}
-                      thumbnailSize={thumbnailSize}
-                    />
-                  </MediaObjectContainer>
-                );
-              }}
-            </FixedSizeList>
-          </ObjectsWrapper>
+
+          <FixedSizeList
+            layout="horizontal"
+            itemCount={config.count}
+            itemSize={itemSize}
+            width={config.clientWidth}
+            height={config.clientHeight}
+            outerRef={rWindowRef}
+            style={{ overflow: "hidden", scrollBehavior: "smooth" }}
+          >
+            {({ index, style }) => {
+              const { name, path, id } = items[index];
+              return (
+                <MediaObjectContainer
+                  key={`${id}-${index}-${name}`}
+                  style={style}
+                >
+                  <MediaObjectView
+                    name={name}
+                    path={path}
+                    id={id}
+                    thumbnailSize={thumbnailSize}
+                  />
+                </MediaObjectContainer>
+              );
+            }}
+          </FixedSizeList>
         </>
       );
     } else {
@@ -124,7 +120,7 @@ const MediaObjects: React.FunctionComponent<{
     }
 
     return (
-      <ObjectsContainer ref={containerRef} height={height}>
+      <ObjectsContainer height={height}>
         <ScrollLeftBtn
           onClick={() => handleNav(ScrollDir.LEFT)}
           disable={disableLeftNav}
@@ -132,7 +128,13 @@ const MediaObjects: React.FunctionComponent<{
         >
           <ChevronLeftIcon />
         </ScrollLeftBtn>
-        {view}
+        <ObjectsWrapper
+          ref={containerRef}
+          leftButton={disableLeftNav}
+          rightButton={disableRightNav}
+        >
+          {view}
+        </ObjectsWrapper>
         <ScrollRightBtn
           onClick={() => handleNav(ScrollDir.RIGHT)}
           disable={disableRightNav}
