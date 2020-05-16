@@ -4,7 +4,7 @@ import { ProductionCountry } from "./ProductionCountry";
 import { SpokenLanguage } from "./SpokenLanguage";
 
 export interface MovieDetail {
-  adult: boolean;
+  adult?: boolean;
   backdrop_path: string;
   budget: number;
   genres: Genre[];

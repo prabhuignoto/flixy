@@ -9,6 +9,7 @@ import {
   MediaObjectContainer,
   ScrollLeftBtn,
   ScrollRightBtn,
+  ObjectHeader,
 } from "./media-objects.styles";
 import { ChevronLeftIcon, ChevronRightIcon } from "./../icons/index";
 import { FixedSizeList } from "react-window";
@@ -26,7 +27,7 @@ const MediaObjects: React.FunctionComponent<{
   itemSize: number;
   thumbnailSize: ThumbnailSize;
 }> = React.memo(
-  ({ items, height, itemSize, thumbnailSize }) => {
+  ({ items, height, itemSize, thumbnailSize, title }) => {
     const containerRef = React.createRef<HTMLUListElement>();
     const rWindowRef = React.useRef<HTMLDivElement>(null);
     const [config, setConfig] = React.useState({
@@ -43,9 +44,13 @@ const MediaObjects: React.FunctionComponent<{
         const { clientWidth, scrollWidth } = rWindowRef.current;
 
         if (dir === ScrollDir.RIGHT) {
-          rWindowRef.current.scrollLeft += Math.round(config.clientWidth * .75);
+          rWindowRef.current.scrollLeft += Math.round(
+            config.clientWidth * 0.75
+          );
         } else {
-          rWindowRef.current.scrollLeft -= Math.round(config.clientWidth * .75);
+          rWindowRef.current.scrollLeft -= Math.round(
+            config.clientWidth * 0.75
+          );
         }
 
         const scrolledWidth = clientWidth + rWindowRef.current.scrollLeft;
@@ -85,8 +90,7 @@ const MediaObjects: React.FunctionComponent<{
     if (config.show) {
       view = (
         <>
-          {/* <ObjectHeader>{title}</ObjectHeader> */}
-
+          <ObjectHeader>{title}</ObjectHeader>
           <FixedSizeList
             layout="horizontal"
             itemCount={config.count}
@@ -94,7 +98,12 @@ const MediaObjects: React.FunctionComponent<{
             width={config.clientWidth}
             height={config.clientHeight}
             outerRef={rWindowRef}
-            style={{ overflow: "hidden", scrollBehavior: "smooth" }}
+            style={{
+              overflow: "hidden",
+              scrollBehavior: "smooth",
+              marginTop: "auto",
+              marginBottom: ".75rem",
+            }}
           >
             {({ index, style }) => {
               const { name, path, id } = items[index];

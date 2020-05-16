@@ -220,7 +220,7 @@ export default ({
       >
         <ChevronLeftIcon />
       </ScrollLeft>
-      {movies.length && (
+      {movies && movies.length ? (
         <MoviesView
           slider={slider}
           expandFull={expandFull}
@@ -230,7 +230,7 @@ export default ({
           handleSelection={handleSelection}
           loadingCards={loadingCards}
         />
-      )}
+      ) : null}
       <ScrollRight
         onClick={() => handleNav(NavDir.RIGHT)}
         loading={loadingState === State.LOADING}

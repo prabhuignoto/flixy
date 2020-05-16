@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 import { animated } from "react-spring";
 
-export const Wrapper = styled(animated.div) <{ expand?: number }>`
-  background-color: #141414;
+export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
+  background-color: ${p => !p.detailsEnabled ? "#111" : ""};
+  ${p => p.detailsEnabled && "background-image: linear-gradient(to top, #363636, #2c2c2c, #232323, #1a1a1a, #111111);"};
   border-radius: .25rem;
   display: flex;
   flex-direction: column;
   width: 100%; 
   overflow: hidden;
   margin: 1rem 0;
+  padding-bottom: ${p => p.detailsEnabled ? "2rem" : ""};;
 `;
 
 export const Header = styled.header`

@@ -24,7 +24,7 @@ export const DetailsCardWrapper = styled(animated.div)`
 
 export const DetailsWrapper = styled.section`
   align-items: flex-start;
-  background: #191919;
+  background: #111;
   border-radius: .2rem;
   display: flex;
   flex-direction: column;
@@ -103,7 +103,7 @@ export const ReviewsWrapper = styled.div<{ resxProps?: responsiveProps }>`
 `;
 
 export const PostersWrapper = styled.div<{ resxProps?: responsiveProps }>`
-  height: ${p => p.resxProps?.isBigScreen ? "510px" : "100%"};
+  /* height: ${p => p.resxProps?.isBigScreen ? "510px" : "100%"}; */
   position: relative;
   width: ${p => p.resxProps?.isBigScreen ? "55%" : "100%"};
   display: flex;
@@ -111,7 +111,7 @@ export const PostersWrapper = styled.div<{ resxProps?: responsiveProps }>`
 `;
 
 export const Box1 = styled.div`
-  display: flex;
+display: flex;
   align-items: flex-start;
   width: 100%;
   margin-bottom: .25rem;
@@ -131,7 +131,7 @@ export const CastAndCrewWrapper = styled.div<{ resxProps?: responsiveProps }>`
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   flex-direction: ${p => p.resxProps?.isBigScreen ? "row" : "column"}
 `;
 
@@ -178,7 +178,7 @@ export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
 export const PanelContainer = styled(animated.div)`
   width: 100%;
   height: 3.5rem;
-  background: #131313;
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;

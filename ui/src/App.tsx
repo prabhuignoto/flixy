@@ -1,15 +1,13 @@
 import { hot } from "react-hot-loader/root";
 import React from "react";
 import "./App.css";
-// import ApolloClient from "apollo-boost";
-import {ApolloClient, InMemoryCache, ApolloProvider} from "@apollo/client";
-// import { ApolloProvider } from "@apollo/react-hooks";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import TopRatedMovies from "./containers/movies/topRated";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import OnAir from "./containers/tv/onAir";
-// import Popular from "./containers/tv/popular";
-// import TopRated from "./containers/tv/topRated";
+import Popular from "./containers/tv/popular";
+import TopRated from "./containers/tv/topRated";
 import Trending from "./containers/movies/popular";
 import Upcoming from "./containers/movies/upComing";
 
@@ -25,17 +23,15 @@ function App() {
       <div className="App">
         <Router>
           <Switch>
-            <Route path="/movies">
+            <Route path="/">
               <TopRatedMovies />
               <Trending />
               <Upcoming />
+              <TopRated />
+              <OnAir />
+              <Popular />
             </Route>
           </Switch>
-          {/* <Route path="/tv"> */}
-          {/* <TopRated /> */}
-          {/* <Popular />*/}
-          {/* <OnAir />
-          </Route> */}
         </Router>
       </div>
     </ApolloProvider>

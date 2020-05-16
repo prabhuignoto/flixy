@@ -26,7 +26,7 @@ const MediaObjectsWrapper = styled.div<{ resxProps?: responsiveProps }>`
   align-items: flex-start;
   justify-content: flex-start;
   width: ${({ resxProps: st }) =>
-    st && st.isBigScreen || st?.isTabletOrMobile ? "97%" : "48%"};
+    (st && st.isBigScreen) || st?.isTabletOrMobile ? "97%" : "48%"};
 `;
 
 const MediaObjectHeader = styled.div`
@@ -76,9 +76,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
       const { crew, cast, id } = detailsData;
       view = (
         <>
-          {cast && (
+          {cast && cast.length ? (
             <MediaObjectsWrapper resxProps={resxProps}>
-              <MediaObjectHeader>Movie Cast</MediaObjectHeader>
               <MediaObjects
                 title={"Movie Cast"}
                 id={+id}
@@ -87,15 +86,14 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
-                height={isBigScreen ? 210 : 190}
+                height={isBigScreen ? 250 : 220}
                 itemSize={isBigScreen ? 150 : 100}
                 thumbnailSize={ThumbnailSize.small}
               />
             </MediaObjectsWrapper>
-          )}
-          {crew && (
+          ) : null}
+          {crew && crew.length ? (
             <MediaObjectsWrapper resxProps={resxProps}>
-              <MediaObjectHeader>Movie Crew</MediaObjectHeader>
               <MediaObjects
                 title={"Movie Crew"}
                 id={+id}
@@ -104,12 +102,12 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
-                height={isBigScreen ? 210 : 190}
+                height={isBigScreen ? 250 : 220}
                 itemSize={isBigScreen ? 150 : 100}
                 thumbnailSize={ThumbnailSize.small}
               />
             </MediaObjectsWrapper>
-          )}
+          ) : null}
         </>
       );
     }

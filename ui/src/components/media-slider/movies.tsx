@@ -63,16 +63,17 @@ export default ({
             />
           )
       )}
-      {loadingCards.length &&
-        loadingCards.map((val: number) => (
-          <Card
-            id={val}
-            loadingCard={true}
-            key={val}
-            poster_path={""}
-            resxProps={responsiveProps}
-          />
-        ))}
+      {loadingCards && loadingCards.length
+        ? loadingCards.map((val: number) => (
+            <Card
+              id={val}
+              loadingCard={true}
+              key={val}
+              poster_path={""}
+              resxProps={responsiveProps}
+            />
+          ))
+        : null}
     </MoviesContainer>
   );
 };

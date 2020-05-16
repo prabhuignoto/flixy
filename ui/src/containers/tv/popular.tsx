@@ -1,33 +1,88 @@
 import * as React from "react";
-import { useQuery } from "@apollo/client";
+import { useApolloClient } from "@apollo/client";
 import Slider from "../../components/media-slider";
 import { popular } from "../../gqls/tv";
+import Movie from "./../../models/Movie";
 import { LoadingState } from "../../models/Slider";
 
-export default () => {
-  const { loading, error, data } = useQuery(popular, {
-    variables: {
-      lang: "en-US",
-      page: 1
-    },
+const TopRated: React.FunctionComponent = () => {
+  const client = useApolloClient();
+  const [movieData, setMovieData] = React.useState<{
+    results: Movie[];
+    total_results?: number;
+  }>({
+    results: [],
+    total_results: 0,
   });
+  const [loading, setLoading] = React.useState(false);
 
-  let loadingState: LoadingState = LoadingState.DEFAULT;
+  React.useEffect(() => {
+    getTv(1);
+  }, []);
+
+  const getTv = async (page: number) => {
+    setLoading(true);
+    const { data } = await client.query({
+      query: popular,
+      variables: {
+        lang: "en-US",
+        page,
+      },
+      fetchPolicy: "cache-first",
+    });
+
+    if (data) {
+      let newData = [] as Movie[];
+      if (movieData.results) {
+        newData = [...movieData.results, ...data.getPopularTv.results];
+      }
+      setMovieData({
+        results: newData,
+        total_results: data.getPopularTv.total_results,
+      });
+    }
+
+    setLoading(false);
+  };
+
+  const handleFetchMore = (page: number) => {
+    getTv(page);
+  };
+
+  let view = null;
 
   if (loading) {
-    loadingState = LoadingState.LOADING;
-  } else if (error) {
-    loadingState = LoadingState.FAILED;
-  } else {
-    loadingState = LoadingState.LOADED;
+    view = (
+      <Slider
+        movies={[]}
+        title="TV -Popular"
+        fetchMore={handleFetchMore}
+        totalResults={0}
+        loadingState={LoadingState.LOADING}
+      ></Slider>
+    );
+  } else if (movieData.results.length) {
+    view = (
+      <Slider
+        movies={
+          movieData
+            ? movieData.results.map((item: any) =>
+                Object.assign({}, item, {
+                  hide: false,
+                  selected: false,
+                })
+              )
+            : []
+        }
+        title="TV -Popular"
+        fetchMore={handleFetchMore}
+        totalResults={movieData.total_results ? movieData.total_results : 0}
+        loadingState={LoadingState.LOADED}
+      ></Slider>
+    );
   }
 
-  return (
-    <Slider
-      movies={data && data.getPopularTv ? data.getPopularTv.results : []}
-      title="Popular"
-      totalResults={data && data.getPopularTv ? data.getPopularTv.total_results : 0}
-      loadingState={loadingState}
-    ></Slider>
-  );
+  return view;
 };
+
+export default React.memo(TopRated);

@@ -14,7 +14,7 @@ export const PanelListItem = styled.li<{selected?: boolean}>`
   color: #bdbdbd;
   cursor: pointer;
   font-family: "Poppins";
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 400;
   margin: .5rem 0;
   margin: 0 1rem;

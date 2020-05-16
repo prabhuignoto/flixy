@@ -107,7 +107,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
   );
 
   return (
-    <WrapperContainer expand={expandFull ? 1 : 0}>
+    <WrapperContainer detailsEnabled={showDetails.selectedMovie ? 1 : 0}>
       <Header>
         <Title>
           <TitleIcon></TitleIcon>
