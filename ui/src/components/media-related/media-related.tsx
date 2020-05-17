@@ -22,11 +22,9 @@ const RelatedMedia: React.FunctionComponent<{
           height={isBigScreen ? 400 : 320}
           itemSize={isBigScreen ? 250 : 200}
           thumbnailSize={ThumbnailSize.large}
+          noBackground
         />
       </RelatedMediaObjects>
-      {/* <RelatedMovieInfo>
-        <DetailsTitle />
-      </RelatedMovieInfo> */}
     </MediaRelatedWrapper>
   );
 };

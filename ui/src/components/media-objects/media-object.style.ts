@@ -10,10 +10,10 @@ export const MediaObject = styled(animated.div)`
   justify-content: center;
 `;
 
-export const ObjectImage = styled(animated.img)<{ loaded?: boolean }>`
+export const ObjectImage = styled(animated.img) <{ loaded?: boolean, noTitle?: boolean }>`
   border-radius: .2rem;
   display: ${p => p.loaded ? "block" : "none"};
-  max-height: 80%;
+  max-height: ${p => p.noTitle ? "100%" : "80%"};
   max-width: 100%;
   object-fit: contain;
 `;

@@ -141,7 +141,7 @@ export const MenuButtonWrapper = styled.div`
 
 export const RecommendedMoviesWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 95%;
   margin: 0 auto;
   display: flex;
   align-items: center;

@@ -2,9 +2,9 @@ import { animated } from 'react-spring';
 import styled from "styled-components";
 import { ThumbnailSize } from '../../models/MediaObject';
 
-export const ObjectsContainer = styled.section<{ height?: number }>`
+export const ObjectsContainer = styled.section<{ height?: number, noBackground?: boolean }>`
   align-items: center;
-  background: #1d1d1d;
+  background: ${p => !p.noBackground ? "#1d1d1d" :""};
   border-radius: .25rem;
   display: flex;
   height: ${p => p.height}px;

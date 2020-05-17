@@ -26,9 +26,18 @@ const MediaObjects: React.FunctionComponent<{
   height: number;
   itemSize: number;
   thumbnailSize: ThumbnailSize;
-  noTitle?: boolean
+  noTitle?: boolean;
+  noBackground?: boolean;
 }> = React.memo(
-  ({ items, height, itemSize, thumbnailSize, title, noTitle }) => {
+  ({
+    items,
+    height,
+    itemSize,
+    thumbnailSize,
+    title,
+    noTitle,
+    noBackground,
+  }) => {
     const containerRef = React.createRef<HTMLUListElement>();
     const rWindowRef = React.useRef<HTMLDivElement>(null);
     const [config, setConfig] = React.useState({
@@ -91,7 +100,7 @@ const MediaObjects: React.FunctionComponent<{
     if (config.show) {
       view = (
         <>
-          <ObjectHeader>{title}</ObjectHeader>
+          {!noTitle && <ObjectHeader>{title}</ObjectHeader>}
           <FixedSizeList
             layout="horizontal"
             itemCount={config.count}
@@ -103,7 +112,7 @@ const MediaObjects: React.FunctionComponent<{
               overflow: "hidden",
               scrollBehavior: "smooth",
               marginTop: "auto",
-              marginBottom: ".5rem"
+              marginBottom: noTitle ? "auto" : ".5rem",
             }}
           >
             {({ index, style }) => {
@@ -131,7 +140,7 @@ const MediaObjects: React.FunctionComponent<{
     }
 
     return (
-      <ObjectsContainer height={height}>
+      <ObjectsContainer height={height} noBackground={noBackground}>
         <ScrollLeftBtn
           onClick={() => handleNav(ScrollDir.LEFT)}
           disable={disableLeftNav}

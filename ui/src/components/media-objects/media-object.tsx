@@ -36,6 +36,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
               onLoad={() => setLoaded(true)}
               loaded={loaded}
               style={props}
+              noTitle={noTitle}
             ></ObjectImage>
             {!loaded && <Loader size={LoaderSize.small} />}
           </>
