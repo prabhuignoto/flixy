@@ -13,7 +13,7 @@ export const MediaObject = styled(animated.div)`
 export const ObjectImage = styled(animated.img)<{ loaded?: boolean }>`
   border-radius: .2rem;
   display: ${p => p.loaded ? "block" : "none"};
-  max-height: 85%;
+  max-height: 80%;
   max-width: 100%;
   object-fit: contain;
 `;
@@ -22,7 +22,7 @@ export const FallbackImage = styled.div<{ failed?: boolean }>`
   align-items: center;
   border-radius: .25rem;
   display: flex;
-  height: 85%;
+  height: 80%;
   justify-content: center;
   margin-top: auto;
   & svg {
@@ -37,6 +37,7 @@ export const ObjectName = styled.span`
   font-size: .85rem;
   font-weight: 300;
   margin-top: auto;
+  margin-bottom: .5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -4,7 +4,6 @@ import { responsiveProps } from '../../effects/useResponsive';
 
 export const DetailsHome = styled.div`
   width: 100%;
-  /* padding-left: 1rem; */
 `;
 
 export const DetailsCardWrapper = styled(animated.div)`
@@ -31,9 +30,6 @@ export const DetailsWrapper = styled.section`
   height: 100%;
   justify-content: flex-start;
   width: 100%;
-  /* &:not()>* {
-    padding-left: 1.2rem;
-  } */
   @media (min-width: 1366px) {
     width: 100%;
   }
@@ -63,7 +59,7 @@ export const Title = styled(Font)`
   color: #fff;
   font-size: 1.5rem;
   font-weight: 400;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
   text-align: left;
 `;
 
@@ -163,7 +159,7 @@ export const SimilarMoviesWrapper = styled.div``;
 
 export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
   width: ${ ({ resxProps }) => {
-    const { isTabletOrMobile, isBigScreen, isDesktopOrLaptop } = <responsiveProps>resxProps;
+    const { isTabletOrMobile, isBigScreen, isDesktopOrLaptop } = resxProps as responsiveProps;
     if (isTabletOrMobile) {
       return "100%";
     } else if (isDesktopOrLaptop && !isBigScreen) {

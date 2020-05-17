@@ -11,12 +11,12 @@ const DetailsRating: React.FunctionComponent<{ rating?: number }> = ({
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   return (
-    <DetailsRatingWrapper rating={rating} isTabletOrMobile={isTabletOrMobile}>
+    rating ? <DetailsRatingWrapper rating={rating} isTabletOrMobile={isTabletOrMobile}>
       <DetailsRatingValue isTabletOrMobile={isTabletOrMobile}>
         {/* <CrownIcon color="#fff"></CrownIcon> */}
         {`${rating}`}
       </DetailsRatingValue>
-    </DetailsRatingWrapper>
+    </DetailsRatingWrapper> : null
   );
 };
 

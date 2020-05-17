@@ -19,7 +19,6 @@ import Genres from "../../media-genres/genres";
 
 import Attribute from "../attribute/details-attribute";
 import { Genre } from "../../../models/Genre";
-import { useMediaQuery } from "react-responsive";
 import useResponsive from "../../../effects/useResponsive";
 
 export interface DetailsTitleModel {

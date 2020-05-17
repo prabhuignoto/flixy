@@ -61,11 +61,12 @@ export const ScrollRightBtn = styled(Scroll)`
 
 
 export const ObjectHeader = styled.div`
-  font-size: 1rem;
-  color: #bdbdbd;
-  font-weight: 400;
+  font-size: .95rem;
+  color: #cc0000;
+  font-weight: 500;
   padding-left: 1rem;
   padding-top: .5rem;
+  padding-bottom: .75rem;
 `;
 
 export const MediaObjectContainer = styled(animated.div)``;

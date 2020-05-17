@@ -12,8 +12,8 @@ import {
 import Movies from "./collection";
 import { Button } from "../commons/styles";
 import { useSpring, config } from "react-spring";
-import { ArrowDownIcon, ArrowUpIcon, ArrowHeadDownIcon, ArrowHeadUpIcon } from "../icons";
-import Slider, { LoadingState } from "../../models/Slider";
+import { ArrowHeadDownIcon, ArrowHeadUpIcon } from "../icons";
+import Slider from "../../models/Slider";
 import Movie from "../../models/Movie";
 import MovieDetails from "../../containers/details/movieDetails";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";

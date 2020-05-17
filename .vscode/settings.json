@@ -6,5 +6,7 @@
     "idx",
     "query",
     "start"
-  ]
+  ],
+  "tslint.autoFixOnSave": true,
+  "tslint.enable": true
 }
