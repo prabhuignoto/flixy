@@ -83,6 +83,7 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
                 height={isBigScreen ? 350 : 400}
                 itemSize={isBigScreen ? 400 : 400}
                 thumbnailSize={ThumbnailSize.large}
+                noTitle
               />
             </MediaObjectsWrapper>
           ) : null}

@@ -15,14 +15,14 @@ import Loader, { LoaderSize } from "../media-loader";
 import { UserIcon } from "./../icons/index";
 
 const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
-  ({ path, name, thumbnailSize }) => {
+  ({ path, name, thumbnailSize, noTitle }) => {
     const props = useSpring({
       opacity: 1,
       from: {
         opacity: 0,
       },
       delay: 0,
-      config: config.stiff
+      config: config.stiff,
     });
     const [loaded, setLoaded] = React.useState(false);
     return (
@@ -44,7 +44,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
             <UserIcon color="#4b4848" />
           </FallbackImage>
         )}
-        <ObjectName>{name}</ObjectName>
+        {!noTitle && <ObjectName>{name}</ObjectName>}
       </MediaObject>
     );
   },

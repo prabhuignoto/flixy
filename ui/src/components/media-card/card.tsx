@@ -6,6 +6,7 @@ import Poster from "../media-poster/poster";
 import { CheckIcon, ImageIcon } from "../icons";
 import { useSpring, config } from "react-spring";
 import { responsiveProps } from "../../effects/useResponsive";
+import Loader from "../media-loader";
 
 type MovieType = Movie & {
   index?: number;
@@ -67,7 +68,8 @@ export default React.memo(
         ) : (
           <CardContainer size={size} isLoadingCard={loadingCard ? 1 : 0}>
             <ImageIconWrapper>
-              <ImageIcon color="#4b4848" />
+              {/* <ImageIcon color="#4b4848" /> */}
+              <Loader />
             </ImageIconWrapper>
           </CardContainer>
         )}

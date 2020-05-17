@@ -7,13 +7,13 @@ export const MediaObject = styled(animated.div)`
   flex-direction: column;
   height: 100%;
   margin: 0 .5rem;
+  justify-content: center;
 `;
 
 export const ObjectImage = styled(animated.img)<{ loaded?: boolean }>`
   border-radius: .2rem;
   display: ${p => p.loaded ? "block" : "none"};
-  margin-top: auto;
-  max-height: 80%;
+  max-height: 85%;
   max-width: 100%;
   object-fit: contain;
 `;
@@ -22,7 +22,7 @@ export const FallbackImage = styled.div<{ failed?: boolean }>`
   align-items: center;
   border-radius: .25rem;
   display: flex;
-  height: 80%;
+  height: 85%;
   justify-content: center;
   margin-top: auto;
   & svg {
@@ -34,11 +34,12 @@ export const FallbackImage = styled.div<{ failed?: boolean }>`
 export const ObjectName = styled.span`
   color: #fff;
   font-family: "Poppins";
-  font-size: .75rem;
+  font-size: .85rem;
   font-weight: 300;
   margin-top: auto;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
+  height: 10%;
 `;

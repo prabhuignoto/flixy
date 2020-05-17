@@ -4,6 +4,7 @@ export interface MediaObject {
   id: number | string;
   visible?: boolean;
   thumbnailSize?: ThumbnailSize;
+  noTitle?: boolean;
 }
 
 export enum ThumbnailSize {

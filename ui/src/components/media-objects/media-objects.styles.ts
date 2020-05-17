@@ -65,7 +65,7 @@ export const ObjectHeader = styled.div`
   color: #bdbdbd;
   font-weight: 400;
   padding-left: 1rem;
-  padding-top: 1rem;
+  padding-top: .5rem;
 `;
 
 export const MediaObjectContainer = styled(animated.div)``;

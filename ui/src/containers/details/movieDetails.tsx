@@ -45,7 +45,7 @@ const MovieDetails: React.FunctionComponent<{
           const { isBigScreen, isTabletOrMobile } = resxProps;
           let height;
           if (isBigScreen) {
-            height = 800;
+            height = 820;
           } else if (isTabletOrMobile) {
             height = 760;
           } else {
@@ -67,7 +67,7 @@ const MovieDetails: React.FunctionComponent<{
         const { isBigScreen, isTabletOrMobile } = resxProps;
         let height;
         if (isBigScreen) {
-          height = 780;
+          height = 820;
         } else if (isTabletOrMobile) {
           height = 760;
         } else {

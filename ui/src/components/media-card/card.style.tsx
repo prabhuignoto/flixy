@@ -115,6 +115,7 @@ export const CardCheckedWrapper = styled.div`
 export const ImageIconWrapper = styled.div`
   height: 2rem;
   width: 2rem;
+  position: relative;
 `;
 
 

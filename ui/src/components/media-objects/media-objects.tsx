@@ -26,8 +26,9 @@ const MediaObjects: React.FunctionComponent<{
   height: number;
   itemSize: number;
   thumbnailSize: ThumbnailSize;
+  noTitle?: boolean
 }> = React.memo(
-  ({ items, height, itemSize, thumbnailSize, title }) => {
+  ({ items, height, itemSize, thumbnailSize, title, noTitle }) => {
     const containerRef = React.createRef<HTMLUListElement>();
     const rWindowRef = React.useRef<HTMLDivElement>(null);
     const [config, setConfig] = React.useState({
@@ -117,6 +118,7 @@ const MediaObjects: React.FunctionComponent<{
                     path={path}
                     id={id}
                     thumbnailSize={thumbnailSize}
+                    noTitle={noTitle}
                   />
                 </MediaObjectContainer>
               );
