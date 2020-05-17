@@ -28,7 +28,7 @@ const Panel: React.FunctionComponent<{
           onClick={() => onSelection(tabs.posters)}
           selected={actvTab === tabs.posters}
         >
-          MoviePosters
+          Movie Posters
         </PanelListItem>
       )}
       <PanelListItem

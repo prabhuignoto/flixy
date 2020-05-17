@@ -80,12 +80,12 @@ export const CloseDetails = styled.button<{ resxProps?: responsiveProps }>`
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  height: ${p => p.resxProps?.isBigScreen ? "3.5rem" : "3rem"};
-  width: ${p => p.resxProps?.isBigScreen ? "3.5rem" : "3rem"};
+  height: ${p => p.resxProps?.isBigScreen ? "3.5rem" : "2.5rem"};
+  width: ${p => p.resxProps?.isBigScreen ? "3.5rem" : "2.5rem"};
   outline: none;
   position: absolute;
-  right: .1rem;
-  top: .1rem;
+  right: 0rem;
+  top: 0rem;
   z-index:10;
 `;
 

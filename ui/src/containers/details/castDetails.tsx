@@ -87,8 +87,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   id,
                 }))}
                 height={isBigScreen ? 250 : 220}
-                itemSize={isBigScreen ? 150 : 100}
-                thumbnailSize={ThumbnailSize.small}
+                itemSize={isBigScreen ? 150 : 125}
+                thumbnailSize={ThumbnailSize.small} 
               />
             </MediaObjectsWrapper>
           ) : null}
@@ -103,7 +103,7 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   id,
                 }))}
                 height={isBigScreen ? 250 : 220}
-                itemSize={isBigScreen ? 150 : 100}
+                itemSize={isBigScreen ? 150 : 125}
                 thumbnailSize={ThumbnailSize.small}
               />
             </MediaObjectsWrapper>

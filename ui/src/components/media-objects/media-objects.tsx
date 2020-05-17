@@ -103,7 +103,7 @@ const MediaObjects: React.FunctionComponent<{
               overflow: "hidden",
               scrollBehavior: "smooth",
               marginTop: "auto",
-              marginBottom: ".5rem",
+              marginBottom: ".5rem"
             }}
           >
             {({ index, style }) => {
