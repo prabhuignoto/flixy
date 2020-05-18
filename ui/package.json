@@ -29,10 +29,11 @@
     "styled-breakpoints": "^8.1.1",
     "styled-components": "^5.1.0",
     "styled-icons": "^10.2.1",
-    "typescript": "^3.9.2"
+    "typescript": "^3.9.2",
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
-    "start": "set PORT=3555 && react-scripts start",
+    "start": "set PORT=4000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -58,6 +59,7 @@
     "@types/react-custom-scrollbars": "^4.0.6",
     "@types/react-responsive": "^8.0.2",
     "@types/react-router-dom": "^5.1.5",
-    "@types/styled-components": "^5.1.0"
+    "@types/styled-components": "^5.1.0",
+    "@types/webfontloader": "^1.6.30"
   }
 }
