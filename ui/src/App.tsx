@@ -11,7 +11,7 @@ import TopRated from "./containers/tv/topRated";
 import Trending from "./containers/movies/popular";
 import Upcoming from "./containers/movies/upComing";
 import fontLoader from "webfontloader";
-import {config} from "dotenv";
+import { config } from "dotenv";
 
 config();
 
@@ -32,9 +32,9 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
   componentDidMount() {
     fontLoader.load({
       google: {
-        families: ["Poppins"],
+        families: ["Poppins:300,400,500&display=swap"],
       },
-      fontactive: () => this.setState({ fontsLoaded: true }),
+      // fontactive: () => this.setState({ fontsLoaded: true }),
     });
   }
 
@@ -43,30 +43,24 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
   }
 
   render() {
-    if (this.state.fontsLoaded) {
-      return (
-        <ApolloProvider client={client}>
-          <div className="App">
-            <Router>
-              <Switch>
-                <Route path="/">
-                  <TopRatedMovies />
-                  <Trending />
-                  <Upcoming />
-                  <TopRated />
-                  <OnAir />
-                  <Popular />
-                </Route>
-              </Switch>
-            </Router>
-          </div>
-        </ApolloProvider>
-      );
-    } else if(this.state.hasError) {
-      return <div>Application failed to start</div>
-    } else {
-      return null;
-    }
+    return (
+      <ApolloProvider client={client}>
+        <div className="App">
+          <Router>
+            <Switch>
+              <Route path="/">
+                <TopRatedMovies />
+                <Trending />
+                <Upcoming />
+                <TopRated />
+                <OnAir />
+                <Popular />
+              </Route>
+            </Switch>
+          </Router>
+        </div>
+      </ApolloProvider>
+    );
   }
 }
 
