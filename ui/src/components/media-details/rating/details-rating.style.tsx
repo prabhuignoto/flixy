@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { down, between } from "styled-breakpoints";
 
 export const DetailsRatingWrapper = styled.div<{
   isTabletOrMobile?: boolean;
@@ -10,7 +9,7 @@ export const DetailsRatingWrapper = styled.div<{
   box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.25);
   display: flex;
   height: 100%;
-  height: ${(p) => (p.isTabletOrMobile ? "2rem" : "2.2rem")};
+  height: ${(p) => (p.isTabletOrMobile ? "2rem" : "2rem")};
   justify-content: center;
   min-width: ${(p) => (p.isTabletOrMobile ? "2.5rem" : "2.5rem")};
   ${({ rating }) => {

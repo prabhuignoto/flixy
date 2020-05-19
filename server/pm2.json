@@ -3,8 +3,7 @@
     "name": "flixmov-server",
     "exec_mode": "cluster",
     "instances": 2,
-    "script": "./src/index.ts",
-    "interpreter": "ts-node",
+    "script": "./build/index.js",
     "env": {
       "ENV": "prod",
       "PORT": 3000

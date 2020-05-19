@@ -2,15 +2,15 @@ import styled from 'styled-components';
 import { animated } from "react-spring";
 
 export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
-  background-color: ${p => !p.detailsEnabled ? "#111" : ""};
   ${p => p.detailsEnabled && "background-image: linear-gradient(to top, #363636, #2c2c2c, #232323, #1a1a1a, #111111);"};
+  background-color: ${p => !p.detailsEnabled ? "#111" : ""};
   border-radius: .25rem;
   display: flex;
   flex-direction: column;
-  width: 100%; 
-  overflow: hidden;
   margin: 1rem 0;
-  padding-bottom: ${p => p.detailsEnabled ? "2rem" : ""};;
+  overflow: hidden;
+  padding-bottom: ${p => p.detailsEnabled ? "2rem" : ""};
+  width: 100%; 
 `;
 
 export const Header = styled.header`
@@ -22,14 +22,14 @@ export const Header = styled.header`
   font-size: 1.2rem;
   font-weight: 400;
   justify-content: flex-start;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
   padding-top: 1rem;
   text-align: left;
   width: 100%;
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
 `;
 
-export const MoviesWrapper = styled(animated.div) <{ expand?: number }>`
+export const MoviesWrapper = styled(animated.div)`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -66,4 +66,5 @@ export const Footer = styled.footer`
 export const DetailsWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
+  position: relative;
 `;

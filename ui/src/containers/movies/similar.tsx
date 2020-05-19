@@ -50,7 +50,9 @@ const RecommendedMovies: React.FunctionComponent<{
         visible: false,
         path: mov.poster_path || "",
       }));
-      view = <MediaRelated items={data} id={movieId}/>;
+
+      const title = `Movies you might like ...`;
+      view = <MediaRelated items={data} id={movieId} title={title} />;
     }
 
     return view;

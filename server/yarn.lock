@@ -1036,12 +1036,19 @@ fastify-plugin@^1.2.0, fastify-plugin@^1.2.1, fastify-plugin@^1.6.0:
   dependencies:
     semver "^6.3.0"
 
-fastify-redis@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/fastify-redis/-/fastify-redis-3.3.1.tgz#cc0a161ef52481791cea3d751b3d038e39a9e53a"
-  integrity sha512-QEZP3iYpK4WoM6EQPHVSIET+RBWWfmXKUBz2yJcCsQUNWkv6n6ArIM8JXMt5AChKXo0m+ZkAUmvDNuGEm00GcQ==
+fastify-plugin@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/fastify-plugin/-/fastify-plugin-2.0.0.tgz#e1ac8fa0b4a9c65b83f40fc7f6a60f5ac6776326"
+  integrity sha512-5c7xwArjeY5T7PFw+TM66gz7E6mQpEK4PXKXVOmxLXUYh49D34pLAL+gbSRLgr7gg8fTOaNjB9fSj0adV5rrXg==
   dependencies:
-    fastify-plugin "^1.6.0"
+    semver "^7.3.2"
+
+fastify-redis@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/fastify-redis/-/fastify-redis-4.0.1.tgz#af8284c7844963c1e9e13c40948dd8c9554fab32"
+  integrity sha512-Ia5jNdhPLHFwRWd+TXnPkhGEMOQg8TsTWbAotUQrX4c4sredpRV0/w6My6P+M4iAi6qwUnRTBpvo6nE3Pit2uw==
+  dependencies:
+    fastify-plugin "^2.0.0"
     ioredis "^4.10.0"
 
 fastify@^2.14.1:

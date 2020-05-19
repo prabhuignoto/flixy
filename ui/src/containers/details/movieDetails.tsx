@@ -3,10 +3,12 @@ import { useApolloClient } from "@apollo/client";
 import { details } from "../../gqls/movieDetails";
 import CardDetails from "../../components/media-details/details-main";
 import { MovieDetail } from "../../models/MovieDetails";
-import Shimmer from "../../components/media-loader";
+import Loader from "../../components/media-loader";
 import { useSpring, config, animated } from "react-spring";
 import styled from "styled-components";
 import useResponsive from "../../effects/useResponsive";
+
+const Shimmer = React.memo(() => <Loader />);
 
 interface MovieResultDetails {
   getDetails: MovieDetail;
@@ -132,7 +134,7 @@ const MovieDetails: React.FunctionComponent<{
         />
       );
     } else if (loading) {
-      view = <Shimmer />;
+      view =<Shimmer />;
     }
 
     const Wrapper = styled(animated.div)`

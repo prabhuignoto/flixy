@@ -11,19 +11,21 @@ import TopRated from "./containers/tv/topRated";
 import Trending from "./containers/movies/popular";
 import Upcoming from "./containers/movies/upComing";
 import fontLoader from "webfontloader";
+import {config} from "dotenv";
+
+config();
 
 const client = new ApolloClient({
-  // uri: "http://localhost:3000/graphql",
-  uri: "https://movieapi.prabhumurthy.com/graphql",
+  uri: "http://localhost:3000/graphql",
   cache: new InMemoryCache(),
 });
 
-class App extends Component<{}, {fontsLoaded: boolean, hasError: boolean}> {
+class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
   constructor(props: any) {
     super(props);
     this.state = {
       fontsLoaded: false,
-      hasError: false
+      hasError: false,
     };
   }
 
@@ -41,24 +43,30 @@ class App extends Component<{}, {fontsLoaded: boolean, hasError: boolean}> {
   }
 
   render() {
-    return this.state.fontsLoaded && (
-      <ApolloProvider client={client}>
-        <div className="App">
-          <Router>
-            <Switch>
-              <Route path="/">
-                <TopRatedMovies />
-                <Trending />
-                <Upcoming />
-                <TopRated />
-                <OnAir />
-                <Popular />
-              </Route>
-            </Switch>
-          </Router>
-        </div>
-      </ApolloProvider>
-    );
+    if (this.state.fontsLoaded) {
+      return (
+        <ApolloProvider client={client}>
+          <div className="App">
+            <Router>
+              <Switch>
+                <Route path="/">
+                  <TopRatedMovies />
+                  <Trending />
+                  <Upcoming />
+                  <TopRated />
+                  <OnAir />
+                  <Popular />
+                </Route>
+              </Switch>
+            </Router>
+          </div>
+        </ApolloProvider>
+      );
+    } else if(this.state.hasError) {
+      return <div>Application failed to start</div>
+    } else {
+      return null;
+    }
   }
 }
 

@@ -117,7 +117,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
 
       {/* movies list */}
       {
-        <MoviesWrapper expand={expandFull ? 1 : 0} style={props}>
+        <MoviesWrapper style={props}>
           <Movies
             items={movies}
             slider={!expandFull ? 1 : 0}
