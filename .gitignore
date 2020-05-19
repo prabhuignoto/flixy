@@ -5,3 +5,7 @@ out/linecounter.txt
 build
 ui/build/asset-manifest.json
 ui/build/index.html
+ui/.env
+ui/build/index.html
+ui/build/service-worker.js
+ui/build/asset-manifest.json
