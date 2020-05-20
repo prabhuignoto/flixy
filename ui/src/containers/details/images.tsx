@@ -71,7 +71,7 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
           {backdrops && backdrops.length ? (
             <MediaObjectsWrapper>
               <MediaObjects
-                title="Posters"
+                noTitle
                 id="movie_backdrops"
                 items={backdrops.map<MediaObject>(
                   ({ file_path, height, width }) => ({
@@ -80,11 +80,9 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
                     id: file_path,
                   })
                 )}
-                height={isBigScreen ? 280 : 400}
+                height={isBigScreen ? 300 : 400}
                 itemSize={isBigScreen ? 500 : 400}
                 thumbnailSize={ThumbnailSize.large}
-                noTitle
-                noBackground
               />
             </MediaObjectsWrapper>
           ) : null}

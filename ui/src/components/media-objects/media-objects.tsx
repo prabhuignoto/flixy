@@ -62,7 +62,27 @@ const MediaObjects: React.FunctionComponent<{
             config.clientWidth * 0.75
           );
         }
+      }
+    };
 
+    React.useLayoutEffect(() => {
+      if (containerRef && containerRef.current) {
+        const node = containerRef.current as HTMLUListElement;
+        const { clientWidth, scrollWidth, clientHeight } = node;
+
+        setConfig({
+          show: true,
+          clientWidth,
+          count: items.length,
+          clientHeight: clientHeight - 40,
+        });
+      }
+    }, []);
+
+    const onItemsRendered = () => {
+      if (rWindowRef && rWindowRef.current) {
+        const node = rWindowRef.current as HTMLDivElement;
+        const { clientWidth, scrollWidth } = node;
         const scrolledWidth = clientWidth + rWindowRef.current.scrollLeft;
 
         if (scrolledWidth === scrollWidth) {
@@ -81,20 +101,6 @@ const MediaObjects: React.FunctionComponent<{
       }
     };
 
-    React.useEffect(() => {
-      if (containerRef && containerRef.current) {
-        const node = containerRef.current as HTMLUListElement;
-        const { clientWidth, scrollWidth, clientHeight } = node;
-
-        setConfig({
-          show: true,
-          clientWidth,
-          count: items.length,
-          clientHeight: clientHeight - 40,
-        });
-      }
-    }, []);
-
     let view = null;
 
     if (config.show) {
@@ -108,11 +114,11 @@ const MediaObjects: React.FunctionComponent<{
             width={config.clientWidth}
             height={config.clientHeight}
             outerRef={rWindowRef}
+            onItemsRendered={onItemsRendered}
             style={{
               overflow: "hidden",
               scrollBehavior: "smooth",
-              marginTop: "auto",
-              marginBottom: noTitle ? "auto" : ".5rem",
+              // marginBottom: noTitle ? "" : ".5rem",
             }}
           >
             {({ index, style }) => {
@@ -152,6 +158,7 @@ const MediaObjects: React.FunctionComponent<{
           ref={containerRef}
           leftButton={disableLeftNav}
           rightButton={disableRightNav}
+          noBackground={noBackground}
         >
           {view}
         </ObjectsWrapper>

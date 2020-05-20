@@ -21,13 +21,14 @@ export const DetailsCardWrapper = styled(animated.div)`
 
 export const DetailsWrapper = styled.section`
   align-items: flex-start;
-  background: #111;
+  background: #e5e5e5;
   border-radius: .2rem;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: flex-start;
   width: 100%;
+  box-shadow: inset 0  0 30px 10px rgba(0,0,0,0.25);
   @media (min-width: 1366px) {
     width: 100%;
   }
@@ -54,7 +55,7 @@ const Font = styled.div`
 `
 
 export const Title = styled(Font)`
-  color: #fff;
+  color: #191919;
   font-size: 1.5rem;
   font-weight: 400;
   margin-top: 1.2rem;
@@ -111,13 +112,9 @@ export const RecommendedMoviesContainer = styled.div`
 
 export const SimilarMoviesWrapper = styled.div``;
 
-
-
-
 export const PanelContainer = styled(animated.div)`
   width: 100%;
   height: 3.5rem;
-  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;

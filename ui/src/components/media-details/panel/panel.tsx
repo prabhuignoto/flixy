@@ -35,13 +35,13 @@ const Panel: React.FunctionComponent<{
         onClick={() => onSelection(tabs.similar)}
         selected={actvTab === tabs.similar}
       >
-        Similar Movies
+        Similar
       </PanelListItem>
       <PanelListItem
         onClick={() => onSelection(tabs.recommended)}
         selected={actvTab === tabs.recommended}
       >
-        Recommended Movies
+        Recommended
       </PanelListItem>
       {(
         <PanelListItem

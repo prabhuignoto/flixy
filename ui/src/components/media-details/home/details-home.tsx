@@ -6,13 +6,17 @@ import {
   CastAndCrewWrapper,
   CastAndCrewContainer,
   PostersWrapper,
-  DetailsHomeWrapper
+  DetailsHomeWrapper,
+  PostersAndProduction,
+  ProductionWrapper
 } from "./details-home.styles";
 import DetailsTitle from "../title/details-title";
+import ProductionDetails from "../production/details-production";
 import { CastAndCrew } from "../details-cast-and-crew";
 import { responsiveProps } from "../../../effects/useResponsive";
 import Images from "../../../containers/details/images";
 import { Genre } from "../../../models/Genre";
+import { ProductionCompany } from "../../../models/ProductionCompany";
 
 interface DetailsHomeModel {
   id?: number;
@@ -25,7 +29,8 @@ interface DetailsHomeModel {
   genres?: Genre[];
   runtime?: number;
   imdb_id?: string;
-  resxProps?: responsiveProps
+  resxProps?: responsiveProps,
+  production_companies?: ProductionCompany[];
 }
 
 const DetailsHome: React.FunctionComponent<DetailsHomeModel> = ({
@@ -37,7 +42,8 @@ const DetailsHome: React.FunctionComponent<DetailsHomeModel> = ({
   original_language,
   resxProps,
   overview,
-  id
+  id,
+  production_companies
 }) => (
   <DetailsHomeWrapper>
     <Box1>
@@ -58,9 +64,14 @@ const DetailsHome: React.FunctionComponent<DetailsHomeModel> = ({
           <CastAndCrew id={id} />
         </CastAndCrewContainer>
         {resxProps && resxProps.isBigScreen && (
-          <PostersWrapper resxProps={resxProps}>
-            <Images movieId={id} />
-          </PostersWrapper>
+          <PostersAndProduction resxProps={resxProps}>
+            <ProductionWrapper>
+              <ProductionDetails items={production_companies || []} />
+            </ProductionWrapper>
+            <PostersWrapper>
+              <Images movieId={id} />
+            </PostersWrapper>
+          </PostersAndProduction>
         )}
       </CastAndCrewWrapper>
     </Box2>

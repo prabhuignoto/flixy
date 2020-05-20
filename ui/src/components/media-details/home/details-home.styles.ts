@@ -23,6 +23,7 @@ export const Box2 = styled.div`
 
 export const DetailsHomeWrapper = styled.div`
   width: 100%;
+  min-height: 450px;
 `;
 
 export const CastAndCrewWrapper = styled.div<{ resxProps?: responsiveProps }>`
@@ -49,9 +50,9 @@ export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
 `;
 
 export const Overview = styled(Title) <{ resxProps?: responsiveProps }>`
-  color: #fff;
+  color: #191919;
   font-family: "Poppins";
-  font-size: ${p => p.resxProps?.isBigScreen ? ".9rem" : ".8rem"};
+  font-size: ${p => p.resxProps?.isBigScreen ? ".95rem" : ".85rem"};
   font-weight: 300;
   margin: .25rem 0;
   width: 95%;
@@ -59,10 +60,21 @@ export const Overview = styled(Title) <{ resxProps?: responsiveProps }>`
   text-align: left;
 `;
 
-export const PostersWrapper = styled.div<{ resxProps?: responsiveProps }>`
-  /* height: ${p => p.resxProps?.isBigScreen ? "510px" : "100%"}; */
+export const PostersWrapper = styled.div`
   position: relative;
-  width: ${p => p.resxProps?.isBigScreen ? "55%" : "100%"};
   display: flex;
   align-items: center;
+  /* height: 300px; */
+  margin-top: 2rem;
+`;
+
+export const PostersAndProduction = styled.div<{ resxProps?: responsiveProps }>`
+  display: flex;
+  flex-direction: column;
+  width: ${p => p.resxProps?.isBigScreen ? "55%" : "100%"};
+  /* height: 500px; */
+`;
+
+export const ProductionWrapper = styled.div`
+  /* height: 200px; */
 `;

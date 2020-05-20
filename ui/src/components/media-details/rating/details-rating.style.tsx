@@ -6,7 +6,7 @@ export const DetailsRatingWrapper = styled.div<{
 }>`
   align-items: center;
   border-radius: 0.2rem;
-  box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.25);
+  border: 1px solid #ccc;
   display: flex;
   height: 100%;
   height: ${(p) => (p.isTabletOrMobile ? "2rem" : "2rem")};

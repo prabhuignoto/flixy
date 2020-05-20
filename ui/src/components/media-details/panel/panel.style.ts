@@ -11,14 +11,15 @@ export const PanelList = styled.ul`
 
 export const PanelListItem = styled.li<{selected?: boolean}>`
   border-bottom: ${p => p.selected ? " 2px solid #cc0000" : ""};
-  color: #bdbdbd;
+  color: #000;
   cursor: pointer;
   font-family: "Poppins";
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 400;
   margin: .5rem 0;
   margin: 0 1rem;
   text-align: left;
+  user-select: none;
   white-space: nowrap;
   width: 100%;
 `;

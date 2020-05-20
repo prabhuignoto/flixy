@@ -1,4 +1,5 @@
 import { Genre } from "./Genre";
+import { ProductionCompany } from "./ProductionCompany";
 
 export default interface Movie {
   adult?: boolean;
@@ -20,4 +21,5 @@ export default interface Movie {
   loadingCard?: boolean;
   runtime?: number;
   imdb_id?: string;
+  production_companies?: ProductionCompany[];
 }

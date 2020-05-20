@@ -8,7 +8,7 @@ export const AttributeWrapper = styled(Font)`
   align-items: center;
   background: #2a2a2a;
   border-radius: 3px;
-  box-shadow: 0 0.5px 0 0 #000, 0 1px 2px 0 #000;
+  /* box-shadow: 0 0.5px 0 0 #000, 0 1px 2px 0 #000; */
   display: flex;
   height: 1.75rem;
   justify-content: flex-start;
@@ -34,7 +34,7 @@ export const AttributeValue = styled.span`
   background-color: rgba(204,0,0,0.8);
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
-  box-shadow: inset 0 0 10px 1px rgba(0,0,0,0.35);
+  /* box-shadow: inset 0 0 10px 1px rgba(0,0,0,0.35); */
   color: #fff;
   display: flex;
   font-size: .85rem;

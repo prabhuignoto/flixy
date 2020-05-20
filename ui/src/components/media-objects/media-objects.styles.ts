@@ -4,19 +4,25 @@ import { ThumbnailSize } from '../../models/MediaObject';
 
 export const ObjectsContainer = styled.section<{ height?: number, noBackground?: boolean }>`
   align-items: center;
-  background: ${p => !p.noBackground ? "#1d1d1d" :""};
+  background: ${p => !p.noBackground ? "#dbdbdb" : ""};
   border-radius: .25rem;
   display: flex;
   height: ${p => p.height}px;
   justify-content: center;
-  padding: 0;
+  padding: .5rem 0;
   position: relative;
   width: 100%;
 `;
 
-export const ObjectsWrapper = styled.ul<{ columns?: number, leftButton?: boolean, rightButton?: boolean }>`
+export const ObjectsWrapper = styled.ul<{
+  columns?: number,
+  leftButton?: boolean,
+  rightButton?: boolean,
+  noBackground?: boolean
+}>`
   align-items: flex-start;
-  box-shadow: inset 25px 0px 25px -25px rgba(0,0,0,.5), inset -25px 0px 25px -25px rgba(0,0,0,0.5);
+  justify-content: center;
+  // box-shadow: ${p => !p.noBackground ? "inset 25px 0px 25px -25px rgba(0,0,0.2), inset -25px 0px 25px -25px rgba(0,0,0,0.2)" : ""};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -65,8 +71,7 @@ export const ObjectHeader = styled.div`
   color: #cc0000;
   font-weight: 500;
   padding-left: 1rem;
-  padding-top: .5rem;
-  padding-bottom: .75rem;
+  padding-bottom: .5rem;
 `;
 
 export const MediaObjectContainer = styled(animated.div)``;

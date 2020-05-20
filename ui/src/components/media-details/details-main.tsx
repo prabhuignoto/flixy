@@ -36,6 +36,7 @@ export default ({
   isLoading,
   original_language,
   vote_average,
+  production_companies
 }: CardDetail) => {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const [show, setShow] = React.useState(false);
@@ -78,6 +79,7 @@ export default ({
                 resxProps={resxProps}
                 overview={overview}
                 id={id}
+                production_companies={production_companies}
               />
             )}
             {actvTab === tabs.recommended && (
@@ -117,7 +119,7 @@ export default ({
         </>
       )}
       <CloseDetails onClick={handleClose} resxProps={resxProps}>
-        <CloseIcon color="#fff" />
+        <CloseIcon color="#000" />
       </CloseDetails>
     </DetailsCardWrapper>
   );

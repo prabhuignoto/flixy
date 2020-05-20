@@ -16,6 +16,7 @@ export const ObjectImage = styled(animated.img) <{ loaded?: boolean, noTitle?: b
   max-height: ${p => p.noTitle ? "100%" : "80%"};
   max-width: 100%;
   object-fit: contain;
+  margin-top: ${p => !p.noTitle ? "auto" : ""};
 `;
 
 export const FallbackImage = styled.div<{ failed?: boolean }>`
@@ -32,10 +33,10 @@ export const FallbackImage = styled.div<{ failed?: boolean }>`
 `;
 
 export const ObjectName = styled.span`
-  color: #fff;
+  color: #000;
   font-family: "Poppins";
-  font-size: .85rem;
-  font-weight: 300;
+  font-size: .75rem;
+  font-weight: 400;
   margin-top: auto;
   margin-bottom: .5rem;
   overflow: hidden;

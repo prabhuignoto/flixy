@@ -106,6 +106,7 @@ const MovieDetails: React.FunctionComponent<{
       imdb_id,
       vote_average,
       video,
+      production_companies
     } = data;
 
     view = (
@@ -124,6 +125,7 @@ const MovieDetails: React.FunctionComponent<{
         vote_average={vote_average}
         video={video}
         key={movieId}
+        production_companies={production_companies}
       />
     );
   } else if (loading) {

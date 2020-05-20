@@ -13,7 +13,7 @@ export const GenreItem = styled.li`
   align-items: center;
   background: rgba(204,0,0,0.95);
   border-radius: .2rem;
-  box-shadow: 0 0.5px 0 0 #000, 0 1px 2px 0 #000;
+  /* box-shadow: 0 0.5px 0 0 #000, 0 1px 2px 0 #000; */
   color: #fff;
   display: flex;
   font-family: "Poppins";
