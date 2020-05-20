@@ -1,29 +1,21 @@
 import * as React from "react";
+import DetailsHome from "./home/details-home";
+import Images from "../../containers/details/images";
+import Loader from "../media-loader";
+import Movie from "../../models/Movie";
+import Panel from "./panel/panel";
+import useResponsive from "../../effects/useResponsive";
+import { CloseIcon, MenuIcon } from "../icons/index";
+import { tabs } from "./panel/panel";
 import {
   DetailsCardWrapper,
   DetailsWrapper,
   CloseDetails,
-  Overview,
   ReviewsWrapper,
-  Box2,
-  CastAndCrewWrapper,
-  Box1,
-  DetailsHome,
   RecommendedMoviesWrapper,
   RecommendedMoviesContainer,
-  CastAndCrewContainer,
   PanelContainer,
-  PostersWrapper,
 } from "./details-main.styles";
-import Movie from "../../models/Movie";
-import { CloseIcon, MenuIcon } from "../icons/index";
-import DetailsTitle from "./title/details-title";
-import { CastAndCrew } from "./details-cast-and-crew";
-import { tabs } from "./panel/panel";
-import Panel from "./panel/panel";
-import useResponsive from "../../effects/useResponsive";
-import Images from "../../containers/details/images";
-import Loader from "../media-loader";
 
 const Reviews = React.lazy(() => import("../../containers/details/reviews"));
 const Recommended = React.lazy(() =>
@@ -76,32 +68,17 @@ export default ({
         <>
           <DetailsWrapper>
             {actvTab === tabs.home && (
-              <DetailsHome>
-                <Box1>
-                  <DetailsTitle
-                    year={release_date}
-                    title={title}
-                    rating={vote_average}
-                    genres={genres}
-                    runtime={runtime}
-                    lang={original_language}
-                    releaseDate={release_date}
-                  ></DetailsTitle>
-                </Box1>
-                <Box2>
-                  <Overview resxProps={resxProps}>{overview}</Overview>
-                  <CastAndCrewWrapper resxProps={resxProps}>
-                    <CastAndCrewContainer resxProps={resxProps}>
-                      <CastAndCrew id={id} />
-                    </CastAndCrewContainer>
-                    {resxProps.isBigScreen && (
-                      <PostersWrapper resxProps={resxProps}>
-                        <Images movieId={id} />
-                      </PostersWrapper>
-                    )}
-                  </CastAndCrewWrapper>
-                </Box2>
-              </DetailsHome>
+              <DetailsHome
+                release_date={release_date}
+                title={title}
+                vote_average={vote_average}
+                genres={genres}
+                runtime={runtime}
+                original_language={original_language}
+                resxProps={resxProps}
+                overview={overview}
+                id={id}
+              />
             )}
             {actvTab === tabs.recommended && (
               <RecommendedMoviesWrapper>
@@ -128,7 +105,7 @@ export default ({
             )}
             {actvTab === tabs.reviews && (
               <ReviewsWrapper resxProps={resxProps}>
-                <React.Suspense fallback={<Loader />}>
+                <React.Suspense fallback={<div></div>}>
                   <Reviews movieId={id} />
                 </React.Suspense>
               </ReviewsWrapper>

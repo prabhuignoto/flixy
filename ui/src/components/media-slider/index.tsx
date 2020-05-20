@@ -3,11 +3,11 @@ import {
   Wrapper as WrapperContainer,
   Header,
   MoviesWrapper,
-  Title,
   Footer,
   TitleIcon,
   TitleText,
   DetailsWrapper,
+  Title
 } from "./index.styles";
 import Movies from "./collection";
 import { Button } from "../commons/styles";
@@ -139,7 +139,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
 
       {
         <DetailsWrapper>
-          <React.Suspense fallback={<Loader />}>
+          <React.Suspense fallback={<div></div>}>
             <MovieDetails
               movieId={showDetails.selectedMovie}
               handleClose={onDetailsClose}

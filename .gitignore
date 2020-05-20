@@ -9,5 +9,5 @@ ui/.env
 ui/build/index.html
 ui/build/service-worker.js
 ui/build/asset-manifest.json
-ui/build/*
+ui/build/
 scripts

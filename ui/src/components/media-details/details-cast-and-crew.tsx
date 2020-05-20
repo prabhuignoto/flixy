@@ -4,7 +4,7 @@ import { CastDetailsContainer } from "./details-cast-and-crew.styles";
 import useResponsive from "../../effects/useResponsive";
 
 export const CastAndCrew: React.FunctionComponent<{
-  id: number;
+  id?: number;
 }> = React.memo(
   ({ id }) => {
     const resxProps = useResponsive();

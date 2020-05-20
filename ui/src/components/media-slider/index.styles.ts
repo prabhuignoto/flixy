@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { animated } from "react-spring";
 
 export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
-  ${p => p.detailsEnabled && "background-image: linear-gradient(to top, #363636, #2c2c2c, #232323, #1a1a1a, #111111);"};
+  ${p => p.detailsEnabled && "background-image: linear-gradient(to right top, #2c2c2c, #252525, #1f1f1f, #181818, #111111);"};
   background-color: ${p => !p.detailsEnabled ? "#111" : ""};
   border-radius: .25rem;
   display: flex;
@@ -22,9 +22,9 @@ export const Header = styled.header`
   font-size: 1.2rem;
   font-weight: 400;
   justify-content: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
   padding-left: 1.5rem;
-  padding-top: 1rem;
+  padding-top: .5rem;
   text-align: left;
   width: 100%;
 `;
@@ -40,7 +40,7 @@ export const MoviesWrapper = styled(animated.div)`
 `;
 
 export const Title = styled.div`
-padding-left: 5rem;
+  padding-left: 5rem;
 `;
 
 export const TitleText = styled.span`
