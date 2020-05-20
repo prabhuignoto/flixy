@@ -36,7 +36,7 @@ export const DetailsRatingWrapper = styled.div<{
 
 export const DetailsRatingValue = styled.span<{ isTabletOrMobile?: boolean }>`
   font-family: "Poppins";
-  font-size: ${(p) => (p.isTabletOrMobile ? "1.2rem" : "1.5rem")};
+  font-size: ${(p) => (p.isTabletOrMobile ? "1.2rem" : "1.25rem")};
   font-weight: 400;
   height: 100%;
   display: flex;

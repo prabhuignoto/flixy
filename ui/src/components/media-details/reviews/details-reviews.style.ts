@@ -17,6 +17,7 @@ export const ReviewsContainer = styled(animated.div)`
   flex-direction: column;
   height: 100%;
   padding: 0 .5rem 0 1rem;
+  width: 100%;
 `;
 
 export const ReviewsHeader = styled.header`

@@ -19,14 +19,17 @@ import Movie from "../../models/Movie";
 import { CloseIcon, MenuIcon } from "../icons/index";
 import DetailsTitle from "./title/details-title";
 import { CastAndCrew } from "./details-cast-and-crew";
-import Reviews from "../../containers/details/reviews";
-import Loader from "../media-loader";
-import Recommended from "../../containers/movies/recommended";
-import Similar from "../../containers/movies/similar";
 import { tabs } from "./panel/panel";
 import Panel from "./panel/panel";
 import useResponsive from "../../effects/useResponsive";
 import Images from "../../containers/details/images";
+import Loader from "../media-loader";
+
+const Reviews = React.lazy(() => import("../../containers/details/reviews"));
+const Recommended = React.lazy(() =>
+  import("../../containers/movies/recommended")
+);
+const Similar = React.lazy(() => import("../../containers/movies/similar"));
 
 type CardDetail = Movie & { handleClose?: () => void; isLoading: boolean };
 
@@ -103,14 +106,18 @@ export default ({
             {actvTab === tabs.recommended && (
               <RecommendedMoviesWrapper>
                 <RecommendedMoviesContainer>
-                  <Recommended movieId={id} />
+                  <React.Suspense fallback={<Loader />}>
+                    <Recommended movieId={id} />
+                  </React.Suspense>
                 </RecommendedMoviesContainer>
               </RecommendedMoviesWrapper>
             )}
             {actvTab === tabs.similar && (
               <RecommendedMoviesWrapper>
                 <RecommendedMoviesContainer>
-                  <Similar movieId={id} />
+                  <React.Suspense fallback={<Loader />}>
+                    <Similar movieId={id} />
+                  </React.Suspense>
                 </RecommendedMoviesContainer>
               </RecommendedMoviesWrapper>
             )}
@@ -121,7 +128,9 @@ export default ({
             )}
             {actvTab === tabs.reviews && (
               <ReviewsWrapper resxProps={resxProps}>
-                <Reviews movieId={id} />
+                <React.Suspense fallback={<Loader />}>
+                  <Reviews movieId={id} />
+                </React.Suspense>
               </ReviewsWrapper>
             )}
             <PanelContainer>

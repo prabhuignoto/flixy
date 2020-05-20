@@ -42,7 +42,7 @@ const RecommendedMovies: React.FunctionComponent<{
     let view = null;
 
     if (loading) {
-      view = <Loader size={LoaderSize.large} />;
+      // view = <Loader size={LoaderSize.large} />;
     } else if (movieData && movieData.results.length) {
       const data: MediaObject[] = movieData.results.map((mov) => ({
         id: mov.id,

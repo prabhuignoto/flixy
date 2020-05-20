@@ -21,8 +21,8 @@ const RelatedMedia: React.FunctionComponent<{
         <MediaObjects
           items={items}
           id={id}
-          height={isBigScreen ? 400 : 320}
-          itemSize={isBigScreen ? 250 : 200}
+          height={isBigScreen ? 450 : 320}
+          itemSize={isBigScreen ? 300 : 200}
           thumbnailSize={ThumbnailSize.large}
           noBackground
         />

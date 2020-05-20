@@ -15,21 +15,25 @@ import { useSpring, config } from "react-spring";
 import { ArrowHeadDownIcon, ArrowHeadUpIcon } from "../icons";
 import Slider from "../../models/Slider";
 import Movie from "../../models/Movie";
-import MovieDetails from "../../containers/details/movieDetails";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";
+import memoize from "memoize-one";
+import Loader from "../media-loader";
 
+const MovieDetails = React.lazy(() =>
+  import("../../containers/details/movieDetails")
+);
 
-const getHeight = (props: responsiveProps) => {
-  if(props.isBigScreen) {
+const getHeight = memoize((props: responsiveProps) => {
+  if (props.isBigScreen) {
     return 280;
-  } else if(props.isDesktopOrLaptop) {
+  } else if (props.isDesktopOrLaptop) {
     return 220;
-  } else if(props.isTabletOrMobile) {
+  } else if (props.isTabletOrMobile) {
     return 200;
   } else {
     return 220;
   }
-}
+});
 
 const SliderView: React.FunctionComponent<Slider> = ({
   movies,
@@ -133,21 +137,27 @@ const SliderView: React.FunctionComponent<Slider> = ({
         </MoviesWrapper>
       }
 
-      {(
+      {
         <DetailsWrapper>
-          <MovieDetails
-            movieId={showDetails.selectedMovie}
-            handleClose={onDetailsClose}
-            hide={!showDetails.state}
-          />
+          <React.Suspense fallback={<Loader />}>
+            <MovieDetails
+              movieId={showDetails.selectedMovie}
+              handleClose={onDetailsClose}
+              hide={!showDetails.state}
+            />
+          </React.Suspense>
         </DetailsWrapper>
-      )}
+      }
 
       {/* footer section */}
       {!showDetails.state && (
         <Footer>
           <Button size="medium" onClick={handleExpandFull}>
-            {expandFull ? <ArrowHeadUpIcon color="#cc0000"/> : <ArrowHeadDownIcon color="#cc0000"/>}
+            {expandFull ? (
+              <ArrowHeadUpIcon color="#cc0000" />
+            ) : (
+              <ArrowHeadDownIcon color="#cc0000" />
+            )}
           </Button>
         </Footer>
       )}

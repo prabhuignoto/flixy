@@ -34,11 +34,11 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
       google: {
         families: ["Poppins:300,400,500&display=swap"],
       },
-      // fontactive: () => this.setState({ fontsLoaded: true }),
     });
   }
 
   static getDerivedStateFromError(error: any) {
+    debugger;
     return { hasError: true };
   }
 
