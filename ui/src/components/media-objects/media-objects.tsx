@@ -114,7 +114,6 @@ const MediaObjects: React.FunctionComponent<{
             style={{
               overflow: "hidden",
               scrollBehavior: "smooth",
-              // marginBottom: noTitle ? "" : ".5rem",
             }}
           >
             {({ index, style }) => {

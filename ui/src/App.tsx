@@ -50,11 +50,11 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
             <Switch>
               <Route path="/">
                 <TopRatedMovies />
-                {/* <Trending />
+                <Trending />
                 <Upcoming />
                 <TopRated />
                 <OnAir />
-                <Popular /> */}
+                <Popular />
               </Route>
             </Switch>
           </Router>
