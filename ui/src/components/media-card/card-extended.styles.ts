@@ -9,11 +9,11 @@ export const CardExtendedWrapper = styled(animated.div)`
   margin-right: auto;
   z-index: 9999;
   transform-origin: center;
-  background: #e2e2e2;
+  background: #e8e8e8;
   top: 0%;
   align-items: center;
   justify-content: flex-start;
-  box-shadow: 0 0 20px 10px rgba(0,0,0,0.5);
+  /* box-shadow: inset 0 0 25px 12px rgba(0,0,0,0.2); */
   height: 260px;
   padding: .2rem;
   width: 450px;
