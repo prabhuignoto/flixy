@@ -53,7 +53,7 @@ export const Overview = styled(Title) <{ resxProps?: responsiveProps }>`
   color: #191919;
   font-family: "Poppins";
   font-size: ${p => p.resxProps?.isBigScreen ? ".95rem" : ".85rem"};
-  font-weight: 300;
+  font-weight: 400;
   margin: .25rem 0;
   width: 95%;
   padding-left: 1rem;
