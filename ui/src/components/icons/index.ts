@@ -17,6 +17,7 @@ import { Crown } from "@styled-icons/fa-solid/Crown";
 import { Menu } from "@styled-icons/feather/Menu";
 import { ArrowheadDown } from "@styled-icons/evaicons-solid/ArrowheadDown";
 import { ArrowheadUp } from "@styled-icons/evaicons-solid/ArrowheadUp";
+import { Maximize } from "@styled-icons/feather/Maximize";
 
 export const PlusIcon = styled(Plus)`
   color: red;
@@ -80,5 +81,9 @@ export const ArrowHeadDownIcon = styled(ArrowheadDown) <{ color?: string }>`
 `;
 
 export const ArrowHeadUpIcon = styled(ArrowheadUp) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const ViewIcon = styled(Maximize) <{ color?: string }>`
   color: ${p => p.color};
 `;

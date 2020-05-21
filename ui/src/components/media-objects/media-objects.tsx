@@ -54,13 +54,9 @@ const MediaObjects: React.FunctionComponent<{
         const { clientWidth, scrollWidth } = rWindowRef.current;
 
         if (dir === ScrollDir.RIGHT) {
-          rWindowRef.current.scrollLeft += Math.round(
-            config.clientWidth * 0.75
-          );
+          rWindowRef.current.scrollLeft += Math.round(config.clientWidth * 0.8);
         } else {
-          rWindowRef.current.scrollLeft -= Math.round(
-            config.clientWidth * 0.75
-          );
+          rWindowRef.current.scrollLeft -= Math.round(config.clientWidth * 0.8);
         }
       }
     };
@@ -123,7 +119,8 @@ const MediaObjects: React.FunctionComponent<{
           >
             {({ index, style }) => {
               const { name, path, id } = items[index];
-              return (
+
+              return path ? (
                 <MediaObjectContainer
                   key={`${id}-${index}-${name}`}
                   style={style}
@@ -136,7 +133,7 @@ const MediaObjects: React.FunctionComponent<{
                     noTitle={noTitle}
                   />
                 </MediaObjectContainer>
-              );
+              ) : null;
             }}
           </FixedSizeList>
         </>

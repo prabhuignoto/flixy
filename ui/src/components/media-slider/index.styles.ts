@@ -8,7 +8,6 @@ export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
-  overflow: hidden;
   padding-bottom: ${p => p.detailsEnabled ? "2rem" : ""};
   width: 100%; 
 `;
@@ -34,7 +33,7 @@ export const MoviesWrapper = styled(animated.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
   width: 100%;
 `;

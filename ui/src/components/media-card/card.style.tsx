@@ -24,7 +24,7 @@ export const CardContainer = styled(animated.div)<{
   size?: CardSize;
   hide?: number;
   isLoadingCard?: number;
-  resxProps?: responsiveProps
+  resxProps?: responsiveProps;
 }>`
   align-items: center;
   border-radius: 0.1rem;
@@ -57,11 +57,6 @@ export const CardContainer = styled(animated.div)<{
     transform: translateY(-50%);
     width: 100%;
   }`};
-  ${(p) =>
-    p.isLoadingCard
-      ? css`
-        `
-      : ""};
 `;
 
 export const CardTitle = styled.div`
@@ -118,5 +113,24 @@ export const ImageIconWrapper = styled.div`
   position: relative;
 `;
 
-
-// background: linear-gradient(358deg, #000000, #4b4848);
+export const ViewBtnWrapper = styled.span`
+  width: 40px;
+  height: 40px;
+  padding: 3px;
+  position: absolute;
+  font-weight: 500;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  /* box-shadow: inset 0 0 10px 4px rgba(0,0,0,0.25), 0 0 10px 4px rgba(0,0,0,0.25); */
+  & svg {
+    height: 100%;
+    width: 100%;
+  }
+`;

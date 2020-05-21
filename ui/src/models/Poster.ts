@@ -6,4 +6,5 @@ export interface Poster {
   rating?: number;
   index?: number;
   title?: string;
+  id?: number | string;
 }

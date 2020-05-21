@@ -1,11 +1,16 @@
 import * as React from "react";
 import Movie from "../../models/Movie";
-import { CardContainer, CardCheckedWrapper, ImageIconWrapper } from "./card.style";
+import {
+  CardContainer,
+  CardCheckedWrapper,
+  ImageIconWrapper,
+  ViewBtnWrapper,
+} from "./card.style";
 import { CardSize } from "../../models/CardSize";
 import Poster from "../media-poster/poster";
-import { CheckIcon, ImageIcon } from "../icons";
-import { useSpring, config } from "react-spring";
+import { CheckIcon, ImageIcon, ViewIcon } from "../icons";
 import { responsiveProps } from "../../effects/useResponsive";
+import CardExtended from "./card-extended";
 
 type MovieType = Movie & {
   index?: number;
@@ -26,42 +31,74 @@ export default React.memo(
     index,
     loadingCard,
     title,
-    resxProps
+    resxProps,
   }: MovieType) => {
+    const [options, setOptions] = React.useState({
+      showMaximize: false,
+      showExtended: false,
+    });
+    console.log("redner");
     const handleSelection = React.useCallback(
       (id: number) => {
         onSelect && onSelect(id);
       },
       [id]
     );
-    const props = useSpring({
-      opacity: 1,
-      from: {
-        opacity: 0,
-      },
-      delay: 0,
-      config: config.molasses
-    })
-
     return (
-      <>
+      <React.StrictMode>
         {!loadingCard ? (
           <CardContainer
-            onClick={() => id && handleSelection(id)}
+            onMouseEnter={() =>
+              setOptions({
+                showMaximize: true,
+                showExtended: false,
+              })
+            }
+            onMouseLeave={() => {
+              setOptions({
+                showMaximize: false,
+                showExtended: false,
+              })
+            }}
             selected={selected}
             size={size}
             resxProps={resxProps}
           >
-            <Poster
-              poster_path={poster_path ? poster_path : ""}
-              index={index}
-              size={size}
-              title={title}
-            ></Poster>
+            {!options.showExtended && (
+              <div
+                onClick={() => id && handleSelection(id)}
+                style={{ height: "100%" }}
+              >
+                <Poster
+                  poster_path={poster_path ? poster_path : ""}
+                  index={index}
+                  size={size}
+                  title={title}
+                  id={id}
+                ></Poster>
+              </div>
+            )}
+            <CardExtended
+              poster_path={poster_path}
+              id={id}
+              show={options.showExtended}
+            />
             {selected && (
               <CardCheckedWrapper>
                 <CheckIcon />
               </CardCheckedWrapper>
+            )}
+            {options.showMaximize && (
+              <ViewBtnWrapper
+                onClick={() =>
+                  setOptions({
+                    showExtended: true,
+                    showMaximize: options.showMaximize,
+                  })
+                }
+              >
+                <ViewIcon color="#191919" />
+              </ViewBtnWrapper>
             )}
           </CardContainer>
         ) : (
@@ -71,7 +108,7 @@ export default React.memo(
             </ImageIconWrapper>
           </CardContainer>
         )}
-      </>
+      </React.StrictMode>
     );
   },
   (prev, current) => prev.id === current.id

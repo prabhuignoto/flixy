@@ -12,6 +12,7 @@ export const ObjectsContainer = styled.section<{ height?: number, noBackground?:
   padding: .5rem 0;
   position: relative;
   width: 100%;
+  user-select: none;
 `;
 
 export const ObjectsWrapper = styled.ul<{
@@ -20,12 +21,12 @@ export const ObjectsWrapper = styled.ul<{
   rightButton?: boolean,
   noBackground?: boolean
 }>`
-  align-items: flex-start;
-  justify-content: center;
   // box-shadow: ${p => !p.noBackground ? "inset 25px 0px 25px -25px rgba(0,0,0.2), inset -25px 0px 25px -25px rgba(0,0,0,0.2)" : ""};
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   height: 100%;
+  justify-content: center;
   list-style: none;
   margin: 0;
   overflow-x: hidden;
@@ -44,34 +45,33 @@ export const ObjectsWrapper = styled.ul<{
 `;
 
 export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize }>`
-  display: ${p => p.disable ? "none" : "flex"};
   align-items: center;
   cursor: pointer;
+  display: ${p => p.disable ? "none" : "flex"};
   height: 100%;
   width: ${p => p.size === ThumbnailSize.large ? "3rem" : "2.5rem"};
-
   & svg {
     width: 100%;
   }
 `;
 
 export const ScrollLeftBtn = styled(Scroll)`
-  width: 5%;
   margin-right: auto;
+  width: 5%;
 `;
 
 export const ScrollRightBtn = styled(Scroll)`
-  width: 5%;
   margin-left: auto;
+  width: 5%;
 `;
 
 
 export const ObjectHeader = styled.div`
-  font-size: .95rem;
   color: #cc0000;
+  font-size: .95rem;
   font-weight: 500;
-  padding-left: 1rem;
   padding-bottom: .5rem;
+  padding-left: 1rem;
 `;
 
 export const MediaObjectContainer = styled(animated.div)``;

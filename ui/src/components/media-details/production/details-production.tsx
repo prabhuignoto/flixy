@@ -20,7 +20,7 @@ const ProductionDetails: React.FunctionComponent<ProductionDetailsModel> = ({
     thumbnailSize: ThumbnailSize.small,
     id: nanoid(),
   }));
-  return (
+  return objects.some((object) => object.path) ? (
     <ProductionWrapper>
       <MediaObjects
         items={objects}
@@ -32,7 +32,7 @@ const ProductionDetails: React.FunctionComponent<ProductionDetailsModel> = ({
         thumbnailSize={ThumbnailSize.small}
       />
     </ProductionWrapper>
-  );
+  ) : null;
 };
 
 export default ProductionDetails;
