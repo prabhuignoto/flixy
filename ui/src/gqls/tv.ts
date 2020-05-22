@@ -12,6 +12,7 @@ export const popular = gql`
         original_name
         first_air_date
         poster_path
+        overview
       }
     }
   }
@@ -29,6 +30,7 @@ export const topRated = gql`
         original_name
         first_air_date
         poster_path
+        overview
       }
     }
   }
@@ -46,6 +48,7 @@ export const onAir = gql`
         original_name
         first_air_date
         poster_path
+        overview
       }
     }
   }

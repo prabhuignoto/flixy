@@ -7,14 +7,21 @@ import {
   CardExtendedInfo,
   ExtendedInfoTitle,
   ExtendInfoYear,
+  ExtendedInfoOverview,
 } from "./card-extended.styles";
 import { useTransition, config } from "react-spring";
 import useResponsive from "../../effects/useResponsive";
+import { CloseIcon } from "../icons";
 
-type Extended = Movie & { show?: boolean; onClick: (id: number) => void };
+type Extended = Movie & {
+  show?: boolean;
+  onClick: (id: number) => void;
+  flip: boolean;
+  closePane?: () => void;
+};
 
 const CardExtended: React.FunctionComponent<Extended> = React.memo(
-  ({ poster_path, show, title, release_date, onClick, id }) => {
+  ({ poster_path, show, title, release_date, onClick, id, overview, flip, closePane }) => {
     const { isBigScreen } = useResponsive();
     const transitions = useTransition(show, null, {
       from: {
@@ -26,8 +33,7 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
       leave: {
         opacity: 0,
       },
-      config: config.stiff,
-      immediate: false,
+      config: config.default,
     });
 
     return (
@@ -38,17 +44,20 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
               <CardExtendedWrapper
                 style={props}
                 key={key}
+                flip={flip}
                 isBigScreen={isBigScreen}
                 onClick={() => onClick(id)}
+                onMouseLeave={closePane}
               >
-                <CardExtendedPosterWrapper>
+                <CardExtendedPosterWrapper flip={flip}>
                   <CardExtendedPoster
                     src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
                   ></CardExtendedPoster>
                 </CardExtendedPosterWrapper>
-                <CardExtendedInfo>
+                <CardExtendedInfo flip={flip}>
                   <ExtendedInfoTitle>{title}</ExtendedInfoTitle>
                   <ExtendInfoYear>{release_date}</ExtendInfoYear>
+                  <ExtendedInfoOverview>{overview}</ExtendedInfoOverview>
                 </CardExtendedInfo>
               </CardExtendedWrapper>
             )

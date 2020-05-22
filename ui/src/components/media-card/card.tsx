@@ -4,7 +4,6 @@ import {
   CardContainer,
   CardCheckedWrapper,
   ImageIconWrapper,
-  ViewBtnWrapper,
 } from "./card.style";
 import { CardSize } from "../../models/CardSize";
 import Poster from "../media-poster/poster";
@@ -33,41 +32,68 @@ export default React.memo(
     title,
     resxProps,
     release_date,
+    overview,
   }: MovieType) => {
     const [options, setOptions] = React.useState({
       showExtended: false,
+      flipCard: false,
     });
     const handleSelection = React.useCallback(
       (id: number) => {
-        debugger;
+        setOptions(
+          Object.assign({}, options, {
+            showExtended: false,
+          })
+        );
         onSelect && onSelect(id);
       },
       [id]
     );
+    const cardRef = React.useRef<HTMLDivElement>(null);
+
+    const onShow = React.useCallback(() => {
+      setOptions(
+        Object.assign({}, options, {
+          showExtended: true,
+        })
+      )
+    }, [options]);
+
+    const onHide = React.useCallback(() => {
+      debugger;
+      setOptions(
+        Object.assign({}, options, {
+          showExtended: false,
+        })
+      )
+    }, [options]);
+
+    React.useEffect(() => {
+      if (cardRef && cardRef.current) {
+        const { offsetLeft } = cardRef.current;
+        if (offsetLeft + 500 > window.innerWidth) {
+          setOptions(
+            Object.assign({}, options, {
+              flipCard: true,
+            })
+          );
+        }
+      }
+    }, []);
+
     return (
       <>
         {!loadingCard ? (
           <CardContainer
             onClick={() => id && handleSelection(id)}
-            onMouseEnter={() =>
-              setOptions({
-                showExtended: true,
-              })
-            }
-            onMouseLeave={() => {
-              setOptions({
-                showExtended: false,
-              });
-            }}
+            onMouseEnter={onShow}
+            resxProps={resxProps}
             selected={selected}
             size={size}
-            resxProps={resxProps}
+            ref={cardRef}
           >
             {!options.showExtended && (
-              <div
-                // onClick={() => id && handleSelection(id)}
-                style={{ height: "100%" }}
-              >
+              <div style={{ height: "100%" }}>
                 <Poster
                   poster_path={poster_path ? poster_path : ""}
                   index={index}
@@ -84,7 +110,10 @@ export default React.memo(
                 id={id}
                 show={options.showExtended}
                 release_date={release_date}
+                overview={overview}
                 onClick={handleSelection}
+                flip={options.flipCard}
+                closePane={onHide}
               />
             )}
             {selected && (
@@ -92,12 +121,6 @@ export default React.memo(
                 <CheckIcon />
               </CardCheckedWrapper>
             )}
-            {/* {options.showMaximize && (
-              <ViewBtnWrapper
-              >
-                <ViewIcon color="#191919" />
-              </ViewBtnWrapper>
-            )} */}
           </CardContainer>
         ) : (
           <CardContainer size={size} isLoadingCard={loadingCard ? 1 : 0}>

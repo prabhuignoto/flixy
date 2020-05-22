@@ -13,6 +13,7 @@ export const popular = gql`
         release_date
         poster_path
         vote_average
+        overview
       }
     }
   }
@@ -30,7 +31,8 @@ export const topRated = gql`
         original_title
         release_date
         poster_path
-        vote_average
+        vote_average,
+        overview
       }
     }
   }
@@ -48,7 +50,8 @@ export const upcoming = gql`
         original_title
         release_date
         poster_path
-        vote_average
+        vote_average,
+        overview
       }
     }
   }
@@ -66,7 +69,8 @@ export const recommended = gql`
         original_title
         release_date
         poster_path
-        vote_average
+        vote_average,
+        overview
       }
     }
   }
@@ -84,7 +88,8 @@ export const similar = gql`
         original_title
         release_date
         poster_path
-        vote_average
+        vote_average,
+        overview
       }
     }
   }
