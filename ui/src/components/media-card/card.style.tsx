@@ -114,8 +114,8 @@ export const ImageIconWrapper = styled.div`
 `;
 
 export const ViewBtnWrapper = styled.span`
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   padding: 3px;
   position: absolute;
   font-weight: 500;
@@ -126,7 +126,7 @@ export const ViewBtnWrapper = styled.span`
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.95);
   border-radius: 50%;
   /* box-shadow: inset 0 0 10px 4px rgba(0,0,0,0.25), 0 0 10px 4px rgba(0,0,0,0.25); */
   & svg {

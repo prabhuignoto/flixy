@@ -142,7 +142,7 @@ export default React.memo(
               <ViewBtnWrapper
                 onClick={onShowPane}
               >
-                <ViewIcon />
+                <ViewIcon color="#191919"/>
               </ViewBtnWrapper>
             )}
           </CardContainer>
