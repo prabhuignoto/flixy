@@ -32,12 +32,11 @@ export default React.memo(
     loadingCard,
     title,
     resxProps,
+    release_date
   }: MovieType) => {
     const [options, setOptions] = React.useState({
-      showMaximize: false,
       showExtended: false,
     });
-    console.log("redner");
     const handleSelection = React.useCallback(
       (id: number) => {
         onSelect && onSelect(id);
@@ -50,13 +49,11 @@ export default React.memo(
           <CardContainer
             onMouseEnter={() =>
               setOptions({
-                showMaximize: true,
-                showExtended: false,
+                showExtended: true,
               })
             }
             onMouseLeave={() => {
               setOptions({
-                showMaximize: false,
                 showExtended: false,
               })
             }}
@@ -80,26 +77,22 @@ export default React.memo(
             )}
             <CardExtended
               poster_path={poster_path}
+              title={title}
               id={id}
               show={options.showExtended}
+              release_date={release_date}
             />
             {selected && (
               <CardCheckedWrapper>
                 <CheckIcon />
               </CardCheckedWrapper>
             )}
-            {options.showMaximize && (
+            {/* {options.showMaximize && (
               <ViewBtnWrapper
-                onClick={() =>
-                  setOptions({
-                    showExtended: true,
-                    showMaximize: options.showMaximize,
-                  })
-                }
               >
                 <ViewIcon color="#191919" />
               </ViewBtnWrapper>
-            )}
+            )} */}
           </CardContainer>
         ) : (
           <CardContainer size={size} isLoadingCard={loadingCard ? 1 : 0}>

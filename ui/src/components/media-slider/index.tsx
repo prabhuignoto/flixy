@@ -7,7 +7,7 @@ import {
   TitleIcon,
   TitleText,
   DetailsWrapper,
-  Title
+  Title,
 } from "./index.styles";
 import Movies from "./collection";
 import { Button } from "../commons/styles";
@@ -61,7 +61,13 @@ const SliderView: React.FunctionComponent<Slider> = ({
     expandFull,
   ]);
 
-  React.useEffect(() => {
+  const boot = (
+    expandFull: boolean,
+    showDetails: {
+      state: boolean;
+      selectedMovie: number;
+    }
+  ) => {
     if (firstRun.current) {
       firstRun.current = false;
     } else {
@@ -82,7 +88,11 @@ const SliderView: React.FunctionComponent<Slider> = ({
         });
       }
     }
-  }, [expandFull, showDetails]);
+  };
+
+  React.useEffect(() => {
+    boot(expandFull, showDetails);
+  }, [expandFull, showDetails, firstRun]);
 
   const handleLoadMore = React.useCallback(() => {
     if (fetchMore) {

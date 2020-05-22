@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { CardSize } from "../../models/CardSize";
 import { animated } from "react-spring";
 import { responsiveProps } from "../../effects/useResponsive";

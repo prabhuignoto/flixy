@@ -15,11 +15,7 @@ const TopRated: React.FunctionComponent = () => {
     total_results: 0,
   });
   const [loading, setLoading] = React.useState(false);
-
-  React.useEffect(() => {
-    getMovies(1);
-  }, []);
-
+  
   const getMovies = async (page: number) => {
     setLoading(true);
     const { data } = await client.query({
@@ -44,6 +40,10 @@ const TopRated: React.FunctionComponent = () => {
 
     setLoading(false);
   };
+
+  React.useEffect(() => {
+    getMovies(1);
+  }, []);
 
   const handleFetchMore = (page: number) => {
     getMovies(page);

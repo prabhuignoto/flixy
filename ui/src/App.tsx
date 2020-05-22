@@ -38,7 +38,6 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
   }
 
   static getDerivedStateFromError(error: any) {
-    debugger;
     return { hasError: true };
   }
 
@@ -50,11 +49,11 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
             <Switch>
               <Route path="/">
                 <TopRatedMovies />
-                <Trending />
+                {/* <Trending />
                 <Upcoming />
                 <TopRated />
                 <OnAir />
-                <Popular />
+                <Popular /> */}
               </Route>
             </Switch>
           </Router>
@@ -64,4 +63,4 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
   }
 }
 
-export default hot(App);
+export default App;

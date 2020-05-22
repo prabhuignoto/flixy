@@ -68,7 +68,7 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
       if (movieId) {
         executeQuery();
       }
-    }, [movieId]);
+    }, [movieId, executeQuery]);
 
     let view: any = null;
 

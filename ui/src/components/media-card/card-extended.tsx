@@ -4,14 +4,16 @@ import {
   CardExtendedWrapper,
   CardExtendedPosterWrapper,
   CardExtendedPoster,
+  CardExtendedInfo,
+  ExtendedInfoTitle,
+  ExtendInfoYear,
 } from "./card-extended.styles";
 import { useTransition, config } from "react-spring";
-import { Transform } from "stream";
 
 type Extended = Movie & { show?: boolean };
 
 const CardExtended: React.FunctionComponent<Extended> = React.memo(
-  ({ poster_path, show }) => {
+  ({ poster_path, show, title, release_date }) => {
     const transitions = useTransition(show, null, {
       from: {
         opacity: 0,
@@ -23,7 +25,7 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
         opacity: 0,
       },
       config: config.stiff,
-      immediate: false
+      immediate: false,
     });
 
     return (
@@ -37,6 +39,10 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
                     src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
                   ></CardExtendedPoster>
                 </CardExtendedPosterWrapper>
+                <CardExtendedInfo>
+                  <ExtendedInfoTitle>{title}</ExtendedInfoTitle>
+                  <ExtendInfoYear>{release_date}</ExtendInfoYear>
+                </CardExtendedInfo>
               </CardExtendedWrapper>
             )
         )}
