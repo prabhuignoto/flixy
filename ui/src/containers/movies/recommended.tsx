@@ -1,9 +1,7 @@
 import React from "react";
 import { useApolloClient } from "@apollo/client";
 import { recommended, similar } from "../../gqls/movies";
-import MediaObjects from "../../components/media-objects/media-objects";
 import Movie from "../../models/Movie";
-import Loader, { LoaderSize } from "../../components/media-loader";
 import { MediaObject } from "../../models/MediaObject";
 import MediaRelated from "../../components/media-related/media-related";
 

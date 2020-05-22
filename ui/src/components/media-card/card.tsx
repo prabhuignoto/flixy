@@ -32,21 +32,23 @@ export default React.memo(
     loadingCard,
     title,
     resxProps,
-    release_date
+    release_date,
   }: MovieType) => {
     const [options, setOptions] = React.useState({
       showExtended: false,
     });
     const handleSelection = React.useCallback(
       (id: number) => {
+        debugger;
         onSelect && onSelect(id);
       },
       [id]
     );
     return (
-      <React.StrictMode>
+      <>
         {!loadingCard ? (
           <CardContainer
+            onClick={() => id && handleSelection(id)}
             onMouseEnter={() =>
               setOptions({
                 showExtended: true,
@@ -55,7 +57,7 @@ export default React.memo(
             onMouseLeave={() => {
               setOptions({
                 showExtended: false,
-              })
+              });
             }}
             selected={selected}
             size={size}
@@ -63,7 +65,7 @@ export default React.memo(
           >
             {!options.showExtended && (
               <div
-                onClick={() => id && handleSelection(id)}
+                // onClick={() => id && handleSelection(id)}
                 style={{ height: "100%" }}
               >
                 <Poster
@@ -75,13 +77,16 @@ export default React.memo(
                 ></Poster>
               </div>
             )}
-            <CardExtended
-              poster_path={poster_path}
-              title={title}
-              id={id}
-              show={options.showExtended}
-              release_date={release_date}
-            />
+            {options.showExtended && (
+              <CardExtended
+                poster_path={poster_path}
+                title={title}
+                id={id}
+                show={options.showExtended}
+                release_date={release_date}
+                onClick={handleSelection}
+              />
+            )}
             {selected && (
               <CardCheckedWrapper>
                 <CheckIcon />
@@ -101,7 +106,7 @@ export default React.memo(
             </ImageIconWrapper>
           </CardContainer>
         )}
-      </React.StrictMode>
+      </>
     );
   },
   (prev, current) => prev.id === current.id

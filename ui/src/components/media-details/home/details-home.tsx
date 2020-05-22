@@ -44,8 +44,8 @@ const DetailsHome: React.FunctionComponent<DetailsHomeModel> = ({
   overview,
   id,
   production_companies
-}) => (
-  <DetailsHomeWrapper>
+}) => {
+  return <DetailsHomeWrapper>
     <Box1>
       <DetailsTitle
         year={release_date}
@@ -76,7 +76,7 @@ const DetailsHome: React.FunctionComponent<DetailsHomeModel> = ({
       </CastAndCrewWrapper>
     </Box2>
   </DetailsHomeWrapper>
-);
+};
 
 
 export default DetailsHome;

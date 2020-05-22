@@ -41,7 +41,6 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
   genres,
 }) => {
   const resxProps = useResponsive();
-
   return (
     <TitleWrapper>
       <Title>

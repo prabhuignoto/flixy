@@ -119,7 +119,7 @@ const MediaObjects: React.FunctionComponent<{
             {({ index, style }) => {
               const { name, path, id } = items[index];
 
-              return (
+              return path ? (
                 <MediaObjectContainer
                   key={`${id}-${index}-${name}`}
                   style={style}
@@ -132,7 +132,7 @@ const MediaObjects: React.FunctionComponent<{
                     noTitle={noTitle}
                   />
                 </MediaObjectContainer>
-              );
+              ) : null;
             }}
           </FixedSizeList>
         </>

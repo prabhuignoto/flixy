@@ -60,7 +60,7 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
       if (movieId) {
         executeQuery();
       }
-    }, [movieId, executeQuery]);
+    }, [movieId]);
 
     let view: any = null;
 

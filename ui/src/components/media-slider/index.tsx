@@ -61,13 +61,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
     expandFull,
   ]);
 
-  const boot = (
-    expandFull: boolean,
-    showDetails: {
-      state: boolean;
-      selectedMovie: number;
-    }
-  ) => {
+  React.useEffect(() => {
     if (firstRun.current) {
       firstRun.current = false;
     } else {
@@ -88,10 +82,6 @@ const SliderView: React.FunctionComponent<Slider> = ({
         });
       }
     }
-  };
-
-  React.useEffect(() => {
-    boot(expandFull, showDetails);
   }, [expandFull, showDetails, firstRun]);
 
   const handleLoadMore = React.useCallback(() => {

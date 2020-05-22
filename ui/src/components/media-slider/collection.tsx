@@ -68,31 +68,23 @@ export default ({
 
   // run it the first time
   React.useEffect(() => {
-    const run = () => {
-      const nativeElement = moviesRef.current;
-      if (nativeElement) {
-        const clientWidth = nativeElement.clientWidth;
-        let colWidth = 200;
-        if (resxProps) {
-          const {
-            isBigScreen,
-            isDesktopOrLaptop,
-            isTabletOrMobile,
-          } = resxProps;
+    const nativeElement = moviesRef.current;
+    if (nativeElement) {
+      const clientWidth = nativeElement.clientWidth;
+      let colWidth = 200;
+      if (resxProps) {
+        const { isBigScreen, isDesktopOrLaptop, isTabletOrMobile } = resxProps;
 
-          if (isTabletOrMobile) {
-            colWidth = 130;
-          } else if (isDesktopOrLaptop && !isBigScreen) {
-            colWidth = 150;
-          }
+        if (isTabletOrMobile) {
+          colWidth = 130;
+        } else if (isDesktopOrLaptop && !isBigScreen) {
+          colWidth = 150;
         }
-        const columns = Math.floor(clientWidth / colWidth);
-        setVisibleColumns(columns);
-        visibleItems.current =
-          expandFull && !showDetails ? columns * 2 : columns;
       }
-    };
-    run();
+      const columns = Math.floor(clientWidth / colWidth);
+      setVisibleColumns(columns);
+      visibleItems.current = expandFull && !showDetails ? columns * 2 : columns;
+    }
     setMounted(true);
   }, []);
 

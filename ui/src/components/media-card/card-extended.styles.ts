@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {animated} from "react-spring";
 
-export const CardExtendedWrapper = styled(animated.div)`
+export const CardExtendedWrapper = styled(animated.div)<{isBigScreen?: boolean}>`
   display: flex;
   position: absolute;
   left: 0;
@@ -14,20 +14,22 @@ export const CardExtendedWrapper = styled(animated.div)`
   align-items: center;
   justify-content: flex-start;
   box-shadow: 0 0 25px 12px rgba(0,0,0,0.2);
-  height: 250px;
+  height: ${p => p.isBigScreen ? "250px" : "195px"};
   padding: .2rem;
-  width: 320px;
+  width: ${p => p.isBigScreen ? "320px" : "280px"};;
 `;
 
 export const CardExtendedPosterWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 `;
 
 export const CardExtendedPoster = styled.img`
   max-height: 100%;
-  width: 165px;
+  /* width: 165px; */
+  object-fit: contain;
 `;
 
 export const CardExtendedInfo = styled.div`
@@ -43,7 +45,7 @@ export const CardExtendedInfo = styled.div`
 export const ExtendedInfoTitle = styled.span`
   font-family: "Poppins";
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #000;
   white-space: wrap;
   text-align: left;
@@ -53,7 +55,7 @@ export const ExtendedInfoTitle = styled.span`
 export const ExtendInfoYear = styled.span`
   font-family: "Poppins";
   font-weight: 300;
-  font-size: 1rem;
+  font-size: .9rem;
   color: #000;
   margin-top: .25rem;
 `;

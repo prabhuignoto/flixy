@@ -45,16 +45,12 @@ const MovieDetails: React.FunctionComponent<{
 
   React.useEffect(() => {
     setMounted(true);
-    return () => {
-      setMounted(false);
-    };
   }, []);
 
   React.useEffect(() => {
     if (mounted && movieId) {
       setLoading(true);
       if (wrapperRef && wrapperRef.current) {
-        const { isBigScreen, isTabletOrMobile } = resxProps;
         setProps({
           height: getHeight(resxProps),
           from: {
@@ -106,7 +102,7 @@ const MovieDetails: React.FunctionComponent<{
       imdb_id,
       vote_average,
       video,
-      production_companies
+      production_companies,
     } = data;
 
     view = (

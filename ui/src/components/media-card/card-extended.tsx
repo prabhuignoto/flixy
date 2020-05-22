@@ -9,11 +9,13 @@ import {
   ExtendInfoYear,
 } from "./card-extended.styles";
 import { useTransition, config } from "react-spring";
+import useResponsive from "../../effects/useResponsive";
 
-type Extended = Movie & { show?: boolean };
+type Extended = Movie & { show?: boolean; onClick: (id: number) => void };
 
 const CardExtended: React.FunctionComponent<Extended> = React.memo(
-  ({ poster_path, show, title, release_date }) => {
+  ({ poster_path, show, title, release_date, onClick, id }) => {
+    const { isBigScreen } = useResponsive();
     const transitions = useTransition(show, null, {
       from: {
         opacity: 0,
@@ -33,7 +35,12 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
         {transitions.map(
           ({ item, key, props }) =>
             item && (
-              <CardExtendedWrapper style={props} key={key}>
+              <CardExtendedWrapper
+                style={props}
+                key={key}
+                isBigScreen={isBigScreen}
+                onClick={() => onClick(id)}
+              >
                 <CardExtendedPosterWrapper>
                   <CardExtendedPoster
                     src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
