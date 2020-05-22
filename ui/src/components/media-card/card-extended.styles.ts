@@ -44,6 +44,7 @@ export const CardExtendedInfo = styled.div<{ flip?: boolean }>`
   order: ${p => p.flip ? 1 : 2};
   padding: 1em;
   width: calc(100% - 165px);
+  ${p => p.flip ? "padding-left: 2rem" : ""};
 `;
 
 export const ExtendedInfo = styled.span`

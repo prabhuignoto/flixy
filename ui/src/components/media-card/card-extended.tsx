@@ -14,12 +14,13 @@ import { useTransition, config } from "react-spring";
 import useResponsive from "../../effects/useResponsive";
 import { CloseIcon } from "../icons";
 
-
 type Extended = Movie & {
   show?: boolean;
   onClick: (id: number) => void;
   flip: boolean;
-  closePane?: (ev: React.MouseEvent<HTMLDivElement> & React.FocusEvent<HTMLDivElement>) => void;
+  closePane?: (
+    ev: React.MouseEvent<HTMLDivElement> & React.FocusEvent<HTMLDivElement>
+  ) => void;
 };
 
 const CardExtended: React.FunctionComponent<Extended> = React.memo(
@@ -51,10 +52,12 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
     const ref = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-      if(ref && ref.current) {
-        ref.current.focus();
+      if(show) {
+        setTimeout(() => {
+          ref && ref.current && ref.current.focus();
+        }, 100);
       }
-    },[]);
+    }, [show]);
 
     return (
       <div>
@@ -62,7 +65,7 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
           ({ item, key, props }) =>
             item && (
               <CardExtendedWrapper
-                tabIndex={0}
+                tabIndex={1}
                 style={props}
                 key={key}
                 flip={flip}
