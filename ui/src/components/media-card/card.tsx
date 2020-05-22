@@ -4,6 +4,7 @@ import {
   CardContainer,
   CardCheckedWrapper,
   ImageIconWrapper,
+  ViewBtnWrapper,
 } from "./card.style";
 import { CardSize } from "../../models/CardSize";
 import Poster from "../media-poster/poster";
@@ -37,6 +38,7 @@ export default React.memo(
     const [options, setOptions] = React.useState({
       showExtended: false,
       flipCard: false,
+      showPane: false,
     });
     const handleSelection = React.useCallback(
       (id: number) => {
@@ -51,21 +53,23 @@ export default React.memo(
     );
     const cardRef = React.useRef<HTMLDivElement>(null);
 
-    const onShow = React.useCallback(() => {
+    const onShowPane = React.useCallback((ev: React.MouseEvent<HTMLSpanElement>) => {
+      ev.stopPropagation();
       setOptions(
         Object.assign({}, options, {
-          showExtended: true,
+          showPane: true,
         })
-      )
+      );
     }, [options]);
 
-    const onHide = React.useCallback(() => {
-      debugger;
+    const onHidePane = React.useCallback((ev: React.MouseEvent<HTMLDivElement> & React.FocusEvent<HTMLDivElement>) => {
+      ev.stopPropagation();
       setOptions(
         Object.assign({}, options, {
-          showExtended: false,
-        })
-      )
+          showPane: false,
+          showExtended: false
+        })  
+      );
     }, [options]);
 
     React.useEffect(() => {
@@ -86,13 +90,26 @@ export default React.memo(
         {!loadingCard ? (
           <CardContainer
             onClick={() => id && handleSelection(id)}
-            onMouseEnter={onShow}
+            onMouseEnter={() => {
+              setOptions(
+                Object.assign({}, options, {
+                  showExtended: true,
+                })
+              );
+            }}
+            onMouseLeave={() => {
+              setOptions(
+                Object.assign({}, options, {
+                  showExtended: false,
+                })
+              );
+            }}
             resxProps={resxProps}
             selected={selected}
             size={size}
             ref={cardRef}
           >
-            {!options.showExtended && (
+            {!options.showPane && (
               <div style={{ height: "100%" }}>
                 <Poster
                   poster_path={poster_path ? poster_path : ""}
@@ -103,23 +120,30 @@ export default React.memo(
                 ></Poster>
               </div>
             )}
-            {options.showExtended && (
+            {
               <CardExtended
                 poster_path={poster_path}
                 title={title}
                 id={id}
-                show={options.showExtended}
+                show={options.showPane}
                 release_date={release_date}
                 overview={overview}
                 onClick={handleSelection}
                 flip={options.flipCard}
-                closePane={onHide}
+                closePane={onHidePane}
               />
-            )}
+            }
             {selected && (
               <CardCheckedWrapper>
                 <CheckIcon />
               </CardCheckedWrapper>
+            )}
+            {options.showExtended && (
+              <ViewBtnWrapper
+                onClick={onShowPane}
+              >
+                <ViewIcon />
+              </ViewBtnWrapper>
             )}
           </CardContainer>
         ) : (
