@@ -9,7 +9,7 @@ import {
 import { CardSize } from "../../models/CardSize";
 import Poster from "../media-poster/poster";
 import { CheckIcon, ImageIcon, ViewIcon } from "../icons";
-import { responsiveProps } from "../../effects/useResponsive";
+import useResponsive, { responsiveProps } from "../../effects/useResponsive";
 import CardExtended from "./card-extended";
 
 type MovieType = Movie & {
@@ -36,46 +36,50 @@ export default React.memo(
     overview,
   }: MovieType) => {
     const [options, setOptions] = React.useState({
-      showExtended: false,
+      showExtendIcon: false,
       flipCard: false,
       showPane: false,
     });
+    const cardRef = React.useRef<HTMLDivElement>(null);
+    const { isTabletOrMobile } = useResponsive();
     const handleSelection = React.useCallback(
       (id: number) => {
-        setOptions(
-          Object.assign({}, options, {
-            showExtended: false,
-          })
-        );
         onSelect && onSelect(id);
       },
       [id]
     );
-    const cardRef = React.useRef<HTMLDivElement>(null);
 
-    const onShowPane = React.useCallback((ev: React.MouseEvent<HTMLSpanElement>) => {
-      ev.stopPropagation();
-      setOptions(
-        Object.assign({}, options, {
-          showPane: true,
-        })
-      );
-    }, [options]);
+    const showPane = React.useCallback(
+      (ev: React.MouseEvent<HTMLSpanElement>) => {
+        ev.stopPropagation();
+        setOptions(
+          Object.assign({}, options, {
+            showPane: true,
+          })
+        );
+      },
+      [options]
+    );
 
-    const onHidePane = React.useCallback((ev: React.MouseEvent<HTMLDivElement> & React.FocusEvent<HTMLDivElement>) => {
-      ev.stopPropagation();
-      setOptions(
-        Object.assign({}, options, {
-          showPane: false,
-          showExtended: false
-        })  
-      );
-    }, [options]);
+    const hidePane = React.useCallback(
+      (
+        ev: React.MouseEvent<HTMLDivElement> & React.FocusEvent<HTMLDivElement>
+      ) => {
+        ev.stopPropagation();
+        setOptions(
+          Object.assign({}, options, {
+            showPane: false,
+            showExtendIcon: false,
+          })
+        );
+      },
+      [options]
+    );
 
     React.useEffect(() => {
-      if (cardRef && cardRef.current) {
+      if (!isTabletOrMobile && cardRef && cardRef.current) {
         const { offsetLeft } = cardRef.current;
-        if (offsetLeft + 500 > window.innerWidth) {
+        if (offsetLeft + 500 > window.screen.width) {
           setOptions(
             Object.assign({}, options, {
               flipCard: true,
@@ -93,14 +97,14 @@ export default React.memo(
             onMouseEnter={() => {
               setOptions(
                 Object.assign({}, options, {
-                  showExtended: true,
+                  showExtendIcon: true,
                 })
               );
             }}
             onMouseLeave={() => {
               setOptions(
                 Object.assign({}, options, {
-                  showExtended: false,
+                  showExtendIcon: false,
                 })
               );
             }}
@@ -120,7 +124,8 @@ export default React.memo(
                 ></Poster>
               </div>
             )}
-            {
+
+            {!isTabletOrMobile && (
               <CardExtended
                 poster_path={poster_path}
                 title={title}
@@ -130,19 +135,17 @@ export default React.memo(
                 overview={overview}
                 onClick={handleSelection}
                 flip={options.flipCard}
-                closePane={onHidePane}
+                closePane={hidePane}
               />
-            }
+            )}
             {selected && (
               <CardCheckedWrapper>
                 <CheckIcon />
               </CardCheckedWrapper>
             )}
-            {options.showExtended && (
-              <ViewBtnWrapper
-                onClick={onShowPane}
-              >
-                <ViewIcon color="#191919"/>
+            {!isTabletOrMobile && options.showExtendIcon && (
+              <ViewBtnWrapper onClick={showPane}>
+                <ViewIcon color="#cc0000" />
               </ViewBtnWrapper>
             )}
           </CardContainer>

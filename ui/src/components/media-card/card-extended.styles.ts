@@ -79,10 +79,10 @@ export const ExtendedInfoClose = styled.span<{flip?: boolean}>`
   ${p => p.flip ? "left: 0" : "right: 0"};
   cursor: pointer;
   display: flex;
-  height: 2rem;
+  height: 1.5rem;
   position: absolute;
   top: 0;
-  width: 2rem;
+  width: 1.5rem;
   & svg {
     width: 100%;
     height: 100%;

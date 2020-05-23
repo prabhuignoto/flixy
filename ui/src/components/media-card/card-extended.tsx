@@ -52,7 +52,7 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
     const ref = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-      if(show) {
+      if (show) {
         setTimeout(() => {
           ref && ref.current && ref.current.focus();
         }, 100);
@@ -81,7 +81,9 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
                 </CardExtendedPosterWrapper>
                 <CardExtendedInfo flip={flip}>
                   <ExtendedInfoTitle>{title}</ExtendedInfoTitle>
-                  <ExtendInfoYear>{release_date}</ExtendInfoYear>
+                  <ExtendInfoYear>
+                    {release_date && new Date(release_date).getFullYear()}
+                  </ExtendInfoYear>
                   <ExtendedInfoOverview>{overview}</ExtendedInfoOverview>
                 </CardExtendedInfo>
                 <ExtendedInfoClose flip={flip} onClick={closePane}>

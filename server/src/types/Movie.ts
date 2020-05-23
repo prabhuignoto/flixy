@@ -3,7 +3,7 @@ import { ObjectType, Field, Int } from "type-graphql"
 @ObjectType()
 export default class Movie {
 
-  @Field()
+  @Field({ nullable!: true })
   adult!: boolean;
 
   @Field({ nullable!: true })
@@ -12,7 +12,7 @@ export default class Movie {
   @Field()
   id!: number;
 
-  @Field()
+  @Field()  
   original_language!: string;
 
   @Field()
