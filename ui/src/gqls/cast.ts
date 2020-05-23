@@ -10,6 +10,7 @@ export const cast = gql`
         profile_path
         credit_id
         id
+        character
       }
       crew {
         name
@@ -18,6 +19,7 @@ export const cast = gql`
         id
         job
         department
+        job
       }
   }
 }`;

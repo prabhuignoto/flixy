@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const PanelList = styled.ul`
   display: flex;
   list-style: none;
-  margin-top: .5rem;
+  margin-top: .5em;
   margin: 0 auto;
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@ export const PanelListItem = styled.li<{selected?: boolean}>`
   color: #000;
   cursor: pointer;
   font-family: "Poppins";
-  font-size: 1.25rem;
+  font-size: 1.2em;
   font-weight: 400;
   margin: .5rem 0;
   margin: 0 1rem;
@@ -26,7 +26,7 @@ export const PanelListItem = styled.li<{selected?: boolean}>`
 
 export const PanelClose = styled.div`
   cursor: pointer;
-  height: 2rem;
+  height: 2em;
   margin-left: auto;
-  width: 2rem;
+  width: 2em;
 `;

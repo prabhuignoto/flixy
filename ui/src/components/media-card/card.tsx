@@ -34,6 +34,7 @@ export default React.memo(
     resxProps,
     release_date,
     overview,
+    genres
   }: MovieType) => {
     const [options, setOptions] = React.useState({
       showExtendIcon: false,
@@ -133,6 +134,7 @@ export default React.memo(
                 show={options.showPane}
                 release_date={release_date}
                 overview={overview}
+                genres={genres}
                 onClick={handleSelection}
                 flip={options.flipCard}
                 closePane={hidePane}

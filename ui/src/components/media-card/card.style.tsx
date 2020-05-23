@@ -34,6 +34,7 @@ export const CardContainer = styled(animated.div)<{
   height: 100%;
   justify-content: space-evenly;
   position: relative;
+  user-select: none;
   width: ${p => getColumnWidth(p.resxProps)}px;
   ${(p) =>
     p.isLoadingCard
@@ -114,8 +115,8 @@ export const ImageIconWrapper = styled.div`
 `;
 
 export const ViewBtnWrapper = styled.span`
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   padding: 3px;
   position: absolute;
   font-weight: 500;

@@ -19,7 +19,7 @@ const getHeight = memoize(
     } else if (isTabletOrMobile) {
       height = 760;
     } else {
-      height = 520;
+      height = 500;
     }
     return height;
   }

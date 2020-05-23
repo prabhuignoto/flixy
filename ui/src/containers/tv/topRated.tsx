@@ -70,6 +70,8 @@ const TopRated: React.FunctionComponent = () => {
                 Object.assign({}, item, {
                   hide: false,
                   selected: false,
+                  title: item.name,
+                  release_date: item.first_air_date
                 })
               )
             : []

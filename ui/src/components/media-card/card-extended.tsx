@@ -9,10 +9,12 @@ import {
   ExtendInfoYear,
   ExtendedInfoOverview,
   ExtendedInfoClose,
+  ExtendedInfoHeader,
 } from "./card-extended.styles";
 import { useTransition, config } from "react-spring";
 import useResponsive from "../../effects/useResponsive";
 import { CloseIcon } from "../icons";
+import Genres, {GenreSize} from "../media-genres/genres";
 
 type Extended = Movie & {
   show?: boolean;
@@ -33,6 +35,7 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
     id,
     overview,
     flip,
+    genres,
     closePane,
   }) => {
     const { isBigScreen } = useResponsive();
@@ -80,15 +83,17 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
                   ></CardExtendedPoster>
                 </CardExtendedPosterWrapper>
                 <CardExtendedInfo flip={flip}>
-                  <ExtendedInfoTitle>{title}</ExtendedInfoTitle>
+                  <ExtendedInfoHeader>
+                    <ExtendedInfoTitle>{title}</ExtendedInfoTitle>
+                    <ExtendedInfoClose flip={flip} onClick={closePane}>
+                      <CloseIcon color="#cc0000" />
+                    </ExtendedInfoClose>
+                  </ExtendedInfoHeader>
                   <ExtendInfoYear>
                     {release_date && new Date(release_date).getFullYear()}
                   </ExtendInfoYear>
                   <ExtendedInfoOverview>{overview}</ExtendedInfoOverview>
                 </CardExtendedInfo>
-                <ExtendedInfoClose flip={flip} onClick={closePane}>
-                  <CloseIcon color="#cc0000" />
-                </ExtendedInfoClose>
               </CardExtendedWrapper>
             )
         )}

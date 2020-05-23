@@ -85,5 +85,4 @@ export const GenresContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: .25rem;
-  margin-top: .25rem;
 `;

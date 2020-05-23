@@ -44,7 +44,8 @@ export default ({
             release_date,
             vote_average,
             hide,
-            overview
+            overview,
+            genres
           },
           index
         ) =>
@@ -62,6 +63,7 @@ export default ({
               index={index}
               overview={overview}
               resxProps={responsiveProps}
+              genres={genres}
             />
           )
       )}

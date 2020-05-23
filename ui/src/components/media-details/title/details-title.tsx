@@ -15,7 +15,7 @@ import DetailsRating from "../rating/details-rating";
 import { format } from "date-fns";
 import ISO6391 from "iso-639-1";
 
-import Genres from "../../media-genres/genres";
+import Genres, { GenreSize } from "../../media-genres/genres";
 
 import Attribute from "../attribute/details-attribute";
 import { Genre } from "../../../models/Genre";
@@ -57,7 +57,7 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
         </TitleRow1>
         <TitleRow2>
           <GenresContainer>
-            {genres && <Genres items={genres} />}
+            {genres && <Genres items={genres} size={GenreSize.large}/>}
             {!resxProps.isTabletOrMobile && (
               <AttributesContainer resxProps={resxProps}>
                 {runtime && (

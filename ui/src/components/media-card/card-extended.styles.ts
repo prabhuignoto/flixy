@@ -3,7 +3,6 @@ import { animated } from "react-spring";
 
 export const CardExtendedWrapper = styled(animated.div) <{ isBigScreen?: boolean, flip?: boolean }>`
   ${p => p.flip ? "right: 0" : "left: 0"};
-  /* background: linear-gradient(90deg, rgba(232,232,232,1) 0%, rgba(255,255,255,.97) 100%); */
   align-items: center;
   background: #e7e7e7;
   box-shadow: 0 0 25px 12px rgba(0,0,0,0.4);
@@ -17,7 +16,7 @@ export const CardExtendedWrapper = styled(animated.div) <{ isBigScreen?: boolean
   padding: .2em;
   position: absolute;
   top: 0;
-  width: ${p => p.isBigScreen ? "500px" : "400px"};
+  width: ${p => p.isBigScreen ? "600px" : "500px"};
   z-index: 9999;
 `;
 
@@ -30,7 +29,6 @@ export const CardExtendedPosterWrapper = styled.div<{ flip?: boolean }>`
 `;
 
 export const CardExtendedPoster = styled.img`
-  /* width: 165px; */
   max-height: 100%;
   object-fit: contain;
 `;
@@ -42,9 +40,8 @@ export const CardExtendedInfo = styled.div<{ flip?: boolean }>`
   height: 100%;
   justify-content: flex-start;
   order: ${p => p.flip ? 1 : 2};
-  padding: 1em;
+  padding: .5em;
   width: calc(100% - 165px);
-  ${p => p.flip ? "padding-left: 2rem" : ""};
 `;
 
 export const ExtendedInfo = styled.span`
@@ -56,7 +53,7 @@ export const ExtendedInfo = styled.span`
 `;
 
 export const ExtendedInfoTitle = styled(ExtendedInfo)`
-  font-size: 1em;
+    font-size: 1em;
   font-weight: 500;
 `;
 
@@ -68,23 +65,27 @@ export const ExtendInfoYear = styled(ExtendedInfo)`
 `;
 
 export const ExtendedInfoOverview = styled(ExtendedInfo)`
-  font-size: .75em;
+  font-size: .85em;
   font-weight: 400;
-  margin-top: .25em;
+  margin-top: .5em;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
-export const ExtendedInfoClose = styled.span<{flip?: boolean}>`
-  ${p => p.flip ? "left: 0" : "right: 0"};
+export const ExtendedInfoClose = styled.span<{ flip?: boolean }>`
   cursor: pointer;
   display: flex;
-  height: 1.5rem;
-  position: absolute;
-  top: 0;
-  width: 1.5rem;
+  height: 2rem;
+  margin-left: auto;
+  width: 2rem;
   & svg {
     width: 100%;
     height: 100%;
   }
+`;
+
+export const ExtendedInfoHeader = styled.header`
+  align-items: center;
+  display: flex;
+  width: 100%;
 `;
