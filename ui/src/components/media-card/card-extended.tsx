@@ -1,4 +1,4 @@
-import React from "react";
+import React, { RefObject } from "react";
 import Movie from "../../models/Movie";
 import {
   CardExtendedWrapper,
@@ -14,18 +14,19 @@ import {
 import { useTransition, config } from "react-spring";
 import useResponsive from "../../effects/useResponsive";
 import { CloseIcon } from "../icons";
-import Genres, {GenreSize} from "../media-genres/genres";
+import Scrollbar from "react-custom-scrollbars";
 
-type Extended = Movie & {
+export type CardExtendedModel = Movie & {
   show?: boolean;
-  onClick: (id: number) => void;
-  flip: boolean;
+  onClick?: (id: number | string) => void;
+  flip?: boolean;
+  autoHeight?: boolean;
   closePane?: (
     ev: React.MouseEvent<HTMLDivElement> & React.FocusEvent<HTMLDivElement>
   ) => void;
 };
 
-const CardExtended: React.FunctionComponent<Extended> = React.memo(
+const CardExtended: React.FunctionComponent<CardExtendedModel> = React.memo(
   ({
     poster_path,
     show,
@@ -35,8 +36,8 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
     id,
     overview,
     flip,
-    genres,
     closePane,
+    autoHeight,
   }) => {
     const { isBigScreen } = useResponsive();
     const transitions = useTransition(show, null, {
@@ -73,9 +74,9 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
                 key={key}
                 flip={flip}
                 isBigScreen={isBigScreen}
-                onClick={() => onClick(id)}
-                onBlur={closePane}
+                onClick={() => onClick && onClick(id)}
                 ref={ref}
+                autoHeight={autoHeight}
               >
                 <CardExtendedPosterWrapper flip={flip}>
                   <CardExtendedPoster
@@ -92,7 +93,9 @@ const CardExtended: React.FunctionComponent<Extended> = React.memo(
                   <ExtendInfoYear>
                     {release_date && new Date(release_date).getFullYear()}
                   </ExtendInfoYear>
-                  <ExtendedInfoOverview>{overview}</ExtendedInfoOverview>
+                  <Scrollbar autoHide autoFocus>
+                    <ExtendedInfoOverview isBigScreen={isBigScreen}>{overview}</ExtendedInfoOverview>
+                  </Scrollbar>
                 </CardExtendedInfo>
               </CardExtendedWrapper>
             )

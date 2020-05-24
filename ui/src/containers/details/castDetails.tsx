@@ -12,7 +12,7 @@ interface CastResultDetails {
 }
 
 interface CastAndCrewModel {
-  movieId?: number;
+  movieId?: number | string;
   title?: string;
   isCast?: boolean;
 }

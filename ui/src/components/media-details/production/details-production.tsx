@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 import useResponsive from "../../../effects/useResponsive";
 import { ProductionCompany } from "../../../models/ProductionCompany";
 import { ProductionWrapper } from "./details-production.styles.";
+import { CardSize } from "../../../models/CardSize";
 
 export interface ProductionDetailsModel {
   items: ProductionCompany[];

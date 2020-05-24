@@ -6,7 +6,7 @@ import { MediaObject } from "../../models/MediaObject";
 import MediaRelated from "../../components/media-related/media-related";
 
 const RecommendedMovies: React.FunctionComponent<{
-  movieId: number;
+  movieId: number | string;
 }> = React.memo(
   ({ movieId }) => {
     const client = useApolloClient();
@@ -42,11 +42,13 @@ const RecommendedMovies: React.FunctionComponent<{
     if (loading) {
       // view = <Loader size={LoaderSize.large} />;
     } else if (movieData && movieData.results.length) {
-      const data: MediaObject[] = movieData.results.map((mov) => ({
-        id: mov.id,
-        name: mov.original_title || "",
+      const data: MediaObject[] = movieData.results.map(({original_title, poster_path, id, release_date, overview}) => ({
+        id: id,
+        name: original_title || "",
+        overview,
+        path: poster_path || "",
+        release_date,
         visible: false,
-        path: mov.poster_path || "",
       }));
       const title = `Recommended Movies ...`
       view = <MediaRelated items={data} id={movieId} title={title}/>;

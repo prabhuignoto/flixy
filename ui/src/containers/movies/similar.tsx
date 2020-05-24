@@ -1,14 +1,12 @@
 import React from "react";
 import { useApolloClient } from "@apollo/client";
 import { similar } from "../../gqls/movies";
-import MediaObjects from "../../components/media-objects/media-objects";
 import Movie from "../../models/Movie";
-import Loader, { LoaderSize } from "../../components/media-loader";
 import { MediaObject } from "../../models/MediaObject";
 import MediaRelated from "../../components/media-related/media-related";
 
 const RecommendedMovies: React.FunctionComponent<{
-  movieId: number;
+  movieId: number | string;
 }> = React.memo(
   ({ movieId }) => {
     const client = useApolloClient();
@@ -44,12 +42,16 @@ const RecommendedMovies: React.FunctionComponent<{
     if (loading) {
       // view = <Loader size={LoaderSize.large} />;
     } else if (movieData && movieData.results.length) {
-      const data: MediaObject[] = movieData.results.map((mov) => ({
-        id: mov.id,
-        name: mov.original_title || "",
-        visible: false,
-        path: mov.poster_path || "",
-      }));
+      const data: MediaObject[] = movieData.results.map(
+        ({ original_title, poster_path, id, release_date, overview }) => ({
+          id: id,
+          name: original_title || "",
+          overview,
+          path: poster_path || "",
+          release_date,
+          visible: false,
+        })
+      );
 
       const title = `Movies you might like ...`;
       view = <MediaRelated items={data} id={movieId} title={title} />;

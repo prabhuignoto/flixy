@@ -11,7 +11,7 @@ import { useSpring } from "react-spring";
 
 interface ReviewsModel {
   items: ReviewModel[];
-  id?: number;
+  id?: number | string;
 }
 
 const Reviews: React.FunctionComponent<ReviewsModel> = React.memo(

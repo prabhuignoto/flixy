@@ -46,7 +46,10 @@ const SliderView: React.FunctionComponent<Slider> = ({
   const [expandFull, setExpandFull] = React.useState(false);
   const firstRun = React.useRef(true);
   const [page, setPage] = React.useState(1);
-  const [showDetails, setShowDetails] = React.useState({
+  const [showDetails, setShowDetails] = React.useState<{
+    state: boolean;
+    selectedMovie: number | string;
+  }>({
     state: false,
     selectedMovie: 0,
   });
@@ -131,7 +134,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
             loadingState={loadingState}
             onSelection={handleMovieSelection}
             showDetails={showDetails.state}
-            selectedIndex={showDetails.selectedMovie}
+            selectedIndex={showDetails.selectedMovie as number}
             id={id}
           ></Movies>
         </MoviesWrapper>

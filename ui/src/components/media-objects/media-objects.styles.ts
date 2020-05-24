@@ -1,5 +1,6 @@
 import { animated } from 'react-spring';
 import styled from "styled-components";
+import { CardSize } from '../../models/CardSize';
 import { ThumbnailSize } from '../../models/MediaObject';
 
 export const ObjectsContainer = styled.section<{ height?: number, noBackground?: boolean }>`
@@ -21,7 +22,6 @@ export const ObjectsWrapper = styled.ul<{
   rightButton?: boolean,
   noBackground?: boolean
 }>`
-  // box-shadow: ${p => !p.noBackground ? "inset 25px 0px 25px -25px rgba(0,0,0.2), inset -25px 0px 25px -25px rgba(0,0,0,0.2)" : ""};
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@ export const ObjectsWrapper = styled.ul<{
   justify-content: center;
   list-style: none;
   margin: 0;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   padding: 0 .5rem;
   padding: 0;
   scroll-behavior: smooth;
@@ -74,4 +74,6 @@ export const ObjectHeader = styled.div`
   padding-left: 1rem;
 `;
 
-export const MediaObjectContainer = styled(animated.div)``;
+export const MediaObjectContainer = styled(animated.div)`
+  margin-right: .5rem;
+`;

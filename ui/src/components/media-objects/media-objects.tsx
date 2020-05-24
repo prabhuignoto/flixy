@@ -14,12 +14,18 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon } from "./../icons/index";
 import { FixedSizeList } from "react-window";
 import MediaObjectView from "./media-object";
+import withExtendedInfo from "../HOCS/withExtendInfo";
+import Card from "../media-card/card";
+import { CardSize } from "../../models/CardSize";
+
+const ExtendedCard = withExtendedInfo(Card);
 
 enum ScrollDir {
   LEFT = "LEFT",
   RIGHT = "RIGHT",
 }
-const MediaObjects: React.FunctionComponent<{
+
+export interface MediaObjectsModel {
   id: number | string;
   items: MediaObjectModel[];
   title?: string;
@@ -28,7 +34,10 @@ const MediaObjects: React.FunctionComponent<{
   thumbnailSize: ThumbnailSize;
   noTitle?: boolean;
   noBackground?: boolean;
-}> = React.memo(
+  useExtendedCard?: boolean;
+}
+
+const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
   ({
     items,
     height,
@@ -37,6 +46,7 @@ const MediaObjects: React.FunctionComponent<{
     title,
     noTitle,
     noBackground,
+    useExtendedCard,
   }) => {
     const containerRef = React.createRef<HTMLUListElement>();
     const rWindowRef = React.useRef<HTMLDivElement>(null);
@@ -117,20 +127,32 @@ const MediaObjects: React.FunctionComponent<{
             }}
           >
             {({ index, style }) => {
-              const { name, path, id } = items[index];
+              const { name, path, id, release_date, overview } = items[index];
 
               return (
                 <MediaObjectContainer
                   key={`${id}-${index}-${name}`}
                   style={style}
                 >
-                  <MediaObjectView
-                    name={name}
-                    path={path}
-                    id={id}
-                    thumbnailSize={thumbnailSize}
-                    noTitle={noTitle}
-                  />
+                  {!useExtendedCard ? (
+                    <MediaObjectView
+                      name={name}
+                      path={path}
+                      id={id}
+                      thumbnailSize={thumbnailSize}
+                      noTitle={noTitle}
+                    />
+                  ) : (
+                    <ExtendedCard
+                      title={name}
+                      poster_path={path}
+                      id={id}
+                      size={CardSize.large}
+                      release_date={release_date}
+                      overview={overview}
+                      autoHeight
+                    />
+                  )}
                 </MediaObjectContainer>
               );
             }}

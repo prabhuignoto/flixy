@@ -202,7 +202,7 @@ export default ({
     }
   }, [loadingState]);
 
-  const handleSelection = (id: number) => {
+  const handleSelection = (id: number | string) => {
     // make a quick copy
     const newMovies = [...movies];
 

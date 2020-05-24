@@ -47,7 +47,7 @@ export const MoviesContainer = styled(animated.div) <{
   color: red;
   display: grid;
   grid-auto-flow: row;
-  ${p => p.resxProps?.isBigScreen ? "grid-column-gap: 1rem" : ""};
+  ${p => p.resxProps?.isBigScreen ? "grid-column-gap: .5rem" : ""};
   ${p => p.resxProps?.isBigScreen ? "grid-row-gap: 1rem" : "grid-row-gap: .5rem"};
   grid-template-columns: repeat(${p => p.columns}, ${p => getColumnWidth(p.resxProps)}px);
   height: 100%;

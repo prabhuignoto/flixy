@@ -19,7 +19,7 @@ import { Genre } from "../../../models/Genre";
 import { ProductionCompany } from "../../../models/ProductionCompany";
 
 interface DetailsHomeModel {
-  id?: number;
+  id?: number | string;
   original_language?: string;
   overview?: string;
   release_date?: string;

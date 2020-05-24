@@ -1,14 +1,21 @@
 import styled from "styled-components";
 import { animated } from "react-spring";
 
-export const CardExtendedWrapper = styled(animated.div) <{ isBigScreen?: boolean, flip?: boolean }>`
+export const CardExtendedWrapper = styled(animated.div) <{ isBigScreen?: boolean, flip?: boolean, autoHeight?: boolean }>`
   ${p => p.flip ? "right: 0" : "left: 0"};
   align-items: center;
   background: #e7e7e7;
-  box-shadow: 0 0 25px 12px rgba(0,0,0,0.4);
+  border-radius: .2em;
+  /* box-shadow: 0 0 25px 16px rgba(0,0,0,0.7); */
   cursor: pointer;
   display: flex;
-  height: ${p => p.isBigScreen ? "255px" : "195px"};
+  height: ${p => {
+    if(p.autoHeight) {
+      return "100%";
+    } else {
+      return p => p.isBigScreen ? "255px" : "195px";
+    }
+  }};
   justify-content: flex-start;
   margin-left:auto;
   margin-right: auto;
@@ -16,8 +23,9 @@ export const CardExtendedWrapper = styled(animated.div) <{ isBigScreen?: boolean
   padding: .2em;
   position: absolute;
   top: 0;
-  width: ${p => p.isBigScreen ? "600px" : "500px"};
-  z-index: 9999;
+  width: ${p => p.isBigScreen ? "680px" : "500px"};
+  z-index: 999;
+  background-image: linear-gradient(to left top, #383838, #303030, #282828, #202020, #191919);
 `;
 
 export const CardExtendedPosterWrapper = styled.div<{ flip?: boolean }>`
@@ -25,6 +33,7 @@ export const CardExtendedPosterWrapper = styled.div<{ flip?: boolean }>`
   display: flex;
   height: 100%;
   justify-content: flex-start;
+  flex: 1;
   order: ${p => p.flip ? 2 : 1};
 `;
 
@@ -40,12 +49,12 @@ export const CardExtendedInfo = styled.div<{ flip?: boolean }>`
   height: 100%;
   justify-content: flex-start;
   order: ${p => p.flip ? 1 : 2};
-  padding: .5em;
-  width: calc(100% - 165px);
+  padding: .5em .1em .5em .5em;
+  flex: 3;
 `;
 
 export const ExtendedInfo = styled.span`
-  color: #000;
+  color: #fff;
   font-family: "Poppins";
   text-align: left;
   white-space: wrap;
@@ -53,8 +62,9 @@ export const ExtendedInfo = styled.span`
 `;
 
 export const ExtendedInfoTitle = styled(ExtendedInfo)`
-    font-size: 1em;
+  font-size: 1em;
   font-weight: 500;
+  width: 100%;
 `;
 
 export const ExtendInfoYear = styled(ExtendedInfo)`
@@ -64,12 +74,13 @@ export const ExtendInfoYear = styled(ExtendedInfo)`
   margin-top: .1em;
 `;
 
-export const ExtendedInfoOverview = styled(ExtendedInfo)`
-  font-size: .85em;
-  font-weight: 400;
+export const ExtendedInfoOverview = styled(ExtendedInfo)<{isBigScreen?: boolean}>`
+  font-size: ${p => p.isBigScreen ? ".85em" : ".7em"};
+  font-weight: 300;
   margin-top: .5em;
-  overflow: hidden;
   text-overflow: ellipsis;
+  display: flex;
+  flex: auto;
 `;
 
 export const ExtendedInfoClose = styled.span<{ flip?: boolean }>`

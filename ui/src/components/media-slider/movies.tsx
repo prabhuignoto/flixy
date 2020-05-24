@@ -5,6 +5,9 @@ import { MoviesContainer } from "./movies.style";
 import Card from "../media-card/card";
 import { useMediaQuery } from "react-responsive";
 import useResponsive from "../../effects/useResponsive";
+import withExtendedInfo from "../HOCS/withExtendInfo";
+
+const ExtendedCard = withExtendedInfo(Card);
 
 export interface Movies {
   slider?: number;
@@ -13,7 +16,7 @@ export interface Movies {
   columns: number;
   movies: Movie[];
   loadingCards: number[];
-  handleSelection: (id: number) => void;
+  handleSelection: (id: number | string) => void;
 }
 
 export default ({
@@ -50,7 +53,7 @@ export default ({
           index
         ) =>
           !hide && (
-            <Card
+            <ExtendedCard
               poster_path={poster_path}
               selected={selected}
               key={`${id}-${release_date}`}

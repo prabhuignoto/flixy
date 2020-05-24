@@ -6,13 +6,14 @@ import { MediaObject, ThumbnailSize } from "./../../models/MediaObject";
 import styled from "styled-components";
 import useResponsive from "../../effects/useResponsive";
 import { Images } from "../../models/Images";
+import { CardSize } from "../../models/CardSize";
 
 interface ImageResultDetails {
   getImages: Images;
 }
 
 interface ImagesModel {
-  movieId?: number;
+  movieId?: number | string;
 }
 
 const MediaObjectsWrapper = styled.div`

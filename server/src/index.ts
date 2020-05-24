@@ -28,7 +28,7 @@ const server = async () => {
       origin: "*"
     });
     fast.register(apolloServer.createHandler());
-    fast.listen(3000);
+    fast.listen(3200);
     fast.log.info(`server running on 3000`);
   } catch (err) {
     fast.log.error(err);

@@ -12,11 +12,11 @@ interface MovieResultDetails {
 interface ReviewResultModel {
   total_results: number;
   results: Review[];
-  id: number;
+  id: number | string;
 }
 
 const MovieDetails: React.FunctionComponent<{
-  movieId: number;
+  movieId: number | string;
 }> = React.memo(
   ({ movieId }) => {
     const [data, setData] = React.useState<ReviewResultModel | null>();

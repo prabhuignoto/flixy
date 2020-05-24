@@ -26,7 +26,7 @@ const getHeight = memoize(
 );
 
 const MovieDetails: React.FunctionComponent<{
-  movieId: number;
+  movieId: number | string;
   handleClose?: () => void;
   hide?: boolean;
 }> = ({ movieId, handleClose, hide }) => {

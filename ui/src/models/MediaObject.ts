@@ -6,6 +6,8 @@ export interface MediaObject {
   thumbnailSize?: ThumbnailSize;
   noTitle?: boolean;
   noLabel?: boolean;
+  release_date?: string;
+  overview?: string;
 }
 
 export enum ThumbnailSize {

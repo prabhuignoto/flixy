@@ -25,6 +25,7 @@ export const CardContainer = styled(animated.div)<{
   hide?: number;
   isLoadingCard?: number;
   resxProps?: responsiveProps;
+  autoHeight?: boolean;
 }>`
   align-items: center;
   border-radius: 0.1rem;
@@ -35,7 +36,6 @@ export const CardContainer = styled(animated.div)<{
   justify-content: space-evenly;
   position: relative;
   user-select: none;
-  width: ${p => getColumnWidth(p.resxProps)}px;
   ${(p) =>
     p.isLoadingCard
       ? ""

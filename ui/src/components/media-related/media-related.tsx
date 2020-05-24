@@ -7,12 +7,14 @@ import {
 import MediaObjects from "../media-objects/media-objects";
 import { MediaObject, ThumbnailSize } from "../../models/MediaObject";
 import useResponsive from "../../effects/useResponsive";
+import { CardSize } from "../../models/CardSize";
 
 const RelatedMedia: React.FunctionComponent<{
-  id: number;
+  id: number | string;
   items: MediaObject[];
   title: string;
 }> = ({ items, id, title }) => {
+  debugger;
   const { isBigScreen } = useResponsive();
   return (
     <MediaRelatedWrapper>
@@ -21,10 +23,11 @@ const RelatedMedia: React.FunctionComponent<{
         <MediaObjects
           items={items}
           id={id}
-          height={isBigScreen ? 450 : 320}
-          itemSize={isBigScreen ? 300 : 200}
+          height={isBigScreen ? 400 : 320}
+          itemSize={isBigScreen ? 250 : 200}
           thumbnailSize={ThumbnailSize.large}
           noBackground
+          useExtendedCard
         />
       </RelatedMediaObjects>
     </MediaRelatedWrapper>
