@@ -11,7 +11,7 @@ export const ObjectsContainer = styled.section<{ height?: number, noBackground?:
   height: ${p => p.height}px;
   justify-content: center;
   padding: .5rem 0;
-  position: relative;
+  /* position: relative; */
   width: 100%;
   user-select: none;
 `;
@@ -29,7 +29,7 @@ export const ObjectsWrapper = styled.ul<{
   justify-content: center;
   list-style: none;
   margin: 0;
-  // overflow-x: hidden;
+  overflow-x: hidden;
   padding: 0 .5rem;
   padding: 0;
   scroll-behavior: smooth;

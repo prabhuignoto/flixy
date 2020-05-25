@@ -18,6 +18,9 @@ import { Menu } from "@styled-icons/feather/Menu";
 import { ArrowheadDown } from "@styled-icons/evaicons-solid/ArrowheadDown";
 import { ArrowheadUp } from "@styled-icons/evaicons-solid/ArrowheadUp";
 import { Expand } from "@styled-icons/boxicons-regular/Expand";
+import { StarHalf } from "@styled-icons/material/StarHalf";
+import { Star } from "@styled-icons/material/Star";
+import { StarBorder } from "@styled-icons/material/StarBorder";
 
 export const PlusIcon = styled(Plus)`
   color: red;
@@ -27,18 +30,18 @@ export const MinusIcon = styled(Minus)`
   color: red;
 `;
 
-export const ArrowDownIcon = styled(ChevronDown)<{color?: string}>`
+export const ArrowDownIcon = styled(ChevronDown) <{ color?: string }>`
   color: ${p => p.color ? p.color : "#cc0000"};
 `;
 
-export const ArrowUpIcon = styled(ChevronUp)<{color?: string}>`
+export const ArrowUpIcon = styled(ChevronUp) <{ color?: string }>`
   color: ${p => p.color ? p.color : "#cc0000"};
 `;
 
-export const ChevronLeftIcon = styled(ChevronLeft)<{color?: string}>`
+export const ChevronLeftIcon = styled(ChevronLeft) <{ color?: string }>`
   color: ${p => p.color ? p.color : "#cc0000"};
 `;
-export const ChevronRightIcon = styled(ChevronRight)<{color?: string}>`
+export const ChevronRightIcon = styled(ChevronRight) <{ color?: string }>`
   color: ${p => p.color ? p.color : "#cc0000"};
 `;
 
@@ -85,5 +88,17 @@ export const ArrowHeadUpIcon = styled(ArrowheadUp) <{ color?: string }>`
 `;
 
 export const ViewIcon = styled(Expand) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const StarHalfIcon = styled(StarHalf) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const StarIcon = styled(Star) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const StarBorderIcon = styled(StarBorder) <{ color?: string }>`
   color: ${p => p.color};
 `;

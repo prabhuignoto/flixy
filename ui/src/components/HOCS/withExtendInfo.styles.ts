@@ -6,7 +6,7 @@ export const ViewBtnWrapper = styled.span`
   cursor: pointer;
   display: flex;
   font-weight: 500;
-  height: 20px;
+  height: 26px;
   left: 0;
   margin-left: auto;
   margin-right: auto;
@@ -15,7 +15,7 @@ export const ViewBtnWrapper = styled.span`
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 20px;
+  width: 26px;
   /* box-shadow: inset 0 0 10px 4px rgba(0,0,0,0.25), 0 0 10px 4px rgba(0,0,0,0.25); */
   & svg {
     height: 100%;

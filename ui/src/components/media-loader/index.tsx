@@ -35,7 +35,6 @@ const Loader: React.FunctionComponent<{ size?: LoaderSize }> = ({ size }) => {
         width={wh}
         height={wh}
         viewBox="0 0 38 38"
-        xmlns="http://www.w3.org/2000/svg"
         stroke="#cc0000"
       >
         <g fill="none" fillRule="evenodd">

@@ -1,17 +1,26 @@
 import styled from "styled-components";
 import { animated } from "react-spring";
 
-export const CardExtendedWrapper = styled(animated.div) <{ isBigScreen?: boolean, flip?: boolean, autoHeight?: boolean }>`
-  ${p => p.flip ? "right: 0" : "left: 0"};
+export const CardExtendedWrapper = styled(animated.div) <
+  {
+    isBigScreen?: boolean;
+    flip?: boolean;
+    autoHeight?: boolean;
+    height?: number;
+    position: { x: number; y: number }
+  }>`
+  /* ${p => p.flip ? "right: 0" : "left: 0"}; */
   align-items: center;
   background: #e7e7e7;
   border-radius: .2em;
-  /* box-shadow: 0 0 25px 16px rgba(0,0,0,0.7); */
+  box-shadow: 0 0 20px 16px rgba(0,0,0,0.2);
   cursor: pointer;
   display: flex;
   height: ${p => {
-    if(p.autoHeight) {
+    if (p.autoHeight) {
       return "100%";
+    } else if (p.height) {
+      return `${p.height}px`;
     } else {
       return p => p.isBigScreen ? "255px" : "195px";
     }
@@ -21,11 +30,12 @@ export const CardExtendedWrapper = styled(animated.div) <{ isBigScreen?: boolean
   margin-right: auto;
   outline: 0;
   padding: .2em;
-  position: absolute;
-  top: 0;
+  position: fixed;
+  left: ${p => p.position.x}px;
+  top: ${p => p.position.y - 2}px;
   width: ${p => p.isBigScreen ? "680px" : "500px"};
   z-index: 999;
-  background-image: linear-gradient(to left top, #383838, #303030, #282828, #202020, #191919);
+  background: #e8e8e8;
 `;
 
 export const CardExtendedPosterWrapper = styled.div<{ flip?: boolean }>`
@@ -54,7 +64,7 @@ export const CardExtendedInfo = styled.div<{ flip?: boolean }>`
 `;
 
 export const ExtendedInfo = styled.span`
-  color: #fff;
+  color: #000;
   font-family: "Poppins";
   text-align: left;
   white-space: wrap;
@@ -74,7 +84,7 @@ export const ExtendInfoYear = styled(ExtendedInfo)`
   margin-top: .1em;
 `;
 
-export const ExtendedInfoOverview = styled(ExtendedInfo)<{isBigScreen?: boolean}>`
+export const ExtendedInfoOverview = styled(ExtendedInfo) <{ isBigScreen?: boolean }>`
   font-size: ${p => p.isBigScreen ? ".85em" : ".7em"};
   font-weight: 300;
   margin-top: .5em;

@@ -8,13 +8,13 @@ import MediaObjects from "../media-objects/media-objects";
 import { MediaObject, ThumbnailSize } from "../../models/MediaObject";
 import useResponsive from "../../effects/useResponsive";
 import { CardSize } from "../../models/CardSize";
+import { nanoid } from "nanoid";
 
 const RelatedMedia: React.FunctionComponent<{
   id: number | string;
   items: MediaObject[];
   title: string;
 }> = ({ items, id, title }) => {
-  debugger;
   const { isBigScreen } = useResponsive();
   return (
     <MediaRelatedWrapper>

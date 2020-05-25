@@ -20,6 +20,7 @@ import Genres, { GenreSize } from "../../media-genres/genres";
 import Attribute from "../attribute/details-attribute";
 import { Genre } from "../../../models/Genre";
 import useResponsive from "../../../effects/useResponsive";
+import MediaRating from "../../medaia-rating/media-rating";
 
 export interface DetailsTitleModel {
   year?: string;
@@ -45,15 +46,16 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
     <TitleWrapper>
       <Title>
         <TitleRow1>
-          {rating && (
+          {/* {rating && (
             <DetailsRatingContainer>
               <DetailsRating rating={rating} />
             </DetailsRatingContainer>
-          )}
+          )} */}
           <TitleText resxProps={resxProps}>{`${title}`}</TitleText>
           <TitleYear resxProps={resxProps}>{`${
             year ? new Date(year).getFullYear() : ""
           }`}</TitleYear>
+          <MediaRating rating={rating || 0}></MediaRating>
         </TitleRow1>
         <TitleRow2>
           <GenresContainer>

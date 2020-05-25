@@ -30,12 +30,12 @@ export const DetailsRatingContainer = styled.div`
 
 export const TitleYear = styled.span<{resxProps: responsiveProps}>`
   color: rgba(204,0,0,0.85);
-  font-size: 1.5rem;
-  margin-left: 1rem;
+  margin-left: .5rem;
   display: flex;
   height: 100%;
   align-items: center;
-  font-size: ${p => p.resxProps.isBigScreen ? "1.5rem" : "1.2rem"};
+  font-weight: 500;
+  font-size: ${p => p.resxProps.isBigScreen ? "1.1rem" : ".85rem"};
 `;
 
 export const TitleText = styled.span<{resxProps: responsiveProps}>`

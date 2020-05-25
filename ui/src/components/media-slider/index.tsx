@@ -17,7 +17,7 @@ import Slider from "../../models/Slider";
 import Movie from "../../models/Movie";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";
 import memoize from "memoize-one";
-import Loader from "../media-loader";
+import { nanoid } from "nanoid";
 
 const MovieDetails = React.lazy(() =>
   import("../../containers/details/movieDetails")
@@ -115,6 +115,9 @@ const SliderView: React.FunctionComponent<Slider> = ({
 
   return (
     <WrapperContainer detailsEnabled={showDetails.selectedMovie ? 1 : 0}>
+      
+      <div id={`extended-card-enclosure-${id}`}></div>
+
       <Header>
         <Title>
           <TitleIcon></TitleIcon>

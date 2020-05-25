@@ -229,6 +229,7 @@ export default ({
           movies={movies}
           handleSelection={handleSelection}
           loadingCards={loadingCards}
+          id={id}
         />
       ) : null}
       <ScrollRight

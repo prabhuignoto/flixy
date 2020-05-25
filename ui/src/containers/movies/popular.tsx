@@ -4,6 +4,7 @@ import Slider from "../../components/media-slider";
 import { popular } from "../../gqls/movies";
 import Movie from "./../../models/Movie";
 import { LoadingState } from "../../models/Slider";
+import { nanoid } from "nanoid";
 
 const TopRated: React.FunctionComponent = () => {
   const client = useApolloClient();
@@ -57,6 +58,7 @@ const TopRated: React.FunctionComponent = () => {
         fetchMore={handleFetchMore}
         totalResults={0}
         loadingState={LoadingState.LOADING}
+        id={nanoid()}
       ></Slider>
     );
   } else if (movieData.results.length) {
@@ -76,6 +78,7 @@ const TopRated: React.FunctionComponent = () => {
         fetchMore={handleFetchMore}
         totalResults={movieData.total_results ? movieData.total_results : 0}
         loadingState={LoadingState.LOADED}
+        id={nanoid()}
       ></Slider>
     );
   }

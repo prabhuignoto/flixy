@@ -5,9 +5,12 @@ import { MoviesContainer } from "./movies.style";
 import Card from "../media-card/card";
 import { useMediaQuery } from "react-responsive";
 import useResponsive from "../../effects/useResponsive";
-import withExtendedInfo from "../HOCS/withExtendInfo";
+import withExtendedInfo, {
+  CardExtendCustomModel,
+} from "../HOCS/withExtendInfo";
+import { PositioningStrategy } from "../media-card/card-extended";
 
-const ExtendedCard = withExtendedInfo(Card);
+const ExtendedCard = withExtendedInfo<CardExtendCustomModel>(Card);
 
 export interface Movies {
   slider?: number;
@@ -17,6 +20,7 @@ export interface Movies {
   movies: Movie[];
   loadingCards: number[];
   handleSelection: (id: number | string) => void;
+  id?: string;
 }
 
 export default ({
@@ -27,6 +31,7 @@ export default ({
   movies,
   loadingCards,
   handleSelection,
+  id: containerId,
 }: Movies) => {
   const responsiveProps = useResponsive();
   return (
@@ -48,7 +53,7 @@ export default ({
             vote_average,
             hide,
             overview,
-            genres
+            genres,
           },
           index
         ) =>
@@ -67,6 +72,8 @@ export default ({
               overview={overview}
               resxProps={responsiveProps}
               genres={genres}
+              containerId={containerId}
+              positioningStrategy={PositioningStrategy.absolute}
             />
           )
       )}

@@ -17,6 +17,8 @@ import MediaObjectView from "./media-object";
 import withExtendedInfo from "../HOCS/withExtendInfo";
 import Card from "../media-card/card";
 import { CardSize } from "../../models/CardSize";
+import { nanoid } from "nanoid";
+import { PositioningStrategy } from "../media-card/card-extended";
 
 const ExtendedCard = withExtendedInfo(Card);
 
@@ -58,6 +60,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     });
     const [disableRightNav, setDisableRightNav] = React.useState(false);
     const [disableLeftNav, setDisableLeftNav] = React.useState(true);
+    const containerId = nanoid();
 
     const handleNav = (dir: ScrollDir) => {
       if (rWindowRef && rWindowRef.current) {
@@ -71,11 +74,10 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
       }
     };
 
-    React.useLayoutEffect(() => {
+    React.useEffect(() => {
       if (containerRef && containerRef.current) {
         const node = containerRef.current as HTMLUListElement;
         const { clientWidth, scrollWidth, clientHeight } = node;
-
         setConfig({
           show: true,
           clientWidth,
@@ -150,7 +152,9 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
                       size={CardSize.large}
                       release_date={release_date}
                       overview={overview}
-                      autoHeight
+                      containerId={containerId}
+                      height={config.clientHeight}
+                      positioningStrategy={PositioningStrategy.absolute}
                     />
                   )}
                 </MediaObjectContainer>
@@ -178,6 +182,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           rightButton={disableRightNav}
           noBackground={noBackground}
         >
+          <div id={`extended-card-enclosure-${containerId}`}></div>
           {view}
         </ObjectsWrapper>
         <ScrollRightBtn

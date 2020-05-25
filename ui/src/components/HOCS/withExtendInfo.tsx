@@ -1,6 +1,10 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { Wrapper, ViewBtnWrapper } from "./withExtendInfo.styles";
-import CardExtended, { CardExtendedModel } from "./../media-card/card-extended";
+import CardExtended, {
+  CardExtendedModel,
+  PositioningStrategy,
+} from "./../media-card/card-extended";
 import { MovieType } from "../media-card/card";
 import { ViewIcon } from "../icons";
 
@@ -9,12 +13,16 @@ interface State {
   flipCard: boolean;
   showPane: boolean;
   showIcon: boolean;
+  position?: {
+    x: number;
+    y: number;
+  };
 }
 
-type Custom = CardExtendedModel & MovieType;
+export type CardExtendCustomModel = CardExtendedModel & MovieType;
 
-export default function <P extends Custom>(
-  Component: React.FunctionComponent<P>
+export default function <P extends CardExtendCustomModel>(
+  Component: React.FunctionComponent<MovieType>
 ) {
   return class ExtendInfoHOC extends React.Component<P, State> {
     private elementRef: React.RefObject<HTMLDivElement>;
@@ -27,6 +35,10 @@ export default function <P extends Custom>(
         flipCard: false,
         showPane: false,
         showIcon: false,
+        position: {
+          x: 0,
+          y: 0,
+        },
       };
       this.showPane = this.showPane.bind(this);
       this.showIcon = this.showIcon.bind(this);
@@ -38,19 +50,31 @@ export default function <P extends Custom>(
     showPane(ev: React.MouseEvent) {
       ev.stopPropagation();
       let flipCard = false;
+      const node = this.elementRef.current as HTMLElement;
+      const rects = node.getBoundingClientRect();
 
-      if (this.elementRef && this.elementRef.current) {
-        // const { offsetLeft } = this.elementRef.current;
-        const left = this.elementRef.current.getBoundingClientRect().left;
-        if (left + 600 > window.screen.width) {
+      let x, y;
+      if (this.props.positioningStrategy === PositioningStrategy.absolute) {
+        if (rects.left + 680 > window.screen.width) {
+          x = rects.left - (680 - node.clientWidth);
           flipCard = true;
+        } else {
+          x = rects.left;
         }
+        y = rects.top;
+      } else {
+        x = node.offsetLeft;
+        y = node.offsetTop;
       }
 
       this.setState(
         Object.assign({}, this.state, {
           showPane: true,
           flipCard,
+          position: {
+            x,
+            y,
+          },
         })
       );
     }
@@ -74,7 +98,7 @@ export default function <P extends Custom>(
     hideIcon() {
       this.setState({
         showIcon: false,
-        showPane: false
+        showPane: false,
       });
     }
 
@@ -83,6 +107,10 @@ export default function <P extends Custom>(
     }
 
     render() {
+      const container: HTMLElement | null = document.getElementById(
+        `extended-card-enclosure-${this.props.containerId}`
+      );
+
       const {
         poster_path,
         title,
@@ -91,8 +119,9 @@ export default function <P extends Custom>(
         genres,
         release_date,
         autoHeight,
+        height,
       } = this.props;
-      const { showPane, flipCard, showIcon } = this.state;
+      const { showPane, flipCard, showIcon, position } = this.state;
       return (
         <Wrapper
           onMouseEnter={this.showIcon}
@@ -101,26 +130,31 @@ export default function <P extends Custom>(
         >
           <Component {...this.props} />
           {this.state.showExtendIcon && <ViewBtnWrapper />}
-          {showPane && (
-            <CardExtended
-              poster_path={poster_path}
-              title={title}
-              id={id}
-              show={showPane}
-              release_date={release_date}
-              overview={overview}
-              genres={genres}
-              onClick={this.handleSelection}
-              flip={flipCard}
-              closePane={this.hidePane}
-              autoHeight={autoHeight}
-            />
-          )}
-          {
-            showIcon && <ViewBtnWrapper onClick={this.showPane}>
+          {container
+            ? ReactDOM.createPortal(
+                <CardExtended
+                  poster_path={poster_path}
+                  title={title}
+                  id={id}
+                  show={showPane}
+                  release_date={release_date}
+                  overview={overview}
+                  genres={genres}
+                  onClick={this.handleSelection}
+                  flip={flipCard}
+                  position={position}
+                  closePane={this.hidePane}
+                  autoHeight={autoHeight}
+                  height={height}
+                />,
+                container
+              )
+            : null}
+          {showIcon && (
+            <ViewBtnWrapper onClick={this.showPane}>
               <ViewIcon color="#cc0000" />
             </ViewBtnWrapper>
-          }
+          )}
         </Wrapper>
       );
     }

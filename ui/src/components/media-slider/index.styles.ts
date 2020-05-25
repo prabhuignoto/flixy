@@ -10,6 +10,7 @@ export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
   margin: 1rem 0;
   padding-bottom: ${p => p.detailsEnabled ? "2rem" : ""};
   width: 100%; 
+  position: relative;
 `;
 
 export const Header = styled.header`
@@ -60,6 +61,7 @@ export const Footer = styled.footer`
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-bottom: .5rem;
 `;
 
 export const DetailsWrapper = styled.div`

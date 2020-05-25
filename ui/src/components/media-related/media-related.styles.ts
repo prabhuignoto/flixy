@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const MediaRelatedWrapper = styled.div``;
+export const MediaRelatedWrapper = styled.div`
+  position: relative;
+`;
 
 export const RelatedMediaObjects = styled.div`
 `;

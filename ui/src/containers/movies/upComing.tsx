@@ -4,6 +4,7 @@ import Slider from "../../components/media-slider";
 import { upcoming } from "../../gqls/movies";
 import Movie from "./../../models/Movie";
 import { LoadingState } from "../../models/Slider";
+import { nanoid } from "nanoid";
 
 const TopRated: React.FunctionComponent = () => {
   const client = useApolloClient();
@@ -74,6 +75,7 @@ const TopRated: React.FunctionComponent = () => {
               )
             : []
         }
+        id={nanoid()}
         title="UpComing Movies"
         fetchMore={handleFetchMore}
         totalResults={movieData.total_results ? movieData.total_results : 0}
