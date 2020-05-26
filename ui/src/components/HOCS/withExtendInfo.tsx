@@ -103,6 +103,10 @@ export default function <P extends CardExtendCustomModel>(
     }
 
     handleSelection() {
+      this.setState({
+        showPane: false,
+        showIcon: false
+      });
       this.props.onSelect && this.props.onSelect(this.props.id);
     }
 
@@ -120,7 +124,7 @@ export default function <P extends CardExtendCustomModel>(
         release_date,
         autoHeight,
         height,
-        vote_average
+        vote_average,
       } = this.props;
       const { showPane, flipCard, showIcon, position } = this.state;
       return (

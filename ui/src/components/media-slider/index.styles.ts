@@ -3,14 +3,15 @@ import { animated } from "react-spring";
 
 export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
   ${p => p.detailsEnabled && "background-image: linear-gradient(to right top, #2c2c2c, #252525, #1f1f1f, #181818, #111111);"};
-  background-color: ${p => !p.detailsEnabled ? "#111" : ""};
-  border-radius: .25rem;
+  background-color: ${p => !p.detailsEnabled ? "#1d1d1d" : ""};
+  border-radius: .2rem;
   display: flex;
   flex-direction: column;
-  margin: .5rem 0;
+  margin: 2.5rem 0 2rem 0;
   padding-bottom: ${p => p.detailsEnabled ? "2rem" : ""};
   width: 95%; 
   position: relative;
+  /* border: 1px solid #cc0000; */
 `;
 
 export const Header = styled.header`
@@ -19,14 +20,17 @@ export const Header = styled.header`
   cursor: pointer;
   display: flex;
   font-family: "Poppins";
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 1.1rem;
+  font-weight: 300;
   justify-content: flex-start;
-  margin-bottom: .5rem;
-  padding-left: 1.5rem;
-  padding-top: .5rem;
-  text-align: left;
-  width: 100%;
+  position: absolute;
+  /* background: linear-gradient(90deg, rgba(17,17,17,.85) 0%, rgba(25,25,25,.5) 50%, rgba(0,0,0,0) 100%); */
+  z-index: 10;
+  top: -2.5rem;
+  left: 0;
+  padding: 0 .25rem;
+  border-bottom-left-radius: .2rem;
+  height: 2.5rem;
 `;
 
 export const MoviesWrapper = styled(animated.div)`
@@ -37,6 +41,7 @@ export const MoviesWrapper = styled(animated.div)`
   overflow: hidden;
   position: relative;
   width: 100%;
+  margin-top: 1rem;
 `;
 
 export const Title = styled.div`
@@ -62,10 +67,13 @@ export const Footer = styled.footer`
   justify-content: center;
   width: 100%;
   padding-bottom: .5rem;
+  z-index: 1;
+  position: absolute;
+  bottom: -1rem;
 `;
 
 export const DetailsWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
   position: relative;
-`;
+`;;
