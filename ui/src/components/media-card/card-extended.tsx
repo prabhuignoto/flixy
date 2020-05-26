@@ -81,7 +81,7 @@ const CardExtended: React.FunctionComponent<CardExtendedModel> = ({
   }, [show]);
 
   return (
-    <div>
+  <div >
       {transitions.map(
         ({ item, key, props }) =>
           item && (
