@@ -1,12 +1,21 @@
 import styled from "styled-components";
+import { responsiveProps } from "../../effects/useResponsive";
 
-export const ViewBtnWrapper = styled.span`
+const getButtonDimensions = (resx?: responsiveProps) => {
+  if(resx && resx.isBigScreen) {
+    return 26;
+  } else {
+    return 22;
+  }
+}
+
+export const ViewBtnWrapper = styled.span<{resx?: responsiveProps}>`
   background: rgba(0,0,0,0.85);
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   font-weight: 500;
-  height: 26px;
+  height: 24px;
   left: 0;
   margin-left: auto;
   margin-right: auto;
@@ -15,8 +24,7 @@ export const ViewBtnWrapper = styled.span`
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 26px;
-  /* box-shadow: inset 0 0 10px 4px rgba(0,0,0,0.25), 0 0 10px 4px rgba(0,0,0,0.25); */
+  width: 24px;
   & svg {
     height: 100%;
     width: 100%;

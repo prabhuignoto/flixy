@@ -14,16 +14,16 @@ const Panel: React.FunctionComponent<{
   actvTab: tabs;
   onSelection: (selectedTab: tabs) => void;
 }> = ({ actvTab, onSelection }) => {
-  const { isBigScreen } = useResponsive();
+  const resxProps = useResponsive();
   return (
-    <PanelList>
+    <PanelList resx={resxProps}>
       <PanelListItem
         onClick={() => onSelection(tabs.home)}
         selected={actvTab === tabs.home}
       >
         About
       </PanelListItem>
-      {!isBigScreen && (
+      {!resxProps.isBigScreen && (
         <PanelListItem
           onClick={() => onSelection(tabs.posters)}
           selected={actvTab === tabs.posters}

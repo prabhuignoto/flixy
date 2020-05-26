@@ -23,7 +23,7 @@ export const GenreItem = styled.li<{ size?: GenreSize }>`
     if (p.size === GenreSize.large) {
       return `
       padding: .25em .35em;
-      font-size: .85em;
+      font-size: .75em;
       font-weight: 400;
       `;
     } else {

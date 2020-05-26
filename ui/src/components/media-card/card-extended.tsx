@@ -10,7 +10,8 @@ import {
   ExtendedInfoOverview,
   ExtendedInfoClose,
   ExtendedInfoHeader,
-  ExtendedInfoRating
+  ExtendedInfoRating,
+  Row2
 } from "./card-extended.styles";
 import { useTransition, config } from "react-spring";
 import useResponsive from "../../effects/useResponsive";
@@ -104,16 +105,18 @@ const CardExtended: React.FunctionComponent<CardExtendedModel> = ({
               <CardExtendedInfo flip={flip}>
                 <ExtendedInfoHeader>
                   <ExtendedInfoTitle>{title}</ExtendedInfoTitle>
-                  <ExtendedInfoRating>
-                    <MediaRating rating={vote_average || 0}></MediaRating>
-                  </ExtendedInfoRating>
                   <ExtendedInfoClose flip={flip} onClick={closePane}>
                     <CloseIcon color="#cc0000" />
                   </ExtendedInfoClose>
                 </ExtendedInfoHeader>
-                <ExtendInfoYear>
-                  {release_date && new Date(release_date).getFullYear()}
-                </ExtendInfoYear>
+                <Row2>
+                  <ExtendInfoYear>
+                    {release_date && new Date(release_date).getFullYear()}
+                  </ExtendInfoYear>
+                  <ExtendedInfoRating>
+                    <MediaRating rating={vote_average || 0}></MediaRating>
+                  </ExtendedInfoRating>
+                </Row2>
                 <Scrollbar autoHide autoFocus>
                   <ExtendedInfoOverview isBigScreen={isBigScreen}>
                     {overview}

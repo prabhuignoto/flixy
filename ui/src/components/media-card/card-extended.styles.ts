@@ -95,9 +95,9 @@ export const ExtendedInfoOverview = styled(ExtendedInfo) <{ isBigScreen?: boolea
 export const ExtendedInfoClose = styled.span<{ flip?: boolean }>`
   cursor: pointer;
   display: flex;
-  height: 2rem;
+  height: 1.5rem;
   margin-left: auto;
-  width: 2rem;
+  width: 1.5rem;
   & svg {
     width: 100%;
     height: 100%;
@@ -113,3 +113,8 @@ export const ExtendedInfoHeader = styled.header`
 export const ExtendedInfoRating = styled.div`
   margin-left: 1rem;
 `;
+
+export const Row2 = styled.div`
+  display: flex;
+  align-items: center;
+`

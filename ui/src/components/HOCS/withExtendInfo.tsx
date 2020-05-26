@@ -55,8 +55,8 @@ export default function <P extends CardExtendCustomModel>(
 
       let x, y;
       if (this.props.positioningStrategy === PositioningStrategy.absolute) {
-        if (rects.left + 680 > window.screen.width) {
-          x = rects.left - (680 - node.clientWidth);
+        if (rects.left + 500 > window.screen.width) {
+          x = rects.left - (500 - node.clientWidth);
           flipCard = true;
         } else {
           x = rects.left;
@@ -131,7 +131,7 @@ export default function <P extends CardExtendCustomModel>(
         >
           <Component {...this.props} />
           {this.state.showExtendIcon && <ViewBtnWrapper />}
-          {container
+          {showPane && container
             ? ReactDOM.createPortal(
                 <CardExtended
                   poster_path={poster_path}

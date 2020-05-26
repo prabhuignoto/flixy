@@ -1,25 +1,25 @@
 import styled from "styled-components";
+import { responsiveProps } from "../../../effects/useResponsive";
 
-const Font = styled.div`
+const Root = styled.div<{ resx?: responsiveProps }>`
   font-family: "Poppins";
 `;
 
-export const AttributeWrapper = styled(Font)`
+export const AttributeWrapper = styled(Root)`
   align-items: center;
   background: #2a2a2a;
   border-radius: 3px;
-  /* box-shadow: 0 0.5px 0 0 #000, 0 1px 2px 0 #000; */
   display: flex;
-  height: 1.75rem;
+  height: ${p => p.resx && p.resx.isBigScreen ? "1.75rem" : "1.65rem"};
   justify-content: flex-start;
   min-width: 7rem;
 `;
 
-export const AttributeLabel = styled.span`
+export const AttributeLabel = styled(Root)`
   align-items: center;
   color: #fff;
   display: flex;
-  font-size: .85rem;
+  font-size: ${p => p.resx?.isBigScreen ? ".85rem" : ".75rem"};
   font-weight: 400;
   justify-content: flex-start;
   padding-left: .5rem;
@@ -29,15 +29,14 @@ export const AttributeLabel = styled.span`
   }
 `;
 
-export const AttributeValue = styled.span`
+export const AttributeValue = styled(Root)`
   align-items: center;
   background-color: rgba(204,0,0,0.8);
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
-  /* box-shadow: inset 0 0 10px 1px rgba(0,0,0,0.35); */
   color: #fff;
   display: flex;
-  font-size: .85rem;
+  font-size: ${p => p.resx?.isBigScreen ? ".85rem" : ".75rem"};
   font-weight: 300;
   height: 100%;
   margin-left: auto;
@@ -45,7 +44,7 @@ export const AttributeValue = styled.span`
   white-space: nowrap;
 `;
 
-export const IconWrapper = styled.span`
+export const IconWrapper = styled(Root)`
   display: flex;
   height: 29px;
   width: 20px;

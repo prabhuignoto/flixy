@@ -118,12 +118,12 @@ const SliderView: React.FunctionComponent<Slider> = ({
       
       <div id={`extended-card-enclosure-${id}`}></div>
 
-      <Header>
+      {/* <Header>
         <Title>
           <TitleIcon></TitleIcon>
           <TitleText>{`${title}`}</TitleText>
         </Title>
-      </Header>
+      </Header> */}
 
       {/* movies list */}
       {

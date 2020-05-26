@@ -7,9 +7,9 @@ export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
   border-radius: .25rem;
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
+  margin: .5rem 0;
   padding-bottom: ${p => p.detailsEnabled ? "2rem" : ""};
-  width: 100%; 
+  width: 95%; 
   position: relative;
 `;
 
@@ -19,7 +19,7 @@ export const Header = styled.header`
   cursor: pointer;
   display: flex;
   font-family: "Poppins";
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 400;
   justify-content: flex-start;
   margin-bottom: .5rem;
