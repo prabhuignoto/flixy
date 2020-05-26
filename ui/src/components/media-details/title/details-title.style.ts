@@ -86,3 +86,7 @@ export const GenresContainer = styled.div`
   flex-wrap: wrap;
   margin-bottom: .25rem;
 `;
+
+export const MediaRatingWrapper = styled.div`
+  margin-left: 1rem;
+`;

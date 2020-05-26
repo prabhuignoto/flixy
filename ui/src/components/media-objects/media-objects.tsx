@@ -129,7 +129,14 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
             }}
           >
             {({ index, style }) => {
-              const { name, path, id, release_date, overview } = items[index];
+              const {
+                name,
+                path,
+                id,
+                release_date,
+                overview,
+                vote_average,
+              } = items[index];
 
               return (
                 <MediaObjectContainer
@@ -154,6 +161,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
                       overview={overview}
                       containerId={containerId}
                       height={config.clientHeight}
+                      vote_average={vote_average}
                       positioningStrategy={PositioningStrategy.absolute}
                     />
                   )}

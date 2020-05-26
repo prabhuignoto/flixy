@@ -43,13 +43,14 @@ const RecommendedMovies: React.FunctionComponent<{
       // view = <Loader size={LoaderSize.large} />;
     } else if (movieData && movieData.results.length) {
       const data: MediaObject[] = movieData.results.map(
-        ({ original_title, poster_path, id, release_date, overview }) => ({
+        ({ original_title, poster_path, id, release_date, overview, vote_average }) => ({
           id: id,
           name: original_title || "",
           overview,
           path: poster_path || "",
           release_date,
           visible: false,
+          vote_average
         })
       );
 

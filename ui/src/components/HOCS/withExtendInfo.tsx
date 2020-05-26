@@ -120,6 +120,7 @@ export default function <P extends CardExtendCustomModel>(
         release_date,
         autoHeight,
         height,
+        vote_average
       } = this.props;
       const { showPane, flipCard, showIcon, position } = this.state;
       return (
@@ -146,6 +147,7 @@ export default function <P extends CardExtendCustomModel>(
                   closePane={this.hidePane}
                   autoHeight={autoHeight}
                   height={height}
+                  vote_average={vote_average}
                 />,
                 container
               )

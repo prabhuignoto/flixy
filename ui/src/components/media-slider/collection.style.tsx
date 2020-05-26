@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { responsiveProps } from "../../effects/useResponsive";
 
 export const MoviesControl = styled.ul`
   align-items: center;
@@ -12,7 +13,7 @@ export const MoviesControlItem = styled.li`
   color: white;
 `;
 
-export const ScrollButton = styled.button`
+export const ScrollButton = styled.button<{ resxProps?: responsiveProps }>`
   background: transparent;
   border: none;
   cursor: pointer;
@@ -21,13 +22,13 @@ export const ScrollButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 4rem;
   z-index: 1;
+  width: ${p => p.resxProps?.isBigScreen ? "4rem" : "3rem"};
 `;
 
 export const ScrollLeft = styled(ScrollButton)<{ loading?: boolean }>`
   left: 0px;
-  ${(p) => (p.loading ? "pointer-events: none;" : "")}
+  ${(p) => (p.loading ? "pointer-events: none;" : "")};
 `;
 
 export const ScrollRight = styled(ScrollButton)<{ loading?: boolean }>`

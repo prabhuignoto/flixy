@@ -68,13 +68,11 @@ export const ExtendedInfo = styled.span`
   font-family: "Poppins";
   text-align: left;
   white-space: wrap;
-  width: 100%;
 `;
 
 export const ExtendedInfoTitle = styled(ExtendedInfo)`
   font-size: 1em;
   font-weight: 500;
-  width: 100%;
 `;
 
 export const ExtendInfoYear = styled(ExtendedInfo)`
@@ -91,6 +89,7 @@ export const ExtendedInfoOverview = styled(ExtendedInfo) <{ isBigScreen?: boolea
   text-overflow: ellipsis;
   display: flex;
   flex: auto;
+  width: 100%;
 `;
 
 export const ExtendedInfoClose = styled.span<{ flip?: boolean }>`
@@ -109,4 +108,8 @@ export const ExtendedInfoHeader = styled.header`
   align-items: center;
   display: flex;
   width: 100%;
+`;
+
+export const ExtendedInfoRating = styled.div`
+  margin-left: 1rem;
 `;

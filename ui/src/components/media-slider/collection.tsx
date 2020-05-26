@@ -217,24 +217,26 @@ export default ({
       <ScrollLeft
         onClick={() => handleNav(NavDir.LEFT)}
         loading={loadingState === State.LOADING}
-      >
+        resxProps={resxProps}
+        >
         <ChevronLeftIcon />
       </ScrollLeft>
       {movies && movies.length ? (
         <MoviesView
-          slider={slider}
-          expandFull={expandFull}
-          size={CardSize.small}
-          columns={visibleColumns}
-          movies={movies}
-          handleSelection={handleSelection}
-          loadingCards={loadingCards}
-          id={id}
+        slider={slider}
+        expandFull={expandFull}
+        size={CardSize.small}
+        columns={visibleColumns}
+        movies={movies}
+        handleSelection={handleSelection}
+        loadingCards={loadingCards}
+        id={id}
         />
-      ) : null}
+        ) : null}
       <ScrollRight
         onClick={() => handleNav(NavDir.RIGHT)}
         loading={loadingState === State.LOADING}
+        resxProps={resxProps}
       >
         <ChevronRightIcon />
       </ScrollRight>

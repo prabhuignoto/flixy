@@ -2,18 +2,23 @@ import React from "react";
 import { MediaRatingWrapper, StarIconWrapper } from "./media-rating.style";
 import { StarIcon, StarHalfIcon, StarBorderIcon } from "../icons";
 
-const MediaRating: React.FunctionComponent<{ rating: number }> = ({
-  rating,
-}) => {
+export enum RatingSize {
+  small = "small",
+  large = "large",
+}
+
+const MediaRating: React.FunctionComponent<{
+  rating: number;
+  size?: RatingSize;
+}> = ({ rating, size }) => {
   let ratingVal = (rating / 10) * 5;
 
   return (
     <MediaRatingWrapper>
       {Array.from({ length: 5 }).map((val, idx) => {
-        debugger;
         if (ratingVal - (idx + 1) >= 0) {
           return (
-            <StarIconWrapper>
+            <StarIconWrapper size={size}>
               <StarIcon color="#191919" />
             </StarIconWrapper>
           );
@@ -22,13 +27,13 @@ const MediaRating: React.FunctionComponent<{ rating: number }> = ({
           Math.abs(ratingVal - (idx + 1)) < 1
         ) {
           return (
-            <StarIconWrapper>
+            <StarIconWrapper size={size}>
               <StarHalfIcon color="#191919" />
             </StarIconWrapper>
           );
         } else {
           return (
-            <StarIconWrapper>
+            <StarIconWrapper size={size}>
               <StarBorderIcon color="#191919" />
             </StarIconWrapper>
           );

@@ -8,6 +8,7 @@ export interface MediaObject {
   noLabel?: boolean;
   release_date?: string;
   overview?: string;
+  vote_average?: number;
 }
 
 export enum ThumbnailSize {

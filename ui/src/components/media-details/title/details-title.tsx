@@ -10,6 +10,7 @@ import {
   GenresContainer,
   AttributeContainer,
   AttributesContainer,
+  MediaRatingWrapper
 } from "./details-title.style";
 import DetailsRating from "../rating/details-rating";
 import { format } from "date-fns";
@@ -20,7 +21,7 @@ import Genres, { GenreSize } from "../../media-genres/genres";
 import Attribute from "../attribute/details-attribute";
 import { Genre } from "../../../models/Genre";
 import useResponsive from "../../../effects/useResponsive";
-import MediaRating from "../../medaia-rating/media-rating";
+import MediaRating, { RatingSize } from "../../medaia-rating/media-rating";
 
 export interface DetailsTitleModel {
   year?: string;
@@ -52,14 +53,19 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
             </DetailsRatingContainer>
           )} */}
           <TitleText resxProps={resxProps}>{`${title}`}</TitleText>
-          <TitleYear resxProps={resxProps}>{`${
+          {/* <TitleYear resxProps={resxProps}>{`${
             year ? new Date(year).getFullYear() : ""
-          }`}</TitleYear>
-          <MediaRating rating={rating || 0}></MediaRating>
+          }`}</TitleYear> */}
+          <MediaRatingWrapper>
+            <MediaRating
+              rating={rating || 0}
+              size={RatingSize.large}
+            ></MediaRating>
+          </MediaRatingWrapper>
         </TitleRow1>
         <TitleRow2>
           <GenresContainer>
-            {genres && <Genres items={genres} size={GenreSize.large}/>}
+            {genres && <Genres items={genres} size={GenreSize.large} />}
             {!resxProps.isTabletOrMobile && (
               <AttributesContainer resxProps={resxProps}>
                 {runtime && (

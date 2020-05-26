@@ -10,15 +10,17 @@ import {
   ExtendedInfoOverview,
   ExtendedInfoClose,
   ExtendedInfoHeader,
+  ExtendedInfoRating
 } from "./card-extended.styles";
 import { useTransition, config } from "react-spring";
 import useResponsive from "../../effects/useResponsive";
 import { CloseIcon } from "../icons";
 import Scrollbar from "react-custom-scrollbars";
+import MediaRating from "../medaia-rating/media-rating";
 
 export enum PositioningStrategy {
   normal = "normal",
-  absolute = "absolute"
+  absolute = "absolute",
 }
 
 export type CardExtendedModel = Movie & {
@@ -51,6 +53,7 @@ const CardExtended: React.FunctionComponent<CardExtendedModel> = ({
   release_date,
   show,
   title,
+  vote_average,
 }) => {
   const { isBigScreen } = useResponsive();
   const transitions = useTransition(show, null, {
@@ -101,6 +104,9 @@ const CardExtended: React.FunctionComponent<CardExtendedModel> = ({
               <CardExtendedInfo flip={flip}>
                 <ExtendedInfoHeader>
                   <ExtendedInfoTitle>{title}</ExtendedInfoTitle>
+                  <ExtendedInfoRating>
+                    <MediaRating rating={vote_average || 0}></MediaRating>
+                  </ExtendedInfoRating>
                   <ExtendedInfoClose flip={flip} onClick={closePane}>
                     <CloseIcon color="#cc0000" />
                   </ExtendedInfoClose>

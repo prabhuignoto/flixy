@@ -40,7 +40,7 @@ export const MoviesWrapper = styled(animated.div)`
 `;
 
 export const Title = styled.div`
-  padding-left: 5rem;
+  /* padding-left: 5rem; */
 `;
 
 export const TitleText = styled.span`
