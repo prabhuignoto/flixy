@@ -18,7 +18,7 @@ export const Button = styled.button<{ size?: string }>`
         style = "min-width: 2rem; height: 2rem;";
         break;
       case "medium":
-        style = "width: 3rem; height: 1.5rem;";
+        style = "width: 3rem; height: 2rem;";
         break;
       case "large":
         style = "min-width: 4rem; height: 3rem;";

@@ -5,46 +5,72 @@ import {
   FallbackImage,
   ObjectName,
 } from "./media-object.style";
-import { useSpring, config } from "react-spring";
+import { config, useTransition } from "react-spring";
 import {
   MediaObject as MediaObjectModel,
   ThumbnailSize,
 } from "../../models/MediaObject";
-import Loader, { LoaderSize } from "../media-loader";
 
 import { UserIcon } from "./../icons/index";
 
 const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
   ({ path, name, thumbnailSize, noTitle }) => {
-    const props = useSpring({
-      opacity: 1,
-      from: {
-        opacity: 0,
-      },
-      delay: 0,
-      config: config.stiff,
+    const [loadState, setLoadState] = React.useState({
+      loaded: false,
+      failed: false,
     });
-    const [loaded, setLoaded] = React.useState(false);
+    const imageUrl = `https://image.tmdb.org/t/p/${
+      thumbnailSize === ThumbnailSize.large ? "w500" : "w200"
+    }/${path}`;
+
+    const transition = useTransition(loadState.loaded, null, {
+      initial: {
+        opacity: 0,
+        transform: "scale(0)"
+      },
+      enter: {
+        opacity: 1,
+        transform: "scale(1)"
+      },
+      leave: {
+        opacity: 0,
+        transform: "scale(0)"
+      },
+      config: config.stiff,
+      unique: true,
+    });
+
     return (
       <MediaObject>
-        {path ? (
-          <>
-            <ObjectImage
-              src={`https://image.tmdb.org/t/p/${
-                thumbnailSize === ThumbnailSize.large ? "w500" : "w200"
-              }/${path}`}
-              onLoad={() => setLoaded(true)}
-              loaded={loaded}
-              style={props}
-              noTitle={noTitle}
-            ></ObjectImage>
-            {!loaded && <Loader size={LoaderSize.small} />}
-          </>
-        ) : (
-          <FallbackImage>
-            <UserIcon color="#4b4848" />
-          </FallbackImage>
-        )}
+        <img
+          src={imageUrl}
+          onLoad={() => setLoadState({ loaded: true, failed: false })}
+          onError={() => setLoadState({ loaded: false, failed: true })}
+          style={{ display: "none" }}
+        />
+        {transition.map(({ item, key, props }) => {
+          if (item) {
+            return (
+              <ObjectImage
+                src={imageUrl}
+                loaded={loadState.loaded}
+                style={props}
+                noTitle={noTitle}
+                key={key}
+              ></ObjectImage>
+            );
+          } else {
+            if (loadState.failed) {
+              return (
+                <FallbackImage>
+                  <UserIcon color="#4b4848" />
+                </FallbackImage>
+              );
+            } else {
+              return null;
+            }
+          }
+        })}
         {!noTitle && <ObjectName>{name}</ObjectName>}
       </MediaObject>
     );

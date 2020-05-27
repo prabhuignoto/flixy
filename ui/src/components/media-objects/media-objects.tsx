@@ -182,7 +182,8 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           disable={disableLeftNav}
           size={thumbnailSize}
         >
-          <ChevronLeftIcon />
+          
+          <ChevronLeftIcon color="#191919" />
         </ScrollLeftBtn>
         <ObjectsWrapper
           ref={containerRef}
@@ -198,7 +199,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           disable={disableRightNav}
           size={thumbnailSize}
         >
-          <ChevronRightIcon />
+          <ChevronRightIcon color="#191919" />
         </ScrollRightBtn>
       </ObjectsContainer>
     );

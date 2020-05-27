@@ -7,6 +7,7 @@ import CardExtended, {
 } from "./../media-card/card-extended";
 import { MovieType } from "../media-card/card";
 import { ViewIcon } from "../icons";
+import {} from "react-responsive";
 
 interface State {
   showExtendIcon: boolean;
@@ -55,8 +56,9 @@ export default function <P extends CardExtendCustomModel>(
 
       let x, y;
       if (this.props.positioningStrategy === PositioningStrategy.absolute) {
-        if (rects.left + 500 > window.screen.width) {
-          x = rects.left - (500 - node.clientWidth);
+        const width = window.screen.width > 1823 ? 680 : 500;
+        if (rects.left + width > window.screen.width) {
+          x = rects.left - (width - node.clientWidth);
           flipCard = true;
         } else {
           x = rects.left;

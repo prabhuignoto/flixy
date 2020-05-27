@@ -3,7 +3,7 @@ import { animated } from "react-spring";
 
 export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
   ${p => p.detailsEnabled && "background-image: linear-gradient(to right top, #2c2c2c, #252525, #1f1f1f, #181818, #111111);"};
-  background-color: ${p => !p.detailsEnabled ? "#1d1d1d" : ""};
+  background-color: ${p => !p.detailsEnabled ? "#191919" : ""};
   border-radius: .2rem;
   display: flex;
   flex-direction: column;
@@ -11,8 +11,7 @@ export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
   padding-bottom: ${p => p.detailsEnabled ? "2rem" : ""};
   width: 95%; 
   position: relative;
-  box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.65);
-  /* border: 1px solid #cc0000; */
+  /* box-shadow: 0 8px 6px -6px #cc0000; */
 `;
 
 export const Header = styled.header`
@@ -70,7 +69,7 @@ export const Footer = styled.footer`
   padding-bottom: .5rem;
   z-index: 1;
   position: absolute;
-  bottom: -1rem;
+  bottom: -2.5rem;
 `;
 
 export const DetailsWrapper = styled.div`

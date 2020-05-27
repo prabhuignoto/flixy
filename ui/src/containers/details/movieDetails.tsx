@@ -9,7 +9,10 @@ import styled from "styled-components";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";
 import memoize from "memoize-one";
 
-const Shimmer = React.memo(() => <Loader />);
+const Shimmer = React.memo(
+  ({ movieId }: { movieId?: string | number }) => <Loader id={movieId} />,
+  (prev, cur) => prev.movieId === cur.movieId
+);
 
 const getHeight = memoize(
   ({ isBigScreen, isTabletOrMobile }: responsiveProps) => {
@@ -41,6 +44,7 @@ const MovieDetails: React.FunctionComponent<{
     height: 0,
     opacity: 1,
     config: config.default,
+    reset: true
   }));
 
   React.useEffect(() => {
@@ -125,7 +129,7 @@ const MovieDetails: React.FunctionComponent<{
       />
     );
   } else if (loading) {
-    view = <Shimmer />;
+    view = <Shimmer movieId={movieId} />;
   }
 
   const Wrapper = styled(animated.div)`

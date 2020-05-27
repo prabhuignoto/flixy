@@ -1,4 +1,5 @@
 import * as React from "react";
+import ReactDOM from "react-dom";
 import { ScrollLeft, ScrollRight, MoviesWrapper } from "./collection.style";
 import { CardSize } from "../../models/CardSize";
 import { Movies as MoviesModel } from "../../models/Movies";
@@ -38,6 +39,7 @@ export default ({
 
   const moviesRef = React.useRef<HTMLDivElement>(null);
   const visibleItems = React.useRef(0);
+  const scrollButtonsPortal = document.getElementById(`slider-wrapper-${id}`);
 
   const handleNav = (dir: NavDir) => {
     const moveForward = dir === NavDir.RIGHT && loadingState !== State.LOADING;
@@ -214,32 +216,40 @@ export default ({
 
   return (
     <MoviesWrapper ref={moviesRef}>
-      <ScrollLeft
-        onClick={() => handleNav(NavDir.LEFT)}
-        loading={loadingState === State.LOADING}
-        resxProps={resxProps}
-        >
-        <ChevronLeftIcon />
-      </ScrollLeft>
+      {scrollButtonsPortal &&
+        ReactDOM.createPortal(
+          <ScrollLeft
+            onClick={() => handleNav(NavDir.LEFT)}
+            loading={loadingState === State.LOADING}
+            resxProps={resxProps}
+          >
+            <ChevronLeftIcon />
+          </ScrollLeft>,
+          scrollButtonsPortal
+        )}
+      {scrollButtonsPortal &&
+        ReactDOM.createPortal(
+          <ScrollRight
+            onClick={() => handleNav(NavDir.RIGHT)}
+            loading={loadingState === State.LOADING}
+            resxProps={resxProps}
+          >
+            <ChevronRightIcon />
+          </ScrollRight>,
+          scrollButtonsPortal
+        )}
       {movies && movies.length ? (
         <MoviesView
-        slider={slider}
-        expandFull={expandFull}
-        size={CardSize.small}
-        columns={visibleColumns}
-        movies={movies}
-        handleSelection={handleSelection}
-        loadingCards={loadingCards}
-        id={id}
+          slider={slider}
+          expandFull={expandFull}
+          size={CardSize.small}
+          columns={visibleColumns}
+          movies={movies}
+          handleSelection={handleSelection}
+          loadingCards={loadingCards}
+          id={id}
         />
-        ) : null}
-      <ScrollRight
-        onClick={() => handleNav(NavDir.RIGHT)}
-        loading={loadingState === State.LOADING}
-        resxProps={resxProps}
-      >
-        <ChevronRightIcon />
-      </ScrollRight>
+      ) : null}
     </MoviesWrapper>
   );
 };

@@ -51,8 +51,8 @@ export const MoviesContainer = styled(animated.div) <{
   ${p => p.resxProps?.isBigScreen ? "grid-row-gap: 1rem" : "grid-row-gap: .5rem"};
   grid-template-columns: repeat(${p => p.columns}, ${p => getColumnWidth(p.resxProps)}px);
   height: 100%;
-  justify-content: center;
-  overflow-x: hidden;
+  justify-content: space-evenly;
+  // overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
   scroll-behavior: smooth;

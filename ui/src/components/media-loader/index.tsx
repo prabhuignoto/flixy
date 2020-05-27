@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import {useSpring, animated} from "react-spring";
+import { useSpring, animated } from "react-spring";
 
 export enum LoaderSize {
   small = "SMALL",
@@ -9,49 +9,39 @@ export enum LoaderSize {
 
 const Wrapper = styled(animated.div)`
   align-items: center;
+  justify-content: center;
   background: transparent;
   display: flex;
   height: 100%;
   justify-content: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  /* position: absolute; */
   width: 100%;
 `;
 
-const Loader: React.FunctionComponent<{ size?: LoaderSize }> = ({ size }) => {
-  const wh = size === LoaderSize.small ? 25 : 45;
-  const props = useSpring({
-    opacity: 1,
-    from: {
-      opacity: 0
-    },
-  });
+const Loader: React.FunctionComponent<{
+  size?: LoaderSize;
+  style?: any;
+  id?: string | number;
+}> = ({ size, style }) => {
+  const wh = size === LoaderSize.small ? 30 : 45;
   return (
-    <Wrapper style={props}>
+    <Wrapper style={style}>
       <svg
-        width={wh}
         height={wh}
-        viewBox="0 0 38 38"
-        stroke="#cc0000"
+        viewBox="0 -87 432 432"
+        width={wh}
+        xmlns="http://www.w3.org/2000/svg"
+        fill="#515151"
       >
-        <g fill="none" fillRule="evenodd">
-          <g transform="translate(1 1)" strokeWidth="2">
-            <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
-            <path d="M36 18c0-9.94-8.06-18-18-18">
-              <animateTransform
-                attributeName="transform"
-                type="rotate"
-                from="0 18 18"
-                to="360 18 18"
-                dur="1s"
-                repeatCount="indefinite"
-              />
-            </path>
-          </g>
-        </g>
+        <animate
+          attributeType="XML"
+          attributeName="fill"
+          values="#515151;#ccc;#515151;#ccc"
+          dur="3s"
+          repeatCount="indefinite"
+        />
+        <path d="m278.90625 0h-248.90625c-16.5625.0195312-29.9804688 13.4375-30 30v197.421875c.0195312 16.5625 13.4375 29.980469 30 30h248.90625c16.558594-.019531 29.980469-13.4375 30-30v-197.421875c-.019531-16.5625-13.441406-29.9804688-30-30zm0 0" />
+        <path d="m328.90625 169.800781 103.09375 56.285157v-194.105469l-103.09375 56.285156zm0 0" />
       </svg>
     </Wrapper>
   );

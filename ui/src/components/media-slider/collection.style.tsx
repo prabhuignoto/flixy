@@ -16,23 +16,25 @@ export const MoviesControlItem = styled.li`
 export const ScrollButton = styled.button<{ resxProps?: responsiveProps }>`
   background: transparent;
   border: none;
+  border-radius: 50%;
   cursor: pointer;
-  height: 100%;
+  height: ${p => p.resxProps?.isBigScreen ? "2.5rem" : "1.25rem"};
   outline: none;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 1;
-  width: ${p => p.resxProps?.isBigScreen ? "4rem" : "3rem"};
+  z-index: 100;
+  width: ${p => p.resxProps?.isBigScreen ? "2.5rem" : "1.25rem"};
+  padding: 0;
 `;
 
 export const ScrollLeft = styled(ScrollButton)<{ loading?: boolean }>`
-  left: 0px;
+  left: ${p => p.resxProps?.isBigScreen ? "-2.5rem" : "-1.5rem"};
   ${(p) => (p.loading ? "pointer-events: none;" : "")};
 `;
 
 export const ScrollRight = styled(ScrollButton)<{ loading?: boolean }>`
-  right: 0px;
+  right: ${p => p.resxProps?.isBigScreen ? "-2.5rem" : "-1.5rem"};
   ${(p) => (p.loading ? "pointer-events: none;" : "")}
 `;
 

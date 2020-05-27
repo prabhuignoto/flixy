@@ -114,14 +114,11 @@ const SliderView: React.FunctionComponent<Slider> = ({
   );
 
   return (
-    <WrapperContainer detailsEnabled={showDetails.selectedMovie ? 1 : 0}>
-      
+    <WrapperContainer detailsEnabled={showDetails.selectedMovie ? 1 : 0} id={`slider-wrapper-${id}`}>
       <div id={`extended-card-enclosure-${id}`}></div>
 
       <Header>
-        <Title>
-          {title}
-        </Title>
+        <Title>{title}</Title>
       </Header>
 
       {/* movies list */}

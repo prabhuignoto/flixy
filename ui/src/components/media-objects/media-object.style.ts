@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { animated } from "react-spring";
 
 export const MediaObject = styled(animated.div)`
@@ -19,7 +19,7 @@ export const ObjectImage = styled(animated.img) <{ loaded?: boolean, noTitle?: b
   object-fit: contain;
 `;
 
-export const FallbackImage = styled.div<{ failed?: boolean }>`
+export const FallbackImage = styled(animated.div) <{ failed?: boolean }>`
   align-items: center;
   border-radius: .25rem;
   display: flex;
@@ -44,4 +44,21 @@ export const ObjectName = styled.span`
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
+`;
+
+const placeholderShimmer = keyframes`
+ from {
+   background-position: -200px 0;
+ }
+ to {
+  background-position: 200px 0; 
+ }
+`;
+
+export const Shimmer = styled.div`
+   background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+   animation: ${placeholderShimmer} 2s linear infinite;
+   width: 85%; 
+   height: 80%;
+   background-size: 400px 104px; 
 `;

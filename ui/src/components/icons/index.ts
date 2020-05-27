@@ -4,8 +4,8 @@ import { Plus } from "@styled-icons/feather/Plus";
 import { Minus } from "@styled-icons/feather/Minus";
 import { ChevronDown } from "@styled-icons/feather/ChevronDown";
 import { ChevronUp } from "@styled-icons/feather/ChevronUp";
-import { ChevronLeft } from "@styled-icons/feather/ChevronLeft";
-import { ChevronRight } from "@styled-icons/feather/ChevronRight";
+import { ChevronLeftCircle } from "@styled-icons/boxicons-solid/ChevronLeftCircle";
+import { ChevronRightCircle } from "@styled-icons/boxicons-solid/ChevronRightCircle";
 import { X } from "@styled-icons/feather/X";
 import { Check } from "@styled-icons/feather/Check";
 import { Clock } from "@styled-icons/feather/Clock";
@@ -15,8 +15,10 @@ import { Imdb } from "@styled-icons/fa-brands/Imdb";
 import { Hash } from '@styled-icons/feather/Hash';
 import { Crown } from "@styled-icons/fa-solid/Crown";
 import { Menu } from "@styled-icons/feather/Menu";
-import { ArrowheadDown } from "@styled-icons/evaicons-solid/ArrowheadDown";
-import { ArrowheadUp } from "@styled-icons/evaicons-solid/ArrowheadUp";
+import { ChevronLeft } from "@styled-icons/feather/ChevronLeft";
+import { ChevronRight } from "@styled-icons/feather/ChevronRight";
+import { ArrowIosUpwardOutline } from "@styled-icons/evaicons-outline/ArrowIosUpwardOutline";
+import { ArrowIosDownwardOutline } from "@styled-icons/evaicons-outline/ArrowIosDownwardOutline";
 import { Expand } from "@styled-icons/boxicons-regular/Expand";
 import { StarHalf } from "@styled-icons/material/StarHalf";
 import { Star } from "@styled-icons/material/Star";
@@ -39,10 +41,10 @@ export const ArrowUpIcon = styled(ChevronUp) <{ color?: string }>`
 `;
 
 export const ChevronLeftIcon = styled(ChevronLeft) <{ color?: string }>`
-  color: ${p => p.color ? p.color : "#cc0000"};
+  color: ${p => p.color ? p.color : "#bdbdbd"};
 `;
 export const ChevronRightIcon = styled(ChevronRight) <{ color?: string }>`
-  color: ${p => p.color ? p.color : "#cc0000"};
+  color: ${p => p.color ? p.color : "#bdbdbd"};
 `;
 
 export const CloseIcon = styled(X) <{ color?: string }>`
@@ -79,11 +81,11 @@ export const MenuIcon = styled(Menu) <{ color?: string }>`
   color: ${p => p.color};
 `;
 
-export const ArrowHeadDownIcon = styled(ArrowheadDown) <{ color?: string }>`
+export const ArrowHeadDownIcon = styled(ArrowIosDownwardOutline) <{ color?: string }>`
   color: ${p => p.color};
 `;
 
-export const ArrowHeadUpIcon = styled(ArrowheadUp) <{ color?: string }>`
+export const ArrowHeadUpIcon = styled(ArrowIosUpwardOutline) <{ color?: string }>`
   color: ${p => p.color};
 `;
 
