@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { animated } from "react-spring";
+import { responsiveProps } from "../../../effects/useResponsive";
 
 export const ReviewWrapper = styled(animated.li)`
   display: flex;
@@ -9,9 +10,9 @@ export const ReviewWrapper = styled(animated.li)`
   width: 100%;
 `;
 
-export const ReviewContent = styled(animated.div)`
+export const ReviewContent = styled(animated.div)<{resx?: responsiveProps}>`
   color: #000;
-  font-size: .95rem;
+  font-size: ${p => p.resx?.isBigScreen ? ".85rem" : ".75rem"};
   font-weight: 300;
   overflow: hidden;
   position: relative;

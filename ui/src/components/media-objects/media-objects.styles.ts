@@ -2,6 +2,7 @@ import { animated } from 'react-spring';
 import styled from "styled-components";
 import { CardSize } from '../../models/CardSize';
 import { ThumbnailSize } from '../../models/MediaObject';
+import { responsiveProps } from '../../effects/useResponsive';
 
 export const ObjectsContainer = styled.section<{ height?: number, noBackground?: boolean }>`
   align-items: center;
@@ -44,12 +45,20 @@ export const ObjectsWrapper = styled.ul<{
   }};
 `;
 
-export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize }>`
+export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize, resx?: responsiveProps }>`
   align-items: center;
   cursor: pointer;
   display: ${p => p.disable ? "none" : "flex"};
   height: 100%;
-  width: ${p => p.size === ThumbnailSize.large ? "3rem" : "2.5rem"};
+  width: ${p => {
+    if(p.resx?.isBigScreen) {
+      return "5%";
+    } else if(p.resx?.isDesktopOrLaptop) {
+      return "6%";
+    } else {
+      return "6%";
+    }
+  }};
   & svg {
     width: 100%;
   }
@@ -57,12 +66,12 @@ export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize }>`
 
 export const ScrollLeftBtn = styled(Scroll)`
   margin-right: auto;
-  width: 5%;
+  box-shadow: 13px 0px 9px -15px #000;
 `;
 
 export const ScrollRightBtn = styled(Scroll)`
   margin-left: auto;
-  width: 5%;
+  box-shadow: -13px 0px 9px -15px #000;
 `;
 
 

@@ -107,7 +107,7 @@ export default function <P extends CardExtendCustomModel>(
     handleSelection() {
       this.setState({
         showPane: false,
-        showIcon: false
+        showIcon: false,
       });
       this.props.onSelect && this.props.onSelect(this.props.id);
     }
@@ -160,7 +160,16 @@ export default function <P extends CardExtendCustomModel>(
             : null}
           {showIcon && (
             <ViewBtnWrapper onClick={this.showPane}>
-              <ViewIcon color="#cc0000" />
+              {/* <ViewIcon color="#cc0000" /> */}
+              <svg viewBox="0 0 50 50" fill="#cc0000">
+                <g id="Layer_1">
+                  <polygon points="3,4.414 20.293,21.707 21.707,20.293 4.414,3 14,3 14,1 1,1 1,14 3,14  " />
+                  <polygon points="47,45.586 29.707,28.293 28.293,29.707 45.586,47 36,47 36,49 49,49 49,36 47,36  " />
+                  <polygon points="36,3 45.586,3 28.293,20.293 29.707,21.707 47,4.414 47,14 49,14 49,1 36,1  " />
+                  <polygon points="14,47 4.414,47 21.707,29.707 20.293,28.293 3,45.586 3,36 1,36 1,49 14,49  " />
+                </g>
+                <g />
+              </svg>
             </ViewBtnWrapper>
           )}
         </Wrapper>

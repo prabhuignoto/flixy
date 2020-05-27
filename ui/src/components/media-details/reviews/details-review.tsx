@@ -9,6 +9,7 @@ import {
 } from "./details-review.style";
 import React from "react";
 import {default as ReviewModel} from "../../../models/Review";
+import useResponsive from "../../../effects/useResponsive";
 
 const Review: React.FunctionComponent<ReviewModel> = React.memo(({
   content,
@@ -18,6 +19,7 @@ const Review: React.FunctionComponent<ReviewModel> = React.memo(({
   index = null,
 }) => {
   const textRef = React.useRef<HTMLDivElement>(null);
+  const resxProps = useResponsive();
 
   const [showReadMore, setShowReadMore] = React.useState(false);
   const [showFullText, setShowFullText] = React.useState(false);
@@ -39,7 +41,7 @@ const Review: React.FunctionComponent<ReviewModel> = React.memo(({
       <ReviewsHeader>
         <ReviewAuthor>{`${author}`}</ReviewAuthor>
       </ReviewsHeader>
-      <ReviewContent style={style}>
+      <ReviewContent style={style} resx={resxProps}>
         <ReviewText ref={textRef} showFull={showFullText}>
           {content}
         </ReviewText>

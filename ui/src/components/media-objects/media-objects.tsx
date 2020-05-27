@@ -19,6 +19,7 @@ import Card from "../media-card/card";
 import { CardSize } from "../../models/CardSize";
 import { nanoid } from "nanoid";
 import { PositioningStrategy } from "../media-card/card-extended";
+import useResponsive from "../../effects/useResponsive";
 
 const ExtendedCard = withExtendedInfo(Card);
 
@@ -52,6 +53,8 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
   }) => {
     const containerRef = React.createRef<HTMLUListElement>();
     const rWindowRef = React.useRef<HTMLDivElement>(null);
+    const gridRef = React.createRef<any>();
+
     const [config, setConfig] = React.useState({
       show: false,
       clientWidth: 0,
@@ -61,15 +64,25 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     const [disableRightNav, setDisableRightNav] = React.useState(false);
     const [disableLeftNav, setDisableLeftNav] = React.useState(true);
     const containerId = nanoid();
+    const resxProps = useResponsive();
 
     const handleNav = (dir: ScrollDir) => {
       if (rWindowRef && rWindowRef.current) {
-        const { clientWidth, scrollWidth } = rWindowRef.current;
 
         if (dir === ScrollDir.RIGHT) {
-          rWindowRef.current.scrollLeft += Math.round(config.clientWidth * 0.8);
+            rWindowRef.current.scrollTo({
+              behavior: "smooth",
+              left:
+                rWindowRef.current.scrollLeft +
+                Math.round(config.clientWidth * 0.8),
+            });
         } else {
-          rWindowRef.current.scrollLeft -= Math.round(config.clientWidth * 0.8);
+          rWindowRef.current.scrollTo({
+            behavior: "smooth",
+            left:
+              rWindowRef.current.scrollLeft -
+              Math.round(config.clientWidth * 0.8),
+          });
         }
       }
     };
@@ -181,8 +194,8 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           onClick={() => handleNav(ScrollDir.LEFT)}
           disable={disableLeftNav}
           size={thumbnailSize}
+          resx={resxProps}
         >
-          
           <ChevronLeftIcon color="#191919" />
         </ScrollLeftBtn>
         <ObjectsWrapper
@@ -198,6 +211,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           onClick={() => handleNav(ScrollDir.RIGHT)}
           disable={disableRightNav}
           size={thumbnailSize}
+          resx={resxProps}
         >
           <ChevronRightIcon color="#191919" />
         </ScrollRightBtn>

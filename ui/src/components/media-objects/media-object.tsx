@@ -12,6 +12,7 @@ import {
 } from "../../models/MediaObject";
 
 import { UserIcon } from "./../icons/index";
+import useResponsive from "../../effects/useResponsive";
 
 const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
   ({ path, name, thumbnailSize, noTitle }) => {
@@ -22,19 +23,20 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
     const imageUrl = `https://image.tmdb.org/t/p/${
       thumbnailSize === ThumbnailSize.large ? "w500" : "w200"
     }/${path}`;
+    const resx = useResponsive();
 
     const transition = useTransition(loadState.loaded, null, {
       initial: {
         opacity: 0,
-        transform: "scale(0)"
+        transform: "scale(0)",
       },
       enter: {
         opacity: 1,
-        transform: "scale(1)"
+        transform: "scale(1)",
       },
       leave: {
         opacity: 0,
-        transform: "scale(0)"
+        transform: "scale(0)",
       },
       config: config.stiff,
       unique: true,
@@ -71,7 +73,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
             }
           }
         })}
-        {!noTitle && <ObjectName>{name}</ObjectName>}
+        {!noTitle && <ObjectName resx={resx}>{name}</ObjectName>}
       </MediaObject>
     );
   },

@@ -71,7 +71,7 @@ export const ExtendedInfo = styled.span`
 `;
 
 export const ExtendedInfoTitle = styled(ExtendedInfo)`
-  font-size: 1em;
+  font-size: .9em;
   font-weight: 500;
 `;
 

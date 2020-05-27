@@ -10,7 +10,7 @@ export const AttributeWrapper = styled(Root)`
   background: #2a2a2a;
   border-radius: 3px;
   display: flex;
-  height: ${p => p.resx && p.resx.isBigScreen ? "1.5rem" : "1.25rem"};
+  height: ${p => p.resx && p.resx.isBigScreen ? "1.5rem" : "1.5rem"};
   justify-content: flex-start;
   min-width: 7rem;
 `;

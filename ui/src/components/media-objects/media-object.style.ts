@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { animated } from "react-spring";
+import { responsiveProps } from "../../effects/useResponsive";
 
 export const MediaObject = styled(animated.div)`
   align-items: center;
@@ -11,7 +12,7 @@ export const MediaObject = styled(animated.div)`
 `;
 
 export const ObjectImage = styled(animated.img) <{ loaded?: boolean, noTitle?: boolean }>`
-  border-radius: .2rem;
+  border-radius: .25rem;
   display: ${p => p.loaded ? "block" : "none"};
   margin-top: ${p => !p.noTitle ? "auto" : ""};
   max-height: ${p => p.noTitle ? "100%" : "80%"};
@@ -32,10 +33,10 @@ export const FallbackImage = styled(animated.div) <{ failed?: boolean }>`
   }
 `;
 
-export const ObjectName = styled.span`
+export const ObjectName = styled.span<{resx?: responsiveProps}>`
   color: #000;
   font-family: "Poppins";
-  font-size: .75rem;
+  font-size: ${p => p.resx?.isBigScreen ? ".85rem" :".75rem"};
   font-weight: 400;
   height: 10%;
   margin-bottom: .5rem;
