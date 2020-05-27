@@ -44,7 +44,6 @@ const MovieDetails: React.FunctionComponent<{
     height: 0,
     opacity: 1,
     config: config.default,
-    reset: true
   }));
 
   React.useEffect(() => {
@@ -129,7 +128,7 @@ const MovieDetails: React.FunctionComponent<{
       />
     );
   } else if (loading) {
-    view = <Shimmer movieId={movieId} />;
+    view = <Loader />
   }
 
   const Wrapper = styled(animated.div)`

@@ -6,7 +6,6 @@
   justify-content: flex-start;
   width: 100%;
   margin: 0 auto;
-  min-height: 2500px;
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -21,6 +20,25 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+@media screen and (min-device-width: 1224px) {
+  .App {
+    min-height: 2000px;
+  }
+}
+
+@media screen and (min-device-width: 1824px) {
+  .App {
+    min-height: 2500px;
+  }
+}
+
+@media screen and (max-device-width: 1224px) {
+  .App {
+    min-height: 2000px;
+  }
+}
+
 
 .App-header {
   background-color: #282c34;
