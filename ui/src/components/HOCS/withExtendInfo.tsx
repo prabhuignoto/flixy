@@ -6,14 +6,13 @@ import CardExtended, {
   PositioningStrategy,
 } from "./../media-card/card-extended";
 import { MovieType } from "../media-card/card";
-import { ViewIcon } from "../icons";
-import {} from "react-responsive";
 
 interface State {
   showExtendIcon: boolean;
   flipCard: boolean;
   showPane: boolean;
   showIcon: boolean;
+  isMouseActive: boolean;
   position?: {
     x: number;
     y: number;
@@ -27,6 +26,7 @@ export default function <P extends CardExtendCustomModel>(
 ) {
   return class ExtendInfoHOC extends React.Component<P, State> {
     private elementRef: React.RefObject<HTMLDivElement>;
+    private timer: number;
 
     constructor(props: P) {
       super(props);
@@ -36,27 +36,47 @@ export default function <P extends CardExtendCustomModel>(
         flipCard: false,
         showPane: false,
         showIcon: false,
+        isMouseActive: false,
         position: {
           x: 0,
           y: 0,
         },
       };
       this.showPane = this.showPane.bind(this);
-      this.showIcon = this.showIcon.bind(this);
-      this.hideIcon = this.hideIcon.bind(this);
+      this.startShowPaneTimer = this.startShowPaneTimer.bind(this);
+      this.endShowPaneTimer = this.endShowPaneTimer.bind(this);
       this.hidePane = this.hidePane.bind(this);
+      this.startTimer = this.startTimer.bind(this);
+      this.endTimer = this.endTimer.bind(this);
       this.handleSelection = this.handleSelection.bind(this);
+      this.timer = 0;
+    }
+
+    startTimer(ev: React.MouseEvent) {
+      this.timer = setTimeout(() => {
+        if (this.state.isMouseActive) {
+          this.showPane(ev);
+        }
+      }, 250);
+    }
+
+    endTimer() {
+      clearTimeout(this.timer);
     }
 
     showPane(ev: React.MouseEvent) {
-      ev.stopPropagation();
       let flipCard = false;
       const node = this.elementRef.current as HTMLElement;
       const rects = node.getBoundingClientRect();
-
       let x, y;
-      if (this.props.positioningStrategy === PositioningStrategy.absolute) {
-        const width = window.screen.width > 1823 ? 680 : 500;
+      const { positioningStrategy } = this.props;
+      let timer: number;
+
+      ev.stopPropagation();
+
+      // check if the card needs to be flipped
+      if (positioningStrategy === PositioningStrategy.absolute) {
+        const width = window.screen.width > 1823 ? 600 : 480;
         if (rects.left + width > window.screen.width) {
           x = rects.left - (width - node.clientWidth);
           flipCard = true;
@@ -69,6 +89,7 @@ export default function <P extends CardExtendCustomModel>(
         y = node.offsetTop;
       }
 
+      // update the state
       this.setState(
         Object.assign({}, this.state, {
           showPane: true,
@@ -83,25 +104,31 @@ export default function <P extends CardExtendCustomModel>(
 
     hidePane(ev: React.MouseEvent) {
       ev.stopPropagation();
+      this.setState({
+        showPane: false,
+        showExtendIcon: false,
+      });
+    }
+
+    startShowPaneTimer(ev: React.MouseEvent) {
       this.setState(
-        Object.assign({}, this.state, {
-          showPane: false,
-          showExtendIcon: false,
-        })
+        {
+          showIcon: true,
+          isMouseActive: true,
+        },
+        () => this.startTimer(ev)
       );
     }
 
-    showIcon() {
-      this.setState({
-        showIcon: true,
-      });
-    }
-
-    hideIcon() {
-      this.setState({
-        showIcon: false,
-        showPane: false,
-      });
+    endShowPaneTimer() {
+      this.setState(
+        {
+          showIcon: false,
+          isMouseActive: false,
+          showPane: false
+        },
+        this.endTimer
+      );
     }
 
     handleSelection() {
@@ -128,11 +155,11 @@ export default function <P extends CardExtendCustomModel>(
         height,
         vote_average,
       } = this.props;
-      const { showPane, flipCard, showIcon, position } = this.state;
+      const { showPane, flipCard, position } = this.state;
       return (
         <Wrapper
-          onMouseEnter={this.showIcon}
-          onMouseLeave={this.hideIcon}
+          onMouseEnter={this.startShowPaneTimer}
+          onMouseLeave={this.endShowPaneTimer}
           ref={this.elementRef}
         >
           <Component {...this.props} />
@@ -158,20 +185,6 @@ export default function <P extends CardExtendCustomModel>(
                 container
               )
             : null}
-          {showIcon && (
-            <ViewBtnWrapper onClick={this.showPane}>
-              {/* <ViewIcon color="#cc0000" /> */}
-              <svg viewBox="0 0 50 50" fill="#cc0000">
-                <g id="Layer_1">
-                  <polygon points="3,4.414 20.293,21.707 21.707,20.293 4.414,3 14,3 14,1 1,1 1,14 3,14  " />
-                  <polygon points="47,45.586 29.707,28.293 28.293,29.707 45.586,47 36,47 36,49 49,49 49,36 47,36  " />
-                  <polygon points="36,3 45.586,3 28.293,20.293 29.707,21.707 47,4.414 47,14 49,14 49,1 36,1  " />
-                  <polygon points="14,47 4.414,47 21.707,29.707 20.293,28.293 3,45.586 3,36 1,36 1,49 14,49  " />
-                </g>
-                <g />
-              </svg>
-            </ViewBtnWrapper>
-          )}
         </Wrapper>
       );
     }

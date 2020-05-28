@@ -12,16 +12,16 @@ export const ObjectsContainer = styled.section<{ height?: number, noBackground?:
   height: ${p => p.height}px;
   justify-content: center;
   padding: .5rem 0;
-  /* position: relative; */
-  width: 100%;
   user-select: none;
+  width: 100%;
 `;
 
 export const ObjectsWrapper = styled.ul<{
   columns?: number,
   leftButton?: boolean,
   rightButton?: boolean,
-  noBackground?: boolean
+  noBackground?: boolean,
+  resx?: responsiveProps
 }>`
   align-items: flex-start;
   display: flex;
@@ -34,26 +34,27 @@ export const ObjectsWrapper = styled.ul<{
   padding: 0 .5rem;
   padding: 0;
   scroll-behavior: smooth;
-  width: ${ ({ leftButton, rightButton }) => {
-    if (leftButton && rightButton) {
-      return "100%"
-    } else if (leftButton || rightButton) {
-      return "95%"
-    } else {
-      return "90%"
-    }
-  }};
+  width: 100%;
 `;
 
 export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize, resx?: responsiveProps }>`
   align-items: center;
+  display: flex;
+  justify-content: center;
   cursor: pointer;
-  display: ${p => p.disable ? "none" : "flex"};
   height: 100%;
+  ${p => {
+    if (p.disable) {
+      return `
+        opacity: 0.1;
+        pointer-events: none;
+      `
+    }
+  }};
   width: ${p => {
-    if(p.resx?.isBigScreen) {
+    if (p.resx?.isBigScreen) {
       return "5%";
-    } else if(p.resx?.isDesktopOrLaptop) {
+    } else if (p.resx?.isDesktopOrLaptop) {
       return "6%";
     } else {
       return "6%";
@@ -61,17 +62,18 @@ export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize, resx
   }};
   & svg {
     width: 100%;
+    height: 100%;
   }
 `;
 
 export const ScrollLeftBtn = styled(Scroll)`
   margin-right: auto;
-  box-shadow: 13px 0px 9px -15px #000;
+  ${p => !p.disable ? "box-shadow: 13px 0px 9px -15px #000;" : ""};
 `;
 
 export const ScrollRightBtn = styled(Scroll)`
   margin-left: auto;
-  box-shadow: -13px 0px 9px -15px #000;
+  ${p => !p.disable ? "box-shadow: -13px 0px 9px -15px #000" : ""};
 `;
 
 

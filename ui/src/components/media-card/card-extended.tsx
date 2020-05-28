@@ -11,13 +11,13 @@ import {
   ExtendedInfoClose,
   ExtendedInfoHeader,
   ExtendedInfoRating,
-  Row2
+  Row2,
 } from "./card-extended.styles";
 import { useTransition, config } from "react-spring";
 import useResponsive from "../../effects/useResponsive";
 import { CloseIcon } from "../icons";
 import Scrollbar from "react-custom-scrollbars";
-import MediaRating from "../medaia-rating/media-rating";
+import MediaRating from "../media-rating/media-rating";
 
 export enum PositioningStrategy {
   normal = "normal",
@@ -81,7 +81,7 @@ const CardExtended: React.FunctionComponent<CardExtendedModel> = ({
   }, [show]);
 
   return (
-  <div >
+    <div>
       {transitions.map(
         ({ item, key, props }) =>
           item && (

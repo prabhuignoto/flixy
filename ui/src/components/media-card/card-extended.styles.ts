@@ -9,7 +9,6 @@ export const CardExtendedWrapper = styled(animated.div) <
     height?: number;
     position: { x: number; y: number }
   }>`
-  /* ${p => p.flip ? "right: 0" : "left: 0"}; */
   align-items: center;
   background: #e7e7e7;
   border-radius: .2em;
@@ -33,7 +32,7 @@ export const CardExtendedWrapper = styled(animated.div) <
   position: fixed;
   left: ${p => p.position.x}px;
   top: ${p => p.position.y - 2}px;
-  width: ${p => p.isBigScreen ? "680px" : "500px"};
+  width: ${p => p.isBigScreen ? "600px" : "480px"};
   z-index: 999;
   background: #e8e8e8;
 `;
@@ -71,8 +70,10 @@ export const ExtendedInfo = styled.span`
 `;
 
 export const ExtendedInfoTitle = styled(ExtendedInfo)`
-  font-size: .9em;
+  font-size: .85em;
   font-weight: 500;
+  max-width: 350px;
+  white-space: wrap;
 `;
 
 export const ExtendInfoYear = styled(ExtendedInfo)`
@@ -83,7 +84,7 @@ export const ExtendInfoYear = styled(ExtendedInfo)`
 `;
 
 export const ExtendedInfoOverview = styled(ExtendedInfo) <{ isBigScreen?: boolean }>`
-  font-size: ${p => p.isBigScreen ? ".85em" : ".7em"};
+  font-size: ${p => p.isBigScreen ? ".75em" : ".65em"};
   font-weight: 300;
   margin-top: .5em;
   text-overflow: ellipsis;

@@ -12,8 +12,11 @@ import Trending from "./containers/movies/popular";
 import Upcoming from "./containers/movies/upComing";
 import fontLoader from "webfontloader";
 import { config } from "dotenv";
+import smoothscroll from 'smoothscroll-polyfill';
 
 config();
+
+smoothscroll.polyfill();
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_URL,
@@ -51,9 +54,9 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
                 <TopRatedMovies />
                 <Trending />
                 <Upcoming />
-                <TopRated />
+                {/* <TopRated />
                 <OnAir />
-                <Popular />
+                <Popular /> */}
               </Route>
             </Switch>
           </Router>

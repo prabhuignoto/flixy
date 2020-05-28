@@ -21,7 +21,7 @@ import Genres, { GenreSize } from "../../media-genres/genres";
 import Attribute from "../attribute/details-attribute";
 import { Genre } from "../../../models/Genre";
 import useResponsive from "../../../effects/useResponsive";
-import MediaRating, { RatingSize } from "../../medaia-rating/media-rating";
+import MediaRating, { RatingSize } from "../../media-rating/media-rating";
 
 export interface DetailsTitleModel {
   year?: string;

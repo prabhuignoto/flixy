@@ -7,7 +7,9 @@
     "hocs",
     "idx",
     "query",
-    "start"
+    "smoothscroll",
+    "start",
+    "themoviedb"
   ],
   "tslint.autoFixOnSave": true,
   "tslint.enable": true

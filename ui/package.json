@@ -29,6 +29,7 @@
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
     "react-window": "^1.8.5",
+    "smoothscroll-polyfill": "^0.4.4",
     "styled-components": "^5.1.1",
     "styled-icons": "^10.2.1",
     "typescript": "^3.9.3",
@@ -62,6 +63,7 @@
     "@types/react-custom-scrollbars": "^4.0.6",
     "@types/react-responsive": "^8.0.2",
     "@types/react-router-dom": "^5.1.5",
+    "@types/smoothscroll-polyfill": "^0.3.1",
     "@types/styled-components": "^5.1.0",
     "@types/webfontloader": "^1.6.32"
   }

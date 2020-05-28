@@ -20,6 +20,7 @@ import { CardSize } from "../../models/CardSize";
 import { nanoid } from "nanoid";
 import { PositioningStrategy } from "../media-card/card-extended";
 import useResponsive from "../../effects/useResponsive";
+import MediaList from "./media-list";
 
 const ExtendedCard = withExtendedInfo(Card);
 
@@ -50,10 +51,10 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     noTitle,
     noBackground,
     useExtendedCard,
+    id,
   }) => {
     const containerRef = React.createRef<HTMLUListElement>();
     const rWindowRef = React.useRef<HTMLDivElement>(null);
-    const gridRef = React.createRef<any>();
 
     const [config, setConfig] = React.useState({
       show: false,
@@ -62,20 +63,19 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
       clientHeight: 0,
     });
     const [disableRightNav, setDisableRightNav] = React.useState(false);
-    const [disableLeftNav, setDisableLeftNav] = React.useState(true);
+    const [disableLeftNav, setDisableLeftNav] = React.useState(false);
     const containerId = nanoid();
     const resxProps = useResponsive();
 
     const handleNav = (dir: ScrollDir) => {
       if (rWindowRef && rWindowRef.current) {
-
         if (dir === ScrollDir.RIGHT) {
-            rWindowRef.current.scrollTo({
-              behavior: "smooth",
-              left:
-                rWindowRef.current.scrollLeft +
-                Math.round(config.clientWidth * 0.8),
-            });
+          rWindowRef.current.scrollTo({
+            behavior: "smooth",
+            left:
+              rWindowRef.current.scrollLeft +
+              Math.round(config.clientWidth * 0.8),
+          });
         } else {
           rWindowRef.current.scrollTo({
             behavior: "smooth",
@@ -106,7 +106,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
         const { clientWidth, scrollWidth } = node;
         const scrolledWidth = clientWidth + rWindowRef.current.scrollLeft;
 
-        if (scrolledWidth === scrollWidth) {
+        if (scrolledWidth / scrollWidth > 0.9) {
           setDisableRightNav(true);
         }
 
@@ -128,60 +128,22 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
       view = (
         <>
           {!noTitle && <ObjectHeader>{title}</ObjectHeader>}
-          <FixedSizeList
-            layout="horizontal"
-            itemCount={config.count}
-            itemSize={itemSize}
-            width={config.clientWidth}
-            height={config.clientHeight}
-            outerRef={rWindowRef}
-            onItemsRendered={onItemsRendered}
-            style={{
-              overflow: "hidden",
-              scrollBehavior: "smooth",
-            }}
-          >
-            {({ index, style }) => {
-              const {
-                name,
-                path,
-                id,
-                release_date,
-                overview,
-                vote_average,
-              } = items[index];
-
-              return (
-                <MediaObjectContainer
-                  key={`${id}-${index}-${name}`}
-                  style={style}
-                >
-                  {!useExtendedCard ? (
-                    <MediaObjectView
-                      name={name}
-                      path={path}
-                      id={id}
-                      thumbnailSize={thumbnailSize}
-                      noTitle={noTitle}
-                    />
-                  ) : (
-                    <ExtendedCard
-                      title={name}
-                      poster_path={path}
-                      id={id}
-                      size={CardSize.large}
-                      release_date={release_date}
-                      overview={overview}
-                      containerId={containerId}
-                      height={config.clientHeight}
-                      vote_average={vote_average}
-                      positioningStrategy={PositioningStrategy.absolute}
-                    />
-                  )}
-                </MediaObjectContainer>
-              );
-            }}
-          </FixedSizeList>
+          {
+            <MediaList
+              layout="horizontal"
+              itemCount={config.count}
+              itemSize={itemSize}
+              width={config.clientWidth}
+              height={config.clientHeight}
+              outerRef={rWindowRef}
+              onItemsRendered={onItemsRendered}
+              items={items}
+              noTitle={noTitle}
+              useExtendedCard={useExtendedCard}
+              thumbnailSize={thumbnailSize}
+              id={title ? id + title : id.toString()}
+            />
+          }
         </>
       );
     } else {
@@ -196,13 +158,14 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           size={thumbnailSize}
           resx={resxProps}
         >
-          <ChevronLeftIcon color="#191919" />
+          <ChevronLeftIcon color={!disableLeftNav ? "#cc0000" : "#191919"} />
         </ScrollLeftBtn>
         <ObjectsWrapper
           ref={containerRef}
           leftButton={disableLeftNav}
           rightButton={disableRightNav}
           noBackground={noBackground}
+          resx={resxProps}
         >
           <div id={`extended-card-enclosure-${containerId}`}></div>
           {view}
@@ -213,7 +176,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           size={thumbnailSize}
           resx={resxProps}
         >
-          <ChevronRightIcon color="#191919" />
+          <ChevronRightIcon color={!disableRightNav ? "#cc0000" : "#191919"} />
         </ScrollRightBtn>
       </ObjectsContainer>
     );
