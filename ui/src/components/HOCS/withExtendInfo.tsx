@@ -143,6 +143,7 @@ export default function <P extends CardExtendCustomModel>(
       const container: HTMLElement | null = document.getElementById(
         `extended-card-enclosure-${this.props.containerId}`
       );
+      debugger;
 
       const {
         poster_path,

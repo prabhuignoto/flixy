@@ -41,52 +41,60 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
     thumbnailSize,
     useExtendedCard,
   }) => (
-    <FixedSizeList
-      layout={layout}
-      itemCount={itemCount}
-      itemSize={itemSize}
-      width={width}
-      height={height}
-      outerRef={outerRef}
-      onItemsRendered={onItemsRendered}
-      style={{
-        overflow: "hidden",
-        scrollBehavior: "smooth",
-      }}
-    >
-      {({ index, style }) => {
-        const { name, path, id, release_date, overview, vote_average } = items[
-          index
-        ];
+    <div>
+      <div id={`extended-card-enclosure-${containerId}`}></div>
+      <FixedSizeList
+        layout={layout}
+        itemCount={itemCount}
+        itemSize={itemSize}
+        width={width}
+        height={height}
+        outerRef={outerRef}
+        onItemsRendered={onItemsRendered}
+        style={{
+          overflow: "hidden",
+          scrollBehavior: "smooth",
+        }}
+      >
+        {({ index, style }) => {
+          const {
+            name,
+            path,
+            id,
+            release_date,
+            overview,
+            vote_average,
+          } = items[index];
 
-        return (
-          <MediaObjectContainer key={`${id}-${index}-${name}`} style={style}>
-            {!useExtendedCard ? (
-              <MediaObjectView
-                name={name}
-                path={path}
-                id={id}
-                thumbnailSize={thumbnailSize}
-                noTitle={noTitle}
-              />
-            ) : (
-              <ExtendedCard
-                title={name}
-                poster_path={path}
-                id={id}
-                size={CardSize.large}
-                release_date={release_date}
-                overview={overview}
-                containerId={containerId}
-                height={height}
-                vote_average={vote_average}
-                positioningStrategy={PositioningStrategy.absolute}
-              />
-            )}
-          </MediaObjectContainer>
-        );
-      }}
-    </FixedSizeList>
+          return (
+            <MediaObjectContainer key={`${id}-${index}-${name}`} style={style}>
+              {!useExtendedCard ? (
+                <MediaObjectView
+                  name={name}
+                  path={path}
+                  id={id}
+                  thumbnailSize={thumbnailSize}
+                  noTitle={noTitle}
+                />
+              ) : (
+                <ExtendedCard
+                  title={name}
+                  poster_path={path}
+                  id={id}
+                  size={CardSize.large}
+                  release_date={release_date}
+                  overview={overview}
+                  containerId={containerId}
+                  height={height}
+                  vote_average={vote_average}
+                  positioningStrategy={PositioningStrategy.absolute}
+                />
+              )}
+            </MediaObjectContainer>
+          );
+        }}
+      </FixedSizeList>
+    </div>
   ),
   (prev, cur) => prev.id === cur.id
 );

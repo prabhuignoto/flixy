@@ -142,6 +142,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
               useExtendedCard={useExtendedCard}
               thumbnailSize={thumbnailSize}
               id={title ? id + title : id.toString()}
+              containerId={containerId}
             />
           }
         </>
@@ -167,7 +168,6 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           noBackground={noBackground}
           resx={resxProps}
         >
-          <div id={`extended-card-enclosure-${containerId}`}></div>
           {view}
         </ObjectsWrapper>
         <ScrollRightBtn

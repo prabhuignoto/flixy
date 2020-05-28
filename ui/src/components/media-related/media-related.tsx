@@ -16,6 +16,7 @@ const RelatedMedia: React.FunctionComponent<{
   title: string;
 }> = ({ items, id, title }) => {
   const { isBigScreen } = useResponsive();
+  debugger;
   return (
     <MediaRelatedWrapper>
       <RelatedMediaHeader>{title}</RelatedMediaHeader>
