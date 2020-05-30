@@ -15,7 +15,7 @@ import { UserIcon } from "./../icons/index";
 import useResponsive from "../../effects/useResponsive";
 
 const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
-  ({ path, name, thumbnailSize, noTitle }) => {
+  ({ path, name, thumbnailSize, noTitle, hideObjectWithNoImage }) => {
     const [loadState, setLoadState] = React.useState({
       loaded: false,
       failed: false,
@@ -42,39 +42,43 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
       unique: true,
     });
 
+    const canShow = hideObjectWithNoImage ? hideObjectWithNoImage && path : !hideObjectWithNoImage;
+
     return (
-      <MediaObject>
-        <img
-          src={imageUrl}
-          onLoad={() => setLoadState({ loaded: true, failed: false })}
-          onError={() => setLoadState({ loaded: false, failed: true })}
-          style={{ display: "none" }}
-        />
-        {transition.map(({ item, key, props }) => {
-          if (item) {
-            return (
-              <ObjectImage
-                src={imageUrl}
-                loaded={loadState.loaded}
-                style={props}
-                noTitle={noTitle}
-                key={key}
-              ></ObjectImage>
-            );
-          } else {
-            if (loadState.failed) {
+      canShow ? (
+        <MediaObject>
+          <img
+            src={imageUrl}
+            onLoad={() => setLoadState({ loaded: true, failed: false })}
+            onError={() => setLoadState({ loaded: false, failed: true })}
+            style={{ display: "none" }}
+          />
+          {transition.map(({ item, key, props }) => {
+            if (item) {
               return (
-                <FallbackImage>
-                  <UserIcon color="#4b4848" />
-                </FallbackImage>
+                <ObjectImage
+                  src={imageUrl}
+                  loaded={loadState.loaded}
+                  style={props}
+                  noTitle={noTitle}
+                  key={key}
+                ></ObjectImage>
               );
             } else {
-              return null;
+              if (loadState.failed) {
+                return (
+                  <FallbackImage>
+                    <UserIcon color="#4b4848" />
+                  </FallbackImage>
+                );
+              } else {
+                return null;
+              }
             }
-          }
-        })}
-        {!noTitle && <ObjectName resx={resx}>{name}</ObjectName>}
-      </MediaObject>
+          })}
+          {!noTitle && <ObjectName resx={resx}>{name}</ObjectName>}
+        </MediaObject>
+      ): null
     );
   },
   (prev, current) => prev.id === current.id

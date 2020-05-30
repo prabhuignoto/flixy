@@ -6,21 +6,19 @@ import {
 import {
   ObjectsWrapper,
   ObjectsContainer,
-  MediaObjectContainer,
   ScrollLeftBtn,
   ScrollRightBtn,
   ObjectHeader,
+  ExpandButton,
 } from "./media-objects.styles";
-import { ChevronLeftIcon, ChevronRightIcon } from "./../icons/index";
-import { FixedSizeList } from "react-window";
-import MediaObjectView from "./media-object";
+import { ChevronLeftIcon, ChevronRightIcon, PlusIcon } from "./../icons/index";
 import withExtendedInfo from "../HOCS/withExtendInfo";
 import Card from "../media-card/card";
-import { CardSize } from "../../models/CardSize";
 import { nanoid } from "nanoid";
-import { PositioningStrategy } from "../media-card/card-extended";
 import useResponsive from "../../effects/useResponsive";
 import MediaList from "./media-list";
+import MediaModal from "../media-modal/media-modal";
+import MediaGrid from "./media-grid";
 
 const ExtendedCard = withExtendedInfo(Card);
 
@@ -39,6 +37,8 @@ export interface MediaObjectsModel {
   noTitle?: boolean;
   noBackground?: boolean;
   useExtendedCard?: boolean;
+  hideObjectsWithNoImage?: boolean;
+  showExpand?: boolean;
 }
 
 const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
@@ -52,9 +52,12 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     noBackground,
     useExtendedCard,
     id,
+    hideObjectsWithNoImage,
+    showExpand,
   }) => {
     const containerRef = React.createRef<HTMLUListElement>();
     const rWindowRef = React.useRef<HTMLDivElement>(null);
+    const [showExpandedView, setExpandedView] = React.useState(false);
 
     const [config, setConfig] = React.useState({
       show: false,
@@ -62,8 +65,8 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
       count: 0,
       clientHeight: 0,
     });
-    const [disableRightNav, setDisableRightNav] = React.useState(false);
-    const [disableLeftNav, setDisableLeftNav] = React.useState(false);
+    const [disableRightNav, setDisableRightNav] = React.useState(true);
+    const [disableLeftNav, setDisableLeftNav] = React.useState(true);
     const containerId = nanoid();
     const resxProps = useResponsive();
 
@@ -94,19 +97,21 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
         setConfig({
           show: true,
           clientWidth,
-          count: items.length,
+          count: hideObjectsWithNoImage
+            ? items.filter((item) => item.path).length
+            : items.length,
           clientHeight: clientHeight - 40,
         });
       }
     }, []);
 
-    const onItemsRendered = () => {
+    const onItemsRendered = React.useCallback(() => {
       if (rWindowRef && rWindowRef.current) {
         const node = rWindowRef.current as HTMLDivElement;
         const { clientWidth, scrollWidth } = node;
         const scrolledWidth = clientWidth + rWindowRef.current.scrollLeft;
 
-        if (scrolledWidth / scrollWidth > 0.9) {
+        if (scrolledWidth / scrollWidth > 0.85) {
           setDisableRightNav(true);
         }
 
@@ -120,7 +125,9 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           setDisableRightNav(false);
         }
       }
-    };
+    }, []);
+
+    const onModalClose = React.useCallback(() => setExpandedView(false), []);
 
     let view = null;
 
@@ -143,6 +150,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
               thumbnailSize={thumbnailSize}
               id={title ? id + title : id.toString()}
               containerId={containerId}
+              hideObjectsWithNoImage={hideObjectsWithNoImage}
             />
           }
         </>
@@ -150,9 +158,22 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     } else {
       view = null;
     }
-
     return (
       <ObjectsContainer height={height} noBackground={noBackground}>
+        {showExpand && (
+          <ExpandButton onClick={() => setExpandedView(true)}>
+            <PlusIcon color="##dbdbdb"></PlusIcon>
+          </ExpandButton>
+        )}
+        {
+          <MediaModal onClose={onModalClose} open={showExpandedView} title={title}>
+            <MediaGrid
+              items={items}
+              itemHeight={250}
+              itemWidth={180}
+            ></MediaGrid>
+          </MediaModal>
+        }
         <ScrollLeftBtn
           onClick={() => handleNav(ScrollDir.LEFT)}
           disable={disableLeftNav}

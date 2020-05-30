@@ -23,17 +23,6 @@ const MediaObjectsWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const MediaObjectHeader = styled.div`
-  margin-bottom: 0.5rem;
-  font-family: "Poppins";
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: #fff;
-  text-align: left;
-  padding-left: 0.2rem;
-  text-transform: uppercase;
-`;
-
 const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
   ({ movieId }) => {
     const client = useApolloClient();

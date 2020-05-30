@@ -11,9 +11,9 @@ export const ObjectsContainer = styled.section<{ height?: number, noBackground?:
   display: flex;
   height: ${p => p.height}px;
   justify-content: center;
-  padding: .5rem 0;
   user-select: none;
   width: 100%;
+  position: relative;
 `;
 
 export const ObjectsWrapper = styled.ul<{
@@ -32,7 +32,6 @@ export const ObjectsWrapper = styled.ul<{
   margin: 0;
   overflow-x: hidden;
   padding: 0 .5rem;
-  padding: 0;
   scroll-behavior: smooth;
   width: 100%;
 `;
@@ -46,7 +45,7 @@ export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize, resx
   ${p => {
     if (p.disable) {
       return `
-        opacity: 0.1;
+        opacity: 0;
         pointer-events: none;
       `
     }
@@ -79,12 +78,31 @@ export const ScrollRightBtn = styled(Scroll)`
 
 export const ObjectHeader = styled.div`
   color: #cc0000;
-  font-size: .95rem;
+  font-size: 1rem;
   font-weight: 500;
-  padding-bottom: .5rem;
+  padding-bottom: .25rem;
   padding-left: 1rem;
 `;
 
 export const MediaObjectContainer = styled(animated.div)`
   margin-right: .5rem;
+`;
+
+export const ExpandButton = styled.div`
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: -1rem;
+  right: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  /* box-shadow:2px 2px 4px 2px rgba(0,0,0,0.25); */
+  padding: 0;
+
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
 `;

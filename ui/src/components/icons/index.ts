@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
-import { Plus } from "@styled-icons/feather/Plus";
+import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
 import { Minus } from "@styled-icons/feather/Minus";
 import { ChevronDown } from "@styled-icons/feather/ChevronDown";
 import { ChevronUp } from "@styled-icons/feather/ChevronUp";
-import { ChevronLeftCircle } from "@styled-icons/boxicons-solid/ChevronLeftCircle";
-import { ChevronRightCircle } from "@styled-icons/boxicons-solid/ChevronRightCircle";
 import { X } from "@styled-icons/feather/X";
 import { Check } from "@styled-icons/feather/Check";
 import { Clock } from "@styled-icons/feather/Clock";
@@ -23,10 +21,7 @@ import { Expand } from "@styled-icons/boxicons-regular/Expand";
 import { StarHalf } from "@styled-icons/material/StarHalf";
 import { Star } from "@styled-icons/material/Star";
 import { StarBorder } from "@styled-icons/material/StarBorder";
-
-export const PlusIcon = styled(Plus)`
-  color: red;
-`;
+import { Maximize2 } from "@styled-icons/feather/Maximize2";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -102,5 +97,17 @@ export const StarIcon = styled(Star) <{ color?: string }>`
 `;
 
 export const StarBorderIcon = styled(StarBorder) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const Maximize2Icon = styled(Maximize2) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const PlusIcon = styled(PlusCircle) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const ExpandIcon = styled(Expand) <{ color?: string }>`
   color: ${p => p.color};
 `;

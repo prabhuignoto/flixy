@@ -57,7 +57,7 @@ export default function <P extends CardExtendCustomModel>(
         if (this.state.isMouseActive) {
           this.showPane(ev);
         }
-      }, 250);
+      }, 750);
     }
 
     endTimer() {
@@ -125,7 +125,7 @@ export default function <P extends CardExtendCustomModel>(
         {
           showIcon: false,
           isMouseActive: false,
-          showPane: false
+          showPane: false,
         },
         this.endTimer
       );
@@ -143,7 +143,6 @@ export default function <P extends CardExtendCustomModel>(
       const container: HTMLElement | null = document.getElementById(
         `extended-card-enclosure-${this.props.containerId}`
       );
-      debugger;
 
       const {
         poster_path,

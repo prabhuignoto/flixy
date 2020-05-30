@@ -19,7 +19,7 @@ const RunTime: React.FunctionComponent<AttributeModel> = ({ label, value }) => {
       <AttributeLabel resx={resxProps}>
         <span>{label}</span>
       </AttributeLabel>
-      <AttributeValue>{value}</AttributeValue>
+      <AttributeValue resx={resxProps}>{value}</AttributeValue>
     </AttributeWrapper>
   );
 };

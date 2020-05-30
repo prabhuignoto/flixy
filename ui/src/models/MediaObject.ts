@@ -9,6 +9,7 @@ export interface MediaObject {
   release_date?: string;
   overview?: string;
   vote_average?: number;
+  hideObjectWithNoImage? : boolean;
 }
 
 export enum ThumbnailSize {

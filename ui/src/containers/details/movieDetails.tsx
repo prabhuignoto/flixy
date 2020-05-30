@@ -8,6 +8,7 @@ import { useSpring, config, animated } from "react-spring";
 import styled from "styled-components";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";
 import memoize from "memoize-one";
+import MediaModal from "../../components/media-modal/media-modal";
 
 const Shimmer = React.memo(
   ({ movieId }: { movieId?: string | number }) => <Loader id={movieId} />,
@@ -22,7 +23,7 @@ const getHeight = memoize(
     } else if (isTabletOrMobile) {
       height = 760;
     } else {
-      height = 500;
+      height = 450;
     }
     return height;
   }
@@ -33,6 +34,7 @@ const MovieDetails: React.FunctionComponent<{
   handleClose?: () => void;
   hide?: boolean;
 }> = ({ movieId, handleClose, hide }) => {
+  console.log("bengal");
   const [data, setData] = React.useState<MovieDetail | null>();
   const [loading, setLoading] = React.useState(false);
   const client = useApolloClient();

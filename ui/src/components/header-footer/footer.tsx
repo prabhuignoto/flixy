@@ -4,10 +4,10 @@ import { FooterWrapper, Copyrights, Powered, Bold } from "./footer.styles";
 const Footer: React.FunctionComponent = () => (
   <FooterWrapper>
     <Copyrights>
-      &copy; {new Date().getFullYear()}, <Bold>movies.prabhumurthy.com</Bold>
+      &copy; {new Date().getFullYear()}, prabhumurthy.com
     </Copyrights>
     <Powered>
-      powered by <Bold>themoviedb.org</Bold>
+      powered by themoviedb.org
     </Powered>
   </FooterWrapper>
 );

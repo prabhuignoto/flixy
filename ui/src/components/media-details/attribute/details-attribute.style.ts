@@ -10,7 +10,7 @@ export const AttributeWrapper = styled(Root)`
   background: #2a2a2a;
   border-radius: 3px;
   display: flex;
-  height: ${p => p.resx && p.resx.isBigScreen ? "1.5rem" : "1.5rem"};
+  height: ${p => p.resx && p.resx.isBigScreen ? "1.75rem" : "1.5rem"};
   justify-content: flex-start;
   min-width: 7rem;
 `;
@@ -19,7 +19,7 @@ export const AttributeLabel = styled(Root)`
   align-items: center;
   color: #fff;
   display: flex;
-  font-size: ${p => p.resx?.isBigScreen ? ".75rem" : ".75rem"};
+  font-size: ${p => p.resx?.isBigScreen ? ".9rem" : ".75rem"};
   font-weight: 400;
   justify-content: flex-start;
   padding-left: .5rem;
@@ -36,7 +36,7 @@ export const AttributeValue = styled(Root)`
   border-top-right-radius: 3px;
   color: #fff;
   display: flex;
-  font-size: ${p => p.resx?.isBigScreen ? ".85rem" : ".75rem"};
+  font-size: ${p => p.resx?.isBigScreen ? ".9rem" : ".75rem"};
   font-weight: 300;
   height: 100%;
   margin-left: auto;

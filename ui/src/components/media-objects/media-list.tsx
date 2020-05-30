@@ -1,5 +1,5 @@
 import React, { RefObject } from "react";
-import { FixedSizeList, Layout } from "react-window";
+import { FixedSizeList, Layout,  } from "react-window";
 import { CardSize } from "../../models/CardSize";
 import { PositioningStrategy } from "../media-card/card-extended";
 import { MediaObject, ThumbnailSize } from "../../models/MediaObject";
@@ -24,6 +24,7 @@ export interface MediaListModel {
   thumbnailSize: ThumbnailSize;
   useExtendedCard?: boolean;
   id: string;
+  hideObjectsWithNoImage?: boolean;
 }
 
 const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
@@ -40,6 +41,7 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
     noTitle,
     thumbnailSize,
     useExtendedCard,
+    hideObjectsWithNoImage
   }) => (
     <div>
       <div id={`extended-card-enclosure-${containerId}`}></div>
@@ -75,6 +77,7 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
                   id={id}
                   thumbnailSize={thumbnailSize}
                   noTitle={noTitle}
+                  hideObjectWithNoImage={hideObjectsWithNoImage}
                 />
               ) : (
                 <ExtendedCard

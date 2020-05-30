@@ -23,7 +23,7 @@ export const Box2 = styled.div`
 
 export const DetailsHomeWrapper = styled.div`
   width: 100%;
-  min-height: 450px;
+  /* min-height: 450px; */
 `;
 
 export const CastAndCrewWrapper = styled.div<{ resxProps?: responsiveProps }>`
@@ -52,7 +52,7 @@ export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
 export const Overview = styled(Title) <{ resxProps?: responsiveProps }>`
   color: #191919;
   font-family: "Poppins";
-  font-size: ${p => p.resxProps?.isBigScreen ? ".95rem" : ".85rem"};
+  font-size: ${p => p.resxProps?.isBigScreen ? ".95rem" : ".8rem"};
   font-weight: 400;
   margin: .25rem 0;
   width: 95%;
@@ -65,7 +65,7 @@ export const PostersWrapper = styled.div`
   display: flex;
   align-items: center;
   /* height: 300px; */
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 `;
 
 export const PostersAndProduction = styled.div<{ resxProps?: responsiveProps }>`

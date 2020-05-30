@@ -1,4 +1,3 @@
-import { hot } from "react-hot-loader/root";
 import React, { Component } from "react";
 import "./App.css";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
@@ -12,7 +11,8 @@ import Trending from "./containers/movies/popular";
 import Upcoming from "./containers/movies/upComing";
 import fontLoader from "webfontloader";
 import { config } from "dotenv";
-import smoothscroll from 'smoothscroll-polyfill';
+import smoothscroll from "smoothscroll-polyfill";
+import Footer from "./components/header-footer/footer";
 
 config();
 
@@ -35,7 +35,7 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
   componentDidMount() {
     fontLoader.load({
       google: {
-        families: ["Poppins:300,400,500&display=swap"],
+        families: ["Poppins:200,300,400,500&display=swap"],
       },
     });
   }
@@ -51,12 +51,24 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
           <Router>
             <Switch>
               <Route path="/">
-                <TopRatedMovies />
-                <Trending />
-                <Upcoming />
-                {/* <TopRated />
-                <OnAir />
-                <Popular /> */}
+                <main
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "100%",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%"
+                  }}
+                >
+                  <TopRatedMovies />
+                  <Trending />
+                  <Upcoming />
+                  {/* <TopRated />
+                  <OnAir />
+                  <Popular /> */}
+                  <aside id="modal_container"></aside>
+                </main>
               </Route>
             </Switch>
           </Router>

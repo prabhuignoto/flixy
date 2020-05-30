@@ -31,6 +31,7 @@ const ProductionDetails: React.FunctionComponent<ProductionDetailsModel> = ({
         itemSize={isBigScreen ? 250 : 100}
         id="production-media"
         thumbnailSize={ThumbnailSize.small}
+        hideObjectsWithNoImage
       />
     </ProductionWrapper>
   ) : null;
