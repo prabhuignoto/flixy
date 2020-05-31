@@ -14,6 +14,7 @@ export const ObjectsContainer = styled.section<{ height?: number, noBackground?:
   user-select: none;
   width: 100%;
   position: relative;
+  /* box-shadow:inset  0 0 12px 1px rgba(0,0,0,0.1); */
 `;
 
 export const ObjectsWrapper = styled.ul<{
@@ -89,20 +90,30 @@ export const MediaObjectContainer = styled(animated.div)`
 `;
 
 export const ExpandButton = styled.div`
-  width: 2rem;
-  height: 2rem;
+  height: 1.75rem;
   position: absolute;
   top: -1rem;
-  right: 3rem;
+  right: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  /* box-shadow:2px 2px 4px 2px rgba(0,0,0,0.25); */
-  padding: 0;
+  border-radius: 25px;
+  background-color: rgba(204,0,0,0.8);
+  padding: 0 .1rem;
+  cursor: pointer;
+  /* box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.5);  */
+
+  & span {
+    color: #fff;
+    display: block;
+    padding-right: .5rem;
+    font-family: Poppins;
+    font-size: .8rem;
+    font-weight: 500;
+  }
 
   & svg {
-    width: 100%;
+    width: 1.25rem;
     height: 100%;
   }
 `;

@@ -14,6 +14,7 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@types/react-window": "^1.8.2",
+    "@types/throttle-debounce": "^2.1.0",
     "date-fns": "^2.14.0",
     "dotenv": "^8.2.0",
     "graphql": "^15.0.0",
@@ -31,6 +32,7 @@
     "smoothscroll-polyfill": "^0.4.4",
     "styled-components": "^5.1.1",
     "styled-icons": "^10.2.1",
+    "throttle-debounce": "^2.1.0",
     "typescript": "^3.9.3",
     "webfontloader": "^1.6.28"
   },

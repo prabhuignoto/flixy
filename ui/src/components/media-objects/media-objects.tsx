@@ -19,6 +19,7 @@ import useResponsive from "../../effects/useResponsive";
 import MediaList from "./media-list";
 import MediaModal from "../media-modal/media-modal";
 import MediaGrid from "./media-grid";
+import { throttle } from "throttle-debounce";
 
 const ExtendedCard = withExtendedInfo(Card);
 
@@ -77,14 +78,14 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
             behavior: "smooth",
             left:
               rWindowRef.current.scrollLeft +
-              Math.round(config.clientWidth * 0.8),
+              Math.round(config.clientWidth * 0.95),
           });
         } else {
           rWindowRef.current.scrollTo({
             behavior: "smooth",
             left:
               rWindowRef.current.scrollLeft -
-              Math.round(config.clientWidth * 0.8),
+              Math.round(config.clientWidth * 0.95),
           });
         }
       }
@@ -93,7 +94,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     React.useEffect(() => {
       if (containerRef && containerRef.current) {
         const node = containerRef.current as HTMLUListElement;
-        const { clientWidth, scrollWidth, clientHeight } = node;
+        const { clientWidth, clientHeight } = node;
         setConfig({
           show: true,
           clientWidth,
@@ -111,8 +112,14 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
         const { clientWidth, scrollWidth } = node;
         const scrolledWidth = clientWidth + rWindowRef.current.scrollLeft;
 
-        if (scrolledWidth / scrollWidth > 0.85) {
+        console.log(
+          rWindowRef.current.scrollLeft,
+          rWindowRef.current.scrollWidth
+        );
+
+        if (scrolledWidth === scrollWidth) {
           setDisableRightNav(true);
+          // console.log("disabling right", scrollWidth, scrolledWidth);
         }
 
         if (scrolledWidth > clientWidth) {
@@ -122,6 +129,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           setDisableLeftNav(true);
         }
         if (scrolledWidth < scrollWidth) {
+          // console.log("enabling right", scrollWidth, scrolledWidth);
           setDisableRightNav(false);
         }
       }
@@ -143,7 +151,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
               width={config.clientWidth}
               height={config.clientHeight}
               outerRef={rWindowRef}
-              onItemsRendered={onItemsRendered}
+              onItemsRendered={throttle(400, onItemsRendered)}
               items={items}
               noTitle={noTitle}
               useExtendedCard={useExtendedCard}
@@ -162,11 +170,16 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
       <ObjectsContainer height={height} noBackground={noBackground}>
         {showExpand && (
           <ExpandButton onClick={() => setExpandedView(true)}>
-            <PlusIcon color="##dbdbdb"></PlusIcon>
+            <ChevronRightIcon color="#fff"></ChevronRightIcon>{" "}
+            <span>view all</span>
           </ExpandButton>
         )}
         {
-          <MediaModal onClose={onModalClose} open={showExpandedView} title={title}>
+          <MediaModal
+            onClose={onModalClose}
+            open={showExpandedView}
+            title={title}
+          >
             <MediaGrid
               items={items}
               itemHeight={250}

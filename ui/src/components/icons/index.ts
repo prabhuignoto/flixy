@@ -22,6 +22,7 @@ import { StarHalf } from "@styled-icons/material/StarHalf";
 import { Star } from "@styled-icons/material/Star";
 import { StarBorder } from "@styled-icons/material/StarBorder";
 import { Maximize2 } from "@styled-icons/feather/Maximize2";
+import { Plus } from "@styled-icons/heroicons-solid/Plus";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -104,7 +105,7 @@ export const Maximize2Icon = styled(Maximize2) <{ color?: string }>`
   color: ${p => p.color};
 `;
 
-export const PlusIcon = styled(PlusCircle) <{ color?: string }>`
+export const PlusIcon = styled(Plus) <{ color?: string }>`
   color: ${p => p.color};
 `;
 
