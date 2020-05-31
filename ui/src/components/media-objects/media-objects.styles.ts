@@ -90,30 +90,30 @@ export const MediaObjectContainer = styled(animated.div)`
 `;
 
 export const ExpandButton = styled.div`
-  height: 1.75rem;
+  height: 1.5rem;
   position: absolute;
-  top: -1rem;
+  top: -.5rem;
   right: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 25px;
-  background-color: rgba(204,0,0,0.8);
+  border-radius: .2rem;
+  background-color: #cc0000;
   padding: 0 .1rem;
   cursor: pointer;
-  /* box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.5);  */
+  box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.2); 
 
   & span {
     color: #fff;
     display: block;
-    padding-right: .5rem;
+    padding-left: .5rem;
     font-family: Poppins;
-    font-size: .8rem;
+    font-size: .85rem;
     font-weight: 500;
   }
 
   & svg {
-    width: 1.25rem;
+    width: 1.2rem;
     height: 100%;
   }
 `;

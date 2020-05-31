@@ -78,14 +78,14 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
             behavior: "smooth",
             left:
               rWindowRef.current.scrollLeft +
-              Math.round(config.clientWidth * 0.95),
+              Math.round(config.clientWidth * 0.8),
           });
         } else {
           rWindowRef.current.scrollTo({
             behavior: "smooth",
             left:
               rWindowRef.current.scrollLeft -
-              Math.round(config.clientWidth * 0.95),
+              Math.round(config.clientWidth * 0.8),
           });
         }
       }
@@ -112,24 +112,19 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
         const { clientWidth, scrollWidth } = node;
         const scrolledWidth = clientWidth + rWindowRef.current.scrollLeft;
 
-        console.log(
-          rWindowRef.current.scrollLeft,
-          rWindowRef.current.scrollWidth
-        );
-
         if (scrolledWidth === scrollWidth) {
           setDisableRightNav(true);
-          // console.log("disabling right", scrollWidth, scrolledWidth);
         }
 
         if (scrolledWidth > clientWidth) {
           setDisableLeftNav(false);
         }
+
         if (scrolledWidth === clientWidth) {
           setDisableLeftNav(true);
         }
+
         if (scrolledWidth < scrollWidth) {
-          // console.log("enabling right", scrollWidth, scrolledWidth);
           setDisableRightNav(false);
         }
       }
@@ -151,7 +146,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
               width={config.clientWidth}
               height={config.clientHeight}
               outerRef={rWindowRef}
-              onItemsRendered={throttle(400, onItemsRendered)}
+              onItemsRendered={throttle(250, onItemsRendered)}
               items={items}
               noTitle={noTitle}
               useExtendedCard={useExtendedCard}
@@ -170,8 +165,8 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
       <ObjectsContainer height={height} noBackground={noBackground}>
         {showExpand && (
           <ExpandButton onClick={() => setExpandedView(true)}>
-            <ChevronRightIcon color="#fff"></ChevronRightIcon>{" "}
             <span>view all</span>
+            <ChevronRightIcon color="#fff"></ChevronRightIcon>
           </ExpandButton>
         )}
         {
@@ -182,8 +177,8 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           >
             <MediaGrid
               items={items}
-              itemHeight={250}
-              itemWidth={180}
+              itemHeight={resxProps.isBigScreen ? 250 : 180}
+              itemWidth={resxProps.isBigScreen ? 180 : 130}
             ></MediaGrid>
           </MediaModal>
         }

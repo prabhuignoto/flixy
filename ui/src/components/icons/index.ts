@@ -23,6 +23,7 @@ import { Star } from "@styled-icons/material/Star";
 import { StarBorder } from "@styled-icons/material/StarBorder";
 import { Maximize2 } from "@styled-icons/feather/Maximize2";
 import { Plus } from "@styled-icons/heroicons-solid/Plus";
+import { Github } from "@styled-icons/boxicons-logos/Github";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -112,3 +113,7 @@ export const PlusIcon = styled(Plus) <{ color?: string }>`
 export const ExpandIcon = styled(Expand) <{ color?: string }>`
   color: ${p => p.color};
 `;
+
+export const GithubIcon = styled(Github)<{color?: string}>`
+  color: ${p => p.color};
+`

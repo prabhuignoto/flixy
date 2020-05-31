@@ -7,8 +7,8 @@ import {
 } from "./card.style";
 import { CardSize } from "../../models/CardSize";
 import Poster from "../media-poster/poster";
-import { CheckIcon, ImageIcon, ViewIcon } from "../icons";
-import useResponsive, { responsiveProps } from "../../effects/useResponsive";
+import { CheckIcon, ImageIcon } from "../icons";
+import { responsiveProps } from "../../effects/useResponsive";
 
 export type MovieType = Movie & {
   index?: number;

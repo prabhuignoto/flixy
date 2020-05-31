@@ -29,17 +29,6 @@ const MediaObjectsWrapper = styled.div<{ resxProps?: responsiveProps }>`
     (st && st.isBigScreen) || st?.isTabletOrMobile ? "97%" : "48%"};
 `;
 
-const MediaObjectHeader = styled.div`
-  margin-bottom: 0.5rem;
-  font-family: "Poppins";
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: #fff;
-  text-align: left;
-  padding-left: 0.2rem;
-  text-transform: uppercase;
-`;
-
 const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
   ({ movieId }) => {
     const client = useApolloClient();
@@ -86,8 +75,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
-                height={isBigScreen ? 250 : 190}
-                itemSize={isBigScreen ? 150 : 120}
+                height={isBigScreen ? 250 : 180}
+                itemSize={isBigScreen ? 150 : 100}
                 thumbnailSize={ThumbnailSize.small}
                 showExpand
               />
@@ -103,8 +92,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                   path: profile_path,
                   id,
                 }))}
-                height={isBigScreen ? 250 : 190}
-                itemSize={isBigScreen ? 150 : 120}
+                height={isBigScreen ? 250 : 180}
+                itemSize={isBigScreen ? 150 : 100}
                 thumbnailSize={ThumbnailSize.small}
                 showExpand
               />

@@ -23,7 +23,7 @@
 
 @media screen and (min-device-width: 1224px) {
   .App {
-    min-height: 1800px;
+    min-height: 1200px;
   }
 }
 
@@ -35,7 +35,7 @@
 
 @media screen and (max-device-width: 1224px) {
   .App {
-    min-height: 1800px;
+    min-height: 980px;
   }
 }
 

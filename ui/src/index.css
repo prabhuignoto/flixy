@@ -27,7 +27,7 @@ footer.app-footer {
   justify-content: center;
   color: #fff;
   min-height: 3rem;
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255,255,255,0.1);
   margin-top: 3rem;
 }
 
@@ -50,3 +50,29 @@ footer.app-footer {
   font-size: .9rem;
   text-decoration: none;
 }
+
+.github {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-right: 2rem;
+  height: 1rem;
+  text-decoration: none;
+}
+
+.github:visited {
+  color: #fff;
+}
+
+.github img {
+  max-height: 100%;
+}
+
+.github span {
+  margin-left: .25rem;
+  font-size: .9rem;
+  font-family: Poppins;
+  font-weight: 300;
+}
+

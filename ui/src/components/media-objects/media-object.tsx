@@ -62,6 +62,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
                   style={props}
                   noTitle={noTitle}
                   key={key}
+                  alt={name}
                 ></ObjectImage>
               );
             } else {

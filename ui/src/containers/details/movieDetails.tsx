@@ -21,7 +21,7 @@ const getHeight = memoize(
     if (isBigScreen) {
       height = 820;
     } else if (isTabletOrMobile) {
-      height = 760;
+      height = 700;
     } else {
       height = 450;
     }
