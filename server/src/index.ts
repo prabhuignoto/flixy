@@ -6,7 +6,7 @@ import GenreResolver from './resolvers/GenreResolver';
 import { ApolloServer } from "apollo-server-fastify";
 import TrendingResolver from "./resolvers/TrendingResolver";
 import MovieResolver from "./resolvers/MovieResolver";
-import TVResolver from "./resolvers/TvResolver";
+import TVResolver from "./resolvers/TVResolver";
 import cors from "fastify-cors";
 
 config();
