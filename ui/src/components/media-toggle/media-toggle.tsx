@@ -41,7 +41,7 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
   const [props, setProps] = useSpring(() => ({
     left: 0,
     width: 0,
-    config: config.gentle,
+    config: config.default,
     immediate: true,
   }));
 

@@ -1,11 +1,34 @@
 import * as React from "react";
-import { useApolloClient } from "@apollo/client";
+import { useApolloClient, DocumentNode } from "@apollo/client";
 import Slider from "../../components/media-slider";
-import { onAir } from "../../gqls/tv";
+import { onAir, popular, topRated } from "../../gqls/tv";
 import Movie from "./../../models/Movie";
 import { LoadingState, SliderType } from "../../models/Slider";
+import { nanoid } from "nanoid";
 
-const TopRated: React.FunctionComponent = () => {
+export enum TvCategory {
+  POPULAR = "POPULAR",
+  TOP_RATED = "TOP_RATED",
+  ON_AIR = "ON_AIR",
+}
+
+export interface MediaTvContainer {
+  category: TvCategory;
+  title: string;
+}
+
+const getQuery: (c: TvCategory) => DocumentNode = (category) => {
+  switch (category) {
+    case TvCategory.POPULAR:
+      return popular;
+    case TvCategory.TOP_RATED:
+      return topRated;
+    case TvCategory.ON_AIR:
+      return onAir;
+  }
+};
+
+const Tv: React.FunctionComponent<MediaTvContainer> = ({ category, title }) => {
   const client = useApolloClient();
   const [movieData, setMovieData] = React.useState<{
     results: Movie[];
@@ -23,7 +46,7 @@ const TopRated: React.FunctionComponent = () => {
   const getTv = async (page: number) => {
     setLoading(true);
     const { data } = await client.query({
-      query: onAir,
+      query: getQuery(category),
       variables: {
         lang: "en-US",
         page,
@@ -34,12 +57,20 @@ const TopRated: React.FunctionComponent = () => {
     if (data) {
       let newData = [] as Movie[];
       if (movieData.results) {
-        newData = [...movieData.results, ...data.getTvOnAir.results];
+        let newResults = [];
+        if (category === TvCategory.POPULAR) {
+          newResults = data.getPopularTv;
+        } else if (category === TvCategory.TOP_RATED) {
+          newResults = data.getTopRatedTv;
+        } else if (category === TvCategory.ON_AIR) {
+          newResults = data.getTvOnAir;
+        }
+        newData = [...movieData.results, ...newResults.results];
+        setMovieData({
+          results: newData,
+          total_results: newResults.total_results,
+        });
       }
-      setMovieData({
-        results: newData,
-        total_results: data.getTvOnAir.total_results,
-      });
     }
 
     setLoading(false);
@@ -55,9 +86,10 @@ const TopRated: React.FunctionComponent = () => {
     view = (
       <Slider
         movies={[]}
-        title="On AIR"
+        title={title}
         fetchMore={handleFetchMore}
         totalResults={0}
+        id={nanoid()}
         loadingState={LoadingState.LOADING}
       ></Slider>
     );
@@ -71,16 +103,17 @@ const TopRated: React.FunctionComponent = () => {
                   hide: false,
                   selected: false,
                   title: item.name,
-                  release_date: item.first_air_date
+                  release_date: item.first_air_date,
                 })
               )
             : []
         }
-        title="On AIR"
+        title={title}
         fetchMore={handleFetchMore}
         totalResults={movieData.total_results ? movieData.total_results : 0}
         loadingState={LoadingState.LOADED}
         sliderType={SliderType.tv}
+        id={nanoid()}
       ></Slider>
     );
   }
@@ -88,4 +121,4 @@ const TopRated: React.FunctionComponent = () => {
   return view;
 };
 
-export default React.memo(TopRated);
+export default Tv;

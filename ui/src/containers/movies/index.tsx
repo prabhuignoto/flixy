@@ -28,7 +28,7 @@ const getQuery: (c: Category) => DocumentNode = (category) => {
   }
 };
 
-const TopRated: React.FunctionComponent<MediaContainer> = ({
+const MovieContainer: React.FunctionComponent<MediaContainer> = ({
   category,
   title,
 }) => {
@@ -120,4 +120,4 @@ const TopRated: React.FunctionComponent<MediaContainer> = ({
   return view;
 };
 
-export default React.memo(TopRated);
+export default React.memo(MovieContainer);

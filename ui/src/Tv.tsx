@@ -1,13 +1,11 @@
 import React from "react";
 
-import OnAir from "./containers/tv/onAir";
-import Popular from "./containers/tv/popular";
-import TopRated from "./containers/tv/topRated";
+import Tv, { TvCategory } from "./containers/tv";
 
 export default () => (
   <>
-    <TopRated />
-    <OnAir />
-    <Popular />
+    <Tv title="Top Rated" category={TvCategory.TOP_RATED} />
+    <Tv title="Popular" category={TvCategory.POPULAR} />
+    <Tv title="On Air" category={TvCategory.ON_AIR} />
   </>
 );
