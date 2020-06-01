@@ -3,7 +3,7 @@ import { useApolloClient } from "@apollo/client";
 import Slider from "../../components/media-slider";
 import { onAir } from "../../gqls/tv";
 import Movie from "./../../models/Movie";
-import { LoadingState } from "../../models/Slider";
+import { LoadingState, SliderType } from "../../models/Slider";
 
 const TopRated: React.FunctionComponent = () => {
   const client = useApolloClient();
@@ -55,7 +55,7 @@ const TopRated: React.FunctionComponent = () => {
     view = (
       <Slider
         movies={[]}
-        title="TV - On AIR"
+        title="On AIR"
         fetchMore={handleFetchMore}
         totalResults={0}
         loadingState={LoadingState.LOADING}
@@ -76,10 +76,11 @@ const TopRated: React.FunctionComponent = () => {
               )
             : []
         }
-        title="TV - On AIR"
+        title="On AIR"
         fetchMore={handleFetchMore}
         totalResults={movieData.total_results ? movieData.total_results : 0}
         loadingState={LoadingState.LOADED}
+        sliderType={SliderType.tv}
       ></Slider>
     );
   }

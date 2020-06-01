@@ -32,7 +32,7 @@ const MediaGrid: React.FunctionComponent<MediaGridModel> = ({
       wrapperRef.current) as unknown) as HTMLElement;
     if (node) {
       const columnCount = Math.floor(node.clientWidth / itemWidth);
-      const rowCount = Math.floor(items.length / columnCount);
+      const rowCount = Math.ceil(items.length / columnCount);
 
       setConfig({
         columnCount,

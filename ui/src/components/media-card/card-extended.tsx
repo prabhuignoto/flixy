@@ -89,11 +89,11 @@ const CardExtended: React.FunctionComponent<CardExtendedModel> = ({
               tabIndex={1}
               style={props}
               key={key}
-              flip={flip}
-              isBigScreen={isBigScreen}
+              flip={flip ? 1 : 0}
+              isBigScreen={isBigScreen ? 1 : 0}
               onClick={() => onClick && onClick(id)}
               ref={ref}
-              autoHeight={autoHeight}
+              autoHeight={autoHeight ? 1 : 0}
               position={position || { x: 0, y: 0 }}
               height={height}
             >

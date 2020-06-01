@@ -108,7 +108,7 @@ export const ExpandButton = styled.div`
     display: block;
     padding-left: .5rem;
     font-family: Poppins;
-    font-size: .85rem;
+    font-size: .8rem;
     font-weight: 500;
   }
 

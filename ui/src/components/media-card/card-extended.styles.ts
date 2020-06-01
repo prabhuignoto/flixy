@@ -3,9 +3,9 @@ import { animated } from "react-spring";
 
 export const CardExtendedWrapper = styled(animated.div) <
   {
-    isBigScreen?: boolean;
-    flip?: boolean;
-    autoHeight?: boolean;
+    isBigScreen?: number;
+    flip?: number;
+    autoHeight?: number;
     height?: number;
     position: { x: number; y: number }
   }>`

@@ -3,7 +3,7 @@ import { animated } from "react-spring";
 
 export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
   ${p => p.detailsEnabled && "background-image: linear-gradient(to right top, #2c2c2c, #252525, #1f1f1f, #181818, #111111);"};
-  background-color: ${p => !p.detailsEnabled ? "#111" : ""};
+  background-color: ${p => !p.detailsEnabled ? "" : ""};
   border-radius: .2rem;
   display: flex;
   flex-direction: column;

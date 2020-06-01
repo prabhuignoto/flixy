@@ -18,7 +18,7 @@ const MediaRating: React.FunctionComponent<{
       {Array.from({ length: 5 }).map((val, idx) => {
         if (ratingVal - (idx + 1) >= 0) {
           return (
-            <StarIconWrapper size={size}>
+            <StarIconWrapper size={size} key={idx}>
               <StarIcon color="#191919" />
             </StarIconWrapper>
           );
@@ -27,13 +27,13 @@ const MediaRating: React.FunctionComponent<{
           Math.abs(ratingVal - (idx + 1)) < 1
         ) {
           return (
-            <StarIconWrapper size={size}>
+            <StarIconWrapper size={size} key={idx}>
               <StarHalfIcon color="#191919" />
             </StarIconWrapper>
           );
         } else {
           return (
-            <StarIconWrapper size={size}>
+            <StarIconWrapper size={size} key={idx}>
               <StarBorderIcon color="#191919" />
             </StarIconWrapper>
           );

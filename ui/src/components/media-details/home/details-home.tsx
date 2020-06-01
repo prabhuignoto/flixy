@@ -8,7 +8,7 @@ import {
   PostersWrapper,
   DetailsHomeWrapper,
   PostersAndProduction,
-  ProductionWrapper
+  ProductionWrapper,
 } from "./details-home.styles";
 import DetailsTitle from "../title/details-title";
 import ProductionDetails from "../production/details-production";
@@ -17,6 +17,7 @@ import { responsiveProps } from "../../../effects/useResponsive";
 import Images from "../../../containers/details/images";
 import { Genre } from "../../../models/Genre";
 import { ProductionCompany } from "../../../models/ProductionCompany";
+import { SliderType } from "../../../models/Slider";
 
 interface DetailsHomeModel {
   id?: number | string;
@@ -29,8 +30,9 @@ interface DetailsHomeModel {
   genres?: Genre[];
   runtime?: number;
   imdb_id?: string;
-  resxProps?: responsiveProps,
+  resxProps?: responsiveProps;
   production_companies?: ProductionCompany[];
+  sliderType: SliderType;
 }
 
 const DetailsHome: React.FunctionComponent<DetailsHomeModel> = ({
@@ -43,40 +45,42 @@ const DetailsHome: React.FunctionComponent<DetailsHomeModel> = ({
   resxProps,
   overview,
   id,
-  production_companies
+  production_companies,
+  sliderType,
 }) => {
-  return <DetailsHomeWrapper>
-    <Box1>
-      <DetailsTitle
-        year={release_date}
-        title={title}
-        rating={vote_average}
-        genres={genres}
-        runtime={runtime}
-        lang={original_language}
-        releaseDate={release_date}
-      ></DetailsTitle>
-    </Box1>
-    <Box2>
-      <Overview resxProps={resxProps}>{overview}</Overview>
-      <CastAndCrewWrapper resxProps={resxProps}>
-        <CastAndCrewContainer resxProps={resxProps}>
-          <CastAndCrew id={id} />
-        </CastAndCrewContainer>
-        {resxProps && resxProps.isBigScreen && (
-          <PostersAndProduction resxProps={resxProps}>
-            <ProductionWrapper>
-              <ProductionDetails items={production_companies || []} />
-            </ProductionWrapper>
-            <PostersWrapper>
-              <Images movieId={id} />
-            </PostersWrapper>
-          </PostersAndProduction>
-        )}
-      </CastAndCrewWrapper>
-    </Box2>
-  </DetailsHomeWrapper>
+  return (
+    <DetailsHomeWrapper>
+      <Box1>
+        <DetailsTitle
+          year={release_date}
+          title={title}
+          rating={vote_average}
+          genres={genres}
+          runtime={runtime}
+          lang={original_language}
+          releaseDate={release_date}
+        ></DetailsTitle>
+      </Box1>
+      <Box2>
+        <Overview resxProps={resxProps}>{overview}</Overview>
+        <CastAndCrewWrapper resxProps={resxProps}>
+          <CastAndCrewContainer resxProps={resxProps}>
+            <CastAndCrew id={id} sliderType={sliderType} />
+          </CastAndCrewContainer>
+          {resxProps && resxProps.isBigScreen && (
+            <PostersAndProduction resxProps={resxProps}>
+              <ProductionWrapper>
+                <ProductionDetails items={production_companies || []} />
+              </ProductionWrapper>
+              <PostersWrapper>
+                <Images movieId={id} sliderType={sliderType} />
+              </PostersWrapper>
+            </PostersAndProduction>
+          )}
+        </CastAndCrewWrapper>
+      </Box2>
+    </DetailsHomeWrapper>
+  );
 };
-
 
 export default DetailsHome;

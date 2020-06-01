@@ -3,7 +3,7 @@ import { useApolloClient } from "@apollo/client";
 import Slider from "../../components/media-slider";
 import { popular } from "../../gqls/tv";
 import Movie from "./../../models/Movie";
-import { LoadingState } from "../../models/Slider";
+import { LoadingState, SliderType } from "../../models/Slider";
 
 const TopRated: React.FunctionComponent = () => {
   const client = useApolloClient();
@@ -76,10 +76,11 @@ const TopRated: React.FunctionComponent = () => {
               )
             : []
         }
-        title="TV -Popular"
+        title="Popular"
         fetchMore={handleFetchMore}
         totalResults={movieData.total_results ? movieData.total_results : 0}
         loadingState={LoadingState.LOADED}
+        sliderType={SliderType.tv}
       ></Slider>
     );
   }

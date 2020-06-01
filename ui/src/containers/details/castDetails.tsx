@@ -1,20 +1,23 @@
 import React from "react";
 import { useApolloClient } from "@apollo/client";
 import { Credits } from "../../models/Credits";
-import { cast } from "../../gqls/cast";
+import { cast, tvCast } from "../../gqls/cast";
 import MediaObjects from "../../components/media-objects/media-objects";
 import { MediaObject, ThumbnailSize } from "./../../models/MediaObject";
 import styled from "styled-components";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";
+import { SliderType } from "../../models/Slider";
 
 interface CastResultDetails {
   getCredits: Credits;
+  getTvCredits: Credits;
 }
 
 interface CastAndCrewModel {
   movieId?: number | string;
   title?: string;
   isCast?: boolean;
+  sliderType?: SliderType;
 }
 
 const MediaObjectsWrapper = styled.div<{ resxProps?: responsiveProps }>`
@@ -30,7 +33,7 @@ const MediaObjectsWrapper = styled.div<{ resxProps?: responsiveProps }>`
 `;
 
 const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
-  ({ movieId }) => {
+  ({ movieId, sliderType }) => {
     const client = useApolloClient();
     const [loading, setLoading] = React.useState(false);
     const [detailsData, setDetailsData] = React.useState<Credits>({ id: "" });
@@ -40,15 +43,20 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
     const executeQuery = async () => {
       setLoading(true);
       const { data } = await client.query<CastResultDetails>({
-        query: cast,
+        query: sliderType === SliderType.movies ? cast : tvCast,
         variables: {
           lang: "en-US",
           movie_id: movieId,
         },
         fetchPolicy: "cache-first",
       });
+
       if (data) {
-        setDetailsData(data.getCredits);
+        const _data =
+          sliderType === SliderType.movies
+            ? data.getCredits
+            : data.getTvCredits;
+        setDetailsData(_data);
       }
       setLoading(false);
     };

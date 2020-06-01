@@ -1,12 +1,37 @@
 import * as React from "react";
-import { useApolloClient } from "@apollo/client";
+import { useApolloClient, DocumentNode } from "@apollo/client";
 import Slider from "../../components/media-slider";
-import { popular } from "../../gqls/movies";
+import { popular, topRated, upcoming } from "../../gqls/movies";
 import Movie from "./../../models/Movie";
-import { LoadingState } from "../../models/Slider";
+import { LoadingState, SliderType } from "../../models/Slider";
 import { nanoid } from "nanoid";
 
-const TopRated: React.FunctionComponent = () => {
+export enum Category {
+  POPULAR = "POPULAR",
+  TOP_RATED = "TOP_RATED",
+  UP_COMING = "UP_COMING",
+}
+
+export interface MediaContainer {
+  category: Category;
+  title: string;
+}
+
+const getQuery: (c: Category) => DocumentNode = (category) => {
+  switch (category) {
+    case Category.POPULAR:
+      return popular;
+    case Category.TOP_RATED:
+      return topRated;
+    case Category.UP_COMING:
+      return upcoming;
+  }
+};
+
+const TopRated: React.FunctionComponent<MediaContainer> = ({
+  category,
+  title,
+}) => {
   const client = useApolloClient();
   const [movieData, setMovieData] = React.useState<{
     results: Movie[];
@@ -24,7 +49,7 @@ const TopRated: React.FunctionComponent = () => {
   const getMovies = async (page: number) => {
     setLoading(true);
     const { data } = await client.query({
-      query: popular,
+      query: getQuery(category),
       variables: {
         lang: "en-US",
         page,
@@ -35,12 +60,20 @@ const TopRated: React.FunctionComponent = () => {
     if (data) {
       let newData = [] as Movie[];
       if (movieData.results) {
-        newData = [...movieData.results, ...data.getPopular.results];
+        let newResults = [];
+        if (category === Category.POPULAR) {
+          newResults = data.getPopular;
+        } else if (category === Category.TOP_RATED) {
+          newResults = data.getTopRated;
+        } else if (category === Category.UP_COMING) {
+          newResults = data.getUpcoming;
+        }
+        newData = [...movieData.results, ...newResults.results];
+        setMovieData({
+          results: newData,
+          total_results: newResults.total_results,
+        });
       }
-      setMovieData({
-        results: newData,
-        total_results: data.getPopular.total_results,
-      });
     }
 
     setLoading(false);
@@ -54,7 +87,7 @@ const TopRated: React.FunctionComponent = () => {
     view = (
       <Slider
         movies={[]}
-        title="Popular in Movies"
+        title={title}
         fetchMore={handleFetchMore}
         totalResults={0}
         loadingState={LoadingState.LOADING}
@@ -74,11 +107,12 @@ const TopRated: React.FunctionComponent = () => {
               )
             : []
         }
-        title="Popular in Movies"
+        title={title}
         fetchMore={handleFetchMore}
         totalResults={movieData.total_results ? movieData.total_results : 0}
         loadingState={LoadingState.LOADED}
         id={nanoid()}
+        sliderType={SliderType.movies}
       ></Slider>
     );
   }

@@ -11,7 +11,7 @@ export const MediaObject = styled(animated.div)`
   margin: 0 .5rem;
 `;
 
-export const ObjectImage = styled(animated.img) <{ loaded?: boolean, noTitle?: boolean }>`
+export const ObjectImage = styled(animated.img) <{ loaded?: number, noTitle?: number }>`
   border-radius: .25rem;
   display: ${p => p.loaded ? "block" : "none"};
   margin-top: ${p => !p.noTitle ? "auto" : ""};

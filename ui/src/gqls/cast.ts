@@ -23,3 +23,27 @@ export const cast = gql`
       }
   }
 }`;
+
+export const tvCast = gql`
+  query cast($movie_id: Float!) {
+    getTvCredits(tv_id: $movie_id) {
+      id
+      cast {
+        name
+        order
+        profile_path
+        credit_id
+        id
+        character
+      }
+      crew {
+        name
+        profile_path
+        credit_id
+        id
+        job
+        department
+        job
+      }
+  }
+}`;

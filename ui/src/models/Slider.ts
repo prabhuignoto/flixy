@@ -15,4 +15,10 @@ export default interface Slider {
   totalResults: number;
   loadingState?: LoadingState;
   id?: string;
+  sliderType?: SliderType;
+}
+
+export enum SliderType {
+  movies = "movies",
+  tv = "tv"
 }

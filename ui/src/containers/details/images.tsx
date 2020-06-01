@@ -1,19 +1,21 @@
 import React from "react";
 import { useApolloClient } from "@apollo/client";
-import { images } from "../../gqls/images";
+import { images, tvImages } from "../../gqls/images";
 import MediaObjects from "../../components/media-objects/media-objects";
 import { MediaObject, ThumbnailSize } from "./../../models/MediaObject";
 import styled from "styled-components";
 import useResponsive from "../../effects/useResponsive";
 import { Images } from "../../models/Images";
-import { CardSize } from "../../models/CardSize";
+import { SliderType } from "../../models/Slider";
 
 interface ImageResultDetails {
   getImages: Images;
+  getTvImages: Images;
 }
 
 interface ImagesModel {
   movieId?: number | string;
+  sliderType: SliderType;
 }
 
 const MediaObjectsWrapper = styled.div`
@@ -24,7 +26,7 @@ const MediaObjectsWrapper = styled.div`
 `;
 
 const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
-  ({ movieId }) => {
+  ({ movieId, sliderType }) => {
     const client = useApolloClient();
     const [loading, setLoading] = React.useState(false);
     const [detailsData, setDetailsData] = React.useState<Images>();
@@ -33,7 +35,7 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
     const executeQuery = async () => {
       setLoading(true);
       const { data } = await client.query<ImageResultDetails>({
-        query: images,
+        query: sliderType === SliderType.movies ? images : tvImages,
         variables: {
           lang: "en-US",
           movie_id: movieId,
@@ -41,7 +43,9 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
         fetchPolicy: "cache-first",
       });
       if (data) {
-        setDetailsData(data.getImages);
+        const _data =
+          sliderType === SliderType.movies ? data.getImages : data.getTvImages;
+        setDetailsData(_data);
       }
       setLoading(false);
     };
@@ -79,11 +83,7 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
         </>
       );
     }
-    return (
-      <>
-        {view}
-      </>
-    );
+    return <>{view}</>;
   },
   (prev, current) => prev.movieId === current.movieId
 );

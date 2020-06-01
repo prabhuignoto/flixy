@@ -4,8 +4,6 @@ import {
   Header,
   MoviesWrapper,
   Footer,
-  TitleIcon,
-  TitleText,
   DetailsWrapper,
   Title,
 } from "./index.styles";
@@ -13,14 +11,17 @@ import Movies from "./collection";
 import { Button } from "../commons/styles";
 import { useSpring, config } from "react-spring";
 import { ArrowHeadDownIcon, ArrowHeadUpIcon } from "../icons";
-import Slider from "../../models/Slider";
+import Slider, { SliderType } from "../../models/Slider";
 import Movie from "../../models/Movie";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";
 import memoize from "memoize-one";
-import { nanoid } from "nanoid";
 
 const MovieDetails = React.lazy(() =>
   import("../../containers/details/movieDetails")
+);
+
+const TvDetails = React.lazy(() =>
+import("../../containers/details/tvDetails")
 );
 
 const getHeight = memoize((props: responsiveProps) => {
@@ -42,6 +43,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
   totalResults,
   loadingState,
   id,
+  sliderType,
 }: Slider) => {
   const [expandFull, setExpandFull] = React.useState(false);
   const firstRun = React.useRef(true);
@@ -112,9 +114,12 @@ const SliderView: React.FunctionComponent<Slider> = ({
     () => setShowDetails({ state: false, selectedMovie: 0 }),
     []
   );
-
+    
   return (
-    <WrapperContainer detailsEnabled={showDetails.selectedMovie ? 1 : 0} id={`slider-wrapper-${id}`}>
+    <WrapperContainer
+      detailsEnabled={showDetails.selectedMovie ? 1 : 0}
+      id={`slider-wrapper-${id}`}
+    >
       <div id={`extended-card-enclosure-${id}`}></div>
 
       <Header>
@@ -142,11 +147,19 @@ const SliderView: React.FunctionComponent<Slider> = ({
       {
         <DetailsWrapper>
           <React.Suspense fallback={<div></div>}>
-            <MovieDetails
-              movieId={showDetails.selectedMovie}
-              handleClose={onDetailsClose}
-              hide={!showDetails.state}
-            />
+            {sliderType === SliderType.movies ? (
+              <MovieDetails
+                movieId={showDetails.selectedMovie}
+                handleClose={onDetailsClose}
+                hide={!showDetails.state}
+              />
+            ) : (
+              <TvDetails
+                movieId={showDetails.selectedMovie}
+                handleClose={onDetailsClose}
+                hide={!showDetails.state}
+              />
+            )}
           </React.Suspense>
         </DetailsWrapper>
       }

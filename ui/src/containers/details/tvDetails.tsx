@@ -1,13 +1,13 @@
 import React from "react";
 import { useApolloClient } from "@apollo/client";
-import { details } from "../../gqls/movieDetails";
+import { details } from "../../gqls/tvDetails";
 import CardDetails from "../../components/media-details/details-main";
-import { MovieDetail } from "../../models/MovieDetails";
 import Loader from "../../components/media-loader";
 import { useSpring, config, animated } from "react-spring";
 import styled from "styled-components";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";
 import memoize from "memoize-one";
+import { TvDetail } from "../../models/TvDetail";
 import { SliderType } from "../../models/Slider";
 
 const Shimmer = React.memo(
@@ -34,8 +34,7 @@ const MovieDetails: React.FunctionComponent<{
   handleClose?: () => void;
   hide?: boolean;
 }> = ({ movieId, handleClose, hide }) => {
-  console.log("bengal");
-  const [data, setData] = React.useState<MovieDetail | null>();
+  const [data, setData] = React.useState<TvDetail | null>();
   const [loading, setLoading] = React.useState(false);
   const client = useApolloClient();
   const [mounted, setMounted] = React.useState(false);
@@ -87,7 +86,7 @@ const MovieDetails: React.FunctionComponent<{
       },
     });
 
-    setData(data.getDetails);
+    setData(data.getTvDetails);
 
     setLoading(false);
   };
@@ -97,16 +96,14 @@ const MovieDetails: React.FunctionComponent<{
   if (!loading && data && !hide) {
     const {
       poster_path,
-      title,
+      original_name: title,
       id,
       overview,
       genres,
-      runtime,
-      release_date,
+      episode_run_time :runtime,
+      first_air_date: release_date,
       original_language,
-      imdb_id,
       vote_average,
-      video,
       production_companies,
     } = data;
 
@@ -122,12 +119,10 @@ const MovieDetails: React.FunctionComponent<{
         release_date={release_date}
         original_language={original_language}
         isLoading={false}
-        imdb_id={imdb_id}
         vote_average={vote_average}
-        video={video}
         key={movieId}
         production_companies={production_companies}
-        sliderType={SliderType.movies}
+        sliderType={SliderType.tv}
       />
     );
   } else if (loading) {

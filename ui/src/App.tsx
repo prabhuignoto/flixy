@@ -1,18 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import TopRatedMovies from "./containers/movies/topRated";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import OnAir from "./containers/tv/onAir";
-import Popular from "./containers/tv/popular";
-import TopRated from "./containers/tv/topRated";
-import Trending from "./containers/movies/popular";
-import Upcoming from "./containers/movies/upComing";
 import fontLoader from "webfontloader";
 import { config } from "dotenv";
 import smoothscroll from "smoothscroll-polyfill";
-import Footer from "./components/header-footer/footer";
+import Header from "./components/header/header";
+
+const Movies = React.lazy(() => import("./Movies"));
+const Tv = React.lazy(() => import("./Tv"));
 
 config();
 
@@ -49,8 +46,9 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
       <ApolloProvider client={client}>
         <div className="App">
           <Router>
+            <Header></Header>
             <Switch>
-              <Route path="/">
+              <Route path="/movies">
                 <main
                   style={{
                     display: "flex",
@@ -58,17 +56,19 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
                     width: "100%",
                     justifyContent: "center",
                     alignItems: "center",
-                    height: "100%"
+                    height: "100%",
                   }}
                 >
-                  <TopRatedMovies />
-                  <Trending />
-                  <Upcoming />
-                  {/* <TopRated />
-                  <OnAir />
-                  <Popular /> */}
+                  <React.Suspense fallback={<></>}>
+                    <Movies />
+                  </React.Suspense>
                   <aside id="modal_container"></aside>
                 </main>
+              </Route>
+              <Route path="/tv">
+                <React.Suspense fallback={<></>}>
+                  <Tv />
+                </React.Suspense>
               </Route>
             </Switch>
           </Router>

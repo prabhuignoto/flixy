@@ -42,45 +42,45 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
       unique: true,
     });
 
-    const canShow = hideObjectWithNoImage ? hideObjectWithNoImage && path : !hideObjectWithNoImage;
+    const canShow = hideObjectWithNoImage
+      ? hideObjectWithNoImage && path
+      : !hideObjectWithNoImage;
 
-    return (
-      canShow ? (
-        <MediaObject>
-          <img
-            src={imageUrl}
-            onLoad={() => setLoadState({ loaded: true, failed: false })}
-            onError={() => setLoadState({ loaded: false, failed: true })}
-            style={{ display: "none" }}
-          />
-          {transition.map(({ item, key, props }) => {
-            if (item) {
+    return canShow ? (
+      <MediaObject>
+        <img
+          src={imageUrl}
+          onLoad={() => setLoadState({ loaded: true, failed: false })}
+          onError={() => setLoadState({ loaded: false, failed: true })}
+          style={{ display: "none" }}
+        />
+        {transition.map(({ item, key, props }) => {
+          if (item) {
+            return (
+              <ObjectImage
+                src={imageUrl}
+                loaded={loadState.loaded ? 1 : 0}
+                style={props}
+                noTitle={noTitle ? 1 : 0}
+                key={key}
+                alt={name}
+              ></ObjectImage>
+            );
+          } else {
+            if (loadState.failed) {
               return (
-                <ObjectImage
-                  src={imageUrl}
-                  loaded={loadState.loaded}
-                  style={props}
-                  noTitle={noTitle}
-                  key={key}
-                  alt={name}
-                ></ObjectImage>
+                <FallbackImage key={key}>
+                  <UserIcon color="#4b4848" />
+                </FallbackImage>
               );
             } else {
-              if (loadState.failed) {
-                return (
-                  <FallbackImage>
-                    <UserIcon color="#4b4848" />
-                  </FallbackImage>
-                );
-              } else {
-                return null;
-              }
+              return null;
             }
-          })}
-          {!noTitle && <ObjectName resx={resx}>{name}</ObjectName>}
-        </MediaObject>
-      ): null
-    );
+          }
+        })}
+        {!noTitle && <ObjectName resx={resx}>{name}</ObjectName>}
+      </MediaObject>
+    ) : null;
   },
   (prev, current) => prev.id === current.id
 );

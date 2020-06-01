@@ -16,6 +16,7 @@ import {
   RecommendedMoviesContainer,
   PanelContainer,
 } from "./details-main.styles";
+import { SliderType } from "../../models/Slider";
 
 const Reviews = React.lazy(() => import("../../containers/details/reviews"));
 const Recommended = React.lazy(() =>
@@ -23,7 +24,7 @@ const Recommended = React.lazy(() =>
 );
 const Similar = React.lazy(() => import("../../containers/movies/similar"));
 
-type CardDetail = Movie & { handleClose?: () => void; isLoading: boolean };
+type CardDetail = Movie & { handleClose?: () => void; isLoading: boolean, sliderType: SliderType };
 
 export default ({
   title,
@@ -36,7 +37,8 @@ export default ({
   isLoading,
   original_language,
   vote_average,
-  production_companies
+  production_companies,
+  sliderType,
 }: CardDetail) => {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const [show, setShow] = React.useState(false);
@@ -80,6 +82,7 @@ export default ({
                 overview={overview}
                 id={id}
                 production_companies={production_companies}
+                sliderType={sliderType}
               />
             )}
             {actvTab === tabs.recommended && (
@@ -102,7 +105,7 @@ export default ({
             )}
             {actvTab === tabs.posters && (
               <ReviewsWrapper resxProps={resxProps}>
-                <Images movieId={id} />
+                <Images movieId={id} sliderType={sliderType}/>
               </ReviewsWrapper>
             )}
             {actvTab === tabs.reviews && (

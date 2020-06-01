@@ -1653,10 +1653,10 @@
     dom-accessibility-api "^0.4.4"
     pretty-format "^25.5.0"
 
-"@testing-library/dom@^7.5.9":
-  version "7.5.9"
-  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.5.9.tgz#25bab5872ee2c446e21bceb209c8d0003cac5d40"
-  integrity sha512-S9Oy0fyusO7FNBJHNq1GwXYsSYMawk6yo8uGd6vB+mL+VdpFPEqpQD1KEFNGtHQoiSCo8+hwk7gnZ9x7af0p/g==
+"@testing-library/dom@^7.7.3":
+  version "7.7.3"
+  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.7.3.tgz#04fc0881f67ded05a017a2341c78d567c56aad0e"
+  integrity sha512-TiYhZ2NOg3zyVp7lT1vg1oKdjgVD79l7klu5ysszj6M5ut7DnCTYSFc8eNMfOymnN4c+tzF7aEePMIVomaJOgQ==
   dependencies:
     "@babel/runtime" "^7.9.6"
     aria-query "^4.0.2"
@@ -1828,10 +1828,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.4.tgz#43a63fc5edce226bed106b31b875165256271107"
   integrity sha512-k3NqigXWRzQZVBDS5D1U70A5E8Qk4Kh+Ha/x4M8Bt9pF0X05eggfnC9+63Usc9Q928hRUIpIhTQaXsZwZBl4Ew==
 
-"@types/node@^14.0.5":
-  version "14.0.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.5.tgz#3d03acd3b3414cf67faf999aed11682ed121f22b"
-  integrity sha512-90hiq6/VqtQgX8Sp0EzeIsv3r+ellbGj4URKj5j30tLlZvRUpnAe9YbYnjl3pJM93GyXU0tghHhvXHq+5rnCKA==
+"@types/node@^14.0.6":
+  version "14.0.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.6.tgz#f9e178b2da31a4b0ec60b64649e244c31ce18daf"
+  integrity sha512-FbNmu4F67d3oZMWBV6Y4MaPER+0EpE9eIYf2yaHhCWovc1dlXCZkqGX4NLHfVVr6umt20TNBdRzrNJIzIKfdbw==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"

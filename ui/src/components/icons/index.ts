@@ -24,6 +24,10 @@ import { StarBorder } from "@styled-icons/material/StarBorder";
 import { Maximize2 } from "@styled-icons/feather/Maximize2";
 import { Plus } from "@styled-icons/heroicons-solid/Plus";
 import { Github } from "@styled-icons/boxicons-logos/Github";
+import { Search } from "@styled-icons/feather/Search";
+import { Compass } from "@styled-icons/feather/Compass";
+import { CameraMovie } from "@styled-icons/boxicons-regular/CameraMovie";
+import { Tv } from "@styled-icons/boxicons-regular/Tv";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -114,6 +118,20 @@ export const ExpandIcon = styled(Expand) <{ color?: string }>`
   color: ${p => p.color};
 `;
 
-export const GithubIcon = styled(Github)<{color?: string}>`
+export const GithubIcon = styled(Github) <{ color?: string }>`
   color: ${p => p.color};
-`
+`;
+
+export const CompassIcon = styled(Compass) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+
+export const SearchIcon = styled(Search) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+export const CameraIcon = styled(CameraMovie) <{ color?: string }>`
+  color: ${p => p.color};
+`;
+export const TvIcon = styled(Tv) <{ color?: string }>`
+  color: ${p => p.color};
+`;
