@@ -7,9 +7,10 @@ import fontLoader from "webfontloader";
 import { config } from "dotenv";
 import smoothscroll from "smoothscroll-polyfill";
 import Header from "./components/header/header";
+import SearchHome from "./pages/SearchHome";
 
-const Movies = React.lazy(() => import("./Movies"));
-const Tv = React.lazy(() => import("./Tv"));
+const Movies = React.lazy(() => import("./pages/Movies"));
+const Tv = React.lazy(() => import("./pages/Tv"));
 
 config();
 
@@ -67,6 +68,11 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
                 <Route path="/tv">
                   <React.Suspense fallback={<></>}>
                     <Tv />
+                  </React.Suspense>
+                </Route>
+                <Route path="/search">
+                  <React.Suspense fallback={<></>}>
+                    <SearchHome />
                   </React.Suspense>
                 </Route>
               </Switch>

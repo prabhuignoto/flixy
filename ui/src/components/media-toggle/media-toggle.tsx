@@ -6,12 +6,12 @@ export interface MediaToggleOption {
   value: string;
   label: string;
   selected?: boolean;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 export interface MediaToggleModel {
   options: MediaToggleOption[];
-  onSelect?: (val: MediaToggleOption) => void;
+  onSelect?: (val: MediaToggleOption | null) => void;
   onSelectionStart?: () => void;
 }
 
@@ -42,6 +42,7 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
     left: 0,
     width: 0,
     config: config.default,
+    delay: 0,
     from: {
       left: -100
     }

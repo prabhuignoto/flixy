@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React from "react";
-import {ImdbIcon} from "../icons";
 
 const ImdbButtonWrapper = styled.button`
   background-color: #000;
@@ -20,7 +19,6 @@ const ImdbLink = styled.a`
 const ImdbButton: React.FunctionComponent<{ id?: string }> = ({ id }) => (
   <ImdbButtonWrapper>
     <ImdbLink href={`https://www.imdb.com/title/${id}`} target="_blank">
-      <ImdbIcon color="#fff"></ImdbIcon>
     </ImdbLink>
   </ImdbButtonWrapper>
 );

@@ -164,7 +164,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     return (
       <ObjectsContainer height={height} noBackground={noBackground}>
         
-        {showExpand && (
+        {showExpand && !disableRightNav && (
           <ExpandButton onClick={() => setExpandedView(true)}>
             <span>view all</span>
             <ChevronRightSolidIcon color="#fff"></ChevronRightSolidIcon>

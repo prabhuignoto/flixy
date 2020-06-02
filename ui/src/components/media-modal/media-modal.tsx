@@ -30,10 +30,8 @@ const MediaModal: React.FunctionComponent<{
     from: {
       opacity: 0,
     },
-    config: config.stiff
+    config: config.stiff,
   });
-
-  debugger;
 
   React.useEffect(() => {
     if (open) {

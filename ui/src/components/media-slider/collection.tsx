@@ -223,7 +223,7 @@ export default ({
             loading={loadingState === State.LOADING}
             resxProps={resxProps}
           >
-            <ChevronLeftIcon />
+            <ChevronLeftIcon color="#fff" />
           </ScrollLeft>,
           scrollButtonsPortal
         )}
@@ -234,7 +234,7 @@ export default ({
             loading={loadingState === State.LOADING}
             resxProps={resxProps}
           >
-            <ChevronRightIcon />
+            <ChevronRightIcon color="#fff" />
           </ScrollRight>,
           scrollButtonsPortal
         )}

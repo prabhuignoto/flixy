@@ -1,6 +1,6 @@
 import React from "react";
 
-import Tv, { TvCategory } from "./containers/tv";
+import Tv, { TvCategory } from "../containers/tv";
 
 export default () => (
   <>

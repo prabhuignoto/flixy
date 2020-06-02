@@ -73,7 +73,7 @@ export default class MovieResolver {
 
   @Query(returns => MovieResult)
   async getRecommendations(
-    @Arg("id") id:  number,
+    @Arg("id") id: number,
     @Arg("lang") lang: string,
     @Arg("page") page: number
   ) {
@@ -93,7 +93,7 @@ export default class MovieResolver {
 
   @Query(returns => MovieResult)
   async getSimilar(
-    @Arg("id") id:  number,
+    @Arg("id") id: number,
     @Arg("lang") lang: string,
     @Arg("page") page: number
   ) {
@@ -112,7 +112,7 @@ export default class MovieResolver {
 
   @Query(returns => MovieDetail)
   async getDetails(
-    @Arg("movie_id") movie_id:  number,
+    @Arg("movie_id") movie_id: number,
     @Arg("lang") lang: string
   ) {
     try {
@@ -129,9 +129,9 @@ export default class MovieResolver {
 
   @Query(returns => Credits)
   async getCredits(
-    @Arg("movie_id") movie_id:  number,
+    @Arg("movie_id") movie_id: number,
   ) {
-    try { 
+    try {
       const { key, url } = this;
       const response = await fetch(`${url}movie/${movie_id}/credits?api_key=${key}`);
 
@@ -145,10 +145,10 @@ export default class MovieResolver {
 
   @Query(returns => ReviewResult)
   async getReviews(
-    @Arg("movie_id") movie_id:  number,
+    @Arg("movie_id") movie_id: number,
     @Arg("page") page: number
   ) {
-    try { 
+    try {
       const { key, url } = this;
       const response = await fetch(`${url}movie/${movie_id}/reviews?api_key=${key}&page=${page}`);
       const data = await response.json();
@@ -162,10 +162,10 @@ export default class MovieResolver {
 
   @Query(returns => Images)
   async getImages(
-    @Arg("movie_id") movie_id:  number,
+    @Arg("movie_id") movie_id: number,
     @Arg("lang") lang: string
-  ){
-    try { 
+  ) {
+    try {
       const { key, url } = this;
       const response = await fetch(`${url}movie/${movie_id}/images?api_key=${key}`);
       const data = await response.json();
@@ -176,5 +176,23 @@ export default class MovieResolver {
       console.log(error);
     }
   }
+
+  @Query(returns => MovieResult)
+  async searchMovies(
+    @Arg("query") query: string,
+    @Arg("lang") lang: string,
+    @Arg("page") page: number
+  ) {
+    try {
+      const { key, url } = this;
+      const response = await fetch(`${url}search/movie?query=${query}&api_key=${key}&language=${lang}&page=${page}`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
 
 }

@@ -71,13 +71,13 @@ export const AttributesContainer = styled.div<{ resxProps?: responsiveProps }>`
     if (p.resxProps?.isTabletOrMobile) {
       return "";
     } else {
-      return "margin-left: auto;margin-right: 1rem;"
+      return "margin-left: 1rem;margin-right: 1rem;"
     }
   }}
 `;
 
 export const AttributeContainer = styled.div`
-  margin-right: .75rem;
+  margin-right: .5rem;
 `;
 
 export const GenresContainer = styled.div`

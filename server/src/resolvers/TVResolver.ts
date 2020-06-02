@@ -159,4 +159,21 @@ export default class TvResolver {
     }
   }
 
+  @Query(returns => TvResult)
+  async searchTv(
+    @Arg("query") query: string,
+    @Arg("lang") lang: string,
+    @Arg("page") page: number
+  ) {
+    try {
+      const { key, url } = this;
+      const response = await fetch(`${url}search/tv?query=${query}&api_key=${key}&language=${lang}&page=${page}`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
 }

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
 import { Minus } from "@styled-icons/feather/Minus";
 import { ChevronDown } from "@styled-icons/feather/ChevronDown";
 import { ChevronUp } from "@styled-icons/feather/ChevronUp";
@@ -26,117 +25,53 @@ import { Plus } from "@styled-icons/heroicons-solid/Plus";
 import { Github } from "@styled-icons/boxicons-logos/Github";
 import { Search } from "@styled-icons/feather/Search";
 import { Compass } from "@styled-icons/feather/Compass";
-import { CameraMovie } from "@styled-icons/boxicons-regular/CameraMovie";
-import { Tv } from "@styled-icons/boxicons-regular/Tv";
+import { Video } from "@styled-icons/feather/Video";
+import { Tv } from "@styled-icons/feather/Tv";
 import { ChevronRight as ChevronRightSolid } from "@styled-icons/material-rounded/ChevronRight";
+import { HelpCircle } from "@styled-icons/feather/HelpCircle";
+import { StyledIcon } from '@styled-icons/styled-icon';
+import { ArrowRight } from "@styled-icons/feather/ArrowRight";
 
 export const MinusIcon = styled(Minus)`
   color: red;
 `;
 
-export const ArrowDownIcon = styled(ChevronDown) <{ color?: string }>`
-  color: ${p => p.color ? p.color : "#cc0000"};
-`;
-
-export const ArrowUpIcon = styled(ChevronUp) <{ color?: string }>`
-  color: ${p => p.color ? p.color : "#cc0000"};
-`;
-
-export const ChevronLeftIcon = styled(ChevronLeft) <{ color?: string }>`
-  color: ${p => p.color ? p.color : "#bdbdbd"};
-`;
-export const ChevronRightIcon = styled(ChevronRight) <{ color?: string }>`
-  color: ${p => p.color ? p.color : "#bdbdbd"};
-`;
-
-export const ChevronRightSolidIcon = styled(ChevronRightSolid) <{ color?: string }>`
-  color: ${p => p.color ? p.color : "#bdbdbd"};
-`;
-
-export const CloseIcon = styled(X) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
+export const ArrowDownIcon = withStyled(ChevronDown);
+export const ArrowUpIcon = withStyled(ChevronUp);
+export const ChevronLeftIcon = withStyled(ChevronLeft);
+export const ChevronRightIcon = withStyled(ChevronRight);
+export const ChevronRightSolidIcon = withStyled(ChevronRightSolid);
+export const CloseIcon = withStyled(X);
 export const CheckIcon = styled(Check)`
   color: #fff;
 `;
-
 export const ClockIcon = styled(Clock)`
   color: #000;
 `;
+export const ImageIcon = withStyled(Image);
+export const UserIcon = withStyled(User);
+export const HashIcon = withStyled(Hash);
+export const CrownIcon = withStyled(Crown);
+export const MenuIcon = withStyled(Menu);
+export const ArrowHeadDownIcon = withStyled(ArrowIosDownwardOutline);
+export const ArrowHeadUpIcon = withStyled(ArrowIosUpwardOutline);
+export const ViewIcon = withStyled(Expand);
+export const StarHalfIcon = withStyled(StarHalf);
+export const StarIcon = withStyled(Star);
+export const StarBorderIcon = withStyled(StarBorder);
+export const Maximize2Icon = withStyled(Maximize2);
+export const PlusIcon = withStyled(Plus);
+export const ExpandIcon = withStyled(Expand);
+export const GithubIcon = withStyled(Github);
+export const CompassIcon = withStyled(Compass);
+export const SearchIcon = withStyled(Search);
+export const CameraIcon = withStyled(Video);
+export const TvIcon = withStyled(Tv);
+export const HelpCircleIcon = withStyled(HelpCircle);
+export const ArrowRightIcon = withStyled(ArrowRight);
 
-export const ImageIcon = styled(Image) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const UserIcon = styled(User) <{ color?: string }>``;
-
-export const ImdbIcon = styled(Imdb) <{ color?: string }>`
-  color: ${p => p.color}
-`;
-
-export const HashIcon = styled(Hash) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const CrownIcon = styled(Crown) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const MenuIcon = styled(Menu) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const ArrowHeadDownIcon = styled(ArrowIosDownwardOutline) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const ArrowHeadUpIcon = styled(ArrowIosUpwardOutline) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const ViewIcon = styled(Expand) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const StarHalfIcon = styled(StarHalf) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const StarIcon = styled(Star) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const StarBorderIcon = styled(StarBorder) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const Maximize2Icon = styled(Maximize2) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const PlusIcon = styled(Plus) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const ExpandIcon = styled(Expand) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const GithubIcon = styled(Github) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const CompassIcon = styled(Compass) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-
-export const SearchIcon = styled(Search) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-export const CameraIcon = styled(CameraMovie) <{ color?: string }>`
-  color: ${p => p.color};
-`;
-export const TvIcon = styled(Tv) <{ color?: string }>`
-  color: ${p => p.color};
-`;
+function withStyled(icon: StyledIcon) {
+  return styled(icon) <{ color?: string }>`
+    color: ${p => p.color};
+  `;
+}

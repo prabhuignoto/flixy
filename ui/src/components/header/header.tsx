@@ -4,7 +4,13 @@ import {
   SearchAndDiscover,
   SearchSettingToggle,
 } from "./header.styles";
-import { SearchIcon, CompassIcon, CameraIcon, TvIcon } from "../icons";
+import {
+  SearchIcon,
+  CompassIcon,
+  CameraIcon,
+  TvIcon,
+  HelpCircleIcon,
+} from "../icons";
 import MediaToggle, { MediaToggleOption } from "../media-toggle/media-toggle";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -22,6 +28,7 @@ const Header: React.FunctionComponent = () => {
     { value: "tv", label: "television", icon: <TvIcon /> },
     { value: "search", label: "search", icon: <SearchIcon /> },
     { value: "discover", label: "discover", icon: <CompassIcon /> },
+    { value: "help", label: "help", icon: <HelpCircleIcon /> },
   ];
 
   React.useEffect(() => {
@@ -39,9 +46,11 @@ const Header: React.FunctionComponent = () => {
     });
   }, []);
 
-  const handleSelection = (val: MediaToggleOption) => {
+  const handleSelection = (val: MediaToggleOption | null) => {
     if (val) {
       history.push(`/${val.value}`);
+    } else {
+      history.push("/dummy",)
     }
   };
 

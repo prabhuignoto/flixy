@@ -1,6 +1,6 @@
 import React from "react";
 
-import Movies, { Category } from "./containers/movies";
+import Movies, { Category } from "../containers/movies";
 
 // import Trending from "./containers/movies/popular";
 // import Upcoming from "./containers/movies/upComing";

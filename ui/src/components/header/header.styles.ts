@@ -14,16 +14,13 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const SearchAndDiscover = styled.div`
-  /* width: 50%; */
   height: 4rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  /* border: 1px solid red; */
   padding: .25rem;
 `;
 
 export const SearchSettingToggle = styled.div`
-  /* width: 200px; */
   height: 2.5rem;
 `;

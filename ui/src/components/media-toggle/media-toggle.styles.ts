@@ -17,30 +17,32 @@ export const Option = styled.div<{ selected?: boolean }>`
   display: flex;
   flex: 1;
   font-family: Poppins;
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 1.2rem;
+  font-weight: 300;
   height: 100%;
   justify-content: center;
-  margin: 0 1rem;
+  margin: 0 .5rem;
   padding: 0 .5rem;
-  text-transform: uppercase;
+  text-transform: capitalize;
+  color: #ffff;
+  user-select: none;
   z-index: 1;
   & svg {
-    height: 80%;
+    height: 70%;
   }
   
   & span {
     align-items: center;
     display: flex;
     justify-content: center;
-    margin-left: .35rem;
+    margin-left: .5rem;
   }
   `;
 
 export const Highlighter = styled(animated.span) <{ left?: number }>`
   background-color: #cc0000;
   border-radius: .25rem;
-  box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.2);
+  box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.4);
   display: block;
   height: 100%;
   left: ${p => p.left}px;
