@@ -10,7 +10,7 @@ import {
   GenresContainer,
   AttributeContainer,
   AttributesContainer,
-  MediaRatingWrapper
+  MediaRatingWrapper,
 } from "./details-title.style";
 import DetailsRating from "../rating/details-rating";
 import { format } from "date-fns";
@@ -62,8 +62,7 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
               size={RatingSize.large}
             ></MediaRating>
           </MediaRatingWrapper>
-        </TitleRow1>
-        <TitleRow2>
+          {/* <TitleRow2> */}
           <GenresContainer>
             {genres && <Genres items={genres} size={GenreSize.large} />}
             {!resxProps.isTabletOrMobile && (
@@ -92,7 +91,8 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
               </AttributesContainer>
             )}
           </GenresContainer>
-        </TitleRow2>
+        </TitleRow1>
+        {/* </TitleRow2> */}
       </Title>
     </TitleWrapper>
   );

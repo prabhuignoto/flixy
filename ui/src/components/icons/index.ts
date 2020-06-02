@@ -28,6 +28,7 @@ import { Search } from "@styled-icons/feather/Search";
 import { Compass } from "@styled-icons/feather/Compass";
 import { CameraMovie } from "@styled-icons/boxicons-regular/CameraMovie";
 import { Tv } from "@styled-icons/boxicons-regular/Tv";
+import { ChevronRight as ChevronRightSolid } from "@styled-icons/material-rounded/ChevronRight";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -45,6 +46,10 @@ export const ChevronLeftIcon = styled(ChevronLeft) <{ color?: string }>`
   color: ${p => p.color ? p.color : "#bdbdbd"};
 `;
 export const ChevronRightIcon = styled(ChevronRight) <{ color?: string }>`
+  color: ${p => p.color ? p.color : "#bdbdbd"};
+`;
+
+export const ChevronRightSolidIcon = styled(ChevronRightSolid) <{ color?: string }>`
   color: ${p => p.color ? p.color : "#bdbdbd"};
 `;
 

@@ -26,7 +26,7 @@ const ProductionDetails: React.FunctionComponent<ProductionDetailsModel> = ({
       <MediaObjects
         items={objects}
         noTitle
-        noBackground
+        // noBackground
         height={isBigScreen ? 200 : 100}
         itemSize={isBigScreen ? 250 : 100}
         id="production-media"

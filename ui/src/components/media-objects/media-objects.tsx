@@ -11,7 +11,7 @@ import {
   ObjectHeader,
   ExpandButton,
 } from "./media-objects.styles";
-import { ChevronLeftIcon, ChevronRightIcon, PlusIcon } from "./../icons/index";
+import { ChevronLeftIcon, ChevronRightIcon, ChevronRightSolidIcon } from "./../icons/index";
 import withExtendedInfo from "../HOCS/withExtendInfo";
 import Card from "../media-card/card";
 import { nanoid } from "nanoid";
@@ -167,7 +167,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
         {showExpand && (
           <ExpandButton onClick={() => setExpandedView(true)}>
             <span>view all</span>
-            <ChevronRightIcon color="#fff"></ChevronRightIcon>
+            <ChevronRightSolidIcon color="#fff"></ChevronRightSolidIcon>
           </ExpandButton>
         )}
 

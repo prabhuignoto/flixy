@@ -56,11 +56,20 @@ const SliderView: React.FunctionComponent<Slider> = ({
     selectedMovie: 0,
   });
   const resxProps = useResponsive();
+
   const [props, setProps] = useSpring(() => ({
     height: `${getHeight(resxProps)}px`,
     config: config.default,
     delay: 0,
   }));
+
+  const wrapperProps = useSpring({
+    opacity:1,
+    from: {
+      opacity: 0
+    },
+    config: config.default
+  })
 
   const handleExpandFull = React.useCallback(() => setExpandFull(!expandFull), [
     expandFull,
@@ -117,6 +126,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
     
   return (
     <WrapperContainer
+      style={wrapperProps}
       detailsEnabled={showDetails.selectedMovie ? 1 : 0}
       id={`slider-wrapper-${id}`}
     >

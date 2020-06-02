@@ -42,7 +42,9 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
     left: 0,
     width: 0,
     config: config.default,
-    immediate: true,
+    from: {
+      left: -100
+    }
   }));
 
   React.useEffect(() => {

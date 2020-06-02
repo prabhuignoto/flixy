@@ -55,6 +55,7 @@ export const TitleRow1 = styled.div`
   display: flex;
   width: 100%;
   height: 3rem;
+  flex-wrap: wrap;
 `;
 
 export const TitleRow2 = styled.div`
@@ -84,6 +85,7 @@ export const GenresContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: .25rem;
+  margin-left: 2rem;
 `;
 
 export const MediaRatingWrapper = styled.div`
