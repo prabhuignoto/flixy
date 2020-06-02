@@ -99,12 +99,14 @@ const RelatedMedia: React.FunctionComponent<RelatedMediaModel> = React.memo(
           release_date,
           overview,
           vote_average,
+          original_name,
+          first_air_date
         }) => ({
           id: id,
-          name: original_title || "",
+          name: original_title || original_name || "",
           overview,
           path: poster_path || "",
-          release_date,
+          release_date: release_date || first_air_date || "",
           visible: false,
           vote_average,
         })

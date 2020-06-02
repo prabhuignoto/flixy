@@ -62,9 +62,8 @@ export const recommendedTv = gql`
       total_pages
       results {
         id
-        title
-        original_title
-        release_date
+        original_name
+        first_air_date
         poster_path
         vote_average,
         overview
@@ -81,9 +80,8 @@ export const similarTv = gql`
       total_pages
       results {
         id
-        title
-        original_title
-        release_date
+        original_name
+        first_air_date
         poster_path
         vote_average,
         overview

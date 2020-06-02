@@ -7,10 +7,12 @@ export default interface Movie {
   id: number | string;
   original_language?: string;
   original_title?: string;
+  original_name?: string;
   overview?: string;
   popularity?: number;
   poster_path?: string;
   release_date?: string;
+  first_air_date?: string;
   title?: string;
   video?: boolean;
   vote_average?: number;
