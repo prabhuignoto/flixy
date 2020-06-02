@@ -1,5 +1,10 @@
 import React, { MouseEvent } from "react";
-import { MediaToggleWrapper, Option, Highlighter } from "./media-toggle.styles";
+import {
+  MediaToggleWrapper,
+  Option,
+  Highlighter,
+  OptionLabel,
+} from "./media-toggle.styles";
 import { useSpring, config } from "react-spring";
 
 export interface MediaToggleOption {
@@ -39,28 +44,29 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
   const defaultRef = React.useRef<HTMLDivElement>(null);
 
   const [props, setProps] = useSpring(() => ({
-    left: 0,
+    left: -100,
     width: 0,
+    opacity: 0,
     config: config.default,
     delay: 0,
-    from: {
-      left: -100
-    }
   }));
 
   React.useEffect(() => {
-    if (defaultRef && defaultRef.current) {
-      const { offsetLeft, offsetWidth } = defaultRef.current;
-      setOpts({
-        items: opts.items,
-        highlighterOffset: offsetLeft,
-      });
+    setTimeout(() => {
+      if (defaultRef && defaultRef.current) {
+        const { offsetLeft, offsetWidth } = defaultRef.current;
+        setOpts({
+          items: opts.items,
+          highlighterOffset: offsetLeft,
+        });
 
-      setProps({
-        left: offsetLeft,
-        width: offsetWidth,
-      });
-    }
+        setProps({
+          left: offsetLeft,
+          width: offsetWidth,
+          opacity: 1
+        });
+      }
+    }, 250);
   }, []);
 
   const handleToggle = (
@@ -102,7 +108,7 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
           ref={option.selected ? defaultRef : null}
         >
           {option.icon}
-          <span>{option.label}</span>
+          <OptionLabel marginLess={!option.icon}>{option.label}</OptionLabel>
         </Option>
       ))}
     </MediaToggleWrapper>

@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, KeyboardEvent } from "react";
 import {
   SearchBoxWrapper,
   SearchInput,
@@ -27,6 +27,12 @@ const MediaSearchBox: React.FunctionComponent<MediaSearchboxModel> = ({
     }
   };
 
+  const handleEnter = (event: KeyboardEvent) => {
+    if (event.which === 13) {
+      onSearch && onSearch(inputState);
+    }
+  };
+
   return (
     <SearchBoxWrapper>
       <SearchIconWrapper>
@@ -35,6 +41,7 @@ const MediaSearchBox: React.FunctionComponent<MediaSearchboxModel> = ({
       <SearchInput
         value={inputState}
         onChange={handleChange}
+        onKeyPress={handleEnter}
         type="text"
       ></SearchInput>
       {inputState && (

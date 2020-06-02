@@ -14,30 +14,30 @@ export const MediaToggleWrapper = styled.div`
 
 export const Option = styled.div<{ selected?: boolean }>`
   align-items: center;
+  color: #ffff;
   display: flex;
   flex: 1;
   font-family: Poppins;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 300;
   height: 100%;
   justify-content: center;
   margin: 0 .5rem;
   padding: 0 .5rem;
   text-transform: capitalize;
-  color: #ffff;
   user-select: none;
   z-index: 1;
   & svg {
     height: 70%;
   }
-  
-  & span {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin-left: .5rem;
-  }
   `;
+
+export const OptionLabel = styled.div<{ marginLess?: boolean }>`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-left: ${p => p.marginLess ? "" : ".25rem"}
+`;
 
 export const Highlighter = styled(animated.span) <{ left?: number }>`
   background-color: #cc0000;

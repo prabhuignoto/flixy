@@ -1,4 +1,4 @@
-import Movie from "./Movie";
+import Movie from "./Media";
 
 export enum LoadingState {
   LOADING = "LOADING",

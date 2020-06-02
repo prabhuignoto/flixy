@@ -1,35 +1,32 @@
 import React from "react";
 import { useApolloClient, DocumentNode } from "@apollo/client";
-import { recommended, similar } from "../../gqls/movies";
-import { recommendedTv, similarTv } from "../../gqls/tv";
+import { searchMovies } from "../../gqls/movies";
+import { searchTv } from "../../gqls/tv";
 import Movie from "../../models/Media";
+import { MediaType, SearchContainer as SearchContainerModel } from "../models";
 import { MediaObject } from "../../models/MediaObject";
-import MediaRelated from "../../components/media-related/media-related";
-import { MediaType, RelatedMediaType } from "../models";
+import MediaGrid from "../../components/media-objects/media-grid";
+import styled from "styled-components";
+import { nanoid } from "nanoid";
 
-const getQuery: (t: MediaType, relType: RelatedMediaType) => DocumentNode = (
-  type,
-  relType
-) => {
+const getQuery: (m: MediaType) => DocumentNode = (type) => {
   switch (type) {
     case MediaType.MOVIES:
-      return relType === RelatedMediaType.RECOMMENDED ? recommended : similar;
+      return searchMovies;
     case MediaType.TV:
-      return relType === RelatedMediaType.RECOMMENDED
-        ? recommendedTv
-        : similarTv;
+      return searchTv;
   }
 };
 
-export interface RelatedMediaModel {
-  type: MediaType;
-  relatedMediaType: RelatedMediaType;
-  id: number | string;
-  title?: string;
-}
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
 
-const RelatedMedia: React.FunctionComponent<RelatedMediaModel> = React.memo(
-  ({ id, type, relatedMediaType, title }) => {
+const SearchContainer: React.FunctionComponent<SearchContainerModel> = 
+  ({ query, type }) => {
     const client = useApolloClient();
     const [movieData, setMovieData] = React.useState<{
       results: Movie[];
@@ -38,34 +35,33 @@ const RelatedMedia: React.FunctionComponent<RelatedMediaModel> = React.memo(
       results: [],
       total_results: 0,
     });
+    const gridRef = React.useRef(null);
     const [loading, setLoading] = React.useState(false);
 
     React.useEffect(() => {
-      executeQuery();
-    }, []);
+      // setMovieData({ results: [], total_results: 0 });
+      getResults(1);
+    }, [query]);
 
-    const executeQuery = async () => {
+    const getResults = async (page: number) => {
       setLoading(true);
       const { data } = await client.query({
-        query: getQuery(type, relatedMediaType),
+        query: getQuery(type),
         variables: {
           lang: "en-US",
-          id: id,
-          page: 1,
+          page,
+          query,
         },
       });
+
       if (data) {
         let newData = [] as Movie[];
         if (movieData.results) {
           let newResults = [];
-          if (relatedMediaType === RelatedMediaType.SIMILAR) {
-            newResults =
-              type === MediaType.MOVIES ? data.getSimilar : data.getTvSimilar;
-          } else if (relatedMediaType === RelatedMediaType.RECOMMENDED) {
-            newResults =
-              type === MediaType.MOVIES
-                ? data.getRecommendations
-                : data.getTvRecommendations;
+          if (type === MediaType.MOVIES) {
+            newResults = data.searchMovies;
+          } else if (type === MediaType.TV) {
+            newResults = data.searchTv;
           }
           newData = [...movieData.results, ...newResults.results];
           setMovieData({
@@ -74,14 +70,17 @@ const RelatedMedia: React.FunctionComponent<RelatedMediaModel> = React.memo(
           });
         }
       }
+
       setLoading(false);
     };
+
+    const handleFetchMore = (page: number) => getResults(page);
 
     let view = null;
 
     if (loading) {
       // view = <Loader size={LoaderSize.large} />;
-    } else if (movieData && movieData.results.length) {
+    } else if (!loading && movieData && movieData.results.length) {
       const data: MediaObject[] = movieData.results.map(
         ({
           original_title,
@@ -102,12 +101,14 @@ const RelatedMedia: React.FunctionComponent<RelatedMediaModel> = React.memo(
           vote_average,
         })
       );
-      view = <MediaRelated items={data} id={id} title={title} />;
+      view = <MediaGrid items={data} itemHeight={380} itemWidth={250} />;
     }
 
-    return <div style={{ height: "100%", position: "relative" }}>{view}</div>;
-  },
-  (prev, cur) => prev.id === cur.id
-);
+    return (
+      <Wrapper ref={gridRef}>
+        {view}
+      </Wrapper>
+    );
+  };
 
-export default RelatedMedia;
+export default SearchContainer;

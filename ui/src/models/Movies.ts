@@ -1,4 +1,4 @@
-import Movie from "./Movie";
+import Movie from "./Media";
 import { LoadingState } from "./Slider";
 
 export interface Movies {

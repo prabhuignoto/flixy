@@ -1,6 +1,6 @@
 import React from "react";
 import { CardSize } from "../../models/CardSize";
-import Movie from "../../models/Movie";
+import Movie from "../../models/Media";
 import { MoviesContainer } from "./movies.style";
 import Card from "../media-card/card";
 import useResponsive from "../../effects/useResponsive";

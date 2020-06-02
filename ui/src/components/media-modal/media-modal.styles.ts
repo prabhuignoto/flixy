@@ -24,8 +24,8 @@ export const MediaModalWrapper = styled(animated.div) <{ resx?: responsiveProps 
       `;
     } else if (p.resx?.isDesktopOrLaptop) {
       return `
-        max-width: 1200px;
-        min-width: 900px;
+        max-width: 900px;
+        min-width: 850px;
       `;
     } else {
       return `
@@ -38,7 +38,7 @@ export const MediaModalWrapper = styled(animated.div) <{ resx?: responsiveProps 
     if (p.resx?.isBigScreen) {
       return `min-height: 900px`;
     } else {
-      return `min-height: 750px`
+      return `min-height: 700px`
     }
   }};
 `;

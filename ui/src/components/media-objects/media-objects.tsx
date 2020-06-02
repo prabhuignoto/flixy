@@ -179,7 +179,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           >
             <MediaGrid
               items={items}
-              itemHeight={resxProps.isBigScreen ? 250 : 180}
+              itemHeight={resxProps.isBigScreen ? 250 : 160}
               itemWidth={resxProps.isBigScreen ? 180 : 130}
             ></MediaGrid>
           </MediaModal>

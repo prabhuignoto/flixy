@@ -94,3 +94,22 @@ export const similar = gql`
     }
   }
 `;
+
+export const searchMovies = gql`
+  query search($lang: String!, $page: Float!, $query: String!) {
+    searchMovies(lang: $lang, page: $page, query: $query) {
+      page
+      total_results
+      total_pages
+      results {
+        id
+        title
+        original_title
+        release_date
+        poster_path
+        vote_average
+        overview
+      }
+    }
+  }
+`;

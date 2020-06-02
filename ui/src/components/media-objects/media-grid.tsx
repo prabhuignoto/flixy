@@ -93,11 +93,7 @@ const MediaGrid: React.FunctionComponent<MediaGridModel> = ({
     view = null;
   }
 
-  return (
-    <MediaGridWrapper ref={wrapperRef}>
-      {view}
-    </MediaGridWrapper>
-  );
+  return <MediaGridWrapper ref={wrapperRef}>{view}</MediaGridWrapper>;
 };
 
 export default MediaGrid;

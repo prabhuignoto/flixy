@@ -46,6 +46,8 @@ export const TitleText = styled.span<{resxProps: responsiveProps}>`
   display: flex;
   height: 100%;
   align-items: center;
+  font-family: Poppins;
+  font-weight: 500;
   font-size: ${p => p.resxProps.isBigScreen ? "1.25rem" : "1rem"};
   color: #191919;
 `;

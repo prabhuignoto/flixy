@@ -1,5 +1,5 @@
 import * as React from "react";
-import Movie from "../../models/Movie";
+import Movie from "../../models/Media";
 import {
   CardContainer,
   CardCheckedWrapper,

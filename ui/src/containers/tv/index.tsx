@@ -2,7 +2,7 @@ import * as React from "react";
 import { useApolloClient, DocumentNode } from "@apollo/client";
 import Slider from "../../components/media-slider";
 import { onAir, popular, topRated } from "../../gqls/tv";
-import Movie from "./../../models/Movie";
+import Movie from "../../models/Media";
 import { LoadingState, SliderType } from "../../models/Slider";
 import { nanoid } from "nanoid";
 

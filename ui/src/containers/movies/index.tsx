@@ -2,20 +2,10 @@ import * as React from "react";
 import { useApolloClient, DocumentNode } from "@apollo/client";
 import Slider from "../../components/media-slider";
 import { popular, topRated, upcoming } from "../../gqls/movies";
-import Movie from "./../../models/Movie";
+import Movie from "../../models/Media";
 import { LoadingState, SliderType } from "../../models/Slider";
 import { nanoid } from "nanoid";
-
-export enum Category {
-  POPULAR = "POPULAR",
-  TOP_RATED = "TOP_RATED",
-  UP_COMING = "UP_COMING",
-}
-
-export interface MediaContainer {
-  category: Category;
-  title: string;
-}
+import { Category, MediaContainer } from "../models";
 
 const getQuery: (c: Category) => DocumentNode = (category) => {
   switch (category) {

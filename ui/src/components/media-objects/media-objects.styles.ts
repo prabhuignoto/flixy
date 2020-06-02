@@ -14,7 +14,6 @@ export const ObjectsContainer = styled.section<{ height?: number, noBackground?:
   user-select: none;
   width: 100%;
   position: relative;
-  /* box-shadow:inset  0 0 12px 1px rgba(0,0,0,0.1); */
 `;
 
 export const ObjectsWrapper = styled.ul<{
@@ -55,7 +54,7 @@ export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize, resx
     if (p.resx?.isBigScreen) {
       return "5%";
     } else if (p.resx?.isDesktopOrLaptop) {
-      return "6%";
+      return "7%";
     } else {
       return "6%";
     }
@@ -92,7 +91,7 @@ export const MediaObjectContainer = styled(animated.div)`
 export const ExpandButton = styled.div`
   height: 1.5rem;
   position: absolute;
-  top: -.5rem;
+  top: -.75rem;
   right: 4rem;
   display: flex;
   align-items: center;

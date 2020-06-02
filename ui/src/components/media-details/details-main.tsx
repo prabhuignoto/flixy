@@ -2,7 +2,7 @@ import * as React from "react";
 import DetailsHome from "./home/details-home";
 import Images from "../../containers/details/images";
 import Loader from "../media-loader";
-import Movie from "../../models/Movie";
+import Movie from "../../models/Media";
 import Panel from "./panel/panel";
 import useResponsive from "../../effects/useResponsive";
 import { CloseIcon, MenuIcon } from "../icons/index";
@@ -17,7 +17,7 @@ import {
   PanelContainer,
 } from "./details-main.styles";
 import { SliderType } from "../../models/Slider";
-import { RelatedMediaType, MediaType } from "../../containers/related";
+import { RelatedMediaType, MediaType } from "../../containers/models";
 
 const Reviews = React.lazy(() => import("../../containers/details/reviews"));
 const Recommended = React.lazy(() => import("../../containers/related"));

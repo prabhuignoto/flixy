@@ -89,3 +89,21 @@ export const similarTv = gql`
     }
   }
 `;
+
+export const searchTv = gql`
+  query search($lang: String!, $page: Float!, $query: String!) {
+    searchTv(lang: $lang, page: $page, query: $query) {
+      page
+      total_results
+      total_pages
+      results {
+        id
+        original_name
+        first_air_date
+        poster_path
+        vote_average
+        overview
+      }
+    }
+  }
+`;

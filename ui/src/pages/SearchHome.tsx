@@ -3,12 +3,23 @@ import MediaSearchBox from "../components/media-search-box/media-searchbox";
 import styled from "styled-components";
 import useResponsive, { responsiveProps } from "../effects/useResponsive";
 import MediaToggle from "../components/media-toggle/media-toggle";
+import SearchContainer from "../containers/search";
+import { MediaType } from "../containers/models";
 
 const SearchHomeWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
+`;
+
+const SearchResultsWrapper = styled.div`
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const MediaSearchBoxWrapper = styled.div<{ resx?: responsiveProps }>`
@@ -28,11 +39,16 @@ const SearchOptionToggle = styled.div`
 
 const SearchHome: React.FunctionComponent<{}> = () => {
   const props = useResponsive();
+  const [term, setTerm] = React.useState("");
+
+  const onSearch = React.useCallback((val: string) => {
+    setTerm(val);
+  }, []);
 
   return (
     <SearchHomeWrapper>
       <MediaSearchBoxWrapper resx={props}>
-        <MediaSearchBox onSearch={() => {}}></MediaSearchBox>
+        <MediaSearchBox onSearch={onSearch}></MediaSearchBox>
         <SearchOptionToggle>
           <MediaToggle
             options={[
@@ -45,6 +61,11 @@ const SearchHome: React.FunctionComponent<{}> = () => {
           />
         </SearchOptionToggle>
       </MediaSearchBoxWrapper>
+      <SearchResultsWrapper>
+        {term && (
+          <SearchContainer type={MediaType.MOVIES} query={term} key={term} />
+        )}
+      </SearchResultsWrapper>
     </SearchHomeWrapper>
   );
 };

@@ -12,7 +12,7 @@ import { Button } from "../commons/styles";
 import { useSpring, config } from "react-spring";
 import { ArrowHeadDownIcon, ArrowHeadUpIcon } from "../icons";
 import Slider, { SliderType } from "../../models/Slider";
-import Movie from "../../models/Movie";
+import Movie from "../../models/Media";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";
 import memoize from "memoize-one";
 

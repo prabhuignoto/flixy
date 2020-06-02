@@ -4,7 +4,7 @@ import { ScrollLeft, ScrollRight, MoviesWrapper } from "./collection.style";
 import { CardSize } from "../../models/CardSize";
 import { Movies as MoviesModel } from "../../models/Movies";
 import { ChevronLeftIcon, ChevronRightIcon } from "../icons";
-import Movie from "./../../models/Movie";
+import Movie from "../../models/Media";
 import { LoadingState as State } from "../../models/Slider";
 import useVirtual from "./../../effects/useVirtual";
 import { Configs } from "./../../effects/useVirtual";
