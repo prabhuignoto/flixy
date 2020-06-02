@@ -33,6 +33,8 @@ const MediaModal: React.FunctionComponent<{
     config: config.stiff
   });
 
+  debugger;
+
   React.useEffect(() => {
     if (open) {
       setTimeout(() => modalRef.current && modalRef.current.focus(), 250);

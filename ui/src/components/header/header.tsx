@@ -6,10 +6,38 @@ import {
 } from "./header.styles";
 import { SearchIcon, CompassIcon, CameraIcon, TvIcon } from "../icons";
 import MediaToggle, { MediaToggleOption } from "../media-toggle/media-toggle";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const Header: React.FunctionComponent = () => {
   const history = useHistory();
+  const location = useLocation();
+
+  const [showLinks, setShowLinks] = React.useState({
+    state: false,
+    options: [] as MediaToggleOption[],
+  });
+
+  const options: MediaToggleOption[] = [
+    { value: "movies", label: "movies", icon: <CameraIcon /> },
+    { value: "tv", label: "television", icon: <TvIcon /> },
+    { value: "search", label: "search", icon: <SearchIcon /> },
+    { value: "discover", label: "discover", icon: <CompassIcon /> },
+  ];
+
+  React.useEffect(() => {
+    setShowLinks({
+      state: true,
+      options: options.map<MediaToggleOption>((opt) => {
+        if (location.pathname.replace(/\//g, "") === opt.value) {
+          return Object.assign({}, opt, {
+            selected: true,
+          });
+        } else {
+          return opt;
+        }
+      }),
+    });
+  }, []);
 
   const handleSelection = (val: MediaToggleOption) => {
     if (val) {
@@ -21,15 +49,12 @@ const Header: React.FunctionComponent = () => {
     <HeaderWrapper>
       <SearchAndDiscover>
         <SearchSettingToggle>
-          <MediaToggle
-            onSelect={handleSelection}
-            options={[
-              { value: "movies", label: "movies", icon: <CameraIcon /> },
-              { value: "tv", label: "tv", icon: <TvIcon /> },
-              { value: "search", label: "search", icon: <SearchIcon /> },
-              { value: "discover", label: "discover", icon: <CompassIcon /> },
-            ]}
-          ></MediaToggle>
+          {showLinks.state && (
+            <MediaToggle
+              onSelect={handleSelection}
+              options={showLinks.options}
+            ></MediaToggle>
+          )}
         </SearchSettingToggle>
       </SearchAndDiscover>
     </HeaderWrapper>

@@ -3,7 +3,6 @@ import { CardSize } from "../../models/CardSize";
 import Movie from "../../models/Movie";
 import { MoviesContainer } from "./movies.style";
 import Card from "../media-card/card";
-import { useMediaQuery } from "react-responsive";
 import useResponsive from "../../effects/useResponsive";
 import withExtendedInfo, {
   CardExtendCustomModel,

@@ -120,4 +120,43 @@ export default class TvResolver {
     }
   }
 
+  @Query(returns => TvResult)
+  async getTvRecommendations(
+    @Arg("id") id:  number,
+    @Arg("lang") lang: string,
+    @Arg("page") page: number
+  ) {
+    try {
+      const { key, url } = this;
+      const response = await fetch(`${url}tv/${id}/recommendations?api_key=${key}&language=${lang}&page=${page}`);
+
+      const data = await response.json();
+
+      return data;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  @Query(returns => TvResult)
+  async getTvSimilar(
+    @Arg("id") id:  number,
+    @Arg("lang") lang: string,
+    @Arg("page") page: number
+  ) {
+    try {
+      const { key, url } = this;
+      const response = await fetch(`${url}tv/${id}/similar?api_key=${key}&language=${lang}&page=${page}`);
+
+      const data = await response.json();
+
+      return data;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 }

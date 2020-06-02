@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import fontLoader from "webfontloader";
 import { config } from "dotenv";
@@ -47,30 +47,31 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
         <div className="App">
           <Router>
             <Header></Header>
-            <Switch>
-              <Route path="/movies">
-                <main
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "100%",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100%",
-                  }}
-                >
+            <main
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+              }}
+            >
+              <Switch>
+                <Redirect from="/" exact to="/movies" />
+                <Route path="/movies">
                   <React.Suspense fallback={<></>}>
                     <Movies />
                   </React.Suspense>
-                  <aside id="modal_container"></aside>
-                </main>
-              </Route>
-              <Route path="/tv">
-                <React.Suspense fallback={<></>}>
-                  <Tv />
-                </React.Suspense>
-              </Route>
-            </Switch>
+                </Route>
+                <Route path="/tv">
+                  <React.Suspense fallback={<></>}>
+                    <Tv />
+                  </React.Suspense>
+                </Route>
+              </Switch>
+              <aside id="modal_container"></aside>
+            </main>
           </Router>
         </div>
       </ApolloProvider>

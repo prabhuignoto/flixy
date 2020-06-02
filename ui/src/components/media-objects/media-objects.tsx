@@ -163,13 +163,15 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     }
     return (
       <ObjectsContainer height={height} noBackground={noBackground}>
+        
         {showExpand && (
           <ExpandButton onClick={() => setExpandedView(true)}>
             <span>view all</span>
             <ChevronRightIcon color="#fff"></ChevronRightIcon>
           </ExpandButton>
         )}
-        {
+
+        {showExpand && (
           <MediaModal
             onClose={onModalClose}
             open={showExpandedView}
@@ -181,7 +183,8 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
               itemWidth={resxProps.isBigScreen ? 180 : 130}
             ></MediaGrid>
           </MediaModal>
-        }
+        )}
+        
         <ScrollLeftBtn
           onClick={() => handleNav(ScrollDir.LEFT)}
           disable={disableLeftNav}

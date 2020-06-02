@@ -17,14 +17,17 @@ import {
   PanelContainer,
 } from "./details-main.styles";
 import { SliderType } from "../../models/Slider";
+import { RelatedMediaType, MediaType } from "../../containers/related";
 
 const Reviews = React.lazy(() => import("../../containers/details/reviews"));
-const Recommended = React.lazy(() =>
-  import("../../containers/movies/recommended")
-);
-const Similar = React.lazy(() => import("../../containers/movies/similar"));
+const Recommended = React.lazy(() => import("../../containers/related"));
+const Similar = React.lazy(() => import("../../containers/related"));
 
-type CardDetail = Movie & { handleClose?: () => void; isLoading: boolean, sliderType: SliderType };
+type CardDetail = Movie & {
+  handleClose?: () => void;
+  isLoading: boolean;
+  sliderType: SliderType;
+};
 
 export default ({
   title,
@@ -89,7 +92,15 @@ export default ({
               <RecommendedMoviesWrapper>
                 <RecommendedMoviesContainer>
                   <React.Suspense fallback={<Loader />}>
-                    <Recommended movieId={id} />
+                    <Recommended
+                      id={id}
+                      relatedMediaType={RelatedMediaType.RECOMMENDED}
+                      type={
+                        sliderType === SliderType.movies
+                          ? MediaType.MOVIES
+                          : MediaType.TV
+                      }
+                    />
                   </React.Suspense>
                 </RecommendedMoviesContainer>
               </RecommendedMoviesWrapper>
@@ -98,14 +109,22 @@ export default ({
               <RecommendedMoviesWrapper>
                 <RecommendedMoviesContainer>
                   <React.Suspense fallback={<Loader />}>
-                    <Similar movieId={id} />
+                    <Similar
+                      id={id}
+                      relatedMediaType={RelatedMediaType.SIMILAR}
+                      type={
+                        sliderType === SliderType.movies
+                          ? MediaType.MOVIES
+                          : MediaType.TV
+                      }
+                    />
                   </React.Suspense>
                 </RecommendedMoviesContainer>
               </RecommendedMoviesWrapper>
             )}
             {actvTab === tabs.posters && (
               <ReviewsWrapper resxProps={resxProps}>
-                <Images movieId={id} sliderType={sliderType}/>
+                <Images movieId={id} sliderType={sliderType} />
               </ReviewsWrapper>
             )}
             {actvTab === tabs.reviews && (

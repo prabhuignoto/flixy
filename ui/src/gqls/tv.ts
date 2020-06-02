@@ -53,3 +53,41 @@ export const onAir = gql`
     }
   }
 `;
+
+export const recommendedTv = gql`
+  query recommended($lang: String!, $page: Float!, $id: Float!) {
+    getTvRecommendations(lang: $lang, page: $page, id: $id) {
+      page
+      total_results
+      total_pages
+      results {
+        id
+        title
+        original_title
+        release_date
+        poster_path
+        vote_average,
+        overview
+      }
+    }
+  }
+`;
+
+export const similarTv = gql`
+  query similar($lang: String!, $page: Float!, $id: Float!) {
+    getTvSimilar(lang: $lang, page: $page, id: $id) {
+      page
+      total_results
+      total_pages
+      results {
+        id
+        title
+        original_title
+        release_date
+        poster_path
+        vote_average,
+        overview
+      }
+    }
+  }
+`;

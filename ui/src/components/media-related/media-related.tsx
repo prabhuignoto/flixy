@@ -11,7 +11,7 @@ import useResponsive from "../../effects/useResponsive";
 const RelatedMedia: React.FunctionComponent<{
   id: number | string;
   items: MediaObject[];
-  title: string;
+  title?: string;
 }> = ({ items, id, title }) => {
   const { isBigScreen } = useResponsive();
   return (

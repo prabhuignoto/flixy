@@ -58,8 +58,8 @@ export const upcoming = gql`
 `;
 
 export const recommended = gql`
-  query recommended($lang: String!, $page: Float!, $movie_id: Float!) {
-    getRecommendations(lang: $lang, page: $page, movie_id: $movie_id) {
+  query recommended($lang: String!, $page: Float!, $id: Float!) {
+    getRecommendations(lang: $lang, page: $page, id: $id) {
       page
       total_results
       total_pages
@@ -77,8 +77,8 @@ export const recommended = gql`
 `;
 
 export const similar = gql`
-  query similar($lang: String!, $page: Float!, $movie_id: Float!) {
-    getSimilar(lang: $lang, page: $page, movie_id: $movie_id) {
+  query similar($lang: String!, $page: Float!, $id: Float!) {
+    getSimilar(lang: $lang, page: $page, id: $id) {
       page
       total_results
       total_pages
