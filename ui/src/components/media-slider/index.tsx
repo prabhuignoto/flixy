@@ -10,7 +10,7 @@ import {
 import Movies from "./collection";
 import { Button } from "../commons/styles";
 import { useSpring, config } from "react-spring";
-import { ArrowHeadDownIcon, ArrowHeadUpIcon } from "../icons";
+import { CaretDownIcon, CaretUpIcon } from "../icons";
 import Slider, { SliderType } from "../../models/Slider";
 import Movie from "../../models/Media";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";
@@ -179,9 +179,9 @@ const SliderView: React.FunctionComponent<Slider> = ({
         <Footer>
           <Button size="medium" onClick={handleExpandFull}>
             {expandFull ? (
-              <ArrowHeadUpIcon color="#cc0000" />
+              <CaretUpIcon color="#cc0000" />
             ) : (
-              <ArrowHeadDownIcon color="#cc0000" />
+              <CaretDownIcon color="#cc0000" />
             )}
           </Button>
         </Footer>

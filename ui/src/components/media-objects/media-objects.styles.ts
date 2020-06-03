@@ -33,7 +33,15 @@ export const ObjectsWrapper = styled.ul<{
   overflow-x: hidden;
   padding: 0 .5rem;
   scroll-behavior: smooth;
-  width: 100%;
+  width: ${p => {
+    if (p.resx?.isBigScreen) {
+      return "calc(100% - 7rem)";
+    } else if (p.resx?.isDesktopOrLaptop) {
+      return "86%";
+    } else {
+      return "88%";
+    }
+  }};
 `;
 
 export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize, resx?: responsiveProps }>`
@@ -52,7 +60,7 @@ export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize, resx
   }};
   width: ${p => {
     if (p.resx?.isBigScreen) {
-      return "5%";
+      return "3.5rem";
     } else if (p.resx?.isDesktopOrLaptop) {
       return "7%";
     } else {
@@ -89,9 +97,9 @@ export const MediaObjectContainer = styled(animated.div)`
 `;
 
 export const ExpandButton = styled.div`
-  height: 1.5rem;
+  height: 1.25rem;
   position: absolute;
-  top: -.75rem;
+  top: -.5rem;
   right: 4rem;
   display: flex;
   align-items: center;
@@ -105,14 +113,14 @@ export const ExpandButton = styled.div`
   & span {
     color: #fff;
     display: block;
-    padding-left: .5rem;
+    padding-left: .25rem;
     font-family: Poppins;
     font-size: .8rem;
-    font-weight: 500;
+    font-weight: 300;
   }
 
   & svg {
-    width: 1.2rem;
+    width: 1rem;
     height: 100%;
   }
 `;

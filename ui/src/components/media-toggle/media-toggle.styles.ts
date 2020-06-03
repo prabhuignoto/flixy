@@ -28,7 +28,7 @@ export const Option = styled.div<{ selected?: boolean }>`
   user-select: none;
   z-index: 1;
   & svg {
-    height: 70%;
+    height: 1.5rem;
   }
   `;
 
@@ -36,7 +36,8 @@ export const OptionLabel = styled.div<{ marginLess?: boolean }>`
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-left: ${p => p.marginLess ? "" : ".25rem"}
+  margin-left: ${p => p.marginLess ? "" : ".35rem"};
+  text-transform: uppercase;
 `;
 
 export const Highlighter = styled(animated.span) <{ left?: number }>`

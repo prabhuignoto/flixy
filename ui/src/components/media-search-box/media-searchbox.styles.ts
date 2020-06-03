@@ -28,7 +28,7 @@ export const SearchIconWrapper = styled.div`
   border: 0;
   display: flex;
   height: 100%;
-  margin-left: .2rem;
+  margin-left: .5rem;
   width: 6%;
   outline: none;
 

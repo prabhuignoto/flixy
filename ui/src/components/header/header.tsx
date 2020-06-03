@@ -27,8 +27,8 @@ const Header: React.FunctionComponent = () => {
     { value: "movies", label: "movies", icon: <CameraIcon /> },
     { value: "tv", label: "television", icon: <TvIcon /> },
     { value: "search", label: "search", icon: <SearchIcon /> },
-    { value: "discover", label: "discover", icon: <CompassIcon /> },
-    { value: "help", label: "help", icon: <HelpCircleIcon /> },
+    // { value: "discover", label: "discover", icon: <CompassIcon /> },
+    // { value: "help", label: "help", icon: <HelpCircleIcon /> },
   ];
 
   React.useEffect(() => {
