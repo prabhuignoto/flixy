@@ -4,6 +4,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/prabhuignoto/flixy?style=flat-square)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/8448fda0220b4836920a6e313fb8f25d)](https://www.codacy.com/manual/prabhuignoto/flixy?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prabhuignoto/flixmov&amp;utm_campaign=Badge_Grade)
 ![CircleCI](https://img.shields.io/circleci/build/github/prabhuignoto/flixy?style=flat-square&token=deb81bfe136d2d425c19706ecb42f3023100723c)
+![Website](https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fmovies.prabhumurthy.com)
 
 ## Getting Started
 
