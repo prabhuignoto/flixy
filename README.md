@@ -1,11 +1,11 @@
 # Flixy
 
 <!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
-![GitHub repo size](https://img.shields.io/github/repo-size/prabhuignoto/flixmov?style=flat-square)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8448fda0220b4836920a6e313fb8f25d)](https://www.codacy.com/manual/prabhuignoto/flixmov?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prabhuignoto/flixmov&amp;utm_campaign=Badge_Grade)
-![CircleCI](https://img.shields.io/circleci/build/github/prabhuignoto/flixmov?style=flat-square&token=deb81bfe136d2d425c19706ecb42f3023100723c)
+![GitHub repo size](https://img.shields.io/github/repo-size/prabhuignoto/flixy?style=flat-square)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8448fda0220b4836920a6e313fb8f25d)](https://www.codacy.com/manual/prabhuignoto/flixy?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prabhuignoto/flixmov&amp;utm_campaign=Badge_Grade)
+![CircleCI](https://img.shields.io/circleci/build/github/prabhuignoto/flixy?style=flat-square&token=deb81bfe136d2d425c19706ecb42f3023100723c)
 
-## Installing Flixy
+## Getting Started
 
 To install Flixy, follow these steps:
 
@@ -20,6 +20,16 @@ yarn install && yarn start
 ## Flixy Home
 
 ![home_page_preview](home_page_preview.png)
+
+## Built with
+
+* [React](https://reactjs.org/)
+* [Styled Components](https://styled-components.com/)
+* [Typescript](https://www.typescriptlang.org/)
+* [Node](https://nodejs.org/en/)
+* [Fastify](https://www.fastify.io/)
+* [GraphQL](https://graphql.org/)
+* [Apollo Client & Server](https://www.apollographql.com/)
 
 ## Contributing to Flixy
 <!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
@@ -43,4 +53,4 @@ If you want to contact me you can reach me at prabhu.m.murthy@gmail.com.
 
 ## License
 
-This project uses the following license: [<license_name>](<link>).
+Distributed under the MIT License. See LICENSE for more information.
