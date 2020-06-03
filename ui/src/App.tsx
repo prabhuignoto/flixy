@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 import fontLoader from "webfontloader";
 import { config } from "dotenv";
-import smoothscroll from "smoothscroll-polyfill";
 import Header from "./components/header/header";
 import SearchHome from "./pages/SearchHome";
 
@@ -14,7 +18,7 @@ const Tv = React.lazy(() => import("./pages/Tv"));
 
 config();
 
-smoothscroll.polyfill();
+// smoothscroll.polyfill();
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_URL,

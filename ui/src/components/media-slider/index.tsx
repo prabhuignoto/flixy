@@ -11,7 +11,7 @@ import Movies from "./collection";
 import { Button } from "../commons/styles";
 import { useSpring, config } from "react-spring";
 import { CaretDownIcon, CaretUpIcon } from "../icons";
-import Slider, { SliderType } from "../../models/Slider";
+import Slider, { SliderType, LoadingState } from "../../models/Slider";
 import Movie from "../../models/Media";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";
 import memoize from "memoize-one";
@@ -21,7 +21,7 @@ const MovieDetails = React.lazy(() =>
 );
 
 const TvDetails = React.lazy(() =>
-import("../../containers/details/tvDetails")
+  import("../../containers/details/tvDetails")
 );
 
 const getHeight = memoize((props: responsiveProps) => {
@@ -45,6 +45,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
   id,
   sliderType,
 }: Slider) => {
+  console.log(loadingState);
   const [expandFull, setExpandFull] = React.useState(false);
   const firstRun = React.useRef(true);
   const [page, setPage] = React.useState(1);
@@ -64,12 +65,12 @@ const SliderView: React.FunctionComponent<Slider> = ({
   }));
 
   const wrapperProps = useSpring({
-    opacity:1,
+    opacity: 1,
     from: {
-      opacity: 0
+      opacity: 0,
     },
-    config: config.default
-  })
+    config: config.stiff,
+  });
 
   const handleExpandFull = React.useCallback(() => setExpandFull(!expandFull), [
     expandFull,
@@ -123,7 +124,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
     () => setShowDetails({ state: false, selectedMovie: 0 }),
     []
   );
-    
+
   return (
     <WrapperContainer
       style={wrapperProps}
@@ -154,7 +155,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
         </MoviesWrapper>
       }
 
-      {
+      {loadingState === LoadingState.LOADED && (
         <DetailsWrapper>
           <React.Suspense fallback={<div></div>}>
             {sliderType === SliderType.movies ? (
@@ -172,7 +173,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
             )}
           </React.Suspense>
         </DetailsWrapper>
-      }
+      )}
 
       {/* footer section */}
       {!showDetails.state && (

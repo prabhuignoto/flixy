@@ -79,6 +79,7 @@ const MovieContainer: React.FunctionComponent<MediaContainer> = ({
         movies={[]}
         title={title}
         fetchMore={handleFetchMore}
+        sliderType={SliderType.movies}
         totalResults={0}
         loadingState={LoadingState.LOADING}
         id={nanoid()}
@@ -110,4 +111,4 @@ const MovieContainer: React.FunctionComponent<MediaContainer> = ({
   return view;
 };
 
-export default React.memo(MovieContainer);
+export default MovieContainer;

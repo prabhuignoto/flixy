@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   color: #fff;
-  font-weight: 200;
+  font-weight: 300;
   background: #000;
   margin-bottom: 1rem;
 `;
