@@ -20,7 +20,7 @@ export const SearchInput = styled.input`
   height: 100%;
   outline: 0;
   padding-left: 1rem;
-  width: 87%;
+  width: calc(100% - 5rem);
 `;
 
 export const SearchIconWrapper = styled.div`
@@ -29,7 +29,7 @@ export const SearchIconWrapper = styled.div`
   display: flex;
   height: 100%;
   margin-left: .5rem;
-  width: 6%;
+  width: 2.5rem;
   outline: none;
 
   & svg {
@@ -45,8 +45,9 @@ export const GoButton = styled.div`
   height: 100%;
   justify-content: center;
   outline: 0;
-  width: 7%;
+  width: 2.5rem;
   padding: 0;
+  margin-right: .2rem;
 
   & svg {
     width: 100%;

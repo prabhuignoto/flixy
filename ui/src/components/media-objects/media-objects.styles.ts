@@ -37,7 +37,7 @@ export const ObjectsWrapper = styled.ul<{
     if (p.resx?.isBigScreen) {
       return "calc(100% - 7rem)";
     } else if (p.resx?.isDesktopOrLaptop) {
-      return "86%";
+      return "calc(100% - 3.2rem)";
     } else {
       return "88%";
     }
@@ -62,7 +62,7 @@ export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize, resx
     if (p.resx?.isBigScreen) {
       return "3.5rem";
     } else if (p.resx?.isDesktopOrLaptop) {
-      return "7%";
+      return "3.2rem";
     } else {
       return "6%";
     }

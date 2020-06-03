@@ -2,6 +2,7 @@ import React from "react";
 import {
   MediaObject as MediaObjectModel,
   ThumbnailSize,
+  MediaObject,
 } from "../../models/MediaObject";
 import {
   ObjectsWrapper,
@@ -40,6 +41,7 @@ export interface MediaObjectsModel {
   useExtendedCard?: boolean;
   hideObjectsWithNoImage?: boolean;
   showExpand?: boolean;
+  onSelect?: (m: MediaObject) => void;
 }
 
 const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
@@ -55,6 +57,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     id,
     hideObjectsWithNoImage,
     showExpand,
+    onSelect
   }) => {
     const containerRef = React.createRef<HTMLUListElement>();
     const rWindowRef = React.useRef<HTMLDivElement>(null);
@@ -154,6 +157,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
               id={title ? id + title : id.toString()}
               containerId={containerId}
               hideObjectsWithNoImage={hideObjectsWithNoImage}
+              onSelect={onSelect}
             />
           }
         </>

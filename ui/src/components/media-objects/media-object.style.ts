@@ -9,6 +9,11 @@ export const MediaObject = styled(animated.div)`
   height: 100%;
   justify-content: center;
   margin: 0 .5rem;
+  cursor: pointer;
+
+  &:hover {
+    
+  }
 `;
 
 export const ObjectImage = styled(animated.img) <{ loaded?: number, noTitle?: number }>`

@@ -6,10 +6,8 @@ import {
 } from "./header.styles";
 import {
   SearchIcon,
-  CompassIcon,
   CameraIcon,
   TvIcon,
-  HelpCircleIcon,
 } from "../icons";
 import MediaToggle, { MediaToggleOption } from "../media-toggle/media-toggle";
 import { useHistory, useLocation } from "react-router-dom";

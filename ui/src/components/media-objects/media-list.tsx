@@ -25,6 +25,7 @@ export interface MediaListModel {
   useExtendedCard?: boolean;
   id: string;
   hideObjectsWithNoImage?: boolean;
+  onSelect?(m: MediaObject) : void;
 }
 
 const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
@@ -41,7 +42,8 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
     noTitle,
     thumbnailSize,
     useExtendedCard,
-    hideObjectsWithNoImage
+    hideObjectsWithNoImage,
+    onSelect
   }) => (
     <div>
       <div id={`extended-card-enclosure-${containerId}`}></div>
@@ -78,6 +80,7 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
                   thumbnailSize={thumbnailSize}
                   noTitle={noTitle}
                   hideObjectWithNoImage={hideObjectsWithNoImage}
+                  onSelect={onSelect}
                 />
               ) : (
                 <ExtendedCard
@@ -91,6 +94,7 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
                   height={height}
                   vote_average={vote_average}
                   positioningStrategy={PositioningStrategy.absolute}
+                  onSelect={onSelect}
                 />
               )}
             </MediaObjectContainer>

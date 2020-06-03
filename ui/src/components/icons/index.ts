@@ -30,7 +30,7 @@ import { Tv } from "@styled-icons/feather/Tv";
 import { ChevronRight as ChevronRightSolid } from "@styled-icons/material-rounded/ChevronRight";
 import { HelpCircle } from "@styled-icons/feather/HelpCircle";
 import { StyledIcon } from '@styled-icons/styled-icon';
-import { ArrowRight } from "@styled-icons/feather/ArrowRight";
+import { ArrowRightCircle } from "@styled-icons/feather/ArrowRightCircle";
 import { CaretDown } from "@styled-icons/boxicons-regular/CaretDown";
 import { CaretUp } from "@styled-icons/boxicons-regular/CaretUp";
 
@@ -70,7 +70,7 @@ export const SearchIcon = withStyled(Search);
 export const CameraIcon = withStyled(Video);
 export const TvIcon = withStyled(Tv);
 export const HelpCircleIcon = withStyled(HelpCircle);
-export const ArrowRightIcon = withStyled(ArrowRight);
+export const ArrowRightIcon = withStyled(ArrowRightCircle);
 export const CaretDownIcon = withStyled(CaretDown);
 export const CaretUpIcon = withStyled(CaretUp);
 

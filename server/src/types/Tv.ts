@@ -4,7 +4,7 @@ import { ObjectType, Field, Int } from "type-graphql";
 export default class Tv {
   @Field()
   id!: number;
-  
+
   @Field()
   name!: string;
 
@@ -26,7 +26,7 @@ export default class Tv {
   @Field(type => [String])
   origin_country!: number[];
 
-  @Field()
+  @Field({ nullable: true })
   first_air_date!: string;
 
   @Field()
