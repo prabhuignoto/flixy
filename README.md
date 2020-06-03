@@ -1,0 +1,2 @@
+# flixmov
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4ca81c9ae48a4dc1a120cc4397f46156)](https://app.codacy.com/manual/prabhuignoto/flixmov?utm_source=github.com&utm_medium=referral&utm_content=prabhuignoto/flixmov&utm_campaign=Badge_Grade_Dashboard)
