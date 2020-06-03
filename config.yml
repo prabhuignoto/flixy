@@ -1,0 +1,27 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+jobs:
+  server:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm --prefix ./server install
+            - run: npm --prefix ./server build
+  ui:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm --prefix ./ui install
+            - run: npm --prefix ./ui build
+workflows:
+    build-and-test:
+      jobs:
+        - server
+        - ui

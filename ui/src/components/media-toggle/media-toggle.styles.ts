@@ -28,7 +28,7 @@ export const Option = styled.div<{ selected?: boolean }>`
   user-select: none;
   z-index: 1;
   & svg {
-    height: 1.5rem;
+    height: 2rem;
   }
   `;
 
