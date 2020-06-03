@@ -136,7 +136,8 @@ export default function <P extends CardExtendCustomModel>(
         showPane: false,
         showIcon: false,
       });
-      this.props.onSelect && this.props.onSelect(this.props.id);
+      this.props.onSelect &&
+        this.props.onSelect({ id: this.props.id, name: this.props.title });
     }
 
     render() {

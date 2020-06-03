@@ -2,7 +2,9 @@ import React from "react";
 import MediaSearchBox from "../components/media-search-box/media-searchbox";
 import styled from "styled-components";
 import useResponsive, { responsiveProps } from "../effects/useResponsive";
-import MediaToggle from "../components/media-toggle/media-toggle";
+import MediaToggle, {
+  MediaToggleOption,
+} from "../components/media-toggle/media-toggle";
 import SearchContainer from "../containers/search";
 import { MediaType } from "../containers/models";
 
@@ -16,7 +18,7 @@ const SearchHomeWrapper = styled.div`
 
 const SearchResultsWrapper = styled.div`
   margin-top: 2rem;
-  width: 100%;
+  width: 95%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,7 +26,7 @@ const SearchResultsWrapper = styled.div`
 
 const MediaSearchBoxWrapper = styled.div<{ resx?: responsiveProps }>`
   width: ${(p) => (p.resx?.isBigScreen ? "35%" : "50%")};
-  height: ${p => p.resx?.isBigScreen ? "3.25rem" : "3rem"};
+  height: ${(p) => (p.resx?.isBigScreen ? "3.25rem" : "3rem")};
   margin-top: 3rem;
   display: flex;
   align-items: center;
@@ -40,10 +42,19 @@ const SearchOptionToggle = styled.div`
 const SearchHome: React.FunctionComponent<{}> = () => {
   const props = useResponsive();
   const [term, setTerm] = React.useState("");
+  const [type, setType] = React.useState(MediaType.MOVIES);
 
   const onSearch = React.useCallback((val: string) => {
     setTerm(val);
   }, []);
+
+  const handleToggleSelection = (opt: MediaToggleOption) => {
+    if (opt.value === "movies") {
+      setType(MediaType.MOVIES);
+    } else {
+      setType(MediaType.TV);
+    }
+  };
 
   return (
     <SearchHomeWrapper>
@@ -58,12 +69,15 @@ const SearchHome: React.FunctionComponent<{}> = () => {
                 value: "television",
               },
             ]}
+            onSelect={handleToggleSelection}
           />
         </SearchOptionToggle>
       </MediaSearchBoxWrapper>
       <SearchResultsWrapper>
         {term && (
-          <SearchContainer type={MediaType.MOVIES} query={term} key={term} />
+          <>
+            <SearchContainer type={type} query={term} key={term} />
+          </>
         )}
       </SearchResultsWrapper>
     </SearchHomeWrapper>

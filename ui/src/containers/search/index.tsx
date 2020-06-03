@@ -5,11 +5,10 @@ import { searchTv } from "../../gqls/tv";
 import Movie from "../../models/Media";
 import { MediaType, SearchContainer as SearchContainerModel } from "../models";
 import { MediaObject, ThumbnailSize } from "../../models/MediaObject";
-import MediaGrid from "../../components/media-objects/media-grid";
 import styled from "styled-components";
-import { nanoid } from "nanoid";
 import useResponsive from "../../effects/useResponsive";
 import MediaObjects from "../../components/media-objects/media-objects";
+import MovieDetails from "../../containers/details/movieDetails";
 
 const getQuery: (m: MediaType) => DocumentNode = (type) => {
   switch (type) {
@@ -22,9 +21,20 @@ const getQuery: (m: MediaType) => DocumentNode = (type) => {
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+`;
+
+const ResultsWrapper = styled.div`
+  width: 100%;
+`;
+
+const DetailsWrapper = styled.section`
+  margin-top: 2rem;
+  width: 100%;
+  height: 400px;
 `;
 
 const SearchContainer: React.FunctionComponent<SearchContainerModel> = ({
@@ -42,9 +52,9 @@ const SearchContainer: React.FunctionComponent<SearchContainerModel> = ({
   const gridRef = React.useRef(null);
   const [loading, setLoading] = React.useState(false);
   const resx = useResponsive();
+  const [movieId, setSelectedMovieId] = React.useState<MediaObject>({id: 0, name: ''});
 
   React.useEffect(() => {
-    // setMovieData({ results: [], total_results: 0 });
     getResults(1);
   }, [query]);
 
@@ -81,6 +91,10 @@ const SearchContainer: React.FunctionComponent<SearchContainerModel> = ({
 
   const handleFetchMore = (page: number) => getResults(page);
 
+  const handleSelection = (m: MediaObject) => {
+    m && setSelectedMovieId(m);
+  };
+
   let view = null;
 
   if (loading) {
@@ -113,12 +127,25 @@ const SearchContainer: React.FunctionComponent<SearchContainerModel> = ({
         height={resx.isBigScreen ? 400 : 320}
         thumbnailSize={ThumbnailSize.large}
         itemSize={resx.isBigScreen ? 230 : 180}
-        useExtendedCard
+        onSelect={handleSelection}
       />
     );
   }
 
-  return <Wrapper ref={gridRef}>{view}</Wrapper>;
+  return (
+    <Wrapper ref={gridRef}>
+      <ResultsWrapper>{view}</ResultsWrapper>
+      <DetailsWrapper>
+        {
+          <MovieDetails
+            movieId={movieId.id}
+            hide={!movieId.id}
+            handleClose={() => setSelectedMovieId({ id: 0 })}
+          />
+        }
+      </DetailsWrapper>
+    </Wrapper>
+  );
 };
 
 export default SearchContainer;

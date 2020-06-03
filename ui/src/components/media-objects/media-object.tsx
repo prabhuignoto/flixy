@@ -15,7 +15,15 @@ import { UserIcon } from "./../icons/index";
 import useResponsive from "../../effects/useResponsive";
 
 const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
-  ({ path, name, thumbnailSize, noTitle, hideObjectWithNoImage }) => {
+  ({
+    path,
+    name,
+    thumbnailSize,
+    noTitle,
+    hideObjectWithNoImage,
+    onSelect,
+    id,
+  }) => {
     const [loadState, setLoadState] = React.useState({
       loaded: false,
       failed: false,
@@ -47,7 +55,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
       : !hideObjectWithNoImage;
 
     return canShow ? (
-      <MediaObject>
+      <MediaObject onClick={() => onSelect && onSelect({ name, id })}>
         <img
           src={imageUrl}
           onLoad={() => setLoadState({ loaded: true, failed: false })}

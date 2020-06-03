@@ -10,6 +10,7 @@ import useVirtual from "./../../effects/useVirtual";
 import { Configs } from "./../../effects/useVirtual";
 import MoviesView from "./movies";
 import useResponsive from "../../effects/useResponsive";
+import { MediaObject } from "../../models/MediaObject";
 
 export enum NavDir {
   LEFT = "LEFT",
@@ -204,12 +205,12 @@ export default ({
     }
   }, [loadingState]);
 
-  const handleSelection = (id: number | string) => {
+  const handleSelection = (m: MediaObject) => {
     // make a quick copy
     const newMovies = [...movies];
 
     // get to be selected item
-    const newSelection = newMovies.find((movie) => movie.id === id);
+    const newSelection = newMovies.find((movie) => movie.id === m.id);
 
     onSelection(newSelection);
   };

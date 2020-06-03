@@ -10,10 +10,6 @@ import useResponsive, { responsiveProps } from "../../effects/useResponsive";
 import memoize from "memoize-one";
 import { SliderType } from "../../models/Slider";
 
-const Shimmer = React.memo(
-  ({ movieId }: { movieId?: string | number }) => <Loader id={movieId} />,
-  (prev, cur) => prev.movieId === cur.movieId
-);
 
 const getHeight = memoize(
   ({ isBigScreen, isTabletOrMobile }: responsiveProps) => {
@@ -34,7 +30,6 @@ const MovieDetails: React.FunctionComponent<{
   handleClose?: () => void;
   hide?: boolean;
 }> = ({ movieId, handleClose, hide }) => {
-  console.log("bengal");
   const [data, setData] = React.useState<MovieDetail | null>();
   const [loading, setLoading] = React.useState(false);
   const client = useApolloClient();

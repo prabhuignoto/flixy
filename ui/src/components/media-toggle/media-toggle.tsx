@@ -16,7 +16,7 @@ export interface MediaToggleOption {
 
 export interface MediaToggleModel {
   options: MediaToggleOption[];
-  onSelect?: (val: MediaToggleOption | null) => void;
+  onSelect?: (val: MediaToggleOption) => void;
   onSelectionStart?: () => void;
 }
 

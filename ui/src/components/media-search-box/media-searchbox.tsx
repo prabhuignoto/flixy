@@ -21,6 +21,12 @@ const MediaSearchBox: React.FunctionComponent<MediaSearchboxModel> = ({
     setInputState(val);
   };
 
+  React.useEffect(() => {
+    if(!inputState) {
+      onSearch && onSearch(inputState);
+    }
+  }, [inputState])
+
   const handleSearch = () => {
     if (inputState) {
       onSearch && onSearch(inputState);

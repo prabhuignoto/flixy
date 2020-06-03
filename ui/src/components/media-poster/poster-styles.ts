@@ -4,8 +4,7 @@ import { CardSize } from '../../models/CardSize';
 
 export const PosterWrapper = styled.div<{size?: CardSize}>`
   height: 100%;
-  width: 100%;
-`;
+  `;
 
 export const CardImage = styled.img<{hide?: boolean}>`
   border-radius: .2rem;
@@ -13,6 +12,11 @@ export const CardImage = styled.img<{hide?: boolean}>`
   max-width: 100%;
   object-fit: contain;
   color: #191919;
+  width: 100%;
+  transition: filter .1s linear;
+  &:hover {
+    filter: drop-shadow(0 0 10px #323232) brightness(1.1);
+  }
 `;
 
 export const CardImageWrapper = styled(animated.div)<{ selected?: boolean }>`

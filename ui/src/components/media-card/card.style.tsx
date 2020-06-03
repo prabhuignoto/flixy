@@ -3,20 +3,6 @@ import { CardSize } from "../../models/CardSize";
 import { animated } from "react-spring";
 import { responsiveProps } from "../../effects/useResponsive";
 
-const getColumnWidth = (props?: responsiveProps) => {
-  if (!props) {
-    return 150;
-  };
-
-  if (props.isTabletOrMobile) {
-    return 130;
-  } else if (props.isBigScreen) {
-    return 180;
-  } else if (props.isDesktopOrLaptop) {
-    return 150;
-  } 
-}
-
 export const CardContainer = styled(animated.div)<{
   selected?: boolean;
   opacity?: number;

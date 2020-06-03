@@ -8,6 +8,7 @@ import withExtendedInfo, {
   CardExtendCustomModel,
 } from "../HOCS/withExtendInfo";
 import { PositioningStrategy } from "../media-card/card-extended";
+import { MediaObject } from "../../models/MediaObject";
 
 const ExtendedCard = withExtendedInfo<CardExtendCustomModel>(Card);
 
@@ -18,7 +19,7 @@ export interface Movies {
   columns: number;
   movies: Movie[];
   loadingCards: number[];
-  handleSelection: (id: number | string) => void;
+  handleSelection: (m: MediaObject) => void;
   id?: string;
 }
 

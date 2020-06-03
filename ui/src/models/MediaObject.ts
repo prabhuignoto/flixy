@@ -1,5 +1,5 @@
 export interface MediaObject {
-  name: string;
+  name?: string;
   path?: string;
   id: number | string;
   visible?: boolean;
@@ -10,6 +10,7 @@ export interface MediaObject {
   overview?: string;
   vote_average?: number;
   hideObjectWithNoImage? : boolean;
+  onSelect?: (m: MediaObject) => void;
 }
 
 export enum ThumbnailSize {

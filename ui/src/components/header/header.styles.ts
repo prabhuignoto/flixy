@@ -4,7 +4,7 @@ export const HeaderWrapper = styled.header`
   width: 100%;
   font-family: "Poppins";
   font-size: 1rem;
-  min-height: 3.5rem;
+  min-height: 4rem;
   display: flex;
   align-items: center;
   color: #fff;

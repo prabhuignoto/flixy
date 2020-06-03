@@ -9,11 +9,12 @@ import { CardSize } from "../../models/CardSize";
 import Poster from "../media-poster/poster";
 import { CheckIcon, ImageIcon } from "../icons";
 import { responsiveProps } from "../../effects/useResponsive";
+import { MediaObject } from "../../models/MediaObject";
 
 export type MovieType = Movie & {
   index?: number;
   loadingCard?: boolean;
-  onSelect?: (id: number | string) => void;
+  onSelect?(m: MediaObject): void;
   size?: CardSize;
   style?: any;
   resxProps?: responsiveProps;
@@ -31,7 +32,7 @@ export default React.memo(
     loadingCard,
     title,
     resxProps,
-    autoHeight
+    autoHeight,
   }: MovieType) => {
     const [options, setOptions] = React.useState({
       showExtendIcon: false,
@@ -41,7 +42,7 @@ export default React.memo(
     const cardRef = React.useRef<HTMLDivElement>(null);
     const handleSelection = React.useCallback(
       (id: number | string) => {
-        onSelect && onSelect(id);
+        onSelect && onSelect({ id, name: title });
       },
       [id]
     );
