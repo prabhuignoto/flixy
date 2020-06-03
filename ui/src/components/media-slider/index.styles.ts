@@ -11,7 +11,6 @@ export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
   padding-bottom: ${p => p.detailsEnabled ? "2rem" : ""};
   width: 95%; 
   position: relative;
-  /* box-shadow: 0 8px 6px -6px #cc0000; */
 `;
 
 export const Header = styled.header`
@@ -20,8 +19,8 @@ export const Header = styled.header`
   cursor: pointer;
   display: flex;
   font-family: "Poppins";
-  font-size: 1.1rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 200;
   justify-content: flex-start;
   position: absolute;
   /* background: linear-gradient(90deg, rgba(17,17,17,.85) 0%, rgba(25,25,25,.5) 50%, rgba(0,0,0,0) 100%); */
@@ -41,7 +40,7 @@ export const MoviesWrapper = styled(animated.div)`
   overflow: hidden;
   position: relative;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: .25rem;
 `;
 
 export const Title = styled.div`

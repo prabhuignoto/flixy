@@ -19,7 +19,7 @@ import useResponsive from "../../effects/useResponsive";
 import MediaList from "./media-list";
 import MediaModal from "../media-modal/media-modal";
 import MediaGrid from "./media-grid";
-import { throttle } from "throttle-debounce";
+import { debounce, throttle } from "throttle-debounce";
 
 const ExtendedCard = withExtendedInfo(Card);
 
@@ -111,8 +111,8 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
         const node = rWindowRef.current as HTMLDivElement;
         const { clientWidth, scrollWidth } = node;
         const scrolledWidth = clientWidth + rWindowRef.current.scrollLeft;
-
-        if (scrolledWidth === scrollWidth) {
+        
+        if (Math.ceil(scrolledWidth) === scrollWidth) {
           setDisableRightNav(true);
         }
 

@@ -24,7 +24,7 @@ const SearchResultsWrapper = styled.div`
 
 const MediaSearchBoxWrapper = styled.div<{ resx?: responsiveProps }>`
   width: ${(p) => (p.resx?.isBigScreen ? "35%" : "50%")};
-  height: 3.25rem;
+  height: ${p => p.resx?.isBigScreen ? "3.25rem" : "3rem"};
   margin-top: 3rem;
   display: flex;
   align-items: center;

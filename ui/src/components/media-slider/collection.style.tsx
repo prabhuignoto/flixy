@@ -18,13 +18,13 @@ export const ScrollButton = styled.button<{ resxProps?: responsiveProps }>`
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  height: ${p => p.resxProps?.isBigScreen ? "2.5rem" : "1.25rem"};
+  height: ${p => p.resxProps?.isBigScreen ? "2.5rem" : "1.75rem"};
   outline: none;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 100;
-  width: ${p => p.resxProps?.isBigScreen ? "2.5rem" : "1.25rem"};
+  width: ${p => p.resxProps?.isBigScreen ? "2.5rem" : "1.75rem"};
   padding: 0;
 `;
 

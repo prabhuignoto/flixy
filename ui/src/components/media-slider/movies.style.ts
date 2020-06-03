@@ -9,7 +9,7 @@ const getRowHeight = (props?: responsiveProps) => {
   };
 
   if (props.isBigScreen) {
-    return 260;
+    return 280;
   } else if (props.isDesktopOrLaptop) {
     return 200;
   } else if (props.isTabletOrMobile) {
@@ -48,7 +48,7 @@ export const MoviesContainer = styled(animated.div) <{
   display: grid;
   grid-auto-flow: row;
   ${p => p.resxProps?.isBigScreen ? "grid-column-gap: .5rem" : ""};
-  ${p => p.resxProps?.isBigScreen ? "grid-row-gap: 1rem" : "grid-row-gap: .5rem"};
+  ${p => p.resxProps?.isBigScreen ? "grid-row-gap: .1rem" : "grid-row-gap: .75rem"};
   grid-template-columns: repeat(${p => p.columns}, ${p => getColumnWidth(p.resxProps)}px);
   height: 100%;
   justify-content: space-evenly;

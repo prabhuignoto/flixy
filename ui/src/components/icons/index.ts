@@ -31,6 +31,8 @@ import { ChevronRight as ChevronRightSolid } from "@styled-icons/material-rounde
 import { HelpCircle } from "@styled-icons/feather/HelpCircle";
 import { StyledIcon } from '@styled-icons/styled-icon';
 import { ArrowRight } from "@styled-icons/feather/ArrowRight";
+import { CaretDown } from "@styled-icons/boxicons-regular/CaretDown";
+import { CaretUp } from "@styled-icons/boxicons-regular/CaretUp";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -69,6 +71,9 @@ export const CameraIcon = withStyled(Video);
 export const TvIcon = withStyled(Tv);
 export const HelpCircleIcon = withStyled(HelpCircle);
 export const ArrowRightIcon = withStyled(ArrowRight);
+export const CaretDownIcon = withStyled(CaretDown);
+export const CaretUpIcon = withStyled(CaretUp);
+
 
 function withStyled(icon: StyledIcon) {
   return styled(icon) <{ color?: string }>`
