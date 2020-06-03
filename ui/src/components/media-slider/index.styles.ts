@@ -19,7 +19,7 @@ export const Header = styled.header`
   cursor: pointer;
   display: flex;
   font-family: "Poppins";
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 200;
   justify-content: flex-start;
   position: absolute;
@@ -45,6 +45,17 @@ export const MoviesWrapper = styled(animated.div)`
 
 export const Title = styled.div`
   /* padding-left: 5rem; */
+  &::before {
+    content: "";
+    display: block;
+    width: .5rem;
+    height: .5rem;
+    background: #cc0000;
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `;
 
 export const TitleText = styled.span`

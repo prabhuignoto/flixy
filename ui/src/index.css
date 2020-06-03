@@ -42,6 +42,8 @@ footer.app-footer {
   text-decoration: none;
 }
 
+.copyright,
+.powered,
 .copyright:visited,
 .powered:visited {
   color: #fff;

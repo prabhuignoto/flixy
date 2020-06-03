@@ -45,7 +45,6 @@ const SliderView: React.FunctionComponent<Slider> = ({
   id,
   sliderType,
 }: Slider) => {
-  console.log(loadingState);
   const [expandFull, setExpandFull] = React.useState(false);
   const firstRun = React.useRef(true);
   const [page, setPage] = React.useState(1);
@@ -155,7 +154,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
         </MoviesWrapper>
       }
 
-      {loadingState === LoadingState.LOADED && (
+      {(
         <DetailsWrapper>
           <React.Suspense fallback={<div></div>}>
             {sliderType === SliderType.movies ? (
