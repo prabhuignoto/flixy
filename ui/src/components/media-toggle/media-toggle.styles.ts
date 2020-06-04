@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { animated } from 'react-spring';
+import { responsiveProps } from "../../effects/useResponsive";
 
 export const MediaToggleWrapper = styled.div`
   align-items: center;
@@ -12,14 +13,14 @@ export const MediaToggleWrapper = styled.div`
   width: 100%;
 `;
 
-export const Option = styled.div<{ selected?: boolean }>`
+export const Option = styled.div<{ selected?: boolean, resx?: responsiveProps }>`
   align-items: center;
   color: #ffff;
   display: flex;
   flex: 1;
   font-family: Poppins;
-  font-size: 1rem;
-  font-weight: 300;
+  font-size: ${p => p.resx?.isBigScreen ? "1rem" : ".85rem"};
+  font-weight: 400;
   height: 100%;
   justify-content: center;
   margin: 0 .5rem;
@@ -28,7 +29,8 @@ export const Option = styled.div<{ selected?: boolean }>`
   user-select: none;
   z-index: 1;
   & svg {
-    height: 2rem;
+    height: 100%;
+    width: 2rem;
   }
   `;
 

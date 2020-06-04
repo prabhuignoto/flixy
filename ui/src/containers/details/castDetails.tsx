@@ -78,14 +78,23 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
               <MediaObjects
                 title={"Movie Cast"}
                 id={+id}
-                items={cast.map<MediaObject>(
-                  ({ name, profile_path, id, character }) => ({
-                    name: name,
-                    path: profile_path,
-                    id,
-                    info: character,
-                  })
-                )}
+                items={cast
+                  .map<MediaObject>(
+                    ({ name, profile_path, id, character, order }) => ({
+                      name: name,
+                      path: profile_path,
+                      id,
+                      info: character,
+                      order,
+                    })
+                  )
+                  .sort((a, b) => {
+                    if (a.order && b.order) {
+                      return a.order - b.order;
+                    } else {
+                      return 0;
+                    }
+                  })}
                 height={isBigScreen ? 260 : 220}
                 itemSize={isBigScreen ? 160 : 130}
                 thumbnailSize={ThumbnailSize.small}

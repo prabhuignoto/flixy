@@ -76,7 +76,7 @@ export const ImageContainer = styled.div<{ noTitle?: number }>`
   /* border-radius: .25rem; */
   `;
 
-export const ImageInfo = styled.div`
+export const ImageInfo = styled.div<{ resx?: responsiveProps }>`
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -85,7 +85,7 @@ export const ImageInfo = styled.div`
   background: #ededed;
   color: #000;
   font-family: Poppins;
-  font-size: .7rem;
+  font-size: ${p => p.resx?.isBigScreen ? ".7rem" : ".6rem"};
   font-weight: 400;
   display: flex;
   align-items: center;

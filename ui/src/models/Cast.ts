@@ -5,6 +5,6 @@ export interface Cast {
   character: string;
   id: number;
   name: string;
-  order: number;
+  order?: number;
   profile_path: string;
 }

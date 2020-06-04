@@ -39,7 +39,7 @@ const MediaGrid: React.FunctionComponent<MediaGridModel> = ({
         rowCount,
         showGrid: true,
         containerHeight: node.clientHeight - 20,
-        containerWidth: columnCount * itemWidth + 50,
+        containerWidth: columnCount * itemWidth + 20,
       });
     }
   }, []);

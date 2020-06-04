@@ -11,10 +11,12 @@ import {
 } from "../icons";
 import MediaToggle, { MediaToggleOption } from "../media-toggle/media-toggle";
 import { useHistory, useLocation } from "react-router-dom";
+import useResponsive from "../../effects/useResponsive";
 
 const Header: React.FunctionComponent = () => {
   const history = useHistory();
   const location = useLocation();
+  const resx = useResponsive();
 
   const [showLinks, setShowLinks] = React.useState({
     state: false,
@@ -47,13 +49,11 @@ const Header: React.FunctionComponent = () => {
   const handleSelection = (val: MediaToggleOption | null) => {
     if (val) {
       history.push(`/${val.value}`);
-    } else {
-      history.push("/dummy",)
     }
   };
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper resx={resx}>
       <SearchAndDiscover>
         <SearchSettingToggle>
           {showLinks.state && (

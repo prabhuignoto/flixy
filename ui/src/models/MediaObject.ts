@@ -12,6 +12,7 @@ export interface MediaObject {
   hideObjectWithNoImage? : boolean;
   onSelect?: (m: MediaObject) => void;
   info?: string
+  order?: number;
 }
 
 export enum ThumbnailSize {

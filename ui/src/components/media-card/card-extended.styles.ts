@@ -84,7 +84,7 @@ export const ExtendInfoYear = styled(ExtendedInfo)`
 `;
 
 export const ExtendedInfoOverview = styled(ExtendedInfo) <{ isBigScreen?: boolean }>`
-  font-size: ${p => p.isBigScreen ? ".75em" : ".65em"};
+  font-size: ${p => p.isBigScreen ? ".8em" : ".7em"};
   font-weight: 300;
   margin-top: .5em;
   text-overflow: ellipsis;

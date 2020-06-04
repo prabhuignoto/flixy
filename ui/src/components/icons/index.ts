@@ -7,14 +7,14 @@ import { X } from "@styled-icons/feather/X";
 import { Check } from "@styled-icons/feather/Check";
 import { Clock } from "@styled-icons/feather/Clock";
 import { Image } from "@styled-icons/feather/Image";
-import { User } from "@styled-icons/feather/User";
+// import { User } from "@styled-icons/feather/User";
+import { User } from "@styled-icons/boxicons-solid/User";
 import { Hash } from '@styled-icons/feather/Hash';
 import { Crown } from "@styled-icons/fa-solid/Crown";
 import { Menu } from "@styled-icons/feather/Menu";
 import { ChevronLeft } from "@styled-icons/feather/ChevronLeft";
 import { ChevronRight } from "@styled-icons/feather/ChevronRight";
 import { ArrowIosUpwardOutline } from "@styled-icons/evaicons-outline/ArrowIosUpwardOutline";
-import { ArrowIosDownwardOutline } from "@styled-icons/evaicons-outline/ArrowIosDownwardOutline";
 import { Expand } from "@styled-icons/boxicons-regular/Expand";
 import { StarHalf } from "@styled-icons/material/StarHalf";
 import { Star } from "@styled-icons/material/Star";
@@ -30,8 +30,6 @@ import { ChevronRight as ChevronRightSolid } from "@styled-icons/material-rounde
 import { HelpCircle } from "@styled-icons/feather/HelpCircle";
 import { StyledIcon } from '@styled-icons/styled-icon';
 import { ArrowRightCircle } from "@styled-icons/feather/ArrowRightCircle";
-import { CaretDown } from "@styled-icons/boxicons-regular/CaretDown";
-import { CaretUp } from "@styled-icons/boxicons-regular/CaretUp";
 import { ArrowheadDown } from "@styled-icons/evaicons-solid/ArrowheadDown";
 import { ArrowheadUp } from "@styled-icons/evaicons-solid/ArrowheadUp";
 

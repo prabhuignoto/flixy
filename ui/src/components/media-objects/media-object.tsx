@@ -71,7 +71,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
             onError={() => setLoadState({ loaded: false, failed: true })}
             style={{ display: "none" }}
           />
-          {info && showInfo && <ImageInfo>{info}</ImageInfo>}
+          {info && showInfo && <ImageInfo resx={resx}>{info}</ImageInfo>}
           {transition.map(({ item, key, props }) => {
             if (item) {
               return (
@@ -88,7 +88,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
               if (loadState.failed) {
                 return (
                   <FallbackImage key={key}>
-                    <UserIcon color="#4b4848" />
+                    <UserIcon color="#ccc" />
                   </FallbackImage>
                 );
               } else {

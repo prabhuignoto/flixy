@@ -6,6 +6,7 @@ import {
   OptionLabel,
 } from "./media-toggle.styles";
 import { useSpring, config } from "react-spring";
+import useResponsive from "../../effects/useResponsive";
 
 export interface MediaToggleOption {
   value: string;
@@ -40,6 +41,8 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
           }
         }),
   });
+
+  const resx = useResponsive();
 
   const defaultRef = React.useRef<HTMLDivElement>(null);
 
@@ -106,6 +109,7 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
           selected={option.selected}
           key={option.label}
           ref={option.selected ? defaultRef : null}
+          resx={resx}
         >
           {option.icon}
           <OptionLabel marginLess={!option.icon}>{option.label}</OptionLabel>
