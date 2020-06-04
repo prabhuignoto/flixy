@@ -41,8 +41,8 @@ export const FallbackImage = styled(animated.div) <{ failed?: boolean }>`
 export const ObjectName = styled.span<{ resx?: responsiveProps }>`
   color: #000;
   font-family: "Poppins";
-  font-size: ${p => p.resx?.isBigScreen ? ".8rem" : ".7rem"};
-  font-weight: 500;
+  font-size: ${p => p.resx?.isBigScreen ? ".7rem" : ".6rem"};
+  font-weight: 400;
   height: 10%;
   margin-bottom: .5rem;
   /* margin-top: auto; */
