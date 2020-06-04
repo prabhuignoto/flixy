@@ -11,6 +11,7 @@ export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
   padding-bottom: ${p => p.detailsEnabled ? "2rem" : ""};
   width: 95%; 
   position: relative;
+  background: #181818;
 `;
 
 export const Header = styled.header`
@@ -24,8 +25,8 @@ export const Header = styled.header`
   justify-content: flex-start;
   position: absolute;
   z-index: 10;
-  top: -2.5rem;
-  left: 0;
+  top: -3rem;
+  left: 1rem;
   padding: 0 .25rem;
   border-bottom-left-radius: .2rem;
   height: 2.5rem;

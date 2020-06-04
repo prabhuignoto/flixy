@@ -11,6 +11,7 @@ export interface MediaObject {
   vote_average?: number;
   hideObjectWithNoImage? : boolean;
   onSelect?: (m: MediaObject) => void;
+  info?: string
 }
 
 export enum ThumbnailSize {

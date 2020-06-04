@@ -32,6 +32,8 @@ import { StyledIcon } from '@styled-icons/styled-icon';
 import { ArrowRightCircle } from "@styled-icons/feather/ArrowRightCircle";
 import { CaretDown } from "@styled-icons/boxicons-regular/CaretDown";
 import { CaretUp } from "@styled-icons/boxicons-regular/CaretUp";
+import { ArrowheadDown } from "@styled-icons/evaicons-solid/ArrowheadDown";
+import { ArrowheadUp } from "@styled-icons/evaicons-solid/ArrowheadUp";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -54,7 +56,7 @@ export const UserIcon = withStyled(User);
 export const HashIcon = withStyled(Hash);
 export const CrownIcon = withStyled(Crown);
 export const MenuIcon = withStyled(Menu);
-export const ArrowHeadDownIcon = withStyled(ArrowIosDownwardOutline);
+export const ArrowHeadDownIcon = withStyled(ArrowheadDown);
 export const ArrowHeadUpIcon = withStyled(ArrowIosUpwardOutline);
 export const ViewIcon = withStyled(Expand);
 export const StarHalfIcon = withStyled(StarHalf);
@@ -70,8 +72,8 @@ export const CameraIcon = withStyled(Video);
 export const TvIcon = withStyled(Tv);
 export const HelpCircleIcon = withStyled(HelpCircle);
 export const ArrowRightIcon = withStyled(ArrowRightCircle);
-export const CaretDownIcon = withStyled(CaretDown);
-export const CaretUpIcon = withStyled(CaretUp);
+export const CaretDownIcon = withStyled(ArrowheadDown);
+export const CaretUpIcon = withStyled(ArrowheadUp);
 
 
 function withStyled(icon: StyledIcon) {

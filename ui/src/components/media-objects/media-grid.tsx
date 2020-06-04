@@ -68,7 +68,7 @@ const MediaGrid: React.FunctionComponent<MediaGridModel> = ({
           const item = items[rowIndex * columnCount + columnIndex];
 
           if (item) {
-            const { name, path, id } = item;
+            const { name, path, id, info } = item;
 
             return (
               <MediaObjectContainer
@@ -79,6 +79,7 @@ const MediaGrid: React.FunctionComponent<MediaGridModel> = ({
                   name={name}
                   path={path}
                   id={id}
+                  info={info}
                   thumbnailSize={ThumbnailSize.large}
                 />
               </MediaObjectContainer>

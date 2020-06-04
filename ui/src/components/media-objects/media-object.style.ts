@@ -17,13 +17,13 @@ export const MediaObject = styled(animated.div)`
 `;
 
 export const ObjectImage = styled(animated.img) <{ loaded?: number, noTitle?: number }>`
-  border-radius: .25rem;
   display: ${p => p.loaded ? "block" : "none"};
   margin-top: ${p => !p.noTitle ? "auto" : ""};
-  max-height: ${p => p.noTitle ? "100%" : "80%"};
+  /* max-height: ${p => p.noTitle ? "100%" : "80%"}; */
+  max-height: 95%;
   max-width: 100%;
   object-fit: contain;
-`;
+  `;
 
 export const FallbackImage = styled(animated.div) <{ failed?: boolean }>`
   align-items: center;
@@ -36,35 +36,59 @@ export const FallbackImage = styled(animated.div) <{ failed?: boolean }>`
     height: 3rem;
     width: 3rem;
   }
-`;
+  `;
 
-export const ObjectName = styled.span<{resx?: responsiveProps}>`
+export const ObjectName = styled.span<{ resx?: responsiveProps }>`
   color: #000;
   font-family: "Poppins";
-  font-size: ${p => p.resx?.isBigScreen ? ".8rem" :".7rem"};
+  font-size: ${p => p.resx?.isBigScreen ? ".8rem" : ".7rem"};
   font-weight: 500;
   height: 10%;
   margin-bottom: .5rem;
-  margin-top: auto;
+  /* margin-top: auto; */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
-`;
+  background: #ededed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  `;
 
 const placeholderShimmer = keyframes`
  from {
    background-position: -200px 0;
- }
- to {
-  background-position: 200px 0; 
- }
-`;
+  }
+  to {
+    background-position: 200px 0; 
+  }
+  `;
 
-export const Shimmer = styled.div`
-   background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
-   animation: ${placeholderShimmer} 2s linear infinite;
-   width: 85%; 
-   height: 80%;
-   background-size: 400px 104px; 
-`;
+export const ImageContainer = styled.div<{ noTitle?: number }>`
+  height: ${p => p.noTitle ? "100%" : "85%"};
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background : ${p => !p.noTitle ? "#ededed" : ""};
+  /* border-radius: .25rem; */
+  `;
+
+export const ImageInfo = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-width: 100px;
+  min-height: 1.5rem;
+  background: #ededed;
+  color: #000;
+  font-family: Poppins;
+  font-size: .7rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+`

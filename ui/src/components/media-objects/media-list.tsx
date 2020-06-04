@@ -68,6 +68,7 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
             release_date,
             overview,
             vote_average,
+            info
           } = items[index];
 
           return (
@@ -81,6 +82,7 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
                   noTitle={noTitle}
                   hideObjectWithNoImage={hideObjectsWithNoImage}
                   onSelect={onSelect}
+                  info={info}
                 />
               ) : (
                 <ExtendedCard

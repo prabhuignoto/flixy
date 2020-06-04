@@ -78,13 +78,16 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
               <MediaObjects
                 title={"Movie Cast"}
                 id={+id}
-                items={cast.map<MediaObject>(({ name, profile_path, id }) => ({
-                  name: name,
-                  path: profile_path,
-                  id,
-                }))}
-                height={isBigScreen ? 250 : 180}
-                itemSize={isBigScreen ? 150 : 100}
+                items={cast.map<MediaObject>(
+                  ({ name, profile_path, id, character }) => ({
+                    name: name,
+                    path: profile_path,
+                    id,
+                    info: character,
+                  })
+                )}
+                height={isBigScreen ? 260 : 190}
+                itemSize={isBigScreen ? 160 : 110}
                 thumbnailSize={ThumbnailSize.small}
                 showExpand
               />
@@ -95,13 +98,16 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
               <MediaObjects
                 title={"Movie Crew"}
                 id={+id}
-                items={crew.map<MediaObject>(({ name, profile_path, id }) => ({
-                  name: name,
-                  path: profile_path,
-                  id,
-                }))}
-                height={isBigScreen ? 250 : 180}
-                itemSize={isBigScreen ? 150 : 100}
+                items={crew.map<MediaObject>(
+                  ({ name, profile_path, id, job }) => ({
+                    name: name,
+                    path: profile_path,
+                    id,
+                    info: job,
+                  })
+                )}
+                height={isBigScreen ? 260 : 190}
+                itemSize={isBigScreen ? 160 : 110}
                 thumbnailSize={ThumbnailSize.small}
                 showExpand
               />

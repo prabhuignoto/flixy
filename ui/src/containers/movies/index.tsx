@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useApolloClient, DocumentNode } from "@apollo/client";
 import Slider from "../../components/media-slider";
-import { popular, topRated, upcoming } from "../../gqls/movies";
+import { popular, topRated, upcoming, nowPlaying } from "../../gqls/movies";
 import Movie from "../../models/Media";
 import { LoadingState, SliderType } from "../../models/Slider";
 import { nanoid } from "nanoid";
@@ -15,6 +15,8 @@ const getQuery: (c: Category) => DocumentNode = (category) => {
       return topRated;
     case Category.UP_COMING:
       return upcoming;
+    case Category.NOW_PLAYING:
+      return nowPlaying;
   }
 };
 
@@ -57,6 +59,8 @@ const MovieContainer: React.FunctionComponent<MediaContainer> = ({
           newResults = data.getTopRated;
         } else if (category === Category.UP_COMING) {
           newResults = data.getUpcoming;
+        } else if (category === Category.NOW_PLAYING) {
+          newResults = data.getNowPlaying;
         }
         newData = [...movieData.results, ...newResults.results];
         setMovieData({

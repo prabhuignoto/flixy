@@ -42,6 +42,9 @@ export const MoviesWrapper = styled.div`
   height: 100%;
   position: relative;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const DetailsCardContainer = styled.div``;

@@ -28,7 +28,7 @@ export const DetailsWrapper = styled.section`
   height: 100%;
   justify-content: flex-start;
   width: 100%;
-  box-shadow: inset 0  0 40px 15px rgba(0,0,0,0.1);
+  /* box-shadow: inset 0  0 40px 15px rgba(0,0,0,0.1); */
   @media (min-width: 1366px) {
     width: 100%;
   }
@@ -119,4 +119,5 @@ export const PanelContainer = styled(animated.div)`
   align-items: center;
   justify-content: center;
   margin-top: auto;
+  background: #dbdbdb;
 `;

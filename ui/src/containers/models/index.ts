@@ -2,6 +2,7 @@ export enum Category {
   POPULAR = "POPULAR",
   TOP_RATED = "TOP_RATED",
   UP_COMING = "UP_COMING",
+  NOW_PLAYING = "NOW_PLAYING",
 }
 
 export interface MediaContainer {

@@ -128,6 +128,7 @@ const SearchContainer: React.FunctionComponent<SearchContainerModel> = ({
         thumbnailSize={ThumbnailSize.large}
         itemSize={resx.isBigScreen ? 230 : 180}
         onSelect={handleSelection}
+        noTitle
       />
     );
   }

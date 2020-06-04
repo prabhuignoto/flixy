@@ -72,6 +72,24 @@ export default class MovieResolver {
   }
 
   @Query(returns => MovieResult)
+  async getNowPlaying(
+    @Arg("lang") lang: string,
+    @Arg("page") page: number
+  ) {
+    try {
+      const { key, url } = this;
+      const response = await fetch(`${url}movie/now_playing?api_key=${key}&language=${lang}&page=${page}`);
+
+      const data = await response.json();
+
+      return data;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  @Query(returns => MovieResult)
   async getRecommendations(
     @Arg("id") id: number,
     @Arg("lang") lang: string,

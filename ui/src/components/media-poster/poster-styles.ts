@@ -15,7 +15,7 @@ export const CardImage = styled.img<{hide?: boolean}>`
   width: 100%;
   transition: filter .1s linear;
   &:hover {
-    filter: drop-shadow(0 0 10px #323232) brightness(1.1);
+    filter: drop-shadow(0 0 10px #323232) brightness(1.2);
   }
 `;
 

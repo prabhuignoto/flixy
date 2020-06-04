@@ -57,6 +57,25 @@ export const upcoming = gql`
   }
 `;
 
+export const nowPlaying = gql`
+  query nowPlaying($lang: String!, $page: Float!) {
+    getNowPlaying(lang: $lang, page: $page) {
+      page
+      total_results
+      total_pages
+      results {
+        id
+        title
+        original_title
+        release_date
+        poster_path
+        vote_average,
+        overview
+      }
+    }
+  }
+`;
+
 export const recommended = gql`
   query recommended($lang: String!, $page: Float!, $id: Float!) {
     getRecommendations(lang: $lang, page: $page, id: $id) {
