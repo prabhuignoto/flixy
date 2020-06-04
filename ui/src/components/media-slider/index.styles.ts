@@ -23,7 +23,6 @@ export const Header = styled.header`
   font-weight: 200;
   justify-content: flex-start;
   position: absolute;
-  /* background: linear-gradient(90deg, rgba(17,17,17,.85) 0%, rgba(25,25,25,.5) 50%, rgba(0,0,0,0) 100%); */
   z-index: 10;
   top: -2.5rem;
   left: 0;

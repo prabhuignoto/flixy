@@ -31,7 +31,6 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
     const [loading, setLoading] = React.useState(false);
     const [detailsData, setDetailsData] = React.useState<Images>();
     const { isBigScreen } = useResponsive();
-    const containerRef = React.createRef<HTMLDivElement>();
     const executeQuery = async () => {
       setLoading(true);
       const { data } = await client.query<ImageResultDetails>({
@@ -68,7 +67,7 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
                 noTitle
                 id="movie_backdrops"
                 items={backdrops.map<MediaObject>(
-                  ({ file_path, height, width }) => ({
+                  ({ file_path }) => ({
                     name: "",
                     path: file_path,
                     id: file_path,

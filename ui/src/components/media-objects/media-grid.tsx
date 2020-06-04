@@ -1,7 +1,7 @@
 import React from "react";
 import { MediaObject, ThumbnailSize } from "../../models/MediaObject";
 import { FixedSizeGrid } from "react-window";
-import { MediaGridWrapper, ScrollDown, ScrollUp } from "./media-grid.style";
+import { MediaGridWrapper} from "./media-grid.style";
 import { MediaObjectContainer } from "./media-objects.styles";
 import MediaObjectView from "./media-object";
 

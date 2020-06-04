@@ -2,17 +2,13 @@ import React from "react";
 import {
   Title,
   TitleWrapper,
-  DetailsRatingContainer,
-  TitleYear,
   TitleText,
   TitleRow1,
-  TitleRow2,
   GenresContainer,
   AttributeContainer,
   AttributesContainer,
   MediaRatingWrapper,
 } from "./details-title.style";
-import DetailsRating from "../rating/details-rating";
 import { format } from "date-fns";
 import ISO6391 from "iso-639-1";
 
@@ -47,22 +43,13 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
     <TitleWrapper>
       <Title>
         <TitleRow1>
-          {/* {rating && (
-            <DetailsRatingContainer>
-              <DetailsRating rating={rating} />
-            </DetailsRatingContainer>
-          )} */}
           <TitleText resxProps={resxProps}>{`${title}`}</TitleText>
-          {/* <TitleYear resxProps={resxProps}>{`${
-            year ? new Date(year).getFullYear() : ""
-          }`}</TitleYear> */}
           <MediaRatingWrapper>
             <MediaRating
               rating={rating || 0}
               size={RatingSize.large}
             ></MediaRating>
           </MediaRatingWrapper>
-          {/* <TitleRow2> */}
           <GenresContainer>
             {genres && <Genres items={genres} size={GenreSize.large} />}
             {!resxProps.isTabletOrMobile && (

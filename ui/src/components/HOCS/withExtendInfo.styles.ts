@@ -1,14 +1,6 @@
 import styled from "styled-components";
 import { responsiveProps } from "../../effects/useResponsive";
 
-const getButtonDimensions = (resx?: responsiveProps) => {
-  if(resx && resx.isBigScreen) {
-    return 26;
-  } else {
-    return 22;
-  }
-}
-
 export const ViewBtnWrapper = styled.span<{resx?: responsiveProps}>`
   background: rgba(0,0,0,0.85);
   border-radius: 50%;

@@ -23,9 +23,11 @@ To start the Flixy Server, follow these steps:
 ```bash
 cd ./server
 yarn install && yarn dev
+```
 
 To start the Flixy Frontend, follow these steps:
 
+```bash
 cd ./ui
 yarn install && yarn start
 ```

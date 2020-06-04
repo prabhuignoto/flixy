@@ -4,13 +4,15 @@ export const HeaderWrapper = styled.header`
   width: 100%;
   font-family: "Poppins";
   font-size: 1rem;
-  min-height: 4rem;
+  height: 5rem;
   display: flex;
   align-items: center;
   color: #fff;
   font-weight: 300;
   background: #000;
   margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
 `;
 
 export const SearchAndDiscover = styled.div`

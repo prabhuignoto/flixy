@@ -10,11 +10,6 @@ import memoize from "memoize-one";
 import { TvDetail } from "../../models/TvDetail";
 import { SliderType } from "../../models/Slider";
 
-const Shimmer = React.memo(
-  ({ movieId }: { movieId?: string | number }) => <Loader id={movieId} />,
-  (prev, cur) => prev.movieId === cur.movieId
-);
-
 const getHeight = memoize(
   ({ isBigScreen, isTabletOrMobile }: responsiveProps) => {
     let height;

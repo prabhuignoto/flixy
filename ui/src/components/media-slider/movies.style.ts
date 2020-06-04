@@ -52,7 +52,6 @@ export const MoviesContainer = styled(animated.div) <{
   grid-template-columns: repeat(${p => p.columns}, ${p => getColumnWidth(p.resxProps)}px);
   height: 100%;
   justify-content: space-evenly;
-  // overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
   scroll-behavior: smooth;

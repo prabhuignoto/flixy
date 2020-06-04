@@ -30,7 +30,7 @@ const MediaModal: React.FunctionComponent<{
     from: {
       opacity: 0,
     },
-    config: config.stiff,
+    config: config.default,
   });
 
   React.useEffect(() => {

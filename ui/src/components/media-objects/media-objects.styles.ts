@@ -1,6 +1,5 @@
 import { animated } from 'react-spring';
 import styled from "styled-components";
-import { CardSize } from '../../models/CardSize';
 import { ThumbnailSize } from '../../models/MediaObject';
 import { responsiveProps } from '../../effects/useResponsive';
 

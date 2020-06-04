@@ -1,4 +1,4 @@
-import React, { ReactDOM } from "react";
+import React from "react";
 import Movie from "../../models/Media";
 import {
   CardExtendedWrapper,

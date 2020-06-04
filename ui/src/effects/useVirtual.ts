@@ -1,11 +1,5 @@
 import React, { useEffect } from "react";
 
-interface Inputs {
-  visibleElements: number;
-  page: number;
-  totalItems: number;
-}
-
 export interface Configs {
   itemsToHideLeft: number;
   itemsToShow: number;

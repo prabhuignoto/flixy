@@ -64,17 +64,13 @@ export const PostersWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  /* height: 300px; */
-  /* margin-top: 2rem; */
 `;
 
 export const PostersAndProduction = styled.div<{ resxProps?: responsiveProps }>`
   display: flex;
   flex-direction: column;
   width: ${p => p.resxProps?.isBigScreen ? "55%" : "100%"};
-  /* height: 500px; */
 `;
 
 export const ProductionWrapper = styled.div`
-  /* height: 200px; */
 `;

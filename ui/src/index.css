@@ -45,6 +45,7 @@ footer.app-footer {
 .copyright,
 .powered,
 .copyright:visited,
+.github,
 .powered:visited {
   color: #fff;
 }

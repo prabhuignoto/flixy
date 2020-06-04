@@ -8,7 +8,6 @@ import { Check } from "@styled-icons/feather/Check";
 import { Clock } from "@styled-icons/feather/Clock";
 import { Image } from "@styled-icons/feather/Image";
 import { User } from "@styled-icons/feather/User";
-import { Imdb } from "@styled-icons/fa-brands/Imdb";
 import { Hash } from '@styled-icons/feather/Hash';
 import { Crown } from "@styled-icons/fa-solid/Crown";
 import { Menu } from "@styled-icons/feather/Menu";

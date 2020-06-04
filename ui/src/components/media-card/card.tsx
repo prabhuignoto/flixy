@@ -34,11 +34,6 @@ export default React.memo(
     resxProps,
     autoHeight,
   }: MovieType) => {
-    const [options, setOptions] = React.useState({
-      showExtendIcon: false,
-      flipCard: false,
-      showPane: false,
-    });
     const cardRef = React.useRef<HTMLDivElement>(null);
     const handleSelection = React.useCallback(
       (id: number | string) => {
@@ -58,7 +53,7 @@ export default React.memo(
             ref={cardRef}
             autoHeight={autoHeight}
           >
-            {!options.showPane && (
+            {
               <div style={{ height: "100%" }}>
                 <Poster
                   poster_path={poster_path ? poster_path : ""}
@@ -68,7 +63,7 @@ export default React.memo(
                   id={id}
                 ></Poster>
               </div>
-            )}
+            }
             {selected && (
               <CardCheckedWrapper>
                 <CheckIcon />
