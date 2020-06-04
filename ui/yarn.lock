@@ -3918,10 +3918,10 @@ csstype@^2.2.0:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.10.tgz#e63af50e66d7c266edb6b32909cfd0aabe03928b"
   integrity sha512-D34BqZU4cIlMCY93rZHbrq9pjTAQJ3U8S8rfBqjwHxkGPThWFjzZDQpgMJY0QViLxth6ZKYiwFBo14RdN44U/w==
 
-customize-cra-react-refresh@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/customize-cra-react-refresh/-/customize-cra-react-refresh-1.0.6.tgz#4be7339eba5ea3bb82233aa42fe7594f322126cc"
-  integrity sha512-f4BurZABGxmOjS6nc7myR31Crpbk62pk/tdQtLPCh5IV3C5rkpR/ynMOY6O2KEWT6W0WOTAlVNQA1/i+yxSTiw==
+customize-cra-react-refresh@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/customize-cra-react-refresh/-/customize-cra-react-refresh-1.1.0.tgz#0bb3723028b94d8f6f97af26b1f4aec0636271df"
+  integrity sha512-v7moZc3mv0ZnM9hUnC9YpUhjpWkCjYSL/oLx/y8o5CKFOnd3yOPxlmfMjrmpWTVPbpOIFTCPGjDIAiEYu63TGg==
   dependencies:
     "@pmmmwh/react-refresh-webpack-plugin" "^0.3.2"
     react-refresh "^0.8.1"
