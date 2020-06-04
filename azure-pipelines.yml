@@ -19,3 +19,8 @@ steps:
     npm --prefix ./server install
     npm --prefix ./server build
   displayName: 'build server'
+
+- script: |
+    npm --prefix ./ui install
+    npm --prefix ./ui build
+  displayName: 'build ui'
