@@ -1,17 +1,15 @@
 import React from "react";
 import {
   HeaderWrapper,
+  LogoContainer,
   SearchAndDiscover,
   SearchSettingToggle,
 } from "./header.styles";
-import {
-  SearchIcon,
-  CameraIcon,
-  TvIcon,
-} from "../icons";
+import { CameraIcon, SearchIcon, TvIcon } from "../icons";
 import MediaToggle, { MediaToggleOption } from "../media-toggle/media-toggle";
 import { useHistory, useLocation } from "react-router-dom";
 import useResponsive from "../../effects/useResponsive";
+import Logo from "../logo/logo";
 
 const Header: React.FunctionComponent = () => {
   const history = useHistory();
@@ -54,6 +52,9 @@ const Header: React.FunctionComponent = () => {
 
   return (
     <HeaderWrapper resx={resx}>
+      <LogoContainer>
+        <Logo></Logo>
+      </LogoContainer>
       <SearchAndDiscover>
         <SearchSettingToggle>
           {showLinks.state && (
