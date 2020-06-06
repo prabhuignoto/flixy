@@ -7,10 +7,10 @@
     "@hot-loader/react-dom": "^16.13.0",
     "@testing-library/dom": "^7.9.0",
     "@testing-library/jest-dom": "^5.9.0",
-    "@testing-library/react": "^10.0.6",
+    "@testing-library/react": "^10.2.0",
     "@testing-library/user-event": "^11.0.0",
     "@types/jest": "^25.2.3",
-    "@types/node": "^14.0.9",
+    "@types/node": "^14.0.11",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@types/react-window": "^1.8.2",
@@ -33,7 +33,7 @@
     "styled-components": "^5.1.1",
     "styled-icons": "^10.2.1",
     "throttle-debounce": "^2.1.0",
-    "typescript": "^3.9.3",
+    "typescript": "^3.9.5",
     "webfontloader": "^1.6.28"
   },
   "scripts": {
