@@ -104,6 +104,7 @@ const MovieDetails: React.FunctionComponent<{
       video,
       production_companies,
     } = data;
+    debugger;
 
     view = (
       <CardDetails

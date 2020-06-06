@@ -47,6 +47,7 @@ const DetailsHome: React.FunctionComponent<DetailsHomeModel> = ({
   id,
   production_companies,
   sliderType,
+  imdb_id
 }) => {
   return (
     <DetailsHomeWrapper>
@@ -59,6 +60,7 @@ const DetailsHome: React.FunctionComponent<DetailsHomeModel> = ({
           runtime={runtime}
           lang={original_language}
           releaseDate={release_date}
+          imdb_id={imdb_id}
         ></DetailsTitle>
       </Box1>
       <Box2>

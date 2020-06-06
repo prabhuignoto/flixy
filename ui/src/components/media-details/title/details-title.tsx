@@ -8,6 +8,7 @@ import {
   AttributeContainer,
   AttributesContainer,
   MediaRatingWrapper,
+  ImdbLinkContainer,
 } from "./details-title.style";
 import { format } from "date-fns";
 import ISO6391 from "iso-639-1";
@@ -18,6 +19,7 @@ import Attribute from "../attribute/details-attribute";
 import { Genre } from "../../../models/Genre";
 import useResponsive from "../../../effects/useResponsive";
 import MediaRating, { RatingSize } from "../../media-rating/media-rating";
+import MediaImdbLink from "../media-imdb-link/media-imdb-link";
 
 export interface DetailsTitleModel {
   year?: string;
@@ -27,6 +29,7 @@ export interface DetailsTitleModel {
   releaseDate?: string;
   lang?: string;
   genres?: Genre[];
+  imdb_id?: string;
 }
 
 const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
@@ -37,6 +40,7 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
   lang,
   runtime,
   genres,
+  imdb_id,
 }) => {
   const resxProps = useResponsive();
   return (
@@ -77,6 +81,11 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
                 )}
               </AttributesContainer>
             )}
+          {imdb_id && (
+            <ImdbLinkContainer>
+              <MediaImdbLink id={imdb_id} />
+            </ImdbLinkContainer>
+          )}
           </GenresContainer>
         </TitleRow1>
         {/* </TitleRow2> */}

@@ -42,6 +42,7 @@ export default ({
   vote_average,
   production_companies,
   sliderType,
+  imdb_id
 }: CardDetail) => {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const [show, setShow] = React.useState(false);
@@ -86,6 +87,7 @@ export default ({
                 id={id}
                 production_companies={production_companies}
                 sliderType={sliderType}
+                imdb_id={imdb_id}
               />
             )}
             {actvTab === tabs.recommended && (

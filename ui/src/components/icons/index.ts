@@ -32,6 +32,7 @@ import { StyledIcon } from '@styled-icons/styled-icon';
 import { ArrowRightCircle } from "@styled-icons/feather/ArrowRightCircle";
 import { ArrowheadDown } from "@styled-icons/evaicons-solid/ArrowheadDown";
 import { ArrowheadUp } from "@styled-icons/evaicons-solid/ArrowheadUp";
+import { Imdb } from "@styled-icons/fa-brands/Imdb";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -72,7 +73,7 @@ export const HelpCircleIcon = withStyled(HelpCircle);
 export const ArrowRightIcon = withStyled(ArrowRightCircle);
 export const CaretDownIcon = withStyled(ArrowheadDown);
 export const CaretUpIcon = withStyled(ArrowheadUp);
-
+export const ImdbIcon = withStyled(Imdb);
 
 function withStyled(icon: StyledIcon) {
   return styled(icon) <{ color?: string }>`

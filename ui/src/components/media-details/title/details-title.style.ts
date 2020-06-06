@@ -93,3 +93,5 @@ export const GenresContainer = styled.div`
 export const MediaRatingWrapper = styled.div`
   margin-left: 1rem;
 `;
+
+export const ImdbLinkContainer = styled.div``;
