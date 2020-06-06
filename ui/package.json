@@ -33,7 +33,7 @@
     "styled-components": "^5.1.1",
     "styled-icons": "^10.2.1",
     "throttle-debounce": "^2.1.0",
-    "typescript": "^3.9.3",
+    "typescript": "^3.9.5",
     "webfontloader": "^1.6.28"
   },
   "scripts": {
