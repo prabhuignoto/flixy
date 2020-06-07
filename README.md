@@ -8,9 +8,13 @@
 [![Azure pipelines](https://dev.azure.com/prabhummurthy/flixy/_apis/build/status/prabhuignoto.flixy?branchName=master)](https://dev.azure.com/prabhummurthy/flixy/_build/latest?definitionId=1&branchName=master)
 ![Website](https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fmovies.prabhumurthy.com)
 
+<p align="center">
+    <a href="https://movies.prabhumurthy.com"><img src="logo.png" alt="logo" /></a>
+</p>
+
 ## About
 
-Flixy is an open source attempt to bring an enjoyable UX experience to discover new Movies & TV shows.The app was built from the ground up using some of the best in class tools (see [Built with](#built-with) and designed to scale and perform well.
+Flixy is an open source attempt to bring an enjoyable UX experience to discover new Movies & TV shows.The app was built from the ground up using some of the best in class tools (see [Built with](#built-with)) and designed to scale and perform well.
 
 :rocket: The Frontend app is built with the latest version of React and the backend is powered by fastify and Apollo GraphQL.
 
