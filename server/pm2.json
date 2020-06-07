@@ -5,8 +5,7 @@
     "instances": 2,
     "script": "./build/index.js",
     "env": {
-      "ENV": "prod",
-      "PORT": 3000
+      "NODE_ENV": "prod"
     }
   }]
 }
