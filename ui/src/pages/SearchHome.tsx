@@ -41,20 +41,31 @@ const SearchOptionToggle = styled.div`
 
 const SearchHome: React.FunctionComponent<{}> = () => {
   const props = useResponsive();
-  const [term, setTerm] = React.useState("");
-  const [type, setType] = React.useState(MediaType.MOVIES);
+  const [search, setSearch] = React.useState({
+    term: "",
+    type: MediaType.MOVIES,
+  });
 
-  const onSearch = React.useCallback((val: string) => {
-    setTerm(val);
-  }, []);
-
-  const handleToggleSelection = (opt: MediaToggleOption) => {
-    if (opt.value === "movies") {
-      setType(MediaType.MOVIES);
-    } else {
-      setType(MediaType.TV);
-    }
+  const onSearch = (val: string) => {
+    setSearch({
+      term: val,
+      type: search.type,
+    });
   };
+
+  const handleToggleSelection = React.useCallback((opt: MediaToggleOption) => {
+    if (opt.value === "movies") {
+      setSearch({
+        term: "",
+        type: MediaType.MOVIES,
+      });
+    } else {
+      setSearch({
+        term: "",
+        type: MediaType.TV,
+      });
+    }
+  }, []);
 
   return (
     <SearchHomeWrapper>
@@ -74,11 +85,15 @@ const SearchHome: React.FunctionComponent<{}> = () => {
         </SearchOptionToggle>
       </MediaSearchBoxWrapper>
       <SearchResultsWrapper>
-        {term && (
+        {
           <>
-            <SearchContainer type={type} query={term} key={term} />
+            <SearchContainer
+              type={search.type}
+              query={search.term}
+              key={search.term}
+            />
           </>
-        )}
+        }
       </SearchResultsWrapper>
     </SearchHomeWrapper>
   );
