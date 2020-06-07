@@ -56,7 +56,7 @@ const Header: React.FunctionComponent = () => {
         <Logo></Logo>
       </LogoContainer>
       <SearchAndDiscover>
-        <SearchSettingToggle>
+        <SearchSettingToggle resx={resx}>
           {showLinks.state && (
             <MediaToggle
               onSelect={handleSelection}

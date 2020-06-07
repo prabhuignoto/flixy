@@ -29,7 +29,7 @@ export const SearchIconWrapper = styled.div`
   display: flex;
   height: 100%;
   margin-left: .5rem;
-  width: 2.5rem;
+  width: 2rem;
   outline: none;
 
   & svg {

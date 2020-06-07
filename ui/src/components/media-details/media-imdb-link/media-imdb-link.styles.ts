@@ -2,16 +2,18 @@ import styled from "styled-components";
 
 export const ImdbLinkWrapper = styled.div`
   border-radius: .2rem;
-  height: 2rem;
-  background: #ccb200;
+  height: 100%;
+  background: #000;
+  /* background: #ffd700; */
+  box-shadow: inset 0 0 4px 1px rgba(0,0,0,0.1);
 `;
 
 export const ImdbLink = styled.a`
   text-decoration: none;
   font-family: Poppins;
-  font-size: .8rem;
+  font-size: .9rem;
   font-weight: 500;
-  color: #000;
+  color: #ffd700;
   padding:0;
   min-width: 2.5rem;
   height: 100%;
@@ -31,7 +33,6 @@ export const ImdbLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: .2rem;
-    padding-right: .35rem;
+    padding: 0 .25rem;
   }
 `;

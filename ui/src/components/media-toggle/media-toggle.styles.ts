@@ -24,13 +24,13 @@ export const Option = styled.div<{ selected?: boolean, resx?: responsiveProps }>
   height: 100%;
   justify-content: center;
   margin: 0 .5rem;
-  padding: 0 .5rem;
+  padding: 0 .25rem;
   text-transform: capitalize;
   user-select: none;
   z-index: 1;
   & svg {
     height: 100%;
-    width: 2rem;
+    width: ${p => p.resx?.isBigScreen ? "2rem" : "1.5rem"};
   }
   `;
 
@@ -38,7 +38,7 @@ export const OptionLabel = styled.div<{ marginLess?: boolean }>`
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-left: ${p => p.marginLess ? "" : ".35rem"};
+  margin-left: ${p => p.marginLess ? "" : ".4rem"};
   text-transform: uppercase;
 `;
 

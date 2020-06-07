@@ -18,16 +18,23 @@ const fast = fastify({
 
 const server = async () => {
   try {
+    // build schema
     const schema = await buildSchema({
       resolvers: [GenreResolver, TrendingResolver, MovieResolver, TVResolver]
     });
+
+    // start apollo server
     const apolloServer = new ApolloServer({
-      schema
+      schema,
+      playground: process.env.NODE_ENV === "production" ? false : true
     })
+
     fast.register(cors, {
-      origin: "*"
+      origin: process.env.NODE_ENV === "production" ? "prabhumurthy.com" : "*"
     });
     fast.register(apolloServer.createHandler());
+
+    // start the server
     fast.listen(3200);
     fast.log.info(`server running on 3000`);
   } catch (err) {

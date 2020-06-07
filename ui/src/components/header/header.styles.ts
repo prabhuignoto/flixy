@@ -23,8 +23,8 @@ export const SearchAndDiscover = styled.div`
   margin-left: 3rem;
 `;
 
-export const SearchSettingToggle = styled.div`
-  height: 2.5rem;
+export const SearchSettingToggle = styled.div<{resx?: responsiveProps}>`
+  height: ${p => p.resx?.isBigScreen ? "2.5rem" : "2rem"};
 `;
 
 export const LogoContainer = styled.div`

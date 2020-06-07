@@ -7,7 +7,6 @@ import { X } from "@styled-icons/feather/X";
 import { Check } from "@styled-icons/feather/Check";
 import { Clock } from "@styled-icons/feather/Clock";
 import { Image } from "@styled-icons/feather/Image";
-// import { User } from "@styled-icons/feather/User";
 import { User } from "@styled-icons/boxicons-solid/User";
 import { Hash } from '@styled-icons/feather/Hash';
 import { Crown } from "@styled-icons/fa-solid/Crown";
@@ -33,6 +32,7 @@ import { ArrowRightCircle } from "@styled-icons/feather/ArrowRightCircle";
 import { ArrowheadDown } from "@styled-icons/evaicons-solid/ArrowheadDown";
 import { ArrowheadUp } from "@styled-icons/evaicons-solid/ArrowheadUp";
 import { Imdb } from "@styled-icons/fa-brands/Imdb";
+import { ExternalLink } from "@styled-icons/feather/ExternalLink";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -74,6 +74,7 @@ export const ArrowRightIcon = withStyled(ArrowRightCircle);
 export const CaretDownIcon = withStyled(ArrowheadDown);
 export const CaretUpIcon = withStyled(ArrowheadUp);
 export const ImdbIcon = withStyled(Imdb);
+export const ExternalIcon = withStyled(ExternalLink);
 
 function withStyled(icon: StyledIcon) {
   return styled(icon) <{ color?: string }>`

@@ -22,6 +22,7 @@ export const TitleWrapper = styled.div`
   margin-top: .5rem;
   width: 100%;
   padding-left: 1rem;
+  height: 100%;
 `;
 
 export const DetailsRatingContainer = styled.div`
@@ -29,35 +30,34 @@ export const DetailsRatingContainer = styled.div`
 `;
 
 export const TitleYear = styled.span<{resxProps: responsiveProps}>`
-  color: rgba(204,0,0,0.85);
-  margin-left: .5rem;
-  display: flex;
-  height: 100%;
   align-items: center;
-  font-weight: 500;
+  color: rgba(204,0,0,0.85);
+  display: flex;
   font-size: ${p => p.resxProps.isBigScreen ? "1.1rem" : ".85rem"};
+  font-weight: 500;
+  height: 100%;
+  margin-left: .5rem;
 `;
 
 export const TitleText = styled.span<{resxProps: responsiveProps}>`
+  align-items: center;
+  color: #191919;
+  display: flex;
+  font-family: Poppins;
+  font-size: ${p => p.resxProps.isBigScreen ? "1.25rem" : "1rem"};
+  font-weight: 500;
+  height: 100%;
   max-width: 85%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  display: flex;
-  height: 100%;
-  align-items: center;
-  font-family: Poppins;
-  font-weight: 500;
-  font-size: ${p => p.resxProps.isBigScreen ? "1.25rem" : "1rem"};
-  color: #191919;
 `;
 
 export const TitleRow1 = styled.div`
   align-items: center;
   display: flex;
-  width: 100%;
-  height: 3rem;
   flex-wrap: wrap;
+  width: 100%;
 `;
 
 export const TitleRow2 = styled.div`
@@ -86,7 +86,6 @@ export const GenresContainer = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: .25rem;
   margin-left: 2rem;
 `;
 
@@ -94,4 +93,6 @@ export const MediaRatingWrapper = styled.div`
   margin-left: 1rem;
 `;
 
-export const ImdbLinkContainer = styled.div``;
+export const ImdbLinkContainer = styled.div<{resx: responsiveProps}>`
+  height: ${p => p.resx.isBigScreen ? "1.75rem" : "1.5rem"};
+`;

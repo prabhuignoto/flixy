@@ -26,16 +26,16 @@ const SearchResultsWrapper = styled.div`
 
 const MediaSearchBoxWrapper = styled.div<{ resx?: responsiveProps }>`
   width: ${(p) => (p.resx?.isBigScreen ? "35%" : "50%")};
-  height: ${(p) => (p.resx?.isBigScreen ? "3.25rem" : "3rem")};
+  height: ${(p) => (p.resx?.isBigScreen ? "3rem" : "2.5rem")};
   margin-top: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-const SearchOptionToggle = styled.div`
+const SearchOptionToggle = styled.div<{ resx?: responsiveProps }>`
   width: 250px;
-  height: 3rem;
+  height: ${(p) => (p.resx?.isBigScreen ? "2.5rem" : "2rem")};
   margin-left: 2rem;
 `;
 
@@ -71,7 +71,7 @@ const SearchHome: React.FunctionComponent<{}> = () => {
     <SearchHomeWrapper>
       <MediaSearchBoxWrapper resx={props}>
         <MediaSearchBox onSearch={onSearch}></MediaSearchBox>
-        <SearchOptionToggle>
+        <SearchOptionToggle resx={props}>
           <MediaToggle
             options={[
               { label: "movies", value: "movies" },

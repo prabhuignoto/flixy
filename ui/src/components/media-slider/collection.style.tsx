@@ -15,36 +15,36 @@ export const MoviesControlItem = styled.li`
 
 export const ScrollButton = styled.button<{ resxProps?: responsiveProps }>`
   background: transparent;
-  border: none;
   border-radius: 50%;
+  border: none;
   cursor: pointer;
   height: ${p => p.resxProps?.isBigScreen ? "2.5rem" : "1.75rem"};
   outline: none;
+  padding: 0;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  width: ${p => p.resxProps?.isBigScreen ? "2.5rem" : "2rem"};
   z-index: 100;
-  width: ${p => p.resxProps?.isBigScreen ? "2.5rem" : "1.75rem"};
-  padding: 0;
 `;
 
 export const ScrollLeft = styled(ScrollButton)<{ loading?: boolean }>`
-  left: ${p => p.resxProps?.isBigScreen ? "-2.5rem" : "-1.5rem"};
   ${(p) => (p.loading ? "pointer-events: none;" : "")};
+  left: ${p => p.resxProps?.isBigScreen ? "-2.5rem" : "-2rem"};
 `;
 
 export const ScrollRight = styled(ScrollButton)<{ loading?: boolean }>`
-  right: ${p => p.resxProps?.isBigScreen ? "-2.5rem" : "-1.5rem"};
   ${(p) => (p.loading ? "pointer-events: none;" : "")}
+  right: ${p => p.resxProps?.isBigScreen ? "-2.5rem" : "-2rem"};
 `;
 
 export const MoviesWrapper = styled.div`
+  align-items: center;
+  display: flex;
   height: 100%;
+  justify-content: center;
   position: relative;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const DetailsCardContainer = styled.div``;

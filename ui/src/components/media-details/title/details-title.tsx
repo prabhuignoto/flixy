@@ -82,7 +82,7 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
               </AttributesContainer>
             )}
           {imdb_id && (
-            <ImdbLinkContainer>
+            <ImdbLinkContainer resx={resxProps}>
               <MediaImdbLink id={imdb_id} />
             </ImdbLinkContainer>
           )}

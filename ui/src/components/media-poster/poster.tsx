@@ -16,6 +16,7 @@ export default React.memo(({ poster_path, size, title }: Poster) => {
             title=""
             alt={title}
             src={`https://image.tmdb.org/t/p/w${size}/${poster_path}`}
+            loading="lazy"
           ></CardImage>
         </CardImageWrapper>
       )}

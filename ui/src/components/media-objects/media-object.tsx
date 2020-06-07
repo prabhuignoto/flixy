@@ -82,6 +82,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
                   noTitle={noTitle ? 1 : 0}
                   key={key}
                   alt={name}
+                  loading="lazy"
                 ></ObjectImage>
               );
             } else {
