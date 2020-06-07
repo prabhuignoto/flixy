@@ -9,7 +9,12 @@ import MovieResolver from "./resolvers/MovieResolver";
 import TVResolver from "./resolvers/TVResolver";
 import cors from "fastify-cors";
 
+if(process.env.NODE_ENV === "production") {
+  require("newrelic");
+}
+
 config();
+
 
 const fast = fastify({
   logger: true,
