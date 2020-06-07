@@ -9,7 +9,7 @@ import MovieResolver from "./resolvers/MovieResolver";
 import TVResolver from "./resolvers/TVResolver";
 import cors from "fastify-cors";
 
-if(process.env.NODE_ENV === "production") {
+if(process.env.NODE_ENV === "prod") {
   require("newrelic");
 }
 
@@ -31,11 +31,11 @@ const server = async () => {
     // start apollo server
     const apolloServer = new ApolloServer({
       schema,
-      playground: process.env.NODE_ENV === "production" ? false : true
+      playground: process.env.NODE_ENV === "prod" ? false : true
     })
 
     fast.register(cors, {
-      origin: process.env.NODE_ENV === "production" ? "prabhumurthy.com" : "*"
+      origin: process.env.NODE_ENV === "prod" ? "prabhumurthy.com" : "*"
     });
     fast.register(apolloServer.createHandler());
 
