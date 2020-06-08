@@ -35,9 +35,9 @@ const server = async () => {
     })
 
     fast.register(cors, {
-      origin: process.env.NODE_ENV === "prod" ? "https://movies.prabhumurthy.com" : "*",
+      origin: "*",
     });
-    
+
     fast.register(apolloServer.createHandler());
 
     // start the server
