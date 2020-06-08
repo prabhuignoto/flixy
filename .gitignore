@@ -2,12 +2,10 @@ node_modules
 .vscode/sftp.json
 out/linecounter.json
 out/linecounter.txt
-build
+# build
 ui/build/asset-manifest.json
 ui/build/index.html
 ui/.env
-ui/build/index.html
-ui/build/service-worker.js
-ui/build/asset-manifest.json
 ui/build/
+ui/public/
 scripts
