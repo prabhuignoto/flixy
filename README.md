@@ -14,11 +14,11 @@
 
 ## About
 
-Flixy is an open source attempt to bring an enjoyable UX experience to discover new Movies & TV shows.The app was built from the ground up using some of the best in class tools (see [Built with](#built-with)) and designed to scale and perform well.
+Flixy is an open source attempt to bring delightful UX while discovering your favorite Movies & TV shows.The app is built from the ground up using some of the best in class tools (see [Built with](#built-with)) and designed to scale and perform well.
 
 :rocket: The Frontend app is built with the latest version of React and the backend is powered by fastify and Apollo GraphQL.
 
-Huge thanks & :heart: to themoviedb.org, without which this project could not have been possible.
+Thanks to themoviedb.org, without which this project could not have been possible.
 
 ## Getting Started
 
@@ -38,14 +38,19 @@ yarn install && yarn start
 
 ## Flixy Home
 
+If everything went smooth with the installation, you should see this
+
 ![home_page_preview](home_page_preview.png)
 
 ## Search with ease
+
+Search for your favorite movies & tv shows with ease.
 
 ![search](search.png)
 
 ## Smart layout system
 
+The main layout grid is completely virtualized and has been designed to lazy load resources such as movie thumbnails.
 ![demo](demo.gif)
 
 ## Built with
