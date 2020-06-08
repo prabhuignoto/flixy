@@ -5,6 +5,7 @@ import { onAir, popular, topRated } from "../../gqls/tv";
 import Movie from "../../models/Media";
 import { LoadingState, SliderType } from "../../models/Slider";
 import { nanoid } from "nanoid";
+const dedupe = require("dedupe");
 
 export enum TvCategory {
   POPULAR = "POPULAR",
@@ -66,8 +67,12 @@ const Tv: React.FunctionComponent<MediaTvContainer> = ({ category, title }) => {
           newResults = data.getTvOnAir;
         }
         newData = [...movieData.results, ...newResults.results];
+        const dedupedData = dedupe(
+          newData,
+          (value: Movie) => value.id
+        ) as Movie[];
         setMovieData({
-          results: newData,
+          results: dedupedData,
           total_results: newResults.total_results,
         });
       }

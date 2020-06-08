@@ -20,7 +20,7 @@ import useResponsive from "../../effects/useResponsive";
 import MediaList from "./media-list";
 import MediaModal from "../media-modal/media-modal";
 import MediaGrid from "./media-grid";
-import { debounce, throttle } from "throttle-debounce";
+import { throttle } from "throttle-debounce";
 
 const ExtendedCard = withExtendedInfo(Card);
 
@@ -95,18 +95,20 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     };
 
     React.useEffect(() => {
-      if (containerRef && containerRef.current) {
-        const node = containerRef.current as HTMLUListElement;
-        const { clientWidth, clientHeight } = node;
-        setConfig({
-          show: true,
-          clientWidth,
-          count: hideObjectsWithNoImage
-            ? items.filter((item) => item.path).length
-            : items.length,
-          clientHeight: clientHeight - 40,
-        });
-      }
+      setTimeout(() => {
+        if (containerRef && containerRef.current) {
+          const node = containerRef.current as HTMLUListElement;
+          const { clientWidth, clientHeight } = node;
+          setConfig({
+            show: true,
+            clientWidth,
+            count: hideObjectsWithNoImage
+              ? items.filter((item) => item.path).length
+              : items.length,
+            clientHeight: clientHeight - 40,
+          });
+        }
+      }, 500);
     }, []);
 
     const onItemsRendered = React.useCallback(() => {

@@ -248,7 +248,7 @@ export default ({
           movies={movies}
           handleSelection={handleSelection}
           loadingCards={loadingCards}
-          id={id}
+          id={`${id}`}
         />
       ) : null}
     </MoviesWrapper>

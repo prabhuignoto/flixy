@@ -10,3 +10,4 @@ ui/build/
 ui/public/
 scripts
 newrelic_agent.log
+yarn-error.log

@@ -4,7 +4,6 @@ import {
   PosterWrapper,
   CardImage,
   CardImageWrapper,
-  CardRating,
 } from "./poster-styles";
 
 export default React.memo(({ poster_path, size, title }: Poster) => {

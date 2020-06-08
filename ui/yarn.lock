@@ -3996,6 +3996,11 @@ decode-uri-component@^0.2.0:
   resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
   integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
 
+dedupe@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/dedupe/-/dedupe-3.0.2.tgz#c7c9d5534167b69dc07bd21d093882abbe88b0a9"
+  integrity sha512-1BmvzpTdYjyvzTMgd8+A7R9jNJh8GfvVZJqREZpqq7OpePtVFNdw56FjsHFdC35ROSng6y+h4qFYO/VkiKEztg==
+
 deep-equal@^1.0.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.1.1.tgz#b5c98c942ceffaf7cb051e24e1434a25a2e6076a"

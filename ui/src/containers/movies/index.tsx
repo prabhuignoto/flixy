@@ -6,6 +6,7 @@ import Movie from "../../models/Media";
 import { LoadingState, SliderType } from "../../models/Slider";
 import { nanoid } from "nanoid";
 import { Category, MediaContainer } from "../models";
+const dedupe = require("dedupe");
 
 const getQuery: (c: Category) => DocumentNode = (category) => {
   switch (category) {
@@ -63,8 +64,12 @@ const MovieContainer: React.FunctionComponent<MediaContainer> = ({
           newResults = data.getNowPlaying;
         }
         newData = [...movieData.results, ...newResults.results];
+        const dedupedData = dedupe(
+          newData,
+          (value: Movie) => value.id
+        ) as Movie[];
         setMovieData({
-          results: newData,
+          results: dedupedData,
           total_results: newResults.total_results,
         });
       }
