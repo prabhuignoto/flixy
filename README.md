@@ -50,7 +50,8 @@ Search for your favorite movies & tv shows with ease.
 
 ## Smart layout system
 
-The main layout grid is completely virtualized and has been designed to lazy load resources such as movie thumbnails.
+The main layout grid is completely virtualized and has been designed to lazy load resources.
+
 ![demo](demo.gif)
 
 ## Built with
