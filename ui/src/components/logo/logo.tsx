@@ -1,5 +1,5 @@
 import React from "react";
-import { LogoWrapper, LogoText, LogoIcon } from "./logo.styles";
+import { LogoWrapper, LogoText, LogoIcon, Trademark } from "./logo.styles";
 
 const Logo: React.FunctionComponent = () => (
   <LogoWrapper>
@@ -21,7 +21,9 @@ const Logo: React.FunctionComponent = () => (
         </g>
       </svg>
     </LogoIcon>
-    <LogoText>Flixy</LogoText>
+    <LogoText>
+      Flixy <Trademark>&trade;</Trademark>
+    </LogoText>
   </LogoWrapper>
 );
 

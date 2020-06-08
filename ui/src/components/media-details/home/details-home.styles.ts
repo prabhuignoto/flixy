@@ -51,7 +51,7 @@ export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
 export const Overview = styled(Title) <{ resxProps?: responsiveProps }>`
   color: #191919;
   font-family: "Poppins";
-  font-size: ${p => p.resxProps?.isBigScreen ? ".85rem" : ".75rem"};
+  font-size: ${p => p.resxProps?.isBigScreen ? ".9rem" : ".85rem"};
   font-weight: 400;
   margin: .25rem 0;
   width: 95%;

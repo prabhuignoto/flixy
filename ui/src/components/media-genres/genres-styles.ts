@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { GenreSize } from "./genres";
 import { responsiveProps } from "../../effects/useResponsive";
 
 export const GenresWrapper = styled.ul`
@@ -8,7 +7,7 @@ export const GenresWrapper = styled.ul`
   justify-content: flex-start;
   list-style: none;
   margin: 0;
-  padding: .2em;
+  padding: .2em .2em .2em 0;
 `;
 
 export const GenreItem = styled.li<{ resx?: responsiveProps }>`
@@ -24,12 +23,12 @@ export const GenreItem = styled.li<{ resx?: responsiveProps }>`
     if (p.resx?.isBigScreen) {
       return `
         padding: .25em .35em;
-        font-size: .9em;
-        font-weight: 400;
+        font-size: .85em;
+        font-weight: 300;
       `;
     } else {
       return `
-        padding: .25em .35em;
+        padding: .25em .5em;
         font-size: .75em;
         font-weight: 300;`
     }

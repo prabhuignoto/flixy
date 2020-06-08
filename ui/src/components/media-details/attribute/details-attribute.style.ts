@@ -19,8 +19,8 @@ export const AttributeLabel = styled(Root)`
   align-items: center;
   color: #fff;
   display: flex;
-  font-size: ${p => p.resx?.isBigScreen ? ".9rem" : ".75rem"};
-  font-weight: 400;
+  font-size: ${p => p.resx?.isBigScreen ? ".85rem" : ".75rem"};
+  font-weight: 300;
   justify-content: flex-start;
   padding-left: .5rem;
   text-align: center;
@@ -36,7 +36,7 @@ export const AttributeValue = styled(Root)`
   border-top-right-radius: 3px;
   color: #fff;
   display: flex;
-  font-size: ${p => p.resx?.isBigScreen ? ".9rem" : ".75rem"};
+  font-size: ${p => p.resx?.isBigScreen ? ".85rem" : ".75rem"};
   font-weight: 300;
   height: 100%;
   margin-left: auto;

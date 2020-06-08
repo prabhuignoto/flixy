@@ -2,25 +2,25 @@ import styled from 'styled-components';
 import { responsiveProps } from '../../effects/useResponsive';
 
 export const HeaderWrapper = styled.header<{resx?: responsiveProps}>`
-  width: 100%;
-  height: ${p => p.resx?.isBigScreen ? "4rem" : "3.5rem"};
-  display: flex;
   align-items: center;
-  color: #fff;
-  font-weight: 300;
   background: #000;
+  color: #fff;
+  display: flex;
+  font-weight: 300;
+  height: ${p => p.resx?.isBigScreen ? "4rem" : "3.5rem"};
   margin-bottom: 2rem;
   margin-top: 1rem;
   padding-left: 2rem;
+  width: 100%;
 `;
 
 export const SearchAndDiscover = styled.div`
-  height: 4rem;
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 4rem;
   justify-content: flex-start;
-  padding: .25rem;
   margin-left: 3rem;
+  padding: .25rem;
 `;
 
 export const SearchSettingToggle = styled.div<{resx?: responsiveProps}>`

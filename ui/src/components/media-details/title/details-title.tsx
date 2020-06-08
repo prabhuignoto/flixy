@@ -9,6 +9,7 @@ import {
   AttributesContainer,
   MediaRatingWrapper,
   ImdbLinkContainer,
+  TextAndRating,
 } from "./details-title.style";
 import { format } from "date-fns";
 import ISO6391 from "iso-639-1";
@@ -46,15 +47,17 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
   return (
     <TitleWrapper>
       <Title>
-        <TitleRow1>
-          <TitleText resxProps={resxProps}>{`${title}`}</TitleText>
-          <MediaRatingWrapper>
-            <MediaRating
-              rating={rating || 0}
-              size={RatingSize.large}
-            ></MediaRating>
-          </MediaRatingWrapper>
-          <GenresContainer>
+        <TitleRow1 resx={resxProps}>
+          <TextAndRating resx={resxProps}>
+            <TitleText resxProps={resxProps}>{`${title}`}</TitleText>
+            <MediaRatingWrapper>
+              <MediaRating
+                rating={rating || 0}
+                size={RatingSize.large}
+              ></MediaRating>
+            </MediaRatingWrapper>
+          </TextAndRating>
+          <GenresContainer resx={resxProps}>
             {genres && <Genres items={genres} size={GenreSize.large} />}
             {!resxProps.isTabletOrMobile && (
               <AttributesContainer resxProps={resxProps}>
@@ -81,11 +84,11 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
                 )}
               </AttributesContainer>
             )}
-          {imdb_id && (
-            <ImdbLinkContainer resx={resxProps}>
-              <MediaImdbLink id={imdb_id} />
-            </ImdbLinkContainer>
-          )}
+            {imdb_id && (
+              <ImdbLinkContainer resx={resxProps}>
+                <MediaImdbLink id={imdb_id} />
+              </ImdbLinkContainer>
+            )}
           </GenresContainer>
         </TitleRow1>
         {/* </TitleRow2> */}

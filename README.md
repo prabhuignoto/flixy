@@ -40,6 +40,14 @@ yarn install && yarn start
 
 ![home_page_preview](home_page_preview.png)
 
+## Search with ease
+
+![search](search.png)
+
+## Smart layout system
+
+![demo](demo.gif)
+
 ## Built with
 
 * [The Movie Database](https://developers.themoviedb.org/)

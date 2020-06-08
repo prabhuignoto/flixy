@@ -4,7 +4,6 @@ export const ImdbLinkWrapper = styled.div`
   border-radius: .2rem;
   height: 100%;
   background: #000;
-  /* background: #ffd700; */
   box-shadow: inset 0 0 4px 1px rgba(0,0,0,0.1);
 `;
 
@@ -23,7 +22,7 @@ export const ImdbLink = styled.a`
   justify-content: center;
 
   & svg {
-    width: 1.5rem;
+    width: 1rem;
     height: 100%;
     margin-left: .25rem;
   }
@@ -33,6 +32,6 @@ export const ImdbLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 .25rem;
+    padding: 0 .5rem;
   }
 `;

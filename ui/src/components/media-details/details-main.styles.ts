@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import { animated } from "react-spring";
 import { responsiveProps } from '../../effects/useResponsive';
 
-
-
 export const DetailsCardWrapper = styled(animated.div)`
   align-items: center;
   background: #000;

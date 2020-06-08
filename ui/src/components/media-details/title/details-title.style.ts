@@ -18,11 +18,11 @@ export const Title = styled(Font)`
 export const TitleWrapper = styled.div`
   align-items: center;
   display: flex;
+  height: 100%;
   justify-content: flex-start;
   margin-top: .5rem;
-  width: 100%;
   padding-left: 1rem;
-  height: 100%;
+  width: 95%;
 `;
 
 export const DetailsRatingContainer = styled.div`
@@ -44,7 +44,7 @@ export const TitleText = styled.span<{resxProps: responsiveProps}>`
   color: #191919;
   display: flex;
   font-family: Poppins;
-  font-size: ${p => p.resxProps.isBigScreen ? "1.25rem" : "1rem"};
+  font-size: ${p => p.resxProps.isBigScreen ? "1.25rem" : ".9rem"};
   font-weight: 500;
   height: 100%;
   max-width: 85%;
@@ -53,11 +53,12 @@ export const TitleText = styled.span<{resxProps: responsiveProps}>`
   white-space: nowrap;
 `;
 
-export const TitleRow1 = styled.div`
-  align-items: center;
+export const TitleRow1 = styled.div<{resx?: responsiveProps}>`
+  align-items: ${p => p.resx?.isBigScreen ? "center" : "flex-start"};
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  flex-direction: ${p => p.resx?.isBigScreen ? "row" : "column"};
 `;
 
 export const TitleRow2 = styled.div`
@@ -82,11 +83,11 @@ export const AttributeContainer = styled.div`
   margin-right: .5rem;
 `;
 
-export const GenresContainer = styled.div`
+export const GenresContainer = styled.div<{resx: responsiveProps}>`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  margin-left: 2rem;
+  margin-left: ${p => p.resx.isBigScreen ? "3rem" : ""};
 `;
 
 export const MediaRatingWrapper = styled.div`
@@ -95,4 +96,12 @@ export const MediaRatingWrapper = styled.div`
 
 export const ImdbLinkContainer = styled.div<{resx: responsiveProps}>`
   height: ${p => p.resx.isBigScreen ? "1.75rem" : "1.5rem"};
+`;
+
+export const TextAndRating = styled.div<{resx?: responsiveProps}>`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: ${p => p.resx?.isBigScreen ? "" : ".5rem"};
+  margin-right: 2rem;
 `;

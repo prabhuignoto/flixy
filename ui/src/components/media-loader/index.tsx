@@ -23,7 +23,7 @@ const Loader: React.FunctionComponent<{
   style?: any;
   id?: string | number;
 }> = ({ size, style }) => {
-  const wh = size === LoaderSize.small ? 30 : 35;
+  const wh = size === LoaderSize.small ? 25 : 30;
   return (
     <Wrapper style={style}>
       <svg
