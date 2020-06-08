@@ -9,3 +9,4 @@ ui/.env
 ui/build/
 ui/public/
 scripts
+newrelic_agent.log
