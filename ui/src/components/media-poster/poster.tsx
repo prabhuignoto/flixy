@@ -8,7 +8,7 @@ import {
 } from "./poster-styles";
 import { MedalIcon } from "../icons";
 import useResponsive from "../../effects/useResponsive";
-import {useSpring} from "react-spring";
+import { useSpring, config } from "react-spring";
 
 export default React.memo(
   ({ poster_path, size, title, rating }: Poster) => {
@@ -19,9 +19,10 @@ export default React.memo(
     const props = useSpring({
       opacity: 1,
       from: {
-        opacity: 0
-      }
-    })
+        opacity: 0,
+      },
+      config: config.stiff,
+    });
 
     return (
       <PosterWrapper size={size}>

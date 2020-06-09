@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { animated } from "react-spring";
+import { LoadingState } from '../../models/Slider';
 
-export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
+export const Wrapper = styled(animated.div) <{ detailsEnabled?: number, loadingState?: LoadingState }>`
   /* ${p => p.detailsEnabled && "background-image: linear-gradient(to right top, #2c2c2c, #252525, #1f1f1f, #181818, #111111);"}; */
-  background-image: linear-gradient(to right top, #2c2c2c, #252525, #1f1f1f, #181818, #111111);
+  background-image: ${p => p.loadingState === LoadingState.LOADED ? "linear-gradient(to right top, #2c2c2c, #252525, #1f1f1f, #181818, #111111)" : ""};
   background-color: ${p => !p.detailsEnabled ? "" : ""};
   border-radius: .2rem;
   display: flex;
