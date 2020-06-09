@@ -125,7 +125,6 @@ export default ({
           setLoadingCards(Array.from({ length: cards }).map((k, i) => i));
           setTimeout(() => fetchMore(), 0);
         }
-
         setMovies(newItems);
       }
     }

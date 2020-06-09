@@ -11,7 +11,6 @@ export const Wrapper = styled(animated.div) <{ detailsEnabled?: number }>`
   padding-bottom: ${p => p.detailsEnabled ? "2rem" : ""};
   width: 95%; 
   position: relative;
-  background: #181818;
 `;
 
 export const Header = styled.header`
