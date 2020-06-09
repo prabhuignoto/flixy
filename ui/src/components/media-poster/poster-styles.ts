@@ -1,29 +1,32 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 import { CardSize } from '../../models/CardSize';
+import { responsiveProps } from '../../effects/useResponsive';
 
-export const PosterWrapper = styled.div<{size?: CardSize}>`
+export const PosterWrapper = styled.div<{ size?: CardSize }>`
   height: 100%;
   `;
 
-export const CardImage = styled.img<{hide?: boolean}>`
+export const CardImage = styled(animated.img)<{ hide?: boolean }>`
   border-radius: .2rem;
+  color: #191919;
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
-  color: #191919;
-  width: 100%;
   transition: filter .1s linear;
+  width: 100%;
   &:hover {
     filter: drop-shadow(0 0 10px #323232) brightness(1.2);
   }
 `;
 
-export const CardImageWrapper = styled(animated.div)<{ selected?: boolean }>`
+export const CardImageWrapper = styled(animated.div) <{ selected?: boolean }>`
   align-items: ${(p) => (p.selected ? "flex-start" : "center")};
   display: flex;
   height: 100%;
+  position: relative;
   justify-content: center;
+  width: 100%;
 `;
 
 export const CardRating = styled.span`
@@ -46,4 +49,27 @@ export const CardRating = styled.span`
   position: absolute;
   right: -.5rem;
   top: .85rem;
+`;
+
+export const Star = styled.div<{ resx?: responsiveProps }>`
+  ${p => p.resx?.isBigScreen ?
+    `width: 3.5rem;
+  height: 2.5rem;` :
+    `width: 2rem;
+  height: 2rem;`};
+  display: flex;
+  align-items: center;
+  position: absolute;
+  ${p => p.resx?.isBigScreen ?
+    `top: 1rem; right: 0;` :
+    `top: 0rem; right: 0`
+  };
+  justify-content: center;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 4px #000);
+
+  & svg {
+    width: 80%;
+    height: 80%;
+  }
 `;

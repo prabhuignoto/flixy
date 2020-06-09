@@ -33,6 +33,7 @@ export default React.memo(
     title,
     resxProps,
     autoHeight,
+    vote_average
   }: MovieType) => {
     const cardRef = React.useRef<HTMLDivElement>(null);
     const handleSelection = React.useCallback(
@@ -58,6 +59,7 @@ export default React.memo(
                 <Poster
                   poster_path={poster_path ? poster_path : ""}
                   index={index}
+                  rating={vote_average}
                   size={size}
                   title={title}
                   id={id}

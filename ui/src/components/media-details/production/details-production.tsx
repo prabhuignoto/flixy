@@ -25,7 +25,7 @@ const ProductionDetails: React.FunctionComponent<ProductionDetailsModel> = ({
       <MediaObjects
         items={objects}
         noTitle
-        height={isBigScreen ? 200 : 100}
+        height={isBigScreen ? 150 : 100}
         itemSize={isBigScreen ? 250 : 100}
         id="production-media"
         thumbnailSize={ThumbnailSize.small}

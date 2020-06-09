@@ -10,16 +10,11 @@ export const MediaObject = styled(animated.div)`
   justify-content: center;
   margin: 0 .5rem;
   cursor: pointer;
-
-  &:hover {
-    
-  }
 `;
 
 export const ObjectImage = styled(animated.img) <{ loaded?: number, noTitle?: number }>`
   display: ${p => p.loaded ? "block" : "none"};
   margin-top: ${p => !p.noTitle ? "auto" : ""};
-  /* max-height: ${p => p.noTitle ? "100%" : "80%"}; */
   max-height: 95%;
   max-width: 100%;
   object-fit: contain;
@@ -41,7 +36,7 @@ export const FallbackImage = styled(animated.div) <{ failed?: boolean }>`
 export const ObjectName = styled.span<{ resx?: responsiveProps }>`
   color: #000;
   font-family: "Poppins";
-  font-size: ${p => p.resx?.isBigScreen ? ".7rem" : ".6rem"};
+  font-size: ${p => p.resx?.isBigScreen ? ".75rem" : ".65rem"};
   font-weight: 400;
   height: 10%;
   margin-bottom: .5rem;
@@ -73,7 +68,6 @@ export const ImageContainer = styled.div<{ noTitle?: number }>`
   align-items: center;
   justify-content: center;
   background : ${p => !p.noTitle ? "#ededed" : ""};
-  /* border-radius: .25rem; */
   `;
 
 export const ImageInfo = styled.div<{ resx?: responsiveProps }>`

@@ -65,14 +65,12 @@ export default function <P extends CardExtendCustomModel>(
     }
 
     showPane(ev: React.MouseEvent) {
-      let flipCard = false;
       const node = this.elementRef.current as HTMLElement;
       const rects = node.getBoundingClientRect();
-      let x, y;
       const { positioningStrategy } = this.props;
+      let flipCard = false;
       let timer: number;
-
-      // ev.stopPropagation();
+      let x, y;
 
       // check if the card needs to be flipped
       if (positioningStrategy === PositioningStrategy.absolute) {
@@ -103,7 +101,6 @@ export default function <P extends CardExtendCustomModel>(
     }
 
     hidePane(ev: React.MouseEvent) {
-      // ev.stopPropagation();
       this.setState({
         showPane: false,
         showExtendIcon: false,

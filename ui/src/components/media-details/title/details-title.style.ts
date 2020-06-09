@@ -20,7 +20,7 @@ export const TitleWrapper = styled.div`
   display: flex;
   height: 100%;
   justify-content: flex-start;
-  margin-top: .5rem;
+  margin-top: 1rem;
   padding-left: 1rem;
   width: 95%;
 `;

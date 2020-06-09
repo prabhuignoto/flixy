@@ -7,6 +7,7 @@ import MediaToggle, {
 } from "../components/media-toggle/media-toggle";
 import SearchContainer from "../containers/search";
 import { MediaType } from "../containers/models";
+import MediaMessage from "../components/media-message/media-message";
 
 const SearchHomeWrapper = styled.div`
   display: flex;
@@ -37,6 +38,21 @@ const SearchOptionToggle = styled.div<{ resx?: responsiveProps }>`
   width: 250px;
   height: ${(p) => (p.resx?.isBigScreen ? "2.5rem" : "2rem")};
   margin-left: 2rem;
+`;
+
+const MessageWrapper = styled.div`
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 30%;
+  transform: translateY(-30%);
 `;
 
 const SearchHome: React.FunctionComponent<{}> = () => {
@@ -84,16 +100,17 @@ const SearchHome: React.FunctionComponent<{}> = () => {
           />
         </SearchOptionToggle>
       </MediaSearchBoxWrapper>
+      {!search.term && (
+        <MessageWrapper>
+          <MediaMessage message="Search for your favorite Movies and TV shows." />
+        </MessageWrapper>
+      )}
       <SearchResultsWrapper>
-        {
-          <>
-            <SearchContainer
-              type={search.type}
-              query={search.term}
-              key={search.term}
-            />
-          </>
-        }
+        <SearchContainer
+          type={search.type}
+          query={search.term}
+          key={search.term}
+        />
       </SearchResultsWrapper>
     </SearchHomeWrapper>
   );
