@@ -11,10 +11,11 @@ export const MediaMessageWrapper = styled.div`
 export const MediaMessageText = styled.span<{ resx?: responsiveProps }>`
   font-family: "Poppins";
   font-weight: 400;
-  ${p => p.resx?.isBigScreen ? "font-size: 1.75rem" : "font-size: 1.2rem"};
+  ${p => p.resx?.isBigScreen ? "font-size: 1.5rem" : "font-size: 1.2rem"};
   color: #464646;
   white-space: pre-wrap;
   text-align: justify;
+  white-space: nowrap;
 `;
 
 export const MediaMessageIcon = styled.span<{ resx?: responsiveProps }>`

@@ -33,6 +33,10 @@ const MediaSearchBoxWrapper = styled.div<{ resx?: responsiveProps }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #1f1f1f;
+  background: #181818;
+  border-radius: .25rem;
+  padding: 1rem;
 `;
 
 const SearchOptionToggle = styled.div<{ resx?: responsiveProps }>`
@@ -104,7 +108,7 @@ const SearchHome: React.FunctionComponent<{}> = () => {
       {!search.term && (
         <MessageWrapper>
           <MediaMessage
-            message="Search for your favorite Movies and TV shows."
+            message="Search your favorite Movies and TV shows."
             icon={<Movie2Icon color="#464646"/>}
           />
         </MessageWrapper>

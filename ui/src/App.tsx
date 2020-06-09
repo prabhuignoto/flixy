@@ -14,11 +14,15 @@ import Header from "./components/header/header";
 import SearchHome from "./pages/SearchHome";
 import MediaQuery from "react-responsive";
 import MediaMessage from "./components/media-message/media-message";
+import nlp from "compromise";
 
 const Movies = React.lazy(() => import("./pages/Movies"));
 const Tv = React.lazy(() => import("./pages/Tv"));
 
 config();
+
+const d = nlp("korean thriller movies released in year 1990");
+console.log(d.json());
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_URL,

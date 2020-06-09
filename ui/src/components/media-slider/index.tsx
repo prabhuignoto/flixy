@@ -126,7 +126,6 @@ const SliderView: React.FunctionComponent<Slider> = ({
 
   return (
     <WrapperContainer
-      style={wrapperProps}
       detailsEnabled={showDetails.selectedMovie ? 1 : 0}
       id={`slider-wrapper-${id}`}
     >
