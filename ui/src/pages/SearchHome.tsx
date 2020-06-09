@@ -8,6 +8,7 @@ import MediaToggle, {
 import SearchContainer from "../containers/search";
 import { MediaType } from "../containers/models";
 import MediaMessage from "../components/media-message/media-message";
+import { Movie2Icon } from "../components/icons";
 
 const SearchHomeWrapper = styled.div`
   display: flex;
@@ -102,7 +103,10 @@ const SearchHome: React.FunctionComponent<{}> = () => {
       </MediaSearchBoxWrapper>
       {!search.term && (
         <MessageWrapper>
-          <MediaMessage message="Search for your favorite Movies and TV shows." />
+          <MediaMessage
+            message="Search for your favorite Movies and TV shows."
+            icon={<Movie2Icon color="#464646"/>}
+          />
         </MessageWrapper>
       )}
       <SearchResultsWrapper>

@@ -34,6 +34,7 @@ import { ArrowheadUp } from "@styled-icons/evaicons-solid/ArrowheadUp";
 import { Imdb } from "@styled-icons/fa-brands/Imdb";
 import { ExternalLink } from "@styled-icons/feather/ExternalLink";
 import { Medal } from "@styled-icons/boxicons-regular/Medal";
+import { Movie2 } from "@styled-icons/remix-line/Movie2";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -77,6 +78,7 @@ export const CaretUpIcon = withStyled(ArrowheadUp);
 export const ImdbIcon = withStyled(Imdb);
 export const ExternalIcon = withStyled(ExternalLink);
 export const MedalIcon = withStyled(Medal);
+export const Movie2Icon = withStyled(Movie2);
 
 function withStyled(icon: StyledIcon) {
   return styled(icon) <{ color?: string }>`
