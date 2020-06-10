@@ -60,7 +60,7 @@ const MediaGrid: React.FunctionComponent<MediaGridModel> = ({
         columnWidth={itemWidth}
         height={containerHeight}
         width={containerWidth}
-        rowHeight={itemHeight + 20}
+        rowHeight={itemHeight}
         style={{ margin: "0 auto", overflowY: "auto" }}
         outerRef={gridRef}
       >

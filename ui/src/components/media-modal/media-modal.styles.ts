@@ -3,7 +3,7 @@ import { responsiveProps } from "../../effects/useResponsive";
 import { animated } from "react-spring";
 
 export const MediaModalWrapper = styled(animated.div) <{ resx?: responsiveProps }>`
-  background: #dbdbdb;
+  background: #e5e5e5;
   border-radius: .25rem;
   box-shadow: 0 0 8px 4px rgba(0,0,0,0.3);
   height: 1px;
@@ -19,13 +19,13 @@ export const MediaModalWrapper = styled(animated.div) <{ resx?: responsiveProps 
   ${p => {
     if (p.resx?.isBigScreen) {
       return `
-        max-width: 1500px;
-        min-width: 1300px;
+        max-width: 1700px;
+        min-width: 1600px;
       `;
     } else if (p.resx?.isDesktopOrLaptop) {
       return `
-        max-width: 1000px;
-        min-width: 980px;
+        max-width: 1200px;
+        min-width: 1000px;
       `;
     } else {
       return `
@@ -49,13 +49,15 @@ export const ModalHeader = styled.header`
   height: 3.5rem;
   justify-content: flex-start;
   width: 100%;
+  background: #dbdbdb;
 
   & .title {
     color: #000;
     font-family: Poppins;
-    font-size: 1.1em;
-    font-weight: 300;
+    font-size: 1.1rem;
+    font-weight: 400;
     padding-left: 1rem;
+    text-transform: uppercase;
   }
 `;
 

@@ -3,7 +3,6 @@ import { animated } from "react-spring";
 import { LoadingState } from '../../models/Slider';
 
 export const Wrapper = styled(animated.div) <{ detailsEnabled?: number, loadingState?: LoadingState }>`
-  /* ${p => p.detailsEnabled && "background-image: linear-gradient(to right top, #2c2c2c, #252525, #1f1f1f, #181818, #111111);"}; */
   background-image: ${p => p.loadingState === LoadingState.LOADED ? "linear-gradient(to right top, #2c2c2c, #252525, #1f1f1f, #181818, #111111)" : ""};
   background-color: ${p => !p.detailsEnabled ? "" : ""};
   border-radius: .2rem;
@@ -74,17 +73,20 @@ export const ButtonWrapper = styled.div`
 
 export const Footer = styled.footer`
   align-items: center;
+  bottom: -1rem;
   display: flex;
   justify-content: center;
-  width: 100%;
-  padding-bottom: .5rem;
-  z-index: 1;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
   position: absolute;
-  bottom: -2.5rem;
+  right: 0;
+  z-index: 1;
+  height: 2rem;
 `;
 
 export const DetailsWrapper = styled.div`
   margin: 0 auto;
-  width: 100%;
   position: relative;
+  width: 100%;
 `;;

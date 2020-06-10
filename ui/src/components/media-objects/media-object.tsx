@@ -71,7 +71,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
             onError={() => setLoadState({ loaded: false, failed: true })}
             style={{ display: "none" }}
           />
-          {info && showInfo && <ImageInfo resx={resx}>{info}</ImageInfo>}
+
           {transition.map(({ item, key, props }) => {
             if (item) {
               return (
@@ -98,7 +98,9 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
             }
           })}
         </ImageContainer>
-        {!noTitle && <ObjectName resx={resx}>{name}</ObjectName>}
+        {!noTitle && info && showInfo && (
+          <ImageInfo resx={resx}>{`${name} as ${info}`}</ImageInfo>
+        )}
       </MediaObject>
     ) : null;
   },

@@ -31,6 +31,7 @@
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
     "react-window": "^1.8.5",
+    "recoil": "^0.0.8",
     "smoothscroll-polyfill": "^0.4.4",
     "styled-components": "^5.1.1",
     "styled-icons": "^10.2.1",

@@ -2,20 +2,19 @@ import styled from 'styled-components';
 import { responsiveProps } from '../../effects/useResponsive';
 
 export const MediaMessageWrapper = styled.div`
-  margin: 0 auto;
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
+  margin: 0 auto;
 `;
 
 export const MediaMessageText = styled.span<{ resx?: responsiveProps }>`
-  font-family: "Poppins";
-  font-weight: 400;
   ${p => p.resx?.isBigScreen ? "font-size: 1.5rem" : "font-size: 1.2rem"};
   color: #464646;
-  white-space: pre-wrap;
+  font-family: "Poppins";
+  font-weight: 400;
   text-align: justify;
-  white-space: nowrap;
+  white-space: pre-wrap;
 `;
 
 export const MediaMessageIcon = styled.span<{ resx?: responsiveProps }>`

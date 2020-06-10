@@ -23,14 +23,14 @@ export const Option = styled.div<{ selected?: boolean, resx?: responsiveProps }>
   font-weight: 400;
   height: 100%;
   justify-content: center;
-  margin: 0 .5rem;
-  padding: 0 .25rem;
+  margin: 0 .25rem;
+  padding: 0 .5rem;
   text-transform: capitalize;
   user-select: none;
   z-index: 1;
   & svg {
     height: 100%;
-    width: ${p => p.resx?.isBigScreen ? "2rem" : "1.5rem"};
+    width: ${p => p.resx?.isBigScreen ? "1.75rem" : "1.5rem"};
   }
   `;
 

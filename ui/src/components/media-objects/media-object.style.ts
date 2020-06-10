@@ -6,27 +6,29 @@ export const MediaObject = styled(animated.div)`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 95%;
   justify-content: center;
   margin: 0 .5rem;
   cursor: pointer;
+  border-radius: .25rem;
 `;
 
 export const ObjectImage = styled(animated.img) <{ loaded?: number, noTitle?: number }>`
   display: ${p => p.loaded ? "block" : "none"};
-  margin-top: ${p => !p.noTitle ? "auto" : ""};
-  max-height: 95%;
+  margin-top: ${p => !p.noTitle ? "" : ""};
+  max-height: 100%;
   max-width: 100%;
   object-fit: contain;
+  border-radius: .2rem;
   `;
 
 export const FallbackImage = styled(animated.div) <{ failed?: boolean }>`
   align-items: center;
-  border-radius: .25rem;
   display: flex;
-  height: 80%;
+  background: #f2f2f2;
+  height: 100%;
+  width: 100%;
   justify-content: center;
-  margin-top: auto;
   & svg {
     height: 3rem;
     width: 3rem;
@@ -38,51 +40,51 @@ export const ObjectName = styled.span<{ resx?: responsiveProps }>`
   font-family: "Poppins";
   font-size: ${p => p.resx?.isBigScreen ? ".75rem" : ".65rem"};
   font-weight: 400;
-  height: 10%;
-  margin-bottom: .5rem;
-  /* margin-top: auto; */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
-  background: #ededed;
+  background: rgba(237,237,237,1);
   display: flex;
   align-items: center;
   justify-content: center;
-  `;
-
-const placeholderShimmer = keyframes`
- from {
-   background-position: -200px 0;
-  }
-  to {
-    background-position: 200px 0; 
-  }
+  position: absolute;
+  bottom: 0;
+  min-height: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 .2rem;
+  padding: 0 .2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
   `;
 
 export const ImageContainer = styled.div<{ noTitle?: number }>`
-  height: ${p => p.noTitle ? "100%" : "85%"};
+  height: ${p => p.noTitle ? "100%" : "100%"};
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background : ${p => !p.noTitle ? "#ededed" : ""};
+  background : ${p => !p.noTitle ? "" : ""};
   `;
 
 export const ImageInfo = styled.div<{ resx?: responsiveProps }>`
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  min-width: 100px;
-  min-height: 1.5rem;
-  background: #ededed;
+  left: 0;
+  right: 0;
+  /* transform: translateY(-50%); */
+  margin-left: auto;
+  margin-right: auto;
+  /* top: 50%; */
+  bottom: 1rem;
+  width: 60%;
+  min-height: 20%;
+  background: rgba(255,255,255,0.97);
   color: #000;
   font-family: Poppins;
-  font-size: ${p => p.resx?.isBigScreen ? ".7rem" : ".6rem"};
+  font-size: ${p => p.resx?.isBigScreen ? ".75rem" : ".65rem"};
   font-weight: 400;
+  padding: 0 .2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: .2rem;
   z-index: 100;
 `

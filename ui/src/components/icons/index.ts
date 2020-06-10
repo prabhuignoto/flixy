@@ -35,6 +35,8 @@ import { Imdb } from "@styled-icons/fa-brands/Imdb";
 import { ExternalLink } from "@styled-icons/feather/ExternalLink";
 import { Medal } from "@styled-icons/boxicons-regular/Medal";
 import { Movie2 } from "@styled-icons/remix-line/Movie2";
+import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
+import { MinusCircle } from "@styled-icons/boxicons-solid/MinusCircle";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -79,6 +81,8 @@ export const ImdbIcon = withStyled(Imdb);
 export const ExternalIcon = withStyled(ExternalLink);
 export const MedalIcon = withStyled(Medal);
 export const Movie2Icon = withStyled(Movie2);
+export const PlusCircleIcon = withStyled(PlusCircle);
+export const MinusCircleIcon = withStyled(MinusCircle);
 
 function withStyled(icon: StyledIcon) {
   return styled(icon) <{ color?: string }>`

@@ -5,7 +5,7 @@ import {
   SearchAndDiscover,
   SearchSettingToggle,
 } from "./header.styles";
-import { CameraIcon, SearchIcon, TvIcon } from "../icons";
+import { CameraIcon, SearchIcon, TvIcon, CompassIcon } from "../icons";
 import MediaToggle, { MediaToggleOption } from "../media-toggle/media-toggle";
 import { useHistory, useLocation } from "react-router-dom";
 import useResponsive from "../../effects/useResponsive";

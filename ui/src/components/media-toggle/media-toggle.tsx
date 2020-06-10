@@ -29,7 +29,7 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
     highlighterOffset: 0,
     items: options.some((opt) => opt.selected)
       ? options
-      : options.map((opt, index) => {
+      : Array.from(options, (opt, index) => {
           if (index === 0) {
             return Object.assign({}, opt, {
               selected: true,
@@ -51,11 +51,10 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
     width: 0,
     opacity: 0,
     config: config.default,
-    delay: 0,
   }));
 
   React.useEffect(() => {
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       if (defaultRef && defaultRef.current) {
         const { offsetLeft, offsetWidth } = defaultRef.current;
         setOpts({
@@ -66,10 +65,10 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
         setProps({
           left: offsetLeft,
           width: offsetWidth,
-          opacity: 1
+          opacity: 1,
         });
       }
-    }, 250);
+    });
   }, []);
 
   const handleToggle = (

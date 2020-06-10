@@ -46,7 +46,14 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
     onSelect,
   }) => {
     return (
-      <div>
+      <div
+        style={{
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <div id={`extended-card-enclosure-${containerId}`}></div>
         <FixedSizeList
           layout={layout}
