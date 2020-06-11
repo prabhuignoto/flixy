@@ -5,6 +5,7 @@ import { MovieDetail } from "../types/MovieDetail";
 import { Credits } from "../types/Credits";
 import ReviewResult from "../types/ReviewResult";
 import Images from "../types/Images";
+import VideoResult from "../types/VideoResult";
 
 @Resolver(MovieResult)
 export default class MovieResolver {
@@ -206,6 +207,23 @@ export default class MovieResolver {
       const response = await fetch(`${url}search/movie?query=${query}&api_key=${key}&language=${lang}&page=${page}`);
       const data = await response.json();
       return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  @Query(returns => VideoResult)
+  async getVideos(
+    @Arg("movie_id") movie_id: number,
+    @Arg("lang") lang: string
+  ) {
+    try {
+      const { key, url } = this;
+      const response = await fetch(`${url}movie/${movie_id}/videos?api_key=${key}`);
+      const data = await response.json();
+
+      return data;
+
     } catch (error) {
       console.log(error);
     }

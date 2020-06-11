@@ -1,16 +1,16 @@
-import * as React from "react";
-import { useApolloClient, DocumentNode } from "@apollo/client";
-import Slider from "../../components/media-slider";
-import { onAir, popular, topRated } from "../../gqls/tv";
-import Movie from "../../models/Media";
-import { LoadingState, SliderType } from "../../models/Slider";
-import { nanoid } from "nanoid";
-const dedupe = require("dedupe");
+import * as React from 'react';
+import { useApolloClient, DocumentNode } from '@apollo/client';
+import Slider from '../../components/media-slider';
+import { onAir, popular, topRated } from '../../gqls/tv';
+import Movie from '../../models/Media';
+import { LoadingState, SliderType } from '../../models/Slider';
+import { nanoid } from 'nanoid';
+const dedupe = require('dedupe');
 
 export enum TvCategory {
-  POPULAR = "POPULAR",
-  TOP_RATED = "TOP_RATED",
-  ON_AIR = "ON_AIR",
+  POPULAR = 'POPULAR',
+  TOP_RATED = 'TOP_RATED',
+  ON_AIR = 'ON_AIR',
 }
 
 export interface MediaTvContainer {
@@ -49,10 +49,10 @@ const Tv: React.FunctionComponent<MediaTvContainer> = ({ category, title }) => {
     const { data } = await client.query({
       query: getQuery(category),
       variables: {
-        lang: "en-US",
+        lang: 'en-US',
         page,
       },
-      fetchPolicy: "cache-first",
+      fetchPolicy: 'cache-first',
     });
 
     if (data) {

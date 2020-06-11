@@ -1,20 +1,20 @@
-import * as React from "react";
-import ReactDOM from "react-dom";
-import { ScrollLeft, ScrollRight, MoviesWrapper } from "./collection.style";
-import { CardSize } from "../../models/CardSize";
-import { Movies as MoviesModel } from "../../models/Movies";
-import { ChevronLeftIcon, ChevronRightIcon } from "../icons";
-import Movie from "../../models/Media";
-import { LoadingState as State } from "../../models/Slider";
-import useVirtual from "./../../effects/useVirtual";
-import { Configs } from "./../../effects/useVirtual";
-import MoviesView from "./movies";
-import useResponsive from "../../effects/useResponsive";
-import { MediaObject } from "../../models/MediaObject";
+import * as React from 'react';
+import ReactDOM from 'react-dom';
+import {ScrollLeft, ScrollRight, MoviesWrapper} from './collection.style';
+import {CardSize} from '../../models/CardSize';
+import {Movies as MoviesModel} from '../../models/Movies';
+import {ChevronLeftIcon, ChevronRightIcon} from '../icons';
+import Movie from '../../models/Media';
+import {LoadingState as State} from '../../models/Slider';
+import useVirtual from './../../effects/useVirtual';
+import {Configs} from './../../effects/useVirtual';
+import MoviesView from './movies';
+import useResponsive from '../../effects/useResponsive';
+import {MediaObject} from '../../models/MediaObject';
 
 export enum NavDir {
-  LEFT = "LEFT",
-  RIGHT = "RIGHT",
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
 }
 
 export default ({
@@ -76,7 +76,7 @@ export default ({
       const clientWidth = nativeElement.clientWidth;
       let colWidth = 200;
       if (resxProps) {
-        const { isBigScreen, isDesktopOrLaptop, isTabletOrMobile } = resxProps;
+        const {isBigScreen, isDesktopOrLaptop, isTabletOrMobile} = resxProps;
 
         if (isTabletOrMobile) {
           colWidth = 130;
@@ -122,7 +122,7 @@ export default ({
 
         if (shouldLoadMore) {
           const cards = Math.abs(newItems.length - page * visibleElements);
-          setLoadingCards(Array.from({ length: cards }).map((k, i) => i));
+          setLoadingCards(Array.from({length: cards}).map((k, i) => i));
           setTimeout(() => fetchMore(), 0);
         }
         setMovies(newItems);

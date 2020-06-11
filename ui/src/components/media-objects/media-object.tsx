@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 import {
   MediaObject,
   ObjectImage,
   FallbackImage,
   ImageContainer,
   ImageInfo,
-} from "./media-object.style";
-import { config, useTransition } from "react-spring";
+} from './media-object.style';
+import {config, useTransition} from 'react-spring';
 import {
   MediaObject as MediaObjectModel,
   ThumbnailSize,
-} from "../../models/MediaObject";
+} from '../../models/MediaObject';
 
-import { UserIcon } from "./../icons/index";
-import useResponsive from "../../effects/useResponsive";
+import {UserIcon} from './../icons/index';
+import useResponsive from '../../effects/useResponsive';
 
 const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
   ({
@@ -27,7 +27,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
   }) => {
     const resx = useResponsive();
     const imageUrl = `https://image.tmdb.org/t/p/${
-      thumbnailSize === ThumbnailSize.large ? "w500" : "w200"
+      thumbnailSize === ThumbnailSize.large ? 'w500' : 'w200'
     }/${path}`;
     const [loadState, setLoadState] = React.useState({
       loaded: false,
@@ -52,15 +52,15 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
     const transition = useTransition(loadState.loaded, null, {
       initial: {
         opacity: 0,
-        transform: "scale(0)",
+        transform: 'scale(0)',
       },
       enter: {
         opacity: 1,
-        transform: "scale(1)",
+        transform: 'scale(1)',
       },
       leave: {
         opacity: 0,
-        transform: "scale(0)",
+        transform: 'scale(0)',
       },
       config: config.stiff,
       unique: true,
@@ -71,22 +71,20 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
       : !hideObjectWithNoImage;
 
     return canShow ? (
-      <MediaObject
-        onClick={() => onSelect && onSelect({ name, id })}
-      >
+      <MediaObject onClick={() => onSelect && onSelect({name, id})}>
         <ImageContainer noTitle={noTitle ? 1 : 0}>
           <img
             src={imageUrl}
             onLoad={() =>
-              setLoadState({ loaded: true, failed: false, default: false })
+              setLoadState({loaded: true, failed: false, default: false})
             }
             onError={() =>
-              setLoadState({ loaded: false, failed: true, default: false })
+              setLoadState({loaded: false, failed: true, default: false})
             }
-            style={{ display: "none" }}
+            style={{display: 'none'}}
           />
 
-          {transition.map(({ item, key, props }) => {
+          {transition.map(({item, key, props}) => {
             if (item) {
               return (
                 <ObjectImage

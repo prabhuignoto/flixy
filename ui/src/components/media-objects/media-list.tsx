@@ -1,12 +1,12 @@
-import React, { RefObject } from "react";
-import { FixedSizeList, Layout } from "react-window";
-import { CardSize } from "../../models/CardSize";
-import { PositioningStrategy } from "../media-card/card-extended";
-import { MediaObject, ThumbnailSize } from "../../models/MediaObject";
-import withExtendedInfo from "../HOCS/withExtendInfo";
-import Card from "../media-card/card";
-import { MediaObjectContainer } from "./media-objects.styles";
-import MediaObjectView from "./media-object";
+import React, {RefObject} from 'react';
+import {FixedSizeList, Layout} from 'react-window';
+import {CardSize} from '../../models/CardSize';
+import {PositioningStrategy} from '../media-card/card-extended';
+import {MediaObject, ThumbnailSize} from '../../models/MediaObject';
+import withExtendedInfo from '../HOCS/withExtendInfo';
+import Card from '../media-card/card';
+import {MediaObjectContainer} from './media-objects.styles';
+import MediaObjectView from './media-object';
 
 const ExtendedCard = withExtendedInfo(Card);
 
@@ -48,10 +48,10 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
     return (
       <div
         style={{
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <div id={`extended-card-enclosure-${containerId}`}></div>
@@ -64,11 +64,11 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
           outerRef={outerRef}
           onItemsRendered={onItemsRendered}
           style={{
-            overflow: "hidden",
-            scrollBehavior: "smooth",
+            overflow: 'hidden',
+            scrollBehavior: 'smooth',
           }}
         >
-          {({ index, style }) => {
+          {({index, style}) => {
             const {
               name,
               path,

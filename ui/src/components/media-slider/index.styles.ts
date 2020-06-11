@@ -72,7 +72,7 @@ export const ButtonWrapper = styled.div`
   margin-left: auto;
 `;
 
-export const Footer = styled.footer`
+export const ExpandControl = styled.div<{ resx?: responsiveProps }>`
   align-items: center;
   bottom: -1rem;
   display: flex;
@@ -84,6 +84,27 @@ export const Footer = styled.footer`
   right: 0;
   z-index: 1;
   height: 2rem;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background: #000;
+    top: 50%;
+    transform: translateY(-50%);
+    ${p => {
+      const dim = p.resx?.isBigScreen ? 1 : .5;
+      return `
+        width: ${dim}rem;
+        height: ${dim}rem;
+        `;
+    }};
+    z-index: -1;
+  }
 `;
 
 export const DetailsWrapper = styled.div`

@@ -1,12 +1,12 @@
-import React from "react";
-import { useApolloClient } from "@apollo/client";
-import { Credits } from "../../models/Credits";
-import { cast, tvCast } from "../../gqls/cast";
-import MediaObjects from "../../components/media-objects/media-objects";
-import { MediaObject, ThumbnailSize } from "./../../models/MediaObject";
-import styled from "styled-components";
-import useResponsive, { responsiveProps } from "../../effects/useResponsive";
-import { SliderType } from "../../models/Slider";
+import React from 'react';
+import { useApolloClient } from '@apollo/client';
+import { Credits } from '../../models/Credits';
+import { cast, tvCast } from '../../gqls/cast';
+import MediaObjects from '../../components/media-objects/media-objects';
+import { MediaObject, ThumbnailSize } from './../../models/MediaObject';
+import styled from 'styled-components';
+import useResponsive, { responsiveProps } from '../../effects/useResponsive';
+import { SliderType } from '../../models/Slider';
 
 interface CastResultDetails {
   getCredits: Credits;
@@ -29,14 +29,14 @@ const MediaObjectsWrapper = styled.div<{ resxProps?: responsiveProps }>`
   align-items: flex-start;
   justify-content: flex-start;
   width: ${({ resxProps: st }) =>
-    (st && st.isBigScreen) || st?.isTabletOrMobile ? "97%" : "48%"};
+    (st && st.isBigScreen) || st?.isTabletOrMobile ? '97%' : '48%'};
 `;
 
 const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
   ({ movieId, sliderType }) => {
     const client = useApolloClient();
     const [loading, setLoading] = React.useState(false);
-    const [detailsData, setDetailsData] = React.useState<Credits>({ id: "" });
+    const [detailsData, setDetailsData] = React.useState<Credits>({ id: '' });
     const resxProps = useResponsive();
     const { isBigScreen } = resxProps;
 
@@ -45,10 +45,10 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
       const { data } = await client.query<CastResultDetails>({
         query: sliderType === SliderType.movies ? cast : tvCast,
         variables: {
-          lang: "en-US",
+          lang: 'en-US',
           movie_id: movieId,
         },
-        fetchPolicy: "cache-first",
+        fetchPolicy: 'cache-first',
       });
 
       if (data) {
@@ -76,7 +76,7 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
           {cast && cast.length ? (
             <MediaObjectsWrapper resxProps={resxProps}>
               <MediaObjects
-                title={"Movie Cast"}
+                title={'Movie Cast'}
                 id={+id}
                 items={cast
                   .map<MediaObject>(
@@ -95,8 +95,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                       return 0;
                     }
                   })}
-                height={isBigScreen ? 260 : 190}
-                itemSize={isBigScreen ? 180 : 130}
+                height={isBigScreen ? 260 : 220}
+                itemSize={isBigScreen ? 180 : 140}
                 thumbnailSize={ThumbnailSize.small}
                 showExpand
               />
@@ -105,7 +105,7 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
           {crew && crew.length ? (
             <MediaObjectsWrapper resxProps={resxProps}>
               <MediaObjects
-                title={"Movie Crew"}
+                title={'Movie Crew'}
                 id={+id}
                 items={crew.map<MediaObject>(
                   ({ name, profile_path, id, job }) => ({
@@ -115,8 +115,8 @@ const CastAndCrew: React.FunctionComponent<CastAndCrewModel> = React.memo(
                     info: job,
                   })
                 )}
-                height={isBigScreen ? 260 : 190}
-                itemSize={isBigScreen ? 180 : 130}
+                height={isBigScreen ? 260 : 220}
+                itemSize={isBigScreen ? 180 : 140}
                 thumbnailSize={ThumbnailSize.small}
                 showExpand
               />

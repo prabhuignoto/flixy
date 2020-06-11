@@ -1,12 +1,12 @@
-import * as React from "react";
-import { useApolloClient, DocumentNode } from "@apollo/client";
-import Slider from "../../components/media-slider";
-import { popular, topRated, upcoming, nowPlaying } from "../../gqls/movies";
-import Movie from "../../models/Media";
-import { LoadingState, SliderType } from "../../models/Slider";
-import { nanoid } from "nanoid";
-import { Category, MediaContainer } from "../models";
-const dedupe = require("dedupe");
+import * as React from 'react';
+import { useApolloClient, DocumentNode } from '@apollo/client';
+import Slider from '../../components/media-slider';
+import { popular, topRated, upcoming, nowPlaying } from '../../gqls/movies';
+import Movie from '../../models/Media';
+import { LoadingState, SliderType } from '../../models/Slider';
+import { nanoid } from 'nanoid';
+import { Category, MediaContainer } from '../models';
+const dedupe = require('dedupe');
 
 const getQuery: (c: Category) => DocumentNode = (category) => {
   switch (category) {
@@ -44,10 +44,10 @@ const MovieContainer: React.FunctionComponent<MediaContainer> = ({
     const { data } = await client.query({
       query: getQuery(category),
       variables: {
-        lang: "en-US",
+        lang: 'en-US',
         page,
       },
-      fetchPolicy: "cache-first",
+      fetchPolicy: 'cache-first',
     });
 
     if (data) {

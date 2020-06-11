@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 import {
   MediaObject as MediaObjectModel,
   ThumbnailSize,
   MediaObject,
-} from "../../models/MediaObject";
+} from '../../models/MediaObject';
 import {
   ObjectsWrapper,
   ObjectsContainer,
@@ -11,22 +11,26 @@ import {
   ScrollRightBtn,
   ObjectHeader,
   ExpandButton,
-} from "./media-objects.styles";
-import { ChevronLeftIcon, ChevronRightIcon, ChevronRightSolidIcon } from "./../icons/index";
-import withExtendedInfo from "../HOCS/withExtendInfo";
-import Card from "../media-card/card";
-import { nanoid } from "nanoid";
-import useResponsive from "../../effects/useResponsive";
-import MediaList from "./media-list";
-import MediaModal from "../media-modal/media-modal";
-import MediaGrid from "./media-grid";
-import { throttle } from "throttle-debounce";
+} from './media-objects.styles';
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronRightSolidIcon,
+} from './../icons/index';
+import withExtendedInfo from '../HOCS/withExtendInfo';
+import Card from '../media-card/card';
+import {nanoid} from 'nanoid';
+import useResponsive from '../../effects/useResponsive';
+import MediaList from './media-list';
+import MediaModal from '../media-modal/media-modal';
+import MediaGrid from './media-grid';
+import {throttle} from 'throttle-debounce';
 
 const ExtendedCard = withExtendedInfo(Card);
 
 enum ScrollDir {
-  LEFT = "LEFT",
-  RIGHT = "RIGHT",
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
 }
 
 export interface MediaObjectsModel {
@@ -57,7 +61,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     id,
     hideObjectsWithNoImage,
     showExpand,
-    onSelect
+    onSelect,
   }) => {
     const containerRef = React.createRef<HTMLUListElement>();
     const rWindowRef = React.useRef<HTMLDivElement>(null);
@@ -78,14 +82,14 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
       if (rWindowRef && rWindowRef.current) {
         if (dir === ScrollDir.RIGHT) {
           rWindowRef.current.scrollTo({
-            behavior: "smooth",
+            behavior: 'smooth',
             left:
               rWindowRef.current.scrollLeft +
               Math.round(config.clientWidth * 0.8),
           });
         } else {
           rWindowRef.current.scrollTo({
-            behavior: "smooth",
+            behavior: 'smooth',
             left:
               rWindowRef.current.scrollLeft -
               Math.round(config.clientWidth * 0.8),
@@ -98,7 +102,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
       setTimeout(() => {
         if (containerRef && containerRef.current) {
           const node = containerRef.current as HTMLUListElement;
-          const { clientWidth, clientHeight } = node;
+          const {clientWidth, clientHeight} = node;
           setConfig({
             show: true,
             clientWidth,
@@ -114,9 +118,9 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     const onItemsRendered = React.useCallback(() => {
       if (rWindowRef && rWindowRef.current) {
         const node = rWindowRef.current as HTMLDivElement;
-        const { clientWidth, scrollWidth } = node;
+        const {clientWidth, scrollWidth} = node;
         const scrolledWidth = clientWidth + rWindowRef.current.scrollLeft;
-        
+
         if (Math.ceil(scrolledWidth) === scrollWidth) {
           setDisableRightNav(true);
         }
@@ -169,7 +173,6 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
     }
     return (
       <ObjectsContainer height={height} noBackground={noBackground}>
-        
         {showExpand && !disableRightNav && (
           <ExpandButton onClick={() => setExpandedView(true)}>
             <span>view all</span>
@@ -192,14 +195,14 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
             ></MediaGrid>
           </MediaModal>
         )}
-        
+
         <ScrollLeftBtn
           onClick={() => handleNav(ScrollDir.LEFT)}
           disable={disableLeftNav}
           size={thumbnailSize}
           resx={resxProps}
         >
-          <ChevronLeftIcon color={!disableLeftNav ? "#cc0000" : "#191919"} />
+          <ChevronLeftIcon color={!disableLeftNav ? '#cc0000' : '#191919'} />
         </ScrollLeftBtn>
         <ObjectsWrapper
           ref={containerRef}
@@ -216,7 +219,7 @@ const MediaObjects: React.FunctionComponent<MediaObjectsModel> = React.memo(
           size={thumbnailSize}
           resx={resxProps}
         >
-          <ChevronRightIcon color={!disableRightNav ? "#cc0000" : "#191919"} />
+          <ChevronRightIcon color={!disableRightNav ? '#cc0000' : '#191919'} />
         </ScrollRightBtn>
       </ObjectsContainer>
     );

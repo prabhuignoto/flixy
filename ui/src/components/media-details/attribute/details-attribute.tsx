@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 import {
   AttributeLabel,
   AttributeValue,
   AttributeWrapper,
-} from "./details-attribute.style";
-import useResponsive from "../../../effects/useResponsive";
+} from './details-attribute.style';
+import useResponsive from '../../../effects/useResponsive';
 
 export interface AttributeModel {
   label: string;
   value: string | number;
 }
 
-const RunTime: React.FunctionComponent<AttributeModel> = ({ label, value }) => {
+const RunTime: React.FunctionComponent<AttributeModel> = ({label, value}) => {
   const resxProps = useResponsive();
 
   return (

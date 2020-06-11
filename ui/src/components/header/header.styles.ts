@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { responsiveProps } from '../../effects/useResponsive';
 
-export const HeaderWrapper = styled.header<{resx?: responsiveProps}>`
+export const HeaderWrapper = styled.header<{ resx?: responsiveProps }>`
   align-items: center;
   background: #000;
   color: #fff;
@@ -23,7 +23,7 @@ export const SearchAndDiscover = styled.div`
   padding: .25rem;
 `;
 
-export const SearchSettingToggle = styled.div<{resx?: responsiveProps}>`
+export const SearchSettingToggle = styled.div<{ resx?: responsiveProps }>`
   height: ${p => p.resx?.isBigScreen ? "2.5rem" : "2rem"};
 `;
 

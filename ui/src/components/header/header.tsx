@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 import {
   HeaderWrapper,
   LogoContainer,
   SearchAndDiscover,
   SearchSettingToggle,
-} from "./header.styles";
-import { CameraIcon, SearchIcon, TvIcon, CompassIcon } from "../icons";
-import MediaToggle, { MediaToggleOption } from "../media-toggle/media-toggle";
-import { useHistory, useLocation } from "react-router-dom";
-import useResponsive from "../../effects/useResponsive";
-import Logo from "../logo/logo";
+} from './header.styles';
+import {CameraIcon, SearchIcon, TvIcon, CompassIcon} from '../icons';
+import MediaToggle, {MediaToggleOption} from '../media-toggle/media-toggle';
+import {useHistory, useLocation} from 'react-router-dom';
+import useResponsive from '../../effects/useResponsive';
+import Logo from '../logo/logo';
 
 const Header: React.FunctionComponent = () => {
   const history = useHistory();
@@ -22,9 +22,9 @@ const Header: React.FunctionComponent = () => {
   });
 
   const options: MediaToggleOption[] = [
-    { value: "movies", label: "movies", icon: <CameraIcon /> },
-    { value: "tv", label: "television", icon: <TvIcon /> },
-    { value: "search", label: "search", icon: <SearchIcon /> },
+    {value: 'movies', label: 'movies', icon: <CameraIcon />},
+    {value: 'tv', label: 'television', icon: <TvIcon />},
+    {value: 'search', label: 'search', icon: <SearchIcon />},
     // { value: "discover", label: "discover", icon: <CompassIcon /> },
     // { value: "help", label: "help", icon: <HelpCircleIcon /> },
   ];
@@ -33,7 +33,7 @@ const Header: React.FunctionComponent = () => {
     setShowLinks({
       state: true,
       options: options.map<MediaToggleOption>((opt) => {
-        if (location.pathname.replace(/\//g, "") === opt.value) {
+        if (location.pathname.replace(/\//g, '') === opt.value) {
           return Object.assign({}, opt, {
             selected: true,
           });

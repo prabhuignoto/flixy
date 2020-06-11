@@ -1,9 +1,9 @@
-import React from "react";
-import { useApolloClient } from "@apollo/client";
-import reviewsQuery from "../../gqls/reviews";
-import Loader from "../../components/media-loader";
-import Review from "../../models/Review";
-import Reviews from "../../components/media-details/reviews/details-reviews";
+import React from 'react';
+import { useApolloClient } from '@apollo/client';
+import reviewsQuery from '../../gqls/reviews';
+import Loader from '../../components/media-loader';
+import Review from '../../models/Review';
+import Reviews from '../../components/media-details/reviews/details-reviews';
 
 interface MovieResultDetails {
   getReviews: ReviewResultModel;

@@ -13,7 +13,7 @@ export const ReviewWrapper = styled(animated.li)`
 export const ReviewContent = styled(animated.div)<{resx?: responsiveProps}>`
   color: #000;
   font-size: ${p => p.resx?.isBigScreen ? ".85rem" : ".75rem"};
-  font-weight: 300;
+  font-weight: 400;
   overflow: hidden;
   position: relative;
   text-align: left;

@@ -1,15 +1,15 @@
-import React from "react";
-import { useApolloClient, DocumentNode } from "@apollo/client";
-import { searchMovies } from "../../gqls/movies";
-import { searchTv } from "../../gqls/tv";
-import Movie from "../../models/Media";
-import { MediaType, SearchContainer as SearchContainerModel } from "../models";
-import { MediaObject, ThumbnailSize } from "../../models/MediaObject";
-import styled from "styled-components";
-import useResponsive from "../../effects/useResponsive";
-import MediaObjects from "../../components/media-objects/media-objects";
-import MovieDetails from "../../containers/details/movieDetails";
-import TvDetails from "../details/tvDetails";
+import React from 'react';
+import { useApolloClient, DocumentNode } from '@apollo/client';
+import { searchMovies } from '../../gqls/movies';
+import { searchTv } from '../../gqls/tv';
+import Movie from '../../models/Media';
+import { MediaType, SearchContainer as SearchContainerModel } from '../models';
+import { MediaObject, ThumbnailSize } from '../../models/MediaObject';
+import styled from 'styled-components';
+import useResponsive from '../../effects/useResponsive';
+import MediaObjects from '../../components/media-objects/media-objects';
+import MovieDetails from '../../containers/details/movieDetails';
+import TvDetails from '../details/tvDetails';
 
 const getQuery: (m: MediaType) => DocumentNode = (type) => {
   switch (type) {
@@ -53,7 +53,7 @@ const SearchContainer: React.FunctionComponent<SearchContainerModel> = React.mem
     const resx = useResponsive();
     const [movieId, setSelectedMovieId] = React.useState<MediaObject>({
       id: 0,
-      name: "",
+      name: '',
     });
 
     React.useEffect(() => {
@@ -67,7 +67,7 @@ const SearchContainer: React.FunctionComponent<SearchContainerModel> = React.mem
       const { data } = await client.query({
         query: getQuery(type),
         variables: {
-          lang: "en-US",
+          lang: 'en-US',
           page,
           query,
         },
@@ -116,10 +116,10 @@ const SearchContainer: React.FunctionComponent<SearchContainerModel> = React.mem
           first_air_date,
         }) => ({
           id: id,
-          name: original_title || original_name || "",
+          name: original_title || original_name || '',
           overview,
-          path: poster_path || "",
-          release_date: release_date || first_air_date || "",
+          path: poster_path || '',
+          release_date: release_date || first_air_date || '',
           visible: false,
           vote_average,
         })

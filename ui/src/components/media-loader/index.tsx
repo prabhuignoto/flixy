@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import React from "react";
-import { useSpring, animated } from "react-spring";
+import styled from 'styled-components';
+import React from 'react';
+import {useSpring, animated} from 'react-spring';
 
 export enum LoaderSize {
-  small = "SMALL",
-  large = "LARGE",
+  small = 'SMALL',
+  large = 'LARGE',
 }
 
 const Wrapper = styled(animated.div)`
@@ -22,7 +22,7 @@ const Loader: React.FunctionComponent<{
   size?: LoaderSize;
   style?: any;
   id?: string | number;
-}> = ({ size, style }) => {
+}> = ({size, style}) => {
   const wh = size === LoaderSize.small ? 25 : 30;
   return (
     <Wrapper style={style}>

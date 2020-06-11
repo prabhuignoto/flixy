@@ -1,9 +1,9 @@
-import React from "react";
-import { MediaObject, ThumbnailSize } from "../../models/MediaObject";
-import { FixedSizeGrid } from "react-window";
-import { MediaGridWrapper} from "./media-grid.style";
-import { MediaObjectContainer } from "./media-objects.styles";
-import MediaObjectView from "./media-object";
+import React from 'react';
+import {MediaObject, ThumbnailSize} from '../../models/MediaObject';
+import {FixedSizeGrid} from 'react-window';
+import {MediaGridWrapper} from './media-grid.style';
+import {MediaObjectContainer} from './media-objects.styles';
+import MediaObjectView from './media-object';
 
 interface MediaGridModel {
   items: MediaObject[];
@@ -47,12 +47,7 @@ const MediaGrid: React.FunctionComponent<MediaGridModel> = ({
   let view = null;
 
   if (gridConfig.showGrid) {
-    const {
-      columnCount,
-      rowCount,
-      containerHeight,
-      containerWidth,
-    } = gridConfig;
+    const {columnCount, rowCount, containerHeight, containerWidth} = gridConfig;
     view = (
       <FixedSizeGrid
         columnCount={columnCount}
@@ -61,14 +56,14 @@ const MediaGrid: React.FunctionComponent<MediaGridModel> = ({
         height={containerHeight}
         width={containerWidth}
         rowHeight={itemHeight}
-        style={{ margin: "0 auto", overflowY: "auto" }}
+        style={{margin: '0 auto', overflowY: 'auto'}}
         outerRef={gridRef}
       >
-        {({ columnIndex, style, rowIndex }) => {
+        {({columnIndex, style, rowIndex}) => {
           const item = items[rowIndex * columnCount + columnIndex];
 
           if (item) {
-            const { name, path, id, info } = item;
+            const {name, path, id, info} = item;
 
             return (
               <MediaObjectContainer

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import React from "react";
+import styled from 'styled-components';
+import React from 'react';
 
 const ImdbButtonWrapper = styled.button`
   background-color: #000;
@@ -9,17 +9,19 @@ const ImdbButtonWrapper = styled.button`
 
 const ImdbLink = styled.a`
   display: block;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 1.25rem;
   height: 3rem;
   text-decoration: none;
   width: 3rem;
 `;
 
-const ImdbButton: React.FunctionComponent<{ id?: string }> = ({ id }) => (
+const ImdbButton: React.FunctionComponent<{id?: string}> = ({id}) => (
   <ImdbButtonWrapper>
-    <ImdbLink href={`https://www.imdb.com/title/${id}`} target="_blank">
-    </ImdbLink>
+    <ImdbLink
+      href={`https://www.imdb.com/title/${id}`}
+      target="_blank"
+    ></ImdbLink>
   </ImdbButtonWrapper>
 );
 

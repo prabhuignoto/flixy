@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Title,
   TitleWrapper,
@@ -10,17 +10,17 @@ import {
   MediaRatingWrapper,
   ImdbLinkContainer,
   TextAndRating,
-} from "./details-title.style";
-import { format } from "date-fns";
-import ISO6391 from "iso-639-1";
+} from './details-title.style';
+import {format} from 'date-fns';
+import ISO6391 from 'iso-639-1';
 
-import Genres, { GenreSize } from "../../media-genres/genres";
+import Genres, {GenreSize} from '../../media-genres/genres';
 
-import Attribute from "../attribute/details-attribute";
-import { Genre } from "../../../models/Genre";
-import useResponsive from "../../../effects/useResponsive";
-import MediaRating, { RatingSize } from "../../media-rating/media-rating";
-import MediaImdbLink from "../media-imdb-link/media-imdb-link";
+import Attribute from '../attribute/details-attribute';
+import {Genre} from '../../../models/Genre';
+import useResponsive from '../../../effects/useResponsive';
+import MediaRating, {RatingSize} from '../../media-rating/media-rating';
+import MediaImdbLink from '../media-imdb-link/media-imdb-link';
 
 export interface DetailsTitleModel {
   year?: string;
@@ -73,7 +73,7 @@ const DetailsTitle: React.FunctionComponent<DetailsTitleModel> = ({
                   <AttributeContainer>
                     <Attribute
                       label="Release Date"
-                      value={format(new Date(releaseDate), "do, MMM yyyy")}
+                      value={format(new Date(releaseDate), 'do, MMM yyyy')}
                     />
                   </AttributeContainer>
                 )}

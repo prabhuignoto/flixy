@@ -72,6 +72,8 @@
     "@types/webfontloader": "^1.6.32",
     "customize-cra": "^1.0.0",
     "customize-cra-react-refresh": "^1.1.0",
-    "react-app-rewired": "^2.1.6"
+    "prettier": "2.0.5",
+    "react-app-rewired": "^2.1.6",
+    "tslint-config-prettier": "^1.18.0"
   }
 }

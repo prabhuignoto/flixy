@@ -1,23 +1,23 @@
-import React, { KeyboardEvent } from "react";
-import ReactDOM from "react-dom";
+import React, {KeyboardEvent} from 'react';
+import ReactDOM from 'react-dom';
 import {
   MediaModalWrapper,
   ModalHeader,
   ModalContent,
   ModalCloseIcon,
   ModalBackdrop,
-} from "./media-modal.styles";
-import useResponsive from "../../effects/useResponsive";
-import { CloseIcon } from "../icons";
-import { useTransition, config } from "react-spring";
+} from './media-modal.styles';
+import useResponsive from '../../effects/useResponsive';
+import {CloseIcon} from '../icons';
+import {useTransition, config} from 'react-spring';
 
 const MediaModal: React.FunctionComponent<{
   title?: string;
   onClose?: () => void;
   open?: boolean;
-}> = ({ children, title, onClose, open }) => {
+}> = ({children, title, onClose, open}) => {
   const modalRef = React.useRef<HTMLDivElement>(null);
-  const modalContainer = document.getElementById("modal_container");
+  const modalContainer = document.getElementById('modal_container');
   const resx = useResponsive();
 
   const transitions = useTransition(open, null, {
@@ -49,7 +49,7 @@ const MediaModal: React.FunctionComponent<{
     ? ReactDOM.createPortal(
         <>
           <ModalBackdrop></ModalBackdrop>
-          {transitions.map(({ item, key, props }) => {
+          {transitions.map(({item, key, props}) => {
             return item ? (
               <MediaModalWrapper
                 ref={modalRef}

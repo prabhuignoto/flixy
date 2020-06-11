@@ -37,6 +37,8 @@ import { Medal } from "@styled-icons/boxicons-regular/Medal";
 import { Movie2 } from "@styled-icons/remix-line/Movie2";
 import { PlusCircle } from "@styled-icons/boxicons-solid/PlusCircle";
 import { MinusCircle } from "@styled-icons/boxicons-solid/MinusCircle";
+import { ChevronDownCircle } from "@styled-icons/boxicons-solid/ChevronDownCircle";
+import { ChevronUpCircle } from "@styled-icons/boxicons-solid/ChevronUpCircle";
 
 export const MinusIcon = styled(Minus)`
   color: red;
@@ -83,9 +85,11 @@ export const MedalIcon = withStyled(Medal);
 export const Movie2Icon = withStyled(Movie2);
 export const PlusCircleIcon = withStyled(PlusCircle);
 export const MinusCircleIcon = withStyled(MinusCircle);
+export const ChevronDownCircleIcon = withStyled(ChevronDownCircle);
+export const ChevronUpCircleIcon = withStyled(ChevronUpCircle);
 
 function withStyled(icon: StyledIcon) {
   return styled(icon) <{ color?: string }>`
     color: ${p => p.color};
   `;
-}
+};

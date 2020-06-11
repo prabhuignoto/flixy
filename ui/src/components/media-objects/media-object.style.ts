@@ -73,7 +73,7 @@ export const ImageInfo = styled.div<{ resx?: responsiveProps, width: number }>`
   margin-right: auto;
   bottom: .5rem;
   width: ${p => p.width - 6}px;
-  min-height: 2rem;
+  min-height: 1.5rem;
   background: rgba(255,255,255,1);
   color: #000;
   font-family: Poppins;

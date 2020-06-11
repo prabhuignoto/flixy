@@ -1,12 +1,12 @@
-import React from "react";
-import { useApolloClient } from "@apollo/client";
-import { images, tvImages } from "../../gqls/images";
-import MediaObjects from "../../components/media-objects/media-objects";
-import { MediaObject, ThumbnailSize } from "./../../models/MediaObject";
-import styled from "styled-components";
-import useResponsive from "../../effects/useResponsive";
-import { Images } from "../../models/Images";
-import { SliderType } from "../../models/Slider";
+import React from 'react';
+import { useApolloClient } from '@apollo/client';
+import { images, tvImages } from '../../gqls/images';
+import MediaObjects from '../../components/media-objects/media-objects';
+import { MediaObject, ThumbnailSize } from './../../models/MediaObject';
+import styled from 'styled-components';
+import useResponsive from '../../effects/useResponsive';
+import { Images } from '../../models/Images';
+import { SliderType } from '../../models/Slider';
 
 interface ImageResultDetails {
   getImages: Images;
@@ -36,10 +36,10 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
       const { data } = await client.query<ImageResultDetails>({
         query: sliderType === SliderType.movies ? images : tvImages,
         variables: {
-          lang: "en-US",
+          lang: 'en-US',
           movie_id: movieId,
         },
-        fetchPolicy: "cache-first",
+        fetchPolicy: 'cache-first',
       });
       if (data) {
         const _data =
@@ -66,13 +66,11 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
               <MediaObjects
                 noTitle
                 id="movie_backdrops"
-                items={backdrops.map<MediaObject>(
-                  ({ file_path }) => ({
-                    name: "",
-                    path: file_path,
-                    id: file_path,
-                  })
-                )}
+                items={backdrops.map<MediaObject>(({ file_path }) => ({
+                  name: '',
+                  path: file_path,
+                  id: file_path,
+                }))}
                 height={isBigScreen ? 370 : 280}
                 itemSize={isBigScreen ? 500 : 380}
                 thumbnailSize={ThumbnailSize.large}

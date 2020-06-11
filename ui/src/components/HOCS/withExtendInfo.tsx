@@ -1,11 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Wrapper, ViewBtnWrapper } from "./withExtendInfo.styles";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Wrapper, ViewBtnWrapper} from './withExtendInfo.styles';
 import CardExtended, {
   CardExtendedModel,
   PositioningStrategy,
-} from "./../media-card/card-extended";
-import { MovieType } from "../media-card/card";
+} from './../media-card/card-extended';
+import {MovieType} from '../media-card/card';
 
 interface State {
   showExtendIcon: boolean;
@@ -67,7 +67,7 @@ export default function <P extends CardExtendCustomModel>(
     showPane(ev: React.MouseEvent) {
       const node = this.elementRef.current as HTMLElement;
       const rects = node.getBoundingClientRect();
-      const { positioningStrategy } = this.props;
+      const {positioningStrategy} = this.props;
       let flipCard = false;
       let timer: number;
       let x, y;
@@ -134,7 +134,7 @@ export default function <P extends CardExtendCustomModel>(
         showIcon: false,
       });
       this.props.onSelect &&
-        this.props.onSelect({ id: this.props.id, name: this.props.title });
+        this.props.onSelect({id: this.props.id, name: this.props.title});
     }
 
     render() {
@@ -153,7 +153,7 @@ export default function <P extends CardExtendCustomModel>(
         height,
         vote_average,
       } = this.props;
-      const { showPane, flipCard, position } = this.state;
+      const {showPane, flipCard, position} = this.state;
       return (
         <Wrapper
           onMouseEnter={this.startShowPaneTimer}

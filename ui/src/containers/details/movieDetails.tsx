@@ -1,15 +1,14 @@
-import React from "react";
-import { useApolloClient } from "@apollo/client";
-import { details } from "../../gqls/movieDetails";
-import CardDetails from "../../components/media-details/details-main";
-import { MovieDetail } from "../../models/MovieDetails";
-import Loader from "../../components/media-loader";
-import { useSpring, config, animated } from "react-spring";
-import styled from "styled-components";
-import useResponsive, { responsiveProps } from "../../effects/useResponsive";
-import memoize from "memoize-one";
-import { SliderType } from "../../models/Slider";
-
+import React from 'react';
+import { useApolloClient } from '@apollo/client';
+import { details } from '../../gqls/movieDetails';
+import CardDetails from '../../components/media-details/details-main';
+import { MovieDetail } from '../../models/MovieDetails';
+import Loader from '../../components/media-loader';
+import { useSpring, config, animated } from 'react-spring';
+import styled from 'styled-components';
+import useResponsive, { responsiveProps } from '../../effects/useResponsive';
+import memoize from 'memoize-one';
+import { SliderType } from '../../models/Slider';
 
 const getHeight = memoize(
   ({ isBigScreen, isTabletOrMobile }: responsiveProps) => {
@@ -77,7 +76,7 @@ const MovieDetails: React.FunctionComponent<{
     const { data } = await client.query({
       query: details,
       variables: {
-        lang: "en-US",
+        lang: 'en-US',
         id: movieId,
       },
     });
@@ -126,7 +125,7 @@ const MovieDetails: React.FunctionComponent<{
       />
     );
   } else if (loading) {
-    view = <Loader />
+    view = <Loader />;
   }
 
   const Wrapper = styled(animated.div)`

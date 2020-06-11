@@ -1,5 +1,5 @@
-import React from "react";
-import Movie from "../../models/Media";
+import React from 'react';
+import Movie from '../../models/Media';
 import {
   CardExtendedWrapper,
   CardExtendedPosterWrapper,
@@ -12,16 +12,16 @@ import {
   ExtendedInfoHeader,
   ExtendedInfoRating,
   Row2,
-} from "./card-extended.styles";
-import { useTransition, config } from "react-spring";
-import useResponsive from "../../effects/useResponsive";
-import { CloseIcon } from "../icons";
-import Scrollbar from "react-custom-scrollbars";
-import MediaRating from "../media-rating/media-rating";
+} from './card-extended.styles';
+import {useTransition, config} from 'react-spring';
+import useResponsive from '../../effects/useResponsive';
+import {CloseIcon} from '../icons';
+import Scrollbar from 'react-custom-scrollbars';
+import MediaRating from '../media-rating/media-rating';
 
 export enum PositioningStrategy {
-  normal = "normal",
-  absolute = "absolute",
+  normal = 'normal',
+  absolute = 'absolute',
 }
 
 export type CardExtendedModel = Movie & {
@@ -56,7 +56,7 @@ const CardExtended: React.FunctionComponent<CardExtendedModel> = ({
   title,
   vote_average,
 }) => {
-  const { isBigScreen } = useResponsive();
+  const {isBigScreen} = useResponsive();
   const transitions = useTransition(show, null, {
     from: {
       opacity: 0,
@@ -83,7 +83,7 @@ const CardExtended: React.FunctionComponent<CardExtendedModel> = ({
   return (
     <div>
       {transitions.map(
-        ({ item, key, props }) =>
+        ({item, key, props}) =>
           item && (
             <CardExtendedWrapper
               tabIndex={1}
@@ -94,7 +94,7 @@ const CardExtended: React.FunctionComponent<CardExtendedModel> = ({
               onClick={() => onClick && onClick(id)}
               ref={ref}
               autoHeight={autoHeight ? 1 : 0}
-              position={position || { x: 0, y: 0 }}
+              position={position || {x: 0, y: 0}}
               height={height}
             >
               <CardExtendedPosterWrapper flip={flip}>

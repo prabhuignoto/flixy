@@ -29,7 +29,7 @@ export const DetailsRatingContainer = styled.div`
   margin-right: 1rem;
 `;
 
-export const TitleYear = styled.span<{resxProps: responsiveProps}>`
+export const TitleYear = styled.span<{ resxProps: responsiveProps }>`
   align-items: center;
   color: rgba(204,0,0,0.85);
   display: flex;
@@ -39,7 +39,7 @@ export const TitleYear = styled.span<{resxProps: responsiveProps}>`
   margin-left: .5rem;
 `;
 
-export const TitleText = styled.span<{resxProps: responsiveProps}>`
+export const TitleText = styled.span<{ resxProps: responsiveProps }>`
   align-items: center;
   color: #191919;
   display: flex;
@@ -53,7 +53,7 @@ export const TitleText = styled.span<{resxProps: responsiveProps}>`
   white-space: nowrap;
 `;
 
-export const TitleRow1 = styled.div<{resx?: responsiveProps}>`
+export const TitleRow1 = styled.div<{ resx?: responsiveProps }>`
   align-items: ${p => p.resx?.isBigScreen ? "center" : "flex-start"};
   display: flex;
   flex-wrap: wrap;
@@ -83,7 +83,7 @@ export const AttributeContainer = styled.div`
   margin-right: .5rem;
 `;
 
-export const GenresContainer = styled.div<{resx: responsiveProps}>`
+export const GenresContainer = styled.div<{ resx: responsiveProps }>`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -94,11 +94,11 @@ export const MediaRatingWrapper = styled.div`
   margin-left: 1rem;
 `;
 
-export const ImdbLinkContainer = styled.div<{resx: responsiveProps}>`
+export const ImdbLinkContainer = styled.div<{ resx: responsiveProps }>`
   height: ${p => p.resx.isBigScreen ? "1.75rem" : "1.5rem"};
 `;
 
-export const TextAndRating = styled.div<{resx?: responsiveProps}>`
+export const TextAndRating = styled.div<{ resx?: responsiveProps }>`
   display: flex;
   align-items: center;
   justify-content: flex-start;

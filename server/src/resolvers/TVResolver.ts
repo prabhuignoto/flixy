@@ -4,6 +4,7 @@ import TvResult from './../types/TvResult';
 import { TvDetail } from "../types/TvDetail";
 import { Credits } from "../types/Credits";
 import Images from "../types/Images";
+import VideoResult from "../types/VideoResult";
 
 @Resolver(TvResult)
 export default class TvResolver {
@@ -170,6 +171,23 @@ export default class TvResolver {
       const response = await fetch(`${url}search/tv?query=${query}&api_key=${key}&language=${lang}&page=${page}`);
       const data = await response.json();
       return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  @Query(returns => VideoResult)
+  async getTvVideos(
+    @Arg("id") id: number,
+    @Arg("lang") lang: string
+  ) {
+    try {
+      const { key, url } = this;
+      const response = await fetch(`${url}tv/${id}/videos?api_key=${key}`);
+      const data = await response.json();
+
+      return data;
+
     } catch (error) {
       console.log(error);
     }

@@ -1,21 +1,21 @@
-import React from "react";
-import { MediaRatingWrapper, StarIconWrapper } from "./media-rating.style";
-import { StarIcon, StarHalfIcon, StarBorderIcon } from "../icons";
+import React from 'react';
+import {MediaRatingWrapper, StarIconWrapper} from './media-rating.style';
+import {StarIcon, StarHalfIcon, StarBorderIcon} from '../icons';
 
 export enum RatingSize {
-  small = "small",
-  large = "large",
+  small = 'small',
+  large = 'large',
 }
 
 const MediaRating: React.FunctionComponent<{
   rating: number;
   size?: RatingSize;
-}> = ({ rating, size }) => {
+}> = ({rating, size}) => {
   let ratingVal = (rating / 10) * 5;
 
   return (
     <MediaRatingWrapper>
-      {Array.from({ length: 5 }).map((val, idx) => {
+      {Array.from({length: 5}).map((val, idx) => {
         if (ratingVal - (idx + 1) >= 0) {
           return (
             <StarIconWrapper size={size} key={idx}>

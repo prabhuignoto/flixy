@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { responsiveProps } from "../../effects/useResponsive";
 
-export const ViewBtnWrapper = styled.span<{resx?: responsiveProps}>`
+export const ViewBtnWrapper = styled.span<{ resx?: responsiveProps }>`
   background: rgba(0,0,0,0.85);
   border-radius: 50%;
   cursor: pointer;

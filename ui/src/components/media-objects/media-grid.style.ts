@@ -8,5 +8,5 @@ export const MediaGridWrapper = styled.section<{ newWidth?: number }>`
   height: 100%;
   justify-content: center;
   position: relative;
-  width: ${p => p.newWidth ? `${p.newWidth}px` : "96%" };
+  width: ${p => p.newWidth ? `${p.newWidth}px` : "96%"};
 `;

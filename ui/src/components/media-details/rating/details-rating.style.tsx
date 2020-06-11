@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const DetailsRatingWrapper = styled.div<{
   isTabletOrMobile?: boolean;
@@ -9,22 +9,22 @@ export const DetailsRatingWrapper = styled.div<{
   border: 1px solid #ccc;
   display: flex;
   height: 100%;
-  height: ${(p) => (p.isTabletOrMobile ? "2rem" : "2rem")};
+  height: ${(p) => (p.isTabletOrMobile ? '2rem' : '2rem')};
   justify-content: center;
-  min-width: ${(p) => (p.isTabletOrMobile ? "2.5rem" : "2.5rem")};
-  ${({ rating }) => {
-    if (!rating) return "#fff";
+  min-width: ${(p) => (p.isTabletOrMobile ? '2.5rem' : '2.5rem')};
+  ${({rating}) => {
+    if (!rating) return '#fff';
 
-    let style = "";
-    let color = "#161616";
+    let style = '';
+    let color = '#161616';
 
     if (rating <= 5) {
-      style = "background-color: #AD8A56";
-      color = "#fff";
+      style = 'background-color: #AD8A56';
+      color = '#fff';
     } else if (rating < 8) {
-      style = "background-color: #D7D7D7";
+      style = 'background-color: #D7D7D7';
     } else {
-      style = "background-color: #ffd700";
+      style = 'background-color: #ffd700';
     }
 
     return `${style};
@@ -34,9 +34,9 @@ export const DetailsRatingWrapper = styled.div<{
   }};
 `;
 
-export const DetailsRatingValue = styled.span<{ isTabletOrMobile?: boolean }>`
-  font-family: "Poppins";
-  font-size: ${(p) => (p.isTabletOrMobile ? "1.2rem" : "1.25rem")};
+export const DetailsRatingValue = styled.span<{isTabletOrMobile?: boolean}>`
+  font-family: 'Poppins';
+  font-size: ${(p) => (p.isTabletOrMobile ? '1.2rem' : '1.25rem')};
   font-weight: 400;
   height: 100%;
   display: flex;

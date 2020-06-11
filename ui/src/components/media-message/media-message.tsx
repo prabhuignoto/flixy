@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 import {
   MediaMessageWrapper,
   MediaMessageText,
   MediaMessageIcon,
-} from "./media-message.style";
-import useResponsive from "../../effects/useResponsive";
+} from './media-message.style';
+import useResponsive from '../../effects/useResponsive';
 
 const MediaMessage: React.FunctionComponent<{
   message: string;
   icon?: React.ReactNode;
-}> = ({ message, icon }) => {
+}> = ({message, icon}) => {
   const resx = useResponsive();
   return (
     <MediaMessageWrapper>

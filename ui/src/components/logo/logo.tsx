@@ -1,5 +1,5 @@
-import React from "react";
-import { LogoWrapper, LogoText, LogoIcon, Trademark } from "./logo.styles";
+import React from 'react';
+import {LogoWrapper, LogoText, LogoIcon, Trademark} from './logo.styles';
 
 const Logo: React.FunctionComponent = () => (
   <LogoWrapper>

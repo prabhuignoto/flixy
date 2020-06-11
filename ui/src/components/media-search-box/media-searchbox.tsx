@@ -1,11 +1,11 @@
-import React, { ChangeEvent, KeyboardEvent } from "react";
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import {
   SearchBoxWrapper,
   SearchInput,
   GoButton,
   SearchIconWrapper,
-} from "./media-searchbox.styles";
-import { SearchIcon, ArrowRightIcon } from "../icons";
+} from './media-searchbox.styles';
+import {SearchIcon, ArrowRightIcon} from '../icons';
 
 export interface MediaSearchboxModel {
   onSearch: (term: string) => void;
@@ -14,7 +14,7 @@ export interface MediaSearchboxModel {
 const MediaSearchBox: React.FunctionComponent<MediaSearchboxModel> = ({
   onSearch,
 }) => {
-  const [inputState, setInputState] = React.useState("");
+  const [inputState, setInputState] = React.useState('');
 
   const handleChange = (event: ChangeEvent) => {
     const val = (event.target as HTMLInputElement).value;
@@ -22,10 +22,10 @@ const MediaSearchBox: React.FunctionComponent<MediaSearchboxModel> = ({
   };
 
   React.useEffect(() => {
-    if(!inputState) {
+    if (!inputState) {
       onSearch && onSearch(inputState);
     }
-  }, [inputState])
+  }, [inputState]);
 
   const handleSearch = () => {
     if (inputState) {

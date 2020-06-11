@@ -1,14 +1,12 @@
-import React from "react";
-import { CardSize } from "../../models/CardSize";
-import Movie from "../../models/Media";
-import { MoviesContainer } from "./movies.style";
-import Card from "../media-card/card";
-import useResponsive from "../../effects/useResponsive";
-import withExtendedInfo, {
-  CardExtendCustomModel,
-} from "../HOCS/withExtendInfo";
-import { PositioningStrategy } from "../media-card/card-extended";
-import { MediaObject } from "../../models/MediaObject";
+import React from 'react';
+import {CardSize} from '../../models/CardSize';
+import Movie from '../../models/Media';
+import {MoviesContainer} from './movies.style';
+import Card from '../media-card/card';
+import useResponsive from '../../effects/useResponsive';
+import withExtendedInfo, {CardExtendCustomModel} from '../HOCS/withExtendInfo';
+import {PositioningStrategy} from '../media-card/card-extended';
+import {MediaObject} from '../../models/MediaObject';
 
 const ExtendedCard = withExtendedInfo<CardExtendCustomModel>(Card);
 
@@ -83,7 +81,7 @@ export default ({
               id={val}
               loadingCard={true}
               key={val}
-              poster_path={""}
+              poster_path={''}
               resxProps={responsiveProps}
             />
           ))

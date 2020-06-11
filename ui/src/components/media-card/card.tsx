@@ -1,16 +1,16 @@
-import * as React from "react";
-import Movie from "../../models/Media";
+import * as React from 'react';
+import Movie from '../../models/Media';
 import {
   CardContainer,
   CardCheckedWrapper,
   ImageIconWrapper,
-} from "./card.style";
-import { CardSize } from "../../models/CardSize";
-import Poster from "../media-poster/poster";
-import { CheckIcon, ImageIcon } from "../icons";
-import { responsiveProps } from "../../effects/useResponsive";
-import { MediaObject } from "../../models/MediaObject";
-import { atom } from "recoil";
+} from './card.style';
+import {CardSize} from '../../models/CardSize';
+import Poster from '../media-poster/poster';
+import {CheckIcon, ImageIcon} from '../icons';
+import {responsiveProps} from '../../effects/useResponsive';
+import {MediaObject} from '../../models/MediaObject';
+import {atom} from 'recoil';
 
 export type MovieType = Movie & {
   index?: number;
@@ -39,7 +39,7 @@ export default React.memo(
     const cardRef = React.useRef<HTMLDivElement>(null);
     const handleSelection = React.useCallback(
       (id: number | string) => {
-        onSelect && onSelect({ id, name: title });
+        onSelect && onSelect({id, name: title});
       },
       [id]
     );
@@ -56,9 +56,9 @@ export default React.memo(
             autoHeight={autoHeight}
           >
             {
-              <div style={{ height: "100%" }}>
+              <div style={{height: '100%'}}>
                 <Poster
-                  poster_path={poster_path ? poster_path : ""}
+                  poster_path={poster_path ? poster_path : ''}
                   index={index}
                   rating={vote_average}
                   size={size}

@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 import {
   MediaRelatedWrapper,
   RelatedMediaObjects,
   RelatedMediaHeader,
-} from "./media-related.styles";
-import MediaObjects from "../media-objects/media-objects";
-import { MediaObject, ThumbnailSize } from "../../models/MediaObject";
-import useResponsive from "../../effects/useResponsive";
+} from './media-related.styles';
+import MediaObjects from '../media-objects/media-objects';
+import {MediaObject, ThumbnailSize} from '../../models/MediaObject';
+import useResponsive from '../../effects/useResponsive';
 
 const RelatedMedia: React.FunctionComponent<{
   id: number | string;
   items: MediaObject[];
   title?: string;
-}> = ({ items, id, title }) => {
-  const { isBigScreen } = useResponsive();
+}> = ({items, id, title}) => {
+  const {isBigScreen} = useResponsive();
   return (
     <MediaRelatedWrapper>
       <RelatedMediaHeader>{title}</RelatedMediaHeader>

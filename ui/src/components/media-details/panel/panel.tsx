@@ -1,19 +1,19 @@
-import React from "react";
-import { PanelList, PanelListItem } from "./panel.style";
-import useResponsive from "../../../effects/useResponsive";
+import React from 'react';
+import {PanelList, PanelListItem} from './panel.style';
+import useResponsive from '../../../effects/useResponsive';
 
 export enum tabs {
-  home = "HOME",
-  similar = "SIMILAR",
-  recommended = "RECOMMENDED",
-  reviews = "REVIEWS",
-  posters = "POSTERS"
+  home = 'HOME',
+  similar = 'SIMILAR',
+  recommended = 'RECOMMENDED',
+  reviews = 'REVIEWS',
+  posters = 'POSTERS',
 }
 
 const Panel: React.FunctionComponent<{
   actvTab: tabs;
   onSelection: (selectedTab: tabs) => void;
-}> = ({ actvTab, onSelection }) => {
+}> = ({actvTab, onSelection}) => {
   const resxProps = useResponsive();
   return (
     <PanelList resx={resxProps}>
@@ -43,14 +43,14 @@ const Panel: React.FunctionComponent<{
       >
         Recommended
       </PanelListItem>
-      {(
+      {
         <PanelListItem
           onClick={() => onSelection(tabs.reviews)}
           selected={actvTab === tabs.reviews}
         >
           Reviews
         </PanelListItem>
-      )}
+      }
     </PanelList>
   );
 };

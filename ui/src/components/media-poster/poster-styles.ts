@@ -7,7 +7,7 @@ export const PosterWrapper = styled.div<{ size?: CardSize }>`
   height: 100%;
   `;
 
-export const CardImage = styled(animated.img)<{ hide?: boolean }>`
+export const CardImage = styled(animated.img) <{ hide?: boolean }>`
   border-radius: .2rem;
   color: #191919;
   max-height: 100%;

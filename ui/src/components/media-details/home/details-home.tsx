@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Box1,
   Box2,
@@ -9,15 +9,15 @@ import {
   DetailsHomeWrapper,
   PostersAndProduction,
   ProductionWrapper,
-} from "./details-home.styles";
-import DetailsTitle from "../title/details-title";
-import ProductionDetails from "../production/details-production";
-import { CastAndCrew } from "../details-cast-and-crew";
-import { responsiveProps } from "../../../effects/useResponsive";
-import Images from "../../../containers/details/images";
-import { Genre } from "../../../models/Genre";
-import { ProductionCompany } from "../../../models/ProductionCompany";
-import { SliderType } from "../../../models/Slider";
+} from './details-home.styles';
+import DetailsTitle from '../title/details-title';
+import ProductionDetails from '../production/details-production';
+import {CastAndCrew} from '../details-cast-and-crew';
+import {responsiveProps} from '../../../effects/useResponsive';
+import Images from '../../../containers/details/images';
+import {Genre} from '../../../models/Genre';
+import {ProductionCompany} from '../../../models/ProductionCompany';
+import {SliderType} from '../../../models/Slider';
 
 interface DetailsHomeModel {
   id?: number | string;
@@ -47,7 +47,7 @@ const DetailsHome: React.FunctionComponent<DetailsHomeModel> = ({
   id,
   production_companies,
   sliderType,
-  imdb_id
+  imdb_id,
 }) => {
   return (
     <DetailsHomeWrapper>

@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { CardSize } from "../../models/CardSize";
-import { animated } from "react-spring";
-import { responsiveProps } from "../../effects/useResponsive";
+import styled from 'styled-components';
+import {CardSize} from '../../models/CardSize';
+import {animated} from 'react-spring';
+import {responsiveProps} from '../../effects/useResponsive';
 
 export const CardContainer = styled(animated.div)<{
   selected?: boolean;
@@ -22,10 +22,7 @@ export const CardContainer = styled(animated.div)<{
   justify-content: space-evenly;
   position: relative;
   user-select: none;
-  ${(p) =>
-    p.isLoadingCard
-      ? ""
-      : ""};
+  ${(p) => (p.isLoadingCard ? '' : '')};
   ${(p) =>
     p.selected &&
     `&::before {
@@ -48,7 +45,7 @@ export const CardContainer = styled(animated.div)<{
 
 export const CardTitle = styled.div`
   color: white;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 0.9rem;
   font-weight: 300;
   margin: 0 auto;
@@ -75,7 +72,7 @@ export const CardFooter = styled.div`
 
 export const CardYear = styled.span`
   color: white;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 0.8rem;
   font-weight: 300;
 `;
@@ -113,12 +110,12 @@ export const ViewBtnWrapper = styled.span`
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   border-radius: 50%;
   /* box-shadow: inset 0 0 10px 4px rgba(0,0,0,0.25), 0 0 10px 4px rgba(0,0,0,0.25); */
   & svg {
     height: 100%;
     width: 100%;
   }
-  padding: .5rem;
+  padding: 0.5rem;
 `;

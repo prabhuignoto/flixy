@@ -3,14 +3,19 @@ import {
   Wrapper as WrapperContainer,
   Header,
   MoviesWrapper,
-  Footer,
+  ExpandControl,
   DetailsWrapper,
   Title,
 } from "./index.styles";
 import Movies from "./collection";
 import { Button } from "../commons/styles";
 import { useSpring, config } from "react-spring";
-import { CaretDownIcon, CaretUpIcon, PlusCircleIcon, MinusCircleIcon } from "../icons";
+import {
+  ChevronDownCircleIcon,
+  ChevronUpCircleIcon,
+  PlusCircleIcon,
+  MinusCircleIcon,
+} from "../icons";
 import Slider, { SliderType, LoadingState } from "../../models/Slider";
 import Movie from "../../models/Media";
 import useResponsive, { responsiveProps } from "../../effects/useResponsive";
@@ -146,7 +151,7 @@ const SliderView: React.FunctionComponent<Slider> = ({
         </MoviesWrapper>
       }
 
-      {(
+      {
         <DetailsWrapper>
           <React.Suspense fallback={<div></div>}>
             {sliderType === SliderType.movies ? (
@@ -164,19 +169,19 @@ const SliderView: React.FunctionComponent<Slider> = ({
             )}
           </React.Suspense>
         </DetailsWrapper>
-      )}
+      }
 
       {/* footer section */}
       {!showDetails.state && loadingState === LoadingState.LOADED && (
-        <Footer>
+        <ExpandControl resx={resxProps}>
           <Button size="medium" onClick={handleExpandFull} resx={resxProps}>
             {expandFull ? (
-              <MinusCircleIcon color="#cc0000" />
+              <ChevronUpCircleIcon color="#7c7c7c" />
             ) : (
-              <PlusCircleIcon color="#cc0000" />
+              <ChevronDownCircleIcon color="#7c7c7c" />
             )}
           </Button>
-        </Footer>
+        </ExpandControl>
       )}
     </WrapperContainer>
   );

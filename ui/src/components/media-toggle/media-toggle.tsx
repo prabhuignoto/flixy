@@ -1,12 +1,12 @@
-import React, { MouseEvent } from "react";
+import React, {MouseEvent} from 'react';
 import {
   MediaToggleWrapper,
   Option,
   Highlighter,
   OptionLabel,
-} from "./media-toggle.styles";
-import { useSpring, config } from "react-spring";
-import useResponsive from "../../effects/useResponsive";
+} from './media-toggle.styles';
+import {useSpring, config} from 'react-spring';
+import useResponsive from '../../effects/useResponsive';
 
 export interface MediaToggleOption {
   value: string;
@@ -56,7 +56,7 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
   React.useEffect(() => {
     requestAnimationFrame(() => {
       if (defaultRef && defaultRef.current) {
-        const { offsetLeft, offsetWidth } = defaultRef.current;
+        const {offsetLeft, offsetWidth} = defaultRef.current;
         setOpts({
           items: opts.items,
           highlighterOffset: offsetLeft,
@@ -81,7 +81,7 @@ const MediaToggle: React.FunctionComponent<MediaToggleModel> = ({
           selected: true,
         });
       } else {
-        return Object.assign({}, opt, { selected: false });
+        return Object.assign({}, opt, {selected: false});
       }
     });
     setOpts({

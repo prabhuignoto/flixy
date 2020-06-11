@@ -1,11 +1,11 @@
-import React from "react";
-import { useApolloClient, DocumentNode } from "@apollo/client";
-import { recommended, similar } from "../../gqls/movies";
-import { recommendedTv, similarTv } from "../../gqls/tv";
-import Movie from "../../models/Media";
-import { MediaObject } from "../../models/MediaObject";
-import MediaRelated from "../../components/media-related/media-related";
-import { MediaType, RelatedMediaType } from "../models";
+import React from 'react';
+import { useApolloClient, DocumentNode } from '@apollo/client';
+import { recommended, similar } from '../../gqls/movies';
+import { recommendedTv, similarTv } from '../../gqls/tv';
+import Movie from '../../models/Media';
+import { MediaObject } from '../../models/MediaObject';
+import MediaRelated from '../../components/media-related/media-related';
+import { MediaType, RelatedMediaType } from '../models';
 
 const getQuery: (t: MediaType, relType: RelatedMediaType) => DocumentNode = (
   type,
@@ -49,7 +49,7 @@ const RelatedMedia: React.FunctionComponent<RelatedMediaModel> = React.memo(
       const { data } = await client.query({
         query: getQuery(type, relatedMediaType),
         variables: {
-          lang: "en-US",
+          lang: 'en-US',
           id: id,
           page: 1,
         },
@@ -94,10 +94,10 @@ const RelatedMedia: React.FunctionComponent<RelatedMediaModel> = React.memo(
           first_air_date,
         }) => ({
           id: id,
-          name: original_title || original_name || "",
+          name: original_title || original_name || '',
           overview,
-          path: poster_path || "",
-          release_date: release_date || first_air_date || "",
+          path: poster_path || '',
+          release_date: release_date || first_air_date || '',
           visible: false,
           vote_average,
         })
@@ -105,7 +105,7 @@ const RelatedMedia: React.FunctionComponent<RelatedMediaModel> = React.memo(
       view = <MediaRelated items={data} id={id} title={title} />;
     }
 
-    return <div style={{ height: "100%", position: "relative" }}>{view}</div>;
+    return <div style={{ height: '100%', position: 'relative' }}>{view}</div>;
   },
   (prev, cur) => prev.id === cur.id
 );
