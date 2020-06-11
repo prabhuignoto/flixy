@@ -64,7 +64,7 @@ const ImagesView: React.FunctionComponent<ImagesModel> = React.memo(
           {backdrops && backdrops.length ? (
             <MediaObjectsWrapper>
               <MediaObjects
-                title=""
+                noTitle
                 id="movie_backdrops"
                 items={backdrops.map<MediaObject>(
                   ({ file_path }) => ({

@@ -3,7 +3,6 @@ import {
   MediaObject,
   ObjectImage,
   FallbackImage,
-  ObjectName,
   ImageContainer,
   ImageInfo,
 } from "./media-object.style";
@@ -20,22 +19,35 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
   ({
     hideObjectWithNoImage,
     id,
-    info,
     name,
     noTitle,
     onSelect,
     path,
     thumbnailSize,
   }) => {
-    const [loadState, setLoadState] = React.useState({
-      loaded: false,
-      failed: false,
-    });
+    const resx = useResponsive();
     const imageUrl = `https://image.tmdb.org/t/p/${
       thumbnailSize === ThumbnailSize.large ? "w500" : "w200"
     }/${path}`;
-    const resx = useResponsive();
-    const [showInfo, setShowInfo] = React.useState(false);
+    const [loadState, setLoadState] = React.useState({
+      loaded: false,
+      failed: false,
+      default: true,
+    });
+    const [infoWidth, setInfoWidth] = React.useState(0);
+    const ref = React.useRef<HTMLElement & HTMLImageElement>(null);
+
+    React.useEffect(() => {
+      if (!noTitle) {
+        setTimeout(() => {
+          if (loadState.loaded && ref.current) {
+            setInfoWidth(ref.current?.width);
+          } else if (loadState.failed && ref.current) {
+            setInfoWidth(ref.current?.clientWidth);
+          }
+        }, 100);
+      }
+    }, [loadState, noTitle]);
 
     const transition = useTransition(loadState.loaded, null, {
       initial: {
@@ -61,14 +73,16 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
     return canShow ? (
       <MediaObject
         onClick={() => onSelect && onSelect({ name, id })}
-        onMouseEnter={() => setShowInfo(true)}
-        onMouseLeave={() => setShowInfo(false)}
       >
         <ImageContainer noTitle={noTitle ? 1 : 0}>
           <img
             src={imageUrl}
-            onLoad={() => setLoadState({ loaded: true, failed: false })}
-            onError={() => setLoadState({ loaded: false, failed: true })}
+            onLoad={() =>
+              setLoadState({ loaded: true, failed: false, default: false })
+            }
+            onError={() =>
+              setLoadState({ loaded: false, failed: true, default: false })
+            }
             style={{ display: "none" }}
           />
 
@@ -80,6 +94,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
                   loaded={loadState.loaded ? 1 : 0}
                   style={props}
                   noTitle={noTitle ? 1 : 0}
+                  ref={ref}
                   key={key}
                   alt={name}
                   loading="lazy"
@@ -88,7 +103,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
             } else {
               if (loadState.failed) {
                 return (
-                  <FallbackImage key={key}>
+                  <FallbackImage key={key} ref={ref}>
                     <UserIcon color="#ccc" />
                   </FallbackImage>
                 );
@@ -98,8 +113,10 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
             }
           })}
         </ImageContainer>
-        {!noTitle && info && showInfo && (
-          <ImageInfo resx={resx}>{`${name} as ${info}`}</ImageInfo>
+        {!noTitle && (
+          <ImageInfo resx={resx} width={infoWidth}>
+            {`${name}`}
+          </ImageInfo>
         )}
       </MediaObject>
     ) : null;

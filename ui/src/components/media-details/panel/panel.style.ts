@@ -9,8 +9,8 @@ export const PanelList = styled.ul<{ resx?: responsiveProps }>`
   margin: 0;
   padding: 0;
   font-family: "Poppins";
-  font-size: ${p => p.resx && p.resx.isBigScreen ? "1.2em" : ""};
-  font-weight: 400;
+  font-size: ${p => p.resx && p.resx.isBigScreen ? "1.25rem" : ""};
+  font-weight: 500;
 `;
 
 export const PanelListItem = styled.li<{ selected?: boolean }>`

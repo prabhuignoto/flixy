@@ -57,7 +57,7 @@ const MediaModal: React.FunctionComponent<{
                 resx={resx}
                 key={key}
                 style={props}
-                // onBlur={() => onClose && onClose()}
+                onBlur={() => onClose && onClose()}
                 onKeyUp={handleKeyPress}
               >
                 <ModalHeader>

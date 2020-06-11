@@ -10,6 +10,7 @@ import Poster from "../media-poster/poster";
 import { CheckIcon, ImageIcon } from "../icons";
 import { responsiveProps } from "../../effects/useResponsive";
 import { MediaObject } from "../../models/MediaObject";
+import { atom } from "recoil";
 
 export type MovieType = Movie & {
   index?: number;
@@ -33,7 +34,7 @@ export default React.memo(
     title,
     resxProps,
     autoHeight,
-    vote_average
+    vote_average,
   }: MovieType) => {
     const cardRef = React.useRef<HTMLDivElement>(null);
     const handleSelection = React.useCallback(

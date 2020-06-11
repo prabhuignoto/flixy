@@ -65,26 +65,23 @@ export const ImageContainer = styled.div<{ noTitle?: number }>`
   background : ${p => !p.noTitle ? "" : ""};
   `;
 
-export const ImageInfo = styled.div<{ resx?: responsiveProps }>`
+export const ImageInfo = styled.div<{ resx?: responsiveProps, width: number }>`
   position: absolute;
   left: 0;
   right: 0;
-  /* transform: translateY(-50%); */
   margin-left: auto;
   margin-right: auto;
-  /* top: 50%; */
-  bottom: 1rem;
-  width: 60%;
-  min-height: 20%;
-  background: rgba(255,255,255,0.97);
+  bottom: .5rem;
+  width: ${p => p.width - 6}px;
+  min-height: 2rem;
+  background: rgba(255,255,255,1);
   color: #000;
   font-family: Poppins;
-  font-size: ${p => p.resx?.isBigScreen ? ".75rem" : ".65rem"};
+  font-size: ${p => p.resx?.isBigScreen ? ".8rem" : ".7rem"};
   font-weight: 400;
-  padding: 0 .2rem;
-  display: flex;
+  display: ${p => p.width ? "flex" : "none"};
   align-items: center;
   justify-content: center;
-  border-radius: .2rem;
   z-index: 100;
+  padding: 0 .2rem;
 `

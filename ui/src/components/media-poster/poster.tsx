@@ -8,21 +8,12 @@ import {
 } from "./poster-styles";
 import { MedalIcon } from "../icons";
 import useResponsive from "../../effects/useResponsive";
-import { useSpring, config } from "react-spring";
 
 export default React.memo(
   ({ poster_path, size, title, rating }: Poster) => {
     const resx = useResponsive();
     const [loaded, setLoaded] = React.useState(false);
     const src = `https://image.tmdb.org/t/p/w${size}/${poster_path}`;
-
-    const props = useSpring({
-      opacity: 1,
-      from: {
-        opacity: 0,
-      },
-      config: config.stiff,
-    });
 
     return (
       <PosterWrapper size={size}>
@@ -39,7 +30,6 @@ export default React.memo(
                 alt={title}
                 src={src}
                 loading="lazy"
-                style={props}
               ></CardImage>
             )}
             {loaded && rating && rating > 8 ? (

@@ -1,27 +1,35 @@
 import styled from "styled-components";
+import { responsiveProps } from "../../effects/useResponsive";
 
-export const Button = styled.button<{ size?: string }>`
+export const Button = styled.button<{ size?: string; resx: responsiveProps }>`
   background: none;
   border: 0;
-  outline: none;
-  padding: 0;
   cursor: pointer;
   display: flex;
+  outline: none;
+  padding: 0;
   & svg {
     width: 100%;
     height: 100%;
   }
-  ${({size}) => {
+  ${({ size, resx }) => {
     let style;
     switch (size) {
       case "small":
         style = "min-width: 2rem; height: 2rem;";
         break;
       case "medium":
-        style = "width: 3rem; height: 2rem;";
+        style = resx.isBigScreen
+          ? `
+          width: 3rem;
+          height: 2rem;`
+          : `
+          width: 1.5rem;
+          height: 1.5rem;
+          `;
         break;
       case "large":
-        style = "min-width: 4rem; height: 3rem;";
+        style = `min-width: 4rem; height: 3rem;`;
         break;
     }
     return style;

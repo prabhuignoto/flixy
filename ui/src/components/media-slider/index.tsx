@@ -63,14 +63,6 @@ const SliderView: React.FunctionComponent<Slider> = ({
     delay: 0,
   }));
 
-  const wrapperProps = useSpring({
-    opacity: 1,
-    from: {
-      opacity: 0,
-    },
-    config: config.stiff,
-  });
-
   const handleExpandFull = React.useCallback(() => setExpandFull(!expandFull), [
     expandFull,
   ]);
@@ -175,9 +167,9 @@ const SliderView: React.FunctionComponent<Slider> = ({
       )}
 
       {/* footer section */}
-      {!showDetails.state && (
+      {!showDetails.state && loadingState === LoadingState.LOADED && (
         <Footer>
-          <Button size="medium" onClick={handleExpandFull}>
+          <Button size="medium" onClick={handleExpandFull} resx={resxProps}>
             {expandFull ? (
               <MinusCircleIcon color="#cc0000" />
             ) : (

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { animated } from "react-spring";
 import { LoadingState } from '../../models/Slider';
+import { responsiveProps } from '../../effects/useResponsive';
 
 export const Wrapper = styled(animated.div) <{ detailsEnabled?: number, loadingState?: LoadingState }>`
   background-image: ${p => p.loadingState === LoadingState.LOADED ? "linear-gradient(to right top, #2c2c2c, #252525, #1f1f1f, #181818, #111111)" : ""};
