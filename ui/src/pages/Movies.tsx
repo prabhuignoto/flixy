@@ -12,8 +12,8 @@ export default () => {
 
   return show ? <>
     <Movies category={Category.POPULAR} title="Popular" />
-    {/* <Movies category={Category.TOP_RATED} title="Top Rated" />
+    <Movies category={Category.TOP_RATED} title="Top Rated" />
     <Movies category={Category.NOW_PLAYING} title="Now Playing" />
-    <Movies category={Category.UP_COMING} title="Up Coming" /> */}
+    <Movies category={Category.UP_COMING} title="Up Coming" />
   </> : null
 };
