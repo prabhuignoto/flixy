@@ -45,7 +45,7 @@ const MediaObjectView: React.FunctionComponent<MediaObjectModel> = React.memo(
           } else if (loadState.failed && ref.current) {
             setInfoWidth(ref.current?.clientWidth);
           }
-        }, 100);
+        }, 0);
       }
     }, [loadState, noTitle]);
 
