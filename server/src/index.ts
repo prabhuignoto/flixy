@@ -20,7 +20,6 @@ const fast = fastify({
   logger: true,
 });
 
-
 const server = async () => {
   try {
     // build schema
