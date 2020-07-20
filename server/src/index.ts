@@ -1,15 +1,15 @@
-import "reflect-metadata";
-import fastify from "fastify";
+import { ApolloServer } from "apollo-server-fastify";
 import { config } from "dotenv";
+import fastify from "fastify";
+import cors from "fastify-cors";
+import "reflect-metadata";
 import { buildSchema } from "type-graphql";
 import GenreResolver from './resolvers/GenreResolver';
-import { ApolloServer } from "apollo-server-fastify";
-import TrendingResolver from "./resolvers/TrendingResolver";
 import MovieResolver from "./resolvers/MovieResolver";
+import TrendingResolver from "./resolvers/TrendingResolver";
 import TVResolver from "./resolvers/TVResolver";
-import cors from "fastify-cors";
 
-if(process.env.NODE_ENV === "prod") {
+if (process.env.NODE_ENV === "prod") {
   require("newrelic");
 }
 

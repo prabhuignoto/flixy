@@ -8,7 +8,7 @@ export class Credits {
   @Field(returns => [Cast])
   cast!: Cast[];
 
-  @Field(returns => Crew)
+  @Field(returns => [Crew])
   crew!: Crew[];
 
   @Field()

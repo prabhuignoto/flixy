@@ -1,9 +1,10 @@
-import { ObjectType, Field } from "type-graphql";
+import { Field, ObjectType } from "type-graphql";
 
 @ObjectType()
 export class Crew {
 
   @Field()
+  // @Field({nullable: true})
   credit_id!: string;
 
   @Field()
@@ -19,9 +20,10 @@ export class Crew {
   job!: string;
 
   @Field()
+  // @Field({nullable: true})
   name!: string;
 
-  @Field({nullable: true})
+  @Field({ nullable: true })
   profile_path!: string;
 
 }
