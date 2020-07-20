@@ -9,10 +9,6 @@ import MovieResolver from "./resolvers/MovieResolver";
 import TrendingResolver from "./resolvers/TrendingResolver";
 import TVResolver from "./resolvers/TVResolver";
 
-if (process.env.NODE_ENV === "prod") {
-  require("newrelic");
-}
-
 config();
 
 
