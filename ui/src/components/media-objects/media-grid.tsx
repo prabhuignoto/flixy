@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import {MediaObject, ThumbnailSize} from '../../models/MediaObject';
 import {FixedSizeGrid} from 'react-window';
 import {MediaGridWrapper} from './media-grid.style';
@@ -68,7 +68,7 @@ const MediaGrid: React.FunctionComponent<MediaGridModel> = ({
             return (
               <MediaObjectContainer
                 key={`${id}-${columnIndex}-${name}`}
-                style={style}
+                style={style as CSSProperties}
               >
                 <MediaObjectView
                   name={name}

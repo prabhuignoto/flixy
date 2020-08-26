@@ -1,12 +1,12 @@
-import React, {RefObject} from 'react';
+import React, {CSSProperties, RefObject} from 'react';
 import {FixedSizeList, Layout} from 'react-window';
 import {CardSize} from '../../models/CardSize';
-import {PositioningStrategy} from '../media-card/card-extended';
 import {MediaObject, ThumbnailSize} from '../../models/MediaObject';
 import withExtendedInfo from '../HOCS/withExtendInfo';
 import Card from '../media-card/card';
-import {MediaObjectContainer} from './media-objects.styles';
+import {PositioningStrategy} from '../media-card/card-extended';
 import MediaObjectView from './media-object';
+import {MediaObjectContainer} from './media-objects.styles';
 
 const ExtendedCard = withExtendedInfo(Card);
 
@@ -82,7 +82,7 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
             return (
               <MediaObjectContainer
                 key={`${id}-${index}-${name}`}
-                style={style}
+                style={style as CSSProperties}
               >
                 {!useExtendedCard ? (
                   <MediaObjectView
