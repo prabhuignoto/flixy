@@ -87,7 +87,7 @@ const MediaList: React.FunctionComponent<MediaListModel> = React.memo(
                 {!useExtendedCard ? (
                   <MediaObjectView
                     name={name}
-                    path={path}
+                    path={path} 
                     id={id}
                     thumbnailSize={thumbnailSize}
                     noTitle={noTitle}

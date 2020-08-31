@@ -21,5 +21,6 @@
     "themoviedb"
   ],
   "tslint.autoFixOnSave": true,
-  "tslint.enable": true
+  "tslint.enable": true,
+  "deepscan.enable": true
 }
