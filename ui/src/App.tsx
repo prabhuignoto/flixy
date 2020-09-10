@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import "./App.css";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
+import {config} from 'dotenv';
+import React, {Component} from 'react';
+import ReactGA from 'react-ga';
+import MediaQuery from 'react-responsive';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
   Redirect,
-} from "react-router-dom";
+  Route,
+  Switch,
+} from 'react-router-dom';
+import fontLoader from 'webfontloader';
+import './App.css';
+import Header from './components/header/header';
+import MediaMessage from './components/media-message/media-message';
+import SearchHome from './pages/SearchHome';
 
-import fontLoader from "webfontloader";
-import { config } from "dotenv";
-import Header from "./components/header/header";
-import SearchHome from "./pages/SearchHome";
-import MediaQuery from "react-responsive";
-import MediaMessage from "./components/media-message/media-message";
-
-const Movies = React.lazy(() => import("./pages/Movies"));
-const Tv = React.lazy(() => import("./pages/Tv"));
+const Movies = React.lazy(() => import('./pages/Movies'));
+const Tv = React.lazy(() => import('./pages/Tv'));
 
 config();
 
@@ -25,7 +25,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
+class App extends Component<{}, {fontsLoaded: boolean; hasError: boolean}> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -37,13 +37,14 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
   componentDidMount() {
     fontLoader.load({
       google: {
-        families: ["Poppins:200,300,400,500&display=swap"],
+        families: ['Poppins:200,300,400,500&display=swap'],
       },
     });
+    ReactGA.initialize(process.env.TRACKING_ID as string);
   }
 
   static getDerivedStateFromError(error: any) {
-    return { hasError: true };
+    return {hasError: true};
   }
 
   render() {
@@ -56,12 +57,12 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
                 <Header></Header>
                 <main
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "100%",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100%",
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '100%',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100%',
                   }}
                 >
                   <Switch>
@@ -91,10 +92,10 @@ class App extends Component<{}, { fontsLoaded: boolean; hasError: boolean }> {
         <MediaQuery maxDeviceWidth={1023}>
           <div
             style={{
-              height: "95vh",
-              width: "80%",
-              margin: "0 auto",
-              marginTop: "3rem",
+              height: '95vh',
+              width: '80%',
+              margin: '0 auto',
+              marginTop: '3rem',
             }}
           >
             <MediaMessage
