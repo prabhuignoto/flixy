@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 import { animated } from "react-spring";
 
-export const CardExtendedWrapper = styled(animated.div) <
+export const CardExtendedWrapper = emotion(animated.div) <
   {
     isBigScreen?: number;
     flip?: number;
@@ -37,7 +37,7 @@ export const CardExtendedWrapper = styled(animated.div) <
   background: #e8e8e8;
 `;
 
-export const CardExtendedPosterWrapper = styled.div<{ flip?: boolean }>`
+export const CardExtendedPosterWrapper = emotion.div<{ flip?: boolean }>`
   align-items: center;
   display: flex;
   height: 100%;
@@ -46,12 +46,12 @@ export const CardExtendedPosterWrapper = styled.div<{ flip?: boolean }>`
   order: ${p => p.flip ? 2 : 1};
 `;
 
-export const CardExtendedPoster = styled.img`
+export const CardExtendedPoster = emotion.img`
   max-height: 100%;
   object-fit: contain;
 `;
 
-export const CardExtendedInfo = styled.div<{ flip?: boolean }>`
+export const CardExtendedInfo = emotion.div<{ flip?: boolean }>`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -62,28 +62,28 @@ export const CardExtendedInfo = styled.div<{ flip?: boolean }>`
   flex: 3;
 `;
 
-export const ExtendedInfo = styled.span`
+export const ExtendedInfo = emotion.span`
   color: #000;
   font-family: "Poppins";
   text-align: left;
   white-space: wrap;
 `;
 
-export const ExtendedInfoTitle = styled(ExtendedInfo)`
+export const ExtendedInfoTitle = emotion(ExtendedInfo)`
   font-size: .85em;
   font-weight: 500;
   max-width: 350px;
   white-space: wrap;
 `;
 
-export const ExtendInfoYear = styled(ExtendedInfo)`
+export const ExtendInfoYear = emotion(ExtendedInfo)`
   color: #cc0000;
   font-size: .9em;
   font-weight: 400;
   margin-top: .1em;
 `;
 
-export const ExtendedInfoOverview = styled(ExtendedInfo) <{ isBigScreen?: boolean }>`
+export const ExtendedInfoOverview = emotion(ExtendedInfo) <{ isBigScreen?: boolean }>`
   font-size: ${p => p.isBigScreen ? ".8em" : ".7em"};
   font-weight: 300;
   margin-top: .5em;
@@ -93,7 +93,7 @@ export const ExtendedInfoOverview = styled(ExtendedInfo) <{ isBigScreen?: boolea
   width: 100%;
 `;
 
-export const ExtendedInfoClose = styled.span<{ flip?: boolean }>`
+export const ExtendedInfoClose = emotion.span<{ flip?: boolean }>`
   cursor: pointer;
   display: flex;
   height: 1.5rem;
@@ -105,17 +105,17 @@ export const ExtendedInfoClose = styled.span<{ flip?: boolean }>`
   }
 `;
 
-export const ExtendedInfoHeader = styled.header`
+export const ExtendedInfoHeader = emotion.header`
   align-items: center;
   display: flex;
   width: 100%;
 `;
 
-export const ExtendedInfoRating = styled.div`
+export const ExtendedInfoRating = emotion.div`
   margin-left: 1rem;
 `;
 
-export const Row2 = styled.div`
+export const Row2 = emotion.div`
   display: flex;
   align-items: center;
 `

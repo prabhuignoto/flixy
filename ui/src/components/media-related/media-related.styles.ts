@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 
-export const MediaRelatedWrapper = styled.div`
+export const MediaRelatedWrapper = emotion.div`
   position: relative;
 `;
 
-export const RelatedMediaObjects = styled.div`
+export const RelatedMediaObjects = emotion.div`
 `;
 
-export const RelatedMediaHeader = styled.header`
+export const RelatedMediaHeader = emotion.header`
   font-family: "Poppins";
   font-size: 1.25rem;
   color: #191919;

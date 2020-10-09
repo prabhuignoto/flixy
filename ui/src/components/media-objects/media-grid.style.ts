@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 
-export const MediaGridWrapper = styled.section<{ newWidth?: number }>`
+export const MediaGridWrapper = emotion.section<{ newWidth?: number }>`
   align-items: center;
   border-radius: .25rem;
   display: flex;

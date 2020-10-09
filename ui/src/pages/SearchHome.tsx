@@ -1,16 +1,16 @@
 import React from "react";
-import MediaSearchBox from "../components/media-search-box/media-searchbox";
-import styled from "styled-components";
-import useResponsive, { responsiveProps } from "../effects/useResponsive";
-import MediaToggle, {
-  MediaToggleOption,
-} from "../components/media-toggle/media-toggle";
-import SearchContainer from "../containers/search";
-import { MediaType } from "../containers/models";
-import MediaMessage from "../components/media-message/media-message";
 import { Movie2Icon } from "../components/icons";
+import MediaMessage from "../components/media-message/media-message";
+import MediaSearchBox from "../components/media-search-box/media-searchbox";
+import MediaToggle, {
+    MediaToggleOption
+} from "../components/media-toggle/media-toggle";
+import { MediaType } from "../containers/models";
+import SearchContainer from "../containers/search";
+import useResponsive, { responsiveProps } from "../effects/useResponsive";
+import emotion from '@emotion/styled';
 
-const SearchHomeWrapper = styled.div`
+const SearchHomeWrapper = emotion.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@ const SearchHomeWrapper = styled.div`
   width: 100%;
 `;
 
-const SearchResultsWrapper = styled.div`
+const SearchResultsWrapper = emotion.div`
   margin-top: 2rem;
   width: 95%;
   display: flex;
@@ -26,7 +26,7 @@ const SearchResultsWrapper = styled.div`
   justify-content: center;
 `;
 
-const MediaSearchBoxWrapper = styled.div<{ resx?: responsiveProps }>`
+const MediaSearchBoxWrapper = emotion.div<{ resx?: responsiveProps }>`
   width: ${(p) => (p.resx?.isBigScreen ? "35%" : "50%")};
   height: ${(p) => (p.resx?.isBigScreen ? "3rem" : "2.5rem")};
   margin-top: 3rem;
@@ -39,13 +39,13 @@ const MediaSearchBoxWrapper = styled.div<{ resx?: responsiveProps }>`
   padding: 1rem;
 `;
 
-const SearchOptionToggle = styled.div<{ resx?: responsiveProps }>`
+const SearchOptionToggle = emotion.div<{ resx?: responsiveProps }>`
   width: 250px;
   height: ${(p) => (p.resx?.isBigScreen ? "2.5rem" : "2rem")};
   margin-left: 2rem;
 `;
 
-const MessageWrapper = styled.div`
+const MessageWrapper = emotion.div`
   width: 100%;
   margin-top: 2rem;
   display: flex;

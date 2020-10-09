@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 import { responsiveProps } from "../../../effects/useResponsive";
 
-const Font = styled.div`
+const Font = emotion.div`
   font-family: "Poppins";
 `;
 
-export const Title = styled(Font)`
+export const Title = emotion(Font)`
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ export const Title = styled(Font)`
   width: 100%;
 `;
 
-export const TitleWrapper = styled.div`
+export const TitleWrapper = emotion.div`
   align-items: center;
   display: flex;
   height: 100%;
@@ -25,11 +25,11 @@ export const TitleWrapper = styled.div`
   width: 95%;
 `;
 
-export const DetailsRatingContainer = styled.div`
+export const DetailsRatingContainer = emotion.div`
   margin-right: 1rem;
 `;
 
-export const TitleYear = styled.span<{ resxProps: responsiveProps }>`
+export const TitleYear = emotion.span<{ resxProps: responsiveProps }>`
   align-items: center;
   color: rgba(204,0,0,0.85);
   display: flex;
@@ -39,7 +39,7 @@ export const TitleYear = styled.span<{ resxProps: responsiveProps }>`
   margin-left: .5rem;
 `;
 
-export const TitleText = styled.span<{ resxProps: responsiveProps }>`
+export const TitleText = emotion.span<{ resxProps: responsiveProps }>`
   align-items: center;
   color: #191919;
   display: flex;
@@ -53,7 +53,7 @@ export const TitleText = styled.span<{ resxProps: responsiveProps }>`
   white-space: nowrap;
 `;
 
-export const TitleRow1 = styled.div<{ resx?: responsiveProps }>`
+export const TitleRow1 = emotion.div<{ resx?: responsiveProps }>`
   align-items: ${p => p.resx?.isBigScreen ? "center" : "flex-start"};
   display: flex;
   flex-wrap: wrap;
@@ -61,12 +61,12 @@ export const TitleRow1 = styled.div<{ resx?: responsiveProps }>`
   flex-direction: ${p => p.resx?.isBigScreen ? "row" : "column"};
 `;
 
-export const TitleRow2 = styled.div`
+export const TitleRow2 = emotion.div`
   align-items: center;
   display: flex;
 `;
 
-export const AttributesContainer = styled.div<{ resxProps?: responsiveProps }>`
+export const AttributesContainer = emotion.div<{ resxProps?: responsiveProps }>`
   align-items: center;
   display: flex;
   justify-content: space-evenly;
@@ -79,26 +79,26 @@ export const AttributesContainer = styled.div<{ resxProps?: responsiveProps }>`
   }}
 `;
 
-export const AttributeContainer = styled.div`
+export const AttributeContainer = emotion.div`
   margin-right: .5rem;
 `;
 
-export const GenresContainer = styled.div<{ resx: responsiveProps }>`
+export const GenresContainer = emotion.div<{ resx: responsiveProps }>`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   margin-left: ${p => p.resx.isBigScreen ? "3rem" : ""};
 `;
 
-export const MediaRatingWrapper = styled.div`
+export const MediaRatingWrapper = emotion.div`
   margin-left: 1rem;
 `;
 
-export const ImdbLinkContainer = styled.div<{ resx: responsiveProps }>`
+export const ImdbLinkContainer = emotion.div<{ resx: responsiveProps }>`
   height: ${p => p.resx.isBigScreen ? "1.75rem" : "1.5rem"};
 `;
 
-export const TextAndRating = styled.div<{ resx?: responsiveProps }>`
+export const TextAndRating = emotion.div<{ resx?: responsiveProps }>`
   display: flex;
   align-items: center;
   justify-content: flex-start;

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import emotion from '@emotion/styled';
 
-export const DetailsRatingWrapper = styled.div<{
+export const DetailsRatingWrapper = emotion.div<{
   isTabletOrMobile?: boolean;
   rating?: number;
 }>`
@@ -34,7 +34,7 @@ export const DetailsRatingWrapper = styled.div<{
   }};
 `;
 
-export const DetailsRatingValue = styled.span<{isTabletOrMobile?: boolean}>`
+export const DetailsRatingValue = emotion.span<{isTabletOrMobile?: boolean}>`
   font-family: 'Poppins';
   font-size: ${(p) => (p.isTabletOrMobile ? '1.2rem' : '1.25rem')};
   font-weight: 400;

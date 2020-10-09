@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 import { responsiveProps } from "../../../effects/useResponsive";
 
-export const PanelList = styled.ul<{ resx?: responsiveProps }>`
+export const PanelList = emotion.ul<{ resx?: responsiveProps }>`
   display: flex;
   list-style: none;
   margin-top: .5em;
@@ -13,7 +13,7 @@ export const PanelList = styled.ul<{ resx?: responsiveProps }>`
   font-weight: 500;
 `;
 
-export const PanelListItem = styled.li<{ selected?: boolean }>`
+export const PanelListItem = emotion.li<{ selected?: boolean }>`
   border-bottom: ${p => p.selected ? " 2px solid #cc0000" : ""};
   color: #000;
   cursor: pointer;
@@ -25,7 +25,7 @@ export const PanelListItem = styled.li<{ selected?: boolean }>`
   width: 100%;
 `;
 
-export const PanelClose = styled.div`
+export const PanelClose = emotion.div`
   cursor: pointer;
   height: 2em;
   margin-left: auto;

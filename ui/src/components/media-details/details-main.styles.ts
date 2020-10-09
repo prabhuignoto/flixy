@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import emotion from "@emotion/styled";
 import { animated } from "react-spring";
 import { responsiveProps } from '../../effects/useResponsive';
 
-export const DetailsCardWrapper = styled(animated.div)`
+export const DetailsCardWrapper = emotion(animated.div)`
   align-items: center;
   background: #000;
   display: flex;
@@ -17,7 +17,7 @@ export const DetailsCardWrapper = styled(animated.div)`
   margin: 0 auto;
 `;
 
-export const DetailsWrapper = styled.section`
+export const DetailsWrapper = emotion.section`
   align-items: flex-start;
   background: #e5e5e5;
   border-radius: .2rem;
@@ -33,7 +33,7 @@ export const DetailsWrapper = styled.section`
   position: relative;
 `;
 
-export const DetailsPosterWrapper = styled.div`
+export const DetailsPosterWrapper = emotion.div`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -44,25 +44,25 @@ export const DetailsPosterWrapper = styled.div`
   width: 10%;
 `;
 
-export const Backdrop = styled.div``;
+export const Backdrop = emotion.div``;
 
-export const BackdropImage = styled.img``;
+export const BackdropImage = emotion.img``;
 
-const Font = styled.div`
+const Font = emotion.div`
   font-family: "Poppins";
 `
 
-export const Title = styled(Font)`
+export const Title = emotion(Font)`
   color: #191919;
   font-size: 1.5rem;
   font-weight: 400;
   margin-top: 1.2rem;
   text-align: left;
 `;
-export const Budget = styled.div``;
+export const Budget = emotion.div``;
 
 
-export const CloseDetails = styled.button<{ resxProps?: responsiveProps }>`
+export const CloseDetails = emotion.button<{ resxProps?: responsiveProps }>`
   background: none;
   border-radius: 50%;
   border: none;
@@ -76,7 +76,7 @@ export const CloseDetails = styled.button<{ resxProps?: responsiveProps }>`
   z-index:10;
 `;
 
-export const ReviewsWrapper = styled.div<{ resxProps?: responsiveProps }>`
+export const ReviewsWrapper = emotion.div<{ resxProps?: responsiveProps }>`
   border-radius: .2rem;
   height: 100%;
   position: relative;
@@ -85,7 +85,7 @@ export const ReviewsWrapper = styled.div<{ resxProps?: responsiveProps }>`
   align-items: center;
 `;
 
-export const MenuButtonWrapper = styled.div`
+export const MenuButtonWrapper = emotion.div`
   width: 2rem;
   height: 2rem;
   margin: 1rem 1rem 0;
@@ -93,7 +93,7 @@ export const MenuButtonWrapper = styled.div`
   cursor: pointer;
 `;
 
-export const RecommendedMoviesWrapper = styled.div`
+export const RecommendedMoviesWrapper = emotion.div`
   width: 100%;
   height: 95%;
   margin: 0 auto;
@@ -102,15 +102,15 @@ export const RecommendedMoviesWrapper = styled.div`
   justify-content: center;
 `;
 
-export const RecommendedMoviesContainer = styled.div`
+export const RecommendedMoviesContainer = emotion.div`
   width: 95%;
   margin: 0 auto;
   position: relative;
 `;
 
-export const SimilarMoviesWrapper = styled.div``;
+export const SimilarMoviesWrapper = emotion.div``;
 
-export const PanelContainer = styled(animated.div)`
+export const PanelContainer = emotion(animated.div)`
   width: 100%;
   height: 3.5rem;
   display: flex;

@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import { responsiveProps } from "../../effects/useResponsive";
+import emotion from "@emotion/styled";
 
-export const ViewBtnWrapper = styled.span<{ resx?: responsiveProps }>`
+export const ViewBtnWrapper = emotion.span<{ resx?: responsiveProps }>`
   background: rgba(0,0,0,0.85);
   border-radius: 50%;
   cursor: pointer;
@@ -24,7 +24,7 @@ export const ViewBtnWrapper = styled.span<{ resx?: responsiveProps }>`
   padding: .5rem;
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = emotion.div`
   position: relative;
   margin: 0 .5rem;
 `;

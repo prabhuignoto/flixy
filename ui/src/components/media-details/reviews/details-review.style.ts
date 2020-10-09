@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 import { animated } from "react-spring";
 import { responsiveProps } from "../../../effects/useResponsive";
 
-export const ReviewWrapper = styled(animated.li)`
+export const ReviewWrapper = emotion(animated.li)`
   display: flex;
   flex-direction: column;
   margin: .5rem 0;
@@ -10,7 +10,7 @@ export const ReviewWrapper = styled(animated.li)`
   width: 100%;
 `;
 
-export const ReviewContent = styled(animated.div)<{resx?: responsiveProps}>`
+export const ReviewContent = emotion(animated.div) <{ resx?: responsiveProps }>`
   color: #000;
   font-size: ${p => p.resx?.isBigScreen ? ".85rem" : ".75rem"};
   font-weight: 400;
@@ -20,7 +20,7 @@ export const ReviewContent = styled(animated.div)<{resx?: responsiveProps}>`
   width: 100%;
 `;
 
-export const ReviewAuthor = styled.div`
+export const ReviewAuthor = emotion.div`
   font-size: .9rem;
   font-weight: 500;
   text-align: left;
@@ -28,7 +28,7 @@ export const ReviewAuthor = styled.div`
   color: #000;
 `;
 
-export const ReadMoreControl = styled.div`
+export const ReadMoreControl = emotion.div`
   align-items: center;
   bottom: .25rem;
   color: rgba(204,0,0,0.9);
@@ -41,7 +41,7 @@ export const ReadMoreControl = styled.div`
   width: 100%;
 `;
 
-export const ReviewText = styled.p<{ showFull?: boolean }>`
+export const ReviewText = emotion.p<{ showFull?: boolean }>`
   ${p => !p.showFull ? 'max-height: 150px;' : 'max-height: 2000px'};
   align-items: flex-start;
   display: flex;
@@ -49,7 +49,7 @@ export const ReviewText = styled.p<{ showFull?: boolean }>`
   margin: 0;
 `;
 
-export const GradientCover = styled.span`
+export const GradientCover = emotion.span`
   background: linear-gradient(0deg, #e5e5e5 0%,  transparent 100%);
   bottom: 0;
   height: 3.5rem;
@@ -57,13 +57,13 @@ export const GradientCover = styled.span`
   width: 100%;
 `;
 
-export const ReviewHeader = styled.div`
+export const ReviewHeader = emotion.div`
   align-items: center;
   display: flex;
   margin-bottom: .1rem;
 `;
 
-export const ReviewHeaderIcon = styled.span`
+export const ReviewHeaderIcon = emotion.span`
   display: flex;
   height: 1.25rem;
   width: 1.25rem;
@@ -73,7 +73,7 @@ export const ReviewHeaderIcon = styled.span`
   }
 `;
 
-export const ReviewsHeader = styled.header`
+export const ReviewsHeader = emotion.header`
   align-items: center;
   color: #fff;
   display: flex;

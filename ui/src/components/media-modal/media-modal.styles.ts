@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { responsiveProps } from "../../effects/useResponsive";
+import emotion from "@emotion/styled";
 import { animated } from "react-spring";
+import { responsiveProps } from "../../effects/useResponsive";
 
-export const MediaModalWrapper = styled(animated.div) <{ resx?: responsiveProps }>`
+export const MediaModalWrapper = emotion(animated.div) <{ resx?: responsiveProps }>`
   background: #e5e5e5;
   border-radius: .25rem;
   box-shadow: 0 0 8px 4px rgba(0,0,0,0.3);
@@ -43,7 +43,7 @@ export const MediaModalWrapper = styled(animated.div) <{ resx?: responsiveProps 
   }};
 `;
 
-export const ModalHeader = styled.header`
+export const ModalHeader = emotion.header`
   align-items: center;
   display: flex;
   height: 3.5rem;
@@ -61,14 +61,14 @@ export const ModalHeader = styled.header`
   }
 `;
 
-export const ModalContent = styled.section`
+export const ModalContent = emotion.section`
   align-items: center;
   display: flex;
   height: calc(100% - 5rem);
   justify-content: center;
 `;
 
-export const ModalCloseIcon = styled.span`
+export const ModalCloseIcon = emotion.span`
   cursor: pointer;
   display: flex;
   height: 2.5rem;
@@ -82,7 +82,7 @@ export const ModalCloseIcon = styled.span`
   }
 `;
 
-export const ModalBackdrop = styled.div`
+export const ModalBackdrop = emotion.div`
   background: rgba(0,0,0,0.75);
   height: 100%;
   left: 0;

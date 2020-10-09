@@ -1,12 +1,12 @@
-import React from 'react';
 import { useApolloClient } from '@apollo/client';
-import { Credits } from '../../models/Credits';
-import { cast, tvCast } from '../../gqls/cast';
+import React from 'react';
 import MediaObjects from '../../components/media-objects/media-objects';
-import { MediaObject, ThumbnailSize } from './../../models/MediaObject';
-import styled from 'styled-components';
 import useResponsive, { responsiveProps } from '../../effects/useResponsive';
+import { cast, tvCast } from '../../gqls/cast';
+import { Credits } from '../../models/Credits';
 import { SliderType } from '../../models/Slider';
+import { MediaObject, ThumbnailSize } from './../../models/MediaObject';
+import emotion from '@emotion/styled';
 
 interface CastResultDetails {
   getCredits: Credits;
@@ -20,7 +20,7 @@ interface CastAndCrewModel {
   sliderType?: SliderType;
 }
 
-const MediaObjectsWrapper = styled.div<{ resxProps?: responsiveProps }>`
+const MediaObjectsWrapper = emotion.div<{ resxProps?: responsiveProps }>`
   margin-bottom: 2rem;
   margin-left: auto;
   margin-right: auto;

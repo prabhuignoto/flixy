@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import emotion from '@emotion/styled';
 import {responsiveProps} from '../../effects/useResponsive';
 
-export const Button = styled.button<{size?: string; resx: responsiveProps}>`
+export const Button = emotion.button<{size?: string; resx: responsiveProps}>`
   background: none;
   border: 0;
   cursor: pointer;

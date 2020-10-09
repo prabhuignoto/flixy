@@ -1,9 +1,9 @@
-import styled from 'styled-components';
 import { animated } from "react-spring";
-import { LoadingState } from '../../models/Slider';
 import { responsiveProps } from '../../effects/useResponsive';
+import { LoadingState } from '../../models/Slider';
+import emotion from "@emotion/styled";
 
-export const Wrapper = styled(animated.div) <{ detailsEnabled?: number, loadingState?: LoadingState }>`
+export const Wrapper = emotion(animated.div) <{ detailsEnabled?: number, loadingState?: LoadingState }>`
   background-image: ${p => p.loadingState === LoadingState.LOADED ? "linear-gradient(to right top, #2c2c2c, #252525, #1f1f1f, #181818, #111111)" : ""};
   background-color: ${p => !p.detailsEnabled ? "" : ""};
   border-radius: .2rem;
@@ -15,7 +15,7 @@ export const Wrapper = styled(animated.div) <{ detailsEnabled?: number, loadingS
   position: relative;
 `;
 
-export const Header = styled.header`
+export const Header = emotion.header`
   align-items: center;
   color: #fff;
   cursor: pointer;
@@ -33,7 +33,7 @@ export const Header = styled.header`
   height: 2.5rem;
 `;
 
-export const MoviesWrapper = styled(animated.div)`
+export const MoviesWrapper = emotion(animated.div)`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@ export const MoviesWrapper = styled(animated.div)`
   margin-top: .25rem;
 `;
 
-export const Title = styled.div`
+export const Title = emotion.div`
   /* padding-left: 5rem; */
   &::before {
     content: "";
@@ -59,20 +59,20 @@ export const Title = styled.div`
   }
 `;
 
-export const TitleText = styled.span`
+export const TitleText = emotion.span`
   color: #fff;
   font-family: Poppins;
   font-size: 1.25rem;
   font-weight: 300;
 `;
 
-export const TitleIcon = styled.span``;
+export const TitleIcon = emotion.span``;
 
-export const ButtonWrapper = styled.div`
+export const ButtonWrapper = emotion.div`
   margin-left: auto;
 `;
 
-export const ExpandControl = styled.div<{ resx?: responsiveProps }>`
+export const ExpandControl = emotion.div<{ resx?: responsiveProps }>`
   align-items: center;
   bottom: -1rem;
   display: flex;
@@ -107,7 +107,7 @@ export const ExpandControl = styled.div<{ resx?: responsiveProps }>`
   }
 `;
 
-export const DetailsWrapper = styled.div`
+export const DetailsWrapper = emotion.div`
   margin: 0 auto;
   position: relative;
   width: 100%;

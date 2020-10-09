@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 
-export const ImdbLinkWrapper = styled.div`
+export const ImdbLinkWrapper = emotion.div`
   border-radius: .2rem;
   height: 100%;
   background: #000;
   box-shadow: inset 0 0 4px 1px rgba(0,0,0,0.1);
 `;
 
-export const ImdbLink = styled.a`
+export const ImdbLink = emotion.a`
   text-decoration: none;
   font-family: Poppins;
   font-size: .9rem;

@@ -1,15 +1,15 @@
+import {DocumentNode, useApolloClient} from '@apollo/client';
+import emotion from '@emotion/styled';
 import React from 'react';
-import { useApolloClient, DocumentNode } from '@apollo/client';
-import { searchMovies } from '../../gqls/movies';
-import { searchTv } from '../../gqls/tv';
-import Movie from '../../models/Media';
-import { MediaType, SearchContainer as SearchContainerModel } from '../models';
-import { MediaObject, ThumbnailSize } from '../../models/MediaObject';
-import styled from 'styled-components';
-import useResponsive from '../../effects/useResponsive';
 import MediaObjects from '../../components/media-objects/media-objects';
 import MovieDetails from '../../containers/details/movieDetails';
+import useResponsive from '../../effects/useResponsive';
+import {searchMovies} from '../../gqls/movies';
+import {searchTv} from '../../gqls/tv';
+import Movie from '../../models/Media';
+import {MediaObject, ThumbnailSize} from '../../models/MediaObject';
 import TvDetails from '../details/tvDetails';
+import {MediaType, SearchContainer as SearchContainerModel} from '../models';
 
 const getQuery: (m: MediaType) => DocumentNode = (type) => {
   switch (type) {
@@ -20,7 +20,7 @@ const getQuery: (m: MediaType) => DocumentNode = (type) => {
   }
 };
 
-const Wrapper = styled.div`
+const Wrapper = emotion.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,18 +28,18 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const ResultsWrapper = styled.div`
+const ResultsWrapper = emotion.div`
   width: 100%;
 `;
 
-const DetailsWrapper = styled.section`
+const DetailsWrapper = emotion.section`
   margin-top: 2rem;
   width: 100%;
   height: 400px;
 `;
 
 const SearchContainer: React.FunctionComponent<SearchContainerModel> = React.memo(
-  ({ query, type }) => {
+  ({query, type}) => {
     const client = useApolloClient();
     const [movieData, setMovieData] = React.useState<{
       results: Movie[];
@@ -64,7 +64,7 @@ const SearchContainer: React.FunctionComponent<SearchContainerModel> = React.mem
 
     const getResults = async (page: number) => {
       setLoading(true);
-      const { data } = await client.query({
+      const {data} = await client.query({
         query: getQuery(type),
         variables: {
           lang: 'en-US',
@@ -145,13 +145,13 @@ const SearchContainer: React.FunctionComponent<SearchContainerModel> = React.mem
             <MovieDetails
               movieId={movieId.id}
               hide={!movieId.id}
-              handleClose={() => setSelectedMovieId({ id: 0 })}
+              handleClose={() => setSelectedMovieId({id: 0})}
             />
           ) : (
             <TvDetails
               movieId={movieId.id}
               hide={!movieId.id}
-              handleClose={() => setSelectedMovieId({ id: 0 })}
+              handleClose={() => setSelectedMovieId({id: 0})}
             />
           )}
         </DetailsWrapper>

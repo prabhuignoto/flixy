@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import emotion from '@emotion/styled';
 import React from 'react';
-import {useSpring, animated} from 'react-spring';
+import {animated} from 'react-spring';
 
 export enum LoaderSize {
   small = 'SMALL',
   large = 'LARGE',
 }
 
-const Wrapper = styled(animated.div)`
+const Wrapper = emotion(animated.div)`
   align-items: center;
   justify-content: center;
   background: transparent;

@@ -1,9 +1,9 @@
+import emotion from "@emotion/styled";
 import { animated } from 'react-spring';
-import styled from "styled-components";
-import { ThumbnailSize } from '../../models/MediaObject';
 import { responsiveProps } from '../../effects/useResponsive';
+import { ThumbnailSize } from '../../models/MediaObject';
 
-export const ObjectsContainer = styled.section<{ height?: number, noBackground?: boolean }>`
+export const ObjectsContainer = emotion.section<{ height?: number, noBackground?: boolean }>`
   align-items: center;
   background: ${p => !p.noBackground ? "#dbdbdb" : ""};
   border-radius: .25rem;
@@ -15,7 +15,7 @@ export const ObjectsContainer = styled.section<{ height?: number, noBackground?:
   position: relative;
 `;
 
-export const ObjectsWrapper = styled.ul<{
+export const ObjectsWrapper = emotion.ul<{
   columns?: number,
   leftButton?: boolean,
   rightButton?: boolean,
@@ -43,7 +43,7 @@ export const ObjectsWrapper = styled.ul<{
   }};
 `;
 
-export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize, resx?: responsiveProps }>`
+export const Scroll = emotion.div<{ disable?: boolean, size?: ThumbnailSize, resx?: responsiveProps }>`
   align-items: center;
   display: flex;
   justify-content: center;
@@ -72,18 +72,18 @@ export const Scroll = styled.div<{ disable?: boolean, size?: ThumbnailSize, resx
   }
 `;
 
-export const ScrollLeftBtn = styled(Scroll)`
+export const ScrollLeftBtn = emotion(Scroll)`
   margin-right: auto;
   ${p => !p.disable ? "box-shadow: 13px 0px 9px -15px #000;" : ""};
 `;
 
-export const ScrollRightBtn = styled(Scroll)`
+export const ScrollRightBtn = emotion(Scroll)`
   margin-left: auto;
   ${p => !p.disable ? "box-shadow: -13px 0px 9px -15px #000" : ""};
 `;
 
 
-export const ObjectHeader = styled.div`
+export const ObjectHeader = emotion.div`
   color: #cc0000;
   font-size: 1rem;
   font-weight: 500;
@@ -91,11 +91,11 @@ export const ObjectHeader = styled.div`
   padding-left: 1rem;
 `;
 
-export const MediaObjectContainer = styled(animated.div)`
+export const MediaObjectContainer = emotion(animated.div)`
   margin-right: .5rem;
 `;
 
-export const ExpandButton = styled.div`
+export const ExpandButton = emotion.div`
   height: 1.25rem;
   position: absolute;
   top: -.5rem;

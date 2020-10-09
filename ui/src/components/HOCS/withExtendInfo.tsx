@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Wrapper, ViewBtnWrapper} from './withExtendInfo.styles';
+import { MovieType } from '../media-card/card';
 import CardExtended, {
   CardExtendedModel,
-  PositioningStrategy,
+  PositioningStrategy
 } from './../media-card/card-extended';
-import {MovieType} from '../media-card/card';
+import { ViewBtnWrapper, Wrapper } from './withExtendInfo.styles';
 
 interface State {
   showExtendIcon: boolean;
@@ -53,7 +53,7 @@ export default function <P extends CardExtendCustomModel>(
     }
 
     startTimer(ev: React.MouseEvent) {
-      this.timer = setTimeout(() => {
+      this.timer = window.setTimeout(() => {
         if (this.state.isMouseActive) {
           this.showPane(ev);
         }
@@ -61,7 +61,7 @@ export default function <P extends CardExtendCustomModel>(
     }
 
     endTimer() {
-      clearTimeout(this.timer);
+      window.clearTimeout(this.timer);
     }
 
     showPane(ev: React.MouseEvent) {

@@ -1,13 +1,13 @@
-import styled from 'styled-components';
 import { animated } from 'react-spring';
-import { CardSize } from '../../models/CardSize';
 import { responsiveProps } from '../../effects/useResponsive';
+import { CardSize } from '../../models/CardSize';
+import emotion from "@emotion/styled";
 
-export const PosterWrapper = styled.div<{ size?: CardSize }>`
+export const PosterWrapper = emotion.div<{ size?: CardSize }>`
   height: 100%;
   `;
 
-export const CardImage = styled(animated.img) <{ hide?: boolean }>`
+export const CardImage = emotion(animated.img) <{ hide?: boolean }>`
   border-radius: .2rem;
   color: #191919;
   max-height: 100%;
@@ -20,7 +20,7 @@ export const CardImage = styled(animated.img) <{ hide?: boolean }>`
   }
 `;
 
-export const CardImageWrapper = styled(animated.div) <{ selected?: boolean }>`
+export const CardImageWrapper = emotion(animated.div) <{ selected?: boolean }>`
   align-items: ${(p) => (p.selected ? "flex-start" : "center")};
   display: flex;
   height: 100%;
@@ -29,7 +29,7 @@ export const CardImageWrapper = styled(animated.div) <{ selected?: boolean }>`
   width: 100%;
 `;
 
-export const CardRating = styled.span`
+export const CardRating = emotion.span`
   align-items: center;
   background: rgba(204,0,0,0.95);
   border-bottom-left-radius: .3rem;
@@ -51,7 +51,7 @@ export const CardRating = styled.span`
   top: .85rem;
 `;
 
-export const Star = styled.div<{ resx?: responsiveProps }>`
+export const Star = emotion.div<{ resx?: responsiveProps }>`
   ${p => p.resx?.isBigScreen ?
     `width: 3.5rem;
   height: 2.5rem;` :

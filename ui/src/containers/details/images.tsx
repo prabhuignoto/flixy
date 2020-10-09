@@ -1,12 +1,12 @@
-import React from 'react';
 import { useApolloClient } from '@apollo/client';
-import { images, tvImages } from '../../gqls/images';
+import React from 'react';
 import MediaObjects from '../../components/media-objects/media-objects';
-import { MediaObject, ThumbnailSize } from './../../models/MediaObject';
-import styled from 'styled-components';
 import useResponsive from '../../effects/useResponsive';
+import { images, tvImages } from '../../gqls/images';
 import { Images } from '../../models/Images';
 import { SliderType } from '../../models/Slider';
+import { MediaObject, ThumbnailSize } from './../../models/MediaObject';
+import emotion from '@emotion/styled';
 
 interface ImageResultDetails {
   getImages: Images;
@@ -18,7 +18,7 @@ interface ImagesModel {
   sliderType: SliderType;
 }
 
-const MediaObjectsWrapper = styled.div`
+const MediaObjectsWrapper = emotion.div`
   display: flex;
   flex-direction: column;
   width: 97%;

@@ -1,7 +1,6 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 
-
-export const LogoWrapper = styled.div`
+export const LogoWrapper = emotion.div`
   align-items: center;
   display: flex;
   justify-content: center;
@@ -9,7 +8,7 @@ export const LogoWrapper = styled.div`
   user-select: none;
 `;
 
-export const LogoText = styled.div`
+export const LogoText = emotion.div`
   border-radius: .25rem;
   color: #d0d0d0;
   font-family: Poppins;
@@ -19,7 +18,7 @@ export const LogoText = styled.div`
   text-transform: capitalize;
 `;
 
-export const LogoIcon = styled.span`
+export const LogoIcon = emotion.span`
   align-items: center;
   display: flex;
   height: 100%;
@@ -33,7 +32,7 @@ export const LogoIcon = styled.span`
   }
 `;
 
-export const Trademark = styled.span`
+export const Trademark = emotion.span`
   font-size: .9rem;
   vertical-align: text-top;
 `

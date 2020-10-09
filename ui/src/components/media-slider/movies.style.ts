@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { CardSize } from "../../models/CardSize";
+import emotion from "@emotion/styled";
 import { animated } from "react-spring";
+import { CardSize } from "../../models/CardSize";
 import { responsiveProps } from './../../effects/useResponsive';
 
 const getRowHeight = (props?: responsiveProps) => {
@@ -31,7 +31,7 @@ const getColumnWidth = (props?: responsiveProps) => {
   }
 }
 
-export const MoviesContainer = styled(animated.div) <{
+export const MoviesContainer = emotion(animated.div) <{
   selected?: number;
   size?: CardSize;
   slider?: number;

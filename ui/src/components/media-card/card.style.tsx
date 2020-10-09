@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import {CardSize} from '../../models/CardSize';
 import {animated} from 'react-spring';
 import {responsiveProps} from '../../effects/useResponsive';
+import {CardSize} from '../../models/CardSize';
+import emotion from "@emotion/styled";
 
-export const CardContainer = styled(animated.div)<{
+export const CardContainer = emotion(animated.div)<{
   selected?: boolean;
   opacity?: number;
   height?: number;
@@ -43,7 +43,7 @@ export const CardContainer = styled(animated.div)<{
   }`};
 `;
 
-export const CardTitle = styled.div`
+export const CardTitle = emotion.div`
   color: white;
   font-family: 'Poppins';
   font-size: 0.9rem;
@@ -56,28 +56,28 @@ export const CardTitle = styled.div`
   width: 90%;
 `;
 
-export const CardHeader = styled.div`
+export const CardHeader = emotion.div`
   align-items: flex-start;
   display: flex;
   height: 10%;
   width: 100%;
 `;
 
-export const CardFooter = styled.div`
+export const CardFooter = emotion.div`
   align-items: center;
   display: flex;
   height: 10%;
   width: 100%;
 `;
 
-export const CardYear = styled.span`
+export const CardYear = emotion.span`
   color: white;
   font-family: 'Poppins';
   font-size: 0.8rem;
   font-weight: 300;
 `;
 
-export const CardCheckedWrapper = styled.div`
+export const CardCheckedWrapper = emotion.div`
   background: rgba(204, 0, 0, 0.95);
   border-radius: 50%;
   height: 2rem;
@@ -91,13 +91,13 @@ export const CardCheckedWrapper = styled.div`
   width: 2rem;
 `;
 
-export const ImageIconWrapper = styled.div`
+export const ImageIconWrapper = emotion.div`
   height: 2rem;
   width: 2rem;
   position: relative;
 `;
 
-export const ViewBtnWrapper = styled.span`
+export const ViewBtnWrapper = emotion.span`
   width: 20px;
   height: 20px;
   padding: 3px;

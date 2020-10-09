@@ -12,10 +12,10 @@
   "license": "MIT",
   "dependencies": {
     "@types/graphql": "^14.5.0",
-    "@types/node": "^14.11.2",
+    "@types/node": "^14.11.7",
     "apollo-server-fastify": "3.0.0-alpha.3",
     "dotenv": "^8.2.0",
-    "fastify": "^3.4.1",
+    "fastify": "^3.5.1",
     "fastify-cors": "^4.1.0",
     "fastify-helmet": "^5.0.3",
     "fastify-redis": "^4.0.1",

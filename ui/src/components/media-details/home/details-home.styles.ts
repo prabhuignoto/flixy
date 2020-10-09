@@ -1,18 +1,18 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 import { responsiveProps } from "../../../effects/useResponsive";
 
-export const Title = styled.div`
+export const Title = emotion.div`
   padding-left: 5rem;
 `;
 
-export const Box1 = styled.div`
+export const Box1 = emotion.div`
   display: flex;
   align-items: flex-start;
   width: 100%;
   margin-bottom: .25rem;
 `;
 
-export const Box2 = styled.div`
+export const Box2 = emotion.div`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -21,11 +21,11 @@ export const Box2 = styled.div`
   width: 100%;
 `;
 
-export const DetailsHomeWrapper = styled.div`
+export const DetailsHomeWrapper = emotion.div`
   width: 100%;
 `;
 
-export const CastAndCrewWrapper = styled.div<{ resxProps?: responsiveProps }>`
+export const CastAndCrewWrapper = emotion.div<{ resxProps?: responsiveProps }>`
   width: 100%;
   display: flex;
   align-items: flex-start;
@@ -34,8 +34,8 @@ export const CastAndCrewWrapper = styled.div<{ resxProps?: responsiveProps }>`
   flex-direction: ${p => p.resxProps?.isBigScreen ? "row" : "column"}
 `;
 
-export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
-  width: ${ ({ resxProps }) => {
+export const CastAndCrewContainer = emotion.div<{ resxProps?: responsiveProps }>`
+  width: ${({ resxProps }) => {
     const { isTabletOrMobile, isBigScreen, isDesktopOrLaptop } = resxProps as responsiveProps;
     if (isTabletOrMobile) {
       return "100%";
@@ -48,7 +48,7 @@ export const CastAndCrewContainer = styled.div<{ resxProps?: responsiveProps }>`
   };
 `;
 
-export const Overview = styled(Title) <{ resxProps?: responsiveProps }>`
+export const Overview = emotion(Title) <{ resxProps?: responsiveProps }>`
   color: #191919;
   font-family: "Poppins";
   font-size: ${p => p.resxProps?.isBigScreen ? ".95rem" : ".85rem"};
@@ -59,17 +59,17 @@ export const Overview = styled(Title) <{ resxProps?: responsiveProps }>`
   text-align: left;
 `;
 
-export const PostersWrapper = styled.div`
+export const PostersWrapper = emotion.div`
   position: relative;
   display: flex;
   align-items: center;
 `;
 
-export const PostersAndProduction = styled.div<{ resxProps?: responsiveProps }>`
+export const PostersAndProduction = emotion.div<{ resxProps?: responsiveProps }>`
   display: flex;
   flex-direction: column;
   width: ${p => p.resxProps?.isBigScreen ? "55%" : "100%"};
 `;
 
-export const ProductionWrapper = styled.div`
+export const ProductionWrapper = emotion.div`
 `;

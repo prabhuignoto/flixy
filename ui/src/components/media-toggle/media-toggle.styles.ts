@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 import { animated } from 'react-spring';
 import { responsiveProps } from "../../effects/useResponsive";
 
-export const MediaToggleWrapper = styled.div`
+export const MediaToggleWrapper = emotion.div`
   align-items: center;
   border-radius: .25rem;
   cursor: pointer;
@@ -13,7 +13,7 @@ export const MediaToggleWrapper = styled.div`
   width: 100%;
 `;
 
-export const Option = styled.div<{ selected?: boolean, resx?: responsiveProps }>`
+export const Option = emotion.div<{ selected?: boolean, resx?: responsiveProps }>`
   align-items: center;
   color: #ffff;
   display: flex;
@@ -34,7 +34,7 @@ export const Option = styled.div<{ selected?: boolean, resx?: responsiveProps }>
   }
   `;
 
-export const OptionLabel = styled.div<{ marginLess?: boolean }>`
+export const OptionLabel = emotion.div<{ marginLess?: boolean }>`
   align-items: center;
   display: flex;
   justify-content: center;
@@ -42,7 +42,7 @@ export const OptionLabel = styled.div<{ marginLess?: boolean }>`
   text-transform: uppercase;
 `;
 
-export const Highlighter = styled(animated.span) <{ left?: number }>`
+export const Highlighter = emotion(animated.span) <{ left?: number }>`
   background-color: #cc0000;
   border-radius: .25rem;
   box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.4);

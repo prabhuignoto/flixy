@@ -1,14 +1,14 @@
-import React from 'react';
 import { useApolloClient } from '@apollo/client';
-import { details } from '../../gqls/tvDetails';
+import memoize from 'memoize-one';
+import React from 'react';
+import { animated, config, useSpring } from 'react-spring';
 import CardDetails from '../../components/media-details/details-main';
 import Loader from '../../components/media-loader';
-import { useSpring, config, animated } from 'react-spring';
-import styled from 'styled-components';
 import useResponsive, { responsiveProps } from '../../effects/useResponsive';
-import memoize from 'memoize-one';
-import { TvDetail } from '../../models/TvDetail';
+import { details } from '../../gqls/tvDetails';
 import { SliderType } from '../../models/Slider';
+import { TvDetail } from '../../models/TvDetail';
+import emotion from '@emotion/styled';
 
 const getHeight = memoize(
   ({ isBigScreen, isTabletOrMobile }: responsiveProps) => {
@@ -124,7 +124,7 @@ const MovieDetails: React.FunctionComponent<{
     view = <Loader />;
   }
 
-  const Wrapper = styled(animated.div)`
+  const Wrapper = emotion(animated.div)`
     position: relative;
     width: 98%;
     margin: 0 auto;

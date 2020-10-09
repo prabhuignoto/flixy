@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 import { animated } from "react-spring";
 
-export const ReviewsWrapper = styled.ul`
+export const ReviewsWrapper = emotion.ul`
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@ export const ReviewsWrapper = styled.ul`
   padding:0 .5rem;
 `;
 
-export const ReviewsContainer = styled(animated.div)`
+export const ReviewsContainer = emotion(animated.div)`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -21,7 +21,7 @@ export const ReviewsContainer = styled(animated.div)`
   width: 100%;
 `;
 
-export const ReviewsHeader = styled.header`
+export const ReviewsHeader = emotion.header`
   align-items: center;
   color: #fff;
   display: flex;

@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import { responsiveProps } from "../../effects/useResponsive";
+import emotion from "@emotion/styled";
 
-export const GenresWrapper = styled.ul`
+export const GenresWrapper = emotion.ul`
   align-items: center;
   display: flex;
   justify-content: flex-start;
@@ -10,7 +10,7 @@ export const GenresWrapper = styled.ul`
   padding: .2em .2em .2em 0;
 `;
 
-export const GenreItem = styled.li<{ resx?: responsiveProps }>`
+export const GenreItem = emotion.li<{ resx?: responsiveProps }>`
   align-items: center;
   background: rgba(204,0,0,0.95);
   border-radius: .2em;

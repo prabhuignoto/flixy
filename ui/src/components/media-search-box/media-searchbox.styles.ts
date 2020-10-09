@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 
-export const SearchBoxWrapper = styled.div`
+export const SearchBoxWrapper = emotion.div`
   align-items: center;
   background: #252525;
   border-radius: 2rem;
@@ -10,7 +10,7 @@ export const SearchBoxWrapper = styled.div`
   width: 100%;
 `;
 
-export const SearchInput = styled.input`
+export const SearchInput = emotion.input`
   background: transparent;
   border: 0;
   color: #bdbdbd;
@@ -23,7 +23,7 @@ export const SearchInput = styled.input`
   width: calc(100% - 5rem);
 `;
 
-export const SearchIconWrapper = styled.div`
+export const SearchIconWrapper = emotion.div`
   background: none;
   border: 0;
   display: flex;
@@ -38,7 +38,7 @@ export const SearchIconWrapper = styled.div`
   }
 `;
 
-export const GoButton = styled.div`
+export const GoButton = emotion.div`
   align-items: center;
   cursor: pointer;
   display: flex;

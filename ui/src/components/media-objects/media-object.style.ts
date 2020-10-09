@@ -1,8 +1,8 @@
-import styled, { keyframes } from "styled-components";
 import { animated } from "react-spring";
+import emotion from "@emotion/styled";
 import { responsiveProps } from "../../effects/useResponsive";
 
-export const MediaObject = styled(animated.div)`
+export const MediaObject = emotion(animated.div)`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@ export const MediaObject = styled(animated.div)`
   border-radius: .25rem;
 `;
 
-export const ObjectImage = styled(animated.img) <{ loaded?: number, noTitle?: number }>`
+export const ObjectImage = emotion(animated.img) <{ loaded?: number, noTitle?: number }>`
   display: ${p => p.loaded ? "block" : "none"};
   margin-top: ${p => !p.noTitle ? "" : ""};
   max-height: 100%;
@@ -22,7 +22,7 @@ export const ObjectImage = styled(animated.img) <{ loaded?: number, noTitle?: nu
   border-radius: .2rem;
   `;
 
-export const FallbackImage = styled(animated.div) <{ failed?: boolean }>`
+export const FallbackImage = emotion(animated.div) <{ failed?: boolean }>`
   align-items: center;
   display: flex;
   background: #f2f2f2;
@@ -35,7 +35,7 @@ export const FallbackImage = styled(animated.div) <{ failed?: boolean }>`
   }
   `;
 
-export const ObjectName = styled.span<{ resx?: responsiveProps }>`
+export const ObjectName = emotion.span<{ resx?: responsiveProps }>`
   color: #000;
   font-family: "Poppins";
   font-size: ${p => p.resx?.isBigScreen ? ".75rem" : ".65rem"};
@@ -55,7 +55,7 @@ export const ObjectName = styled.span<{ resx?: responsiveProps }>`
   text-overflow: ellipsis;
   `;
 
-export const ImageContainer = styled.div<{ noTitle?: number }>`
+export const ImageContainer = emotion.div<{ noTitle?: number }>`
   height: ${p => p.noTitle ? "100%" : "100%"};
   position: relative;
   width: 100%;
@@ -65,7 +65,7 @@ export const ImageContainer = styled.div<{ noTitle?: number }>`
   background : ${p => !p.noTitle ? "" : ""};
   `;
 
-export const ImageInfo = styled.div<{ resx?: responsiveProps, width: number }>`
+export const ImageInfo = emotion.div<{ resx?: responsiveProps, width: number }>`
   position: absolute;
   left: 0;
   right: 0;

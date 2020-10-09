@@ -148,10 +148,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.19.tgz#1d31ddd5503dba2af7a901aafef3392e4955620e"
   integrity sha512-46/xThm3zvvc9t9/7M3AaLEqtOpqlYYYcCZbpYVAQHG20+oMZBkae/VMrn4BTi6AJ8cpack0mEXhGiKmDNbLrQ==
 
-"@types/node@^14.11.2":
-  version "14.11.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.2.tgz#2de1ed6670439387da1c9f549a2ade2b0a799256"
-  integrity sha512-jiE3QIxJ8JLNcb1Ps6rDbysDhN4xa8DJJvuC9prr6w+1tIh+QAbYyNF3tyiZNLDBIuBCf4KEcV2UvQm/V60xfA==
+"@types/node@^14.11.7":
+  version "14.11.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.7.tgz#4d9673b8331ce262628ea89d9ef3964b6c1e5489"
+  integrity sha512-hSEXknS4KiayUdZ7401J/T6eykXHJkDEipnyQMJ4/GstK4kWjbHnwXlcpvIWfPKiEH1JU96DkbzJ1nHRmpmKLw==
 
 "@types/node@^14.6.0":
   version "14.6.0"
@@ -832,10 +832,10 @@ fastify-warning@^0.2.0:
   resolved "https://registry.yarnpkg.com/fastify-warning/-/fastify-warning-0.2.0.tgz#e717776026a4493dc9a2befa44db6d17f618008f"
   integrity sha512-s1EQguBw/9qtc1p/WTY4eq9WMRIACkj+HTcOIK1in4MV5aFaQC9ZCIt0dJ7pr5bIf4lPpHvAtP2ywpTNgs7hqw==
 
-fastify@^3.4.1:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/fastify/-/fastify-3.5.0.tgz#4e46de69e9ac51c80474a08b20b23fbf9e1176aa"
-  integrity sha512-wTd2l3Ndz8LSHBJG4zIwroJfgBdwHN/nilqraDy0GOnhWaCAbtTHaHb8xE6+wn1zPRDnYvmfn1/jStjqTU6UfA==
+fastify@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/fastify/-/fastify-3.5.1.tgz#753a6909e3154d61fcde7402500ed92177132c1a"
+  integrity sha512-SO/ZZSbbAUrRxxz9zIsf1Ek5qqRux5EN03UF1lJGt/xwFzVpmW4h+p8kRCD08VCL1sItFy2dhFlR8FPaQfRGBw==
   dependencies:
     abstract-logging "^2.0.0"
     ajv "^6.12.2"

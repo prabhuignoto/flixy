@@ -1,17 +1,17 @@
-import React from 'react';
-import { useApolloClient } from '@apollo/client';
-import { details } from '../../gqls/movieDetails';
-import CardDetails from '../../components/media-details/details-main';
-import { MovieDetail } from '../../models/MovieDetails';
-import Loader from '../../components/media-loader';
-import { useSpring, config, animated } from 'react-spring';
-import styled from 'styled-components';
-import useResponsive, { responsiveProps } from '../../effects/useResponsive';
+import {useApolloClient} from '@apollo/client';
+import emotion from '@emotion/styled';
 import memoize from 'memoize-one';
-import { SliderType } from '../../models/Slider';
+import React from 'react';
+import {animated, config, useSpring} from 'react-spring';
+import CardDetails from '../../components/media-details/details-main';
+import Loader from '../../components/media-loader';
+import useResponsive, {responsiveProps} from '../../effects/useResponsive';
+import {details} from '../../gqls/movieDetails';
+import {MovieDetail} from '../../models/MovieDetails';
+import {SliderType} from '../../models/Slider';
 
 const getHeight = memoize(
-  ({ isBigScreen, isTabletOrMobile }: responsiveProps) => {
+  ({isBigScreen, isTabletOrMobile}: responsiveProps) => {
     let height;
     if (isBigScreen) {
       height = 820;
@@ -28,7 +28,7 @@ const MovieDetails: React.FunctionComponent<{
   movieId: number | string;
   handleClose?: () => void;
   hide?: boolean;
-}> = ({ movieId, handleClose, hide }) => {
+}> = ({movieId, handleClose, hide}) => {
   const [data, setData] = React.useState<MovieDetail | null>();
   const [loading, setLoading] = React.useState(false);
   const client = useApolloClient();
@@ -73,7 +73,7 @@ const MovieDetails: React.FunctionComponent<{
   }, [hide]);
 
   const executeQuery = async () => {
-    const { data } = await client.query({
+    const {data} = await client.query({
       query: details,
       variables: {
         lang: 'en-US',
@@ -128,7 +128,7 @@ const MovieDetails: React.FunctionComponent<{
     view = <Loader />;
   }
 
-  const Wrapper = styled(animated.div)`
+  const Wrapper = emotion(animated.div)`
     position: relative;
     width: 98%;
     margin: 0 auto;

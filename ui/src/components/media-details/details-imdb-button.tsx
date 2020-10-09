@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import emotion from '@emotion/styled';
 import React from 'react';
 
-const ImdbButtonWrapper = styled.button`
+const ImdbButtonWrapper = emotion.button`
   background-color: #000;
   background: none;
   border: none;
 `;
 
-const ImdbLink = styled.a`
+const ImdbLink = emotion.a`
   display: block;
   font-family: 'Poppins';
   font-size: 1.25rem;

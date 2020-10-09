@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import emotion from "@emotion/styled";
 import { responsiveProps } from "../../../effects/useResponsive";
 
-const Root = styled.div<{ resx?: responsiveProps }>`
+const Root = emotion.div<{ resx?: responsiveProps }>`
   font-family: "Poppins";
 `;
 
-export const AttributeWrapper = styled(Root)`
+export const AttributeWrapper = emotion(Root)`
   align-items: center;
   background: #2a2a2a;
   border-radius: 3px;
@@ -15,7 +15,7 @@ export const AttributeWrapper = styled(Root)`
   min-width: 7rem;
 `;
 
-export const AttributeLabel = styled(Root)`
+export const AttributeLabel = emotion(Root)`
   align-items: center;
   color: #fff;
   display: flex;
@@ -29,7 +29,7 @@ export const AttributeLabel = styled(Root)`
   }
 `;
 
-export const AttributeValue = styled(Root)`
+export const AttributeValue = emotion(Root)`
   align-items: center;
   background-color: rgba(204,0,0,0.8);
   border-bottom-right-radius: 3px;
@@ -44,7 +44,7 @@ export const AttributeValue = styled(Root)`
   white-space: nowrap;
 `;
 
-export const IconWrapper = styled(Root)`
+export const IconWrapper = emotion(Root)`
   display: flex;
   height: 29px;
   width: 20px;
