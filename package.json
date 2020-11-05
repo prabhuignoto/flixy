@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "react-ga": "^3.1.2"
-  },
-  "devDependencies": {
-    "@types/react-ga": "^2.3.0"
-  }
-}
