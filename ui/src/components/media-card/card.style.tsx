@@ -22,7 +22,6 @@ export const CardContainer = emotion(animated.div)<{
   justify-content: space-evenly;
   position: relative;
   user-select: none;
-  ${(p) => (p.isLoadingCard ? '' : '')};
   ${(p) =>
     p.selected &&
     `&::before {
