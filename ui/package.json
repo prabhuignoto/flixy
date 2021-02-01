@@ -21,7 +21,7 @@
     "dedupe": "^3.0.2",
     "dotenv": "^8.2.0",
     "emotion-icons": "^3.6.0",
-    "graphql": "^15.4.0",
+    "graphql": "^15.5.0",
     "iso-639-1": "^2.1.7",
     "memoize-one": "^5.1.1",
     "nanoid": "^3.1.20",
